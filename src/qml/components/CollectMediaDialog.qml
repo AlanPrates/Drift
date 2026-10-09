@@ -10,7 +10,7 @@ ThemedDialog {
 
     property url folder
 
-    readonly property bool collecting: EditorState.projectFile.collectingMedia
+    readonly property bool collecting: EditorState.collectingMedia
 
     title: collecting ? qsTr("Collecting media") : qsTr("Collect media to folder")
     preferredWidth: 400
@@ -24,19 +24,19 @@ ThemedDialog {
 
     onClosed: {
         if (root.collecting)
-            EditorState.projectFile.cancelCollectMedia()
+            EditorState.cancelCollectMedia()
     }
 
     function start(move) {
-        EditorState.projectFile.collectMediaToFolder(root.folder, move)
-        if (!EditorState.projectFile.collectingMedia)
+        EditorState.collectMediaToFolder(root.folder, move)
+        if (!EditorState.collectingMedia)
             root.close()
     }
 
     Connections {
-        target: EditorState.projectFile
+        target: EditorState
         function onCollectingMediaChanged() {
-            if (!EditorState.projectFile.collectingMedia)
+            if (!EditorState.collectingMedia)
                 root.close()
         }
     }
@@ -48,8 +48,8 @@ ThemedDialog {
         LabelledProgressRing {
             width: parent.width
             visible: root.collecting
-            value: EditorState.projectFile.collectMediaProgress
-            indeterminate: EditorState.projectFile.collectMediaProgress <= 0
+            value: EditorState.collectMediaProgress
+            indeterminate: EditorState.collectMediaProgress <= 0
         }
 
         ThemedLabel {

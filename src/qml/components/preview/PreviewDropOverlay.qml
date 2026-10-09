@@ -14,8 +14,8 @@ Item {
     readonly property bool showsClip: !!plan && plan.accepted && plan.mode === "clip"
 
     function toCanvas(localX, localY) {
-        return Qt.point(localX / Math.max(1, width) * EditorState.projectFile.projectWidth(),
-                        localY / Math.max(1, height) * EditorState.projectFile.projectHeight())
+        return Qt.point(localX / Math.max(1, width) * EditorState.projectWidth(),
+                        localY / Math.max(1, height) * EditorState.projectHeight())
     }
 
     function containsLocal(localX, localY) {
@@ -28,7 +28,7 @@ Item {
             return false
         }
         const p = toCanvas(localX, localY)
-        plan = EditorState.preview.planDrop(kind, String(payload), p.x, p.y)
+        plan = EditorState.planPreviewDrop(kind, String(payload), p.x, p.y)
         return plan.accepted
     }
 
@@ -38,7 +38,7 @@ Item {
             return false
         const p = toCanvas(localX, localY)
         const run = function() {
-            const result = EditorState.preview.dropAsset(kind, String(payload), label || "", p.x, p.y)
+            const result = EditorState.dropAssetOnPreview(kind, String(payload), label || "", p.x, p.y)
             if (!result.accepted && result.message)
                 Toasts.info(result.message)
         }
@@ -63,8 +63,8 @@ Item {
     }
 
     Rectangle {
-        readonly property real sx: root.width / Math.max(1, EditorState.projectFile.projectWidth())
-        readonly property real sy: root.height / Math.max(1, EditorState.projectFile.projectHeight())
+        readonly property real sx: root.width / Math.max(1, EditorState.projectWidth())
+        readonly property real sy: root.height / Math.max(1, EditorState.projectHeight())
         visible: root.showsClip
         x: root.showsClip ? root.plan.x * sx : 0
         y: root.showsClip ? root.plan.y * sy : 0

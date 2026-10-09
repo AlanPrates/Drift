@@ -71,7 +71,7 @@ QJsonObject animPropProp()
 {
     return stringProp(QStringLiteral(
         "Animated property: x, y, width, height, rotation, rotationX, rotationY, z, perspective, "
-        "opacity, volume, fx.<effectIndex>.<paramKey>, afx.<audioEffectIndex>.<paramKey> "
+        "opacity, volume, fx.<effectIndex>.<paramKey> "
         "(e.g. fx.0.amount), mask.<x|y|w|h|rotation|feather>, or on a text/subtitle clip text.<key> with "
         "key one of pixelSize, letterSpacing, lineHeight, boxPadding, pathBend, or a shading layer field "
         "text.layer.<layerId>.<opacity|offsetX|offsetY|blur|width|spread|trimStart|trimEnd|dashOffset|"
@@ -83,10 +83,9 @@ QJsonObject animPropProp()
         "geometry knobs shape.<cornerRadius|points|innerRatio|headSize|thickness|tailX|tailSize>. On "
         "an SVG vector clip the svg.* overrides: vector.svg.<strokeWidth|opacity>, "
         "vector.svg.<fill|stroke>.<r|g|b|a>, or the same under vector.svg.<elementId>. On a 3D "
-        "model clip model3d.<lightYaw|lightPitch|lightIntensity|ambient>; a model is placed by its "
-        "transform like any 3D layer (x, y, width, height, z, rotationX, rotationY, rotation, "
-        "perspective), and the older model3d.<scale|depth|rotX|rotY|rotZ> are still accepted as "
-        "shorthands that write those. "
+        "model clip model3d.<scale|depth|rotX|rotY|rotZ|lightYaw|lightPitch|lightIntensity|ambient> "
+        "(rotations are about the model's own axes, X then Y then Z; keyframe model3d.rotY to spin a "
+        "tilted model about its own axis). "
         "Note width/height here vs w/h in set_transform. Spellings live in this "
 "schema — list_animated_properties returns only properties that already have keys (empty on a "
         "fresh clip), so do not use it to learn names."));
@@ -521,20 +520,6 @@ const QList<Op> &ops()
                         {QStringLiteral("dur"), numberProp(QStringLiteral("Duration in seconds (default: to the clips' latest end)"))},
                         {QStringLiteral("name"), stringProp(QStringLiteral("Name for the transform clip"))}},
                        {QStringLiteral("clips")}) },
-        { "add_camera", "timeline", "Add the scene camera, or cut to a new framing",
-          "One viewpoint the whole timeline is seen through: pan, dolly, orbit, roll and lens, all "
-          "animatable. Adds the camera lane if it is missing. Without `at` the clip covers the "
-          "whole sequence (what a first camera wants); with `at` it is one clip starting there, so "
-          "two in a row read as a camera cut. A camera at rest looks exactly like no camera, so "
-          "adding one changes nothing until you move it. Frame it with set_keyframe on the returned "
-          "clip using x/y (pan), z (dolly), rotationX/rotationY (pitch/yaw), rotation (roll) and "
-          "perspective (lens); with no keys, set_transform moves it too. While a camera runs it "
-          "replaces each clip's own perspective, because a scene has one viewer. "
-          "Returns {clip, track, index}.",
-          objectSchema({{QStringLiteral("at"), numberProp(QStringLiteral("Start in seconds (default: the whole sequence)"))},
-                        {QStringLiteral("dur"), numberProp(QStringLiteral("Duration in seconds; only with `at`"))},
-                        {QStringLiteral("name"), stringProp(QStringLiteral("Name for the camera clip"))}},
-                       {}) },
         { "set_transform_span", "timeline", "Change which tracks a transform layer covers",
           "Set the last track the transform layer at `track` covers, by track index (`end`) or by a "
           "clip on it (`end_clip`). The end must be a visual track below the layer and may not cut "
@@ -879,7 +864,7 @@ const QList<Op> &ops()
         { "list_animated_properties", "keyframes", "See what already has keys",
           "Returns {props:[…]} — only the properties that already carry keyframes on this clip. Empty "
           "on a fresh clip. Property spellings live in the `prop` schema of the other keyframes ops "
-          "(x, y, width, height, rotation, opacity, volume, fx.<i>.<key>, afx.<i>.<key>, mask.<key>, text.<key>, shape.<key>, vector.svg.<key>, model3d.<key>), not here.",
+          "(x, y, width, height, rotation, opacity, volume, fx.<i>.<key>, mask.<key>, text.<key>, shape.<key>, vector.svg.<key>, model3d.<key>), not here.",
           objectSchema(clipRefProps()), true, false, true },
         { "list_keyframes", "keyframes", "Read keys for one property",
           "Returns {prop, enabled, keys:[{seconds, value, inDx, inDy, outDx, outDy, corner, hold, "

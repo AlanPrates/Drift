@@ -13,14 +13,14 @@ Item {
     // so headers stay aligned with their rows.
     property var tracks: []
     property real contentY: 0
-    // Desktop passes EditorState.preferences.trackLabelsWidth; Android a narrower fixed value.
+    // Desktop passes EditorState.trackLabelsWidth; Android a narrower fixed value.
     property real labelsWidth: Theme.trackLabelsWidth
     // Phone: grip + mute/hide only (no type glyph / waveform / name band).
     property bool compact: false
     // Touch shell: reorder has to be asked for, and the context menu needs a
     // route that is not the right mouse button.
     property bool touchMode: false
-    // Desktop: a handle on the right edge drags EditorState.preferences.trackLabelsWidth.
+    // Desktop: a handle on the right edge drags EditorState.trackLabelsWidth.
     property bool resizable: false
 
     // Transform layer brackets. Desktop reserves a gutter on the left for them (one indent per
@@ -188,8 +188,7 @@ Item {
     // Single-letter stand-in for the type glyph plus name band, which do not fit a 72px
     // compact header. "V1"/"A2" is the fallback identification a phone gets until the track
     // has a custom name — see trackCompactLabel, which prefers that name when it's set.
-    function trackTypeShortLabel(type, isTransform, isCamera) {
-        if (isCamera) return qsTr("CAM");
+    function trackTypeShortLabel(type, isTransform) {
         if (isTransform) return qsTr("TF");
         if (type === "adjustment") return qsTr("FX");
         if (type === "audio") return qsTr("A");
@@ -200,8 +199,7 @@ Item {
     }
 
     // Human label for a track type.
-    function trackTypeLabel(type, isTransform, isCamera) {
-        if (isCamera) return qsTr("Camera");
+    function trackTypeLabel(type, isTransform) {
         if (isTransform) return qsTr("Transform");
         if (type === "adjustment") return qsTr("Adjustment");
         if (type === "audio") return qsTr("Audio");
@@ -282,8 +280,6 @@ Item {
             return ""
         if (tracks[i].name && tracks[i].name.length > 0)
             return tracks[i].name
-        if (tracks[i].isCameraLayer === true)
-            return trackTypeLabel(tracks[i].type, false, true)
         return trackTypeLabel(tracks[i].type, tracks[i].isTransformLayer) + " " + trackTypeOrdinal(i)
     }
 
@@ -329,21 +325,16 @@ Item {
             readonly property string trackDisplayName:
                 root.tracks[index].name && root.tracks[index].name.length > 0
                 ? root.tracks[index].name
-                : root.tracks[index].isCameraLayer === true
-                  ? root.trackTypeLabel(root.tracks[index].type, false, true)
-                  : root.trackTypeLabel(root.tracks[index].type, root.tracks[index].isTransformLayer)
-                    + " " + root.trackTypeOrdinal(index)
+                : root.trackTypeLabel(root.tracks[index].type, root.tracks[index].isTransformLayer)
+                  + " " + root.trackTypeOrdinal(index)
             // Same, but falling back to the short "V1"/"A2" form the compact header uses when
             // there's no custom name to show instead.
             readonly property string trackCompactLabel:
                 root.tracks[index].name && root.tracks[index].name.length > 0
                 ? root.tracks[index].name
-                : root.tracks[index].isCameraLayer === true
-                  ? root.trackTypeShortLabel(root.tracks[index].type, false, true)
-                  : root.trackTypeShortLabel(root.tracks[index].type, root.tracks[index].isTransformLayer)
-                    + root.trackTypeOrdinal(index)
+                : root.trackTypeShortLabel(root.tracks[index].type, root.tracks[index].isTransformLayer)
+                  + root.trackTypeOrdinal(index)
             readonly property bool isTransformLayer: root.tracks[index].isTransformLayer === true
-            readonly property bool isCameraLayer: root.tracks[index].isCameraLayer === true
             readonly property bool transformable: ["video", "text", "subtitle", "shape"]
                                                   .indexOf(root.tracks[index].type) !== -1
             readonly property bool insideBracket: (root.tracks[index].transformCoveredBy || []).length > 0
@@ -512,7 +503,7 @@ Item {
                     delegate: Item {
                         id: laneEye
                         required property var modelData
-                        readonly property bool laneHidden: !!root.tracks[modelData] && root.tracks[modelData].hidden === true
+                        readonly property bool laneHidden: root.tracks[modelData].hidden === true
                         width: 16
                         height: Theme.adjustmentLaneHeight
 
@@ -887,14 +878,6 @@ Item {
                     }
                     ThemedMenuSeparator {
                         visible: trackLabelRow.isTransformLayer || trackLabelRow.transformable
-                                 || trackLabelRow.isCameraLayer
-                    }
-                    // Back-to-back camera clips are cuts between framings; each new one starts at rest.
-                    ThemedMenuItem {
-                        visible: trackLabelRow.isCameraLayer
-                        text: qsTr("Add camera clip at playhead")
-                        icon.name: Theme.icons.video
-                        onTriggered: EditorState.addCameraClip()
                     }
                     // A submenu cannot be hidden per row, so the span choices open as their
                     // own menu from here.
@@ -1118,9 +1101,9 @@ Item {
         preventStealing: true
         onPositionChanged: (mouse) => {
             if (pressed)
-                EditorState.preferences.trackLabelsWidth = x + mouse.x + width / 2
+                EditorState.trackLabelsWidth = x + mouse.x + width / 2
         }
-        onDoubleClicked: EditorState.preferences.trackLabelsWidth = Theme.trackLabelsWidth
+        onDoubleClicked: EditorState.trackLabelsWidth = Theme.trackLabelsWidth
 
         Rectangle {
             anchors.right: parent.right

@@ -47,7 +47,7 @@ ThemedDialog {
     }
 
     onAccepted: {
-        EditorState.projectFile.setProjectSetup(outWidth, outHeight, outFps)
+        EditorState.setProjectSetup(outWidth, outHeight, outFps)
         EditorState.markProjectLayoutChosen()
         if (typeof pendingRunner === "function")
             pendingRunner()

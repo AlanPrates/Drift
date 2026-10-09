@@ -123,7 +123,6 @@ private slots:
     void vectorClipIsSyntheticOnGraphicTracks();
     void model3dSourceSerialization();
     void model3dScalarClampsAndResolves();
-    void model3dPoseMigratesToTransform();
     void foldVectorTimeTable_data();
     void foldVectorTimeTable();
     void effectCatalogIdSerialization();
@@ -174,7 +173,6 @@ private slots:
     void transformLayerRoundTrips();
     void transformSpanFollowsTrackEdits();
     void transformNormalizerLiftsStrays();
-    void cameraLayerRoundTripsAndNormalizes();
     void retargetClipToSourceKeepsPlacementAndSyncsSource();
     void retargetClipToSourceClearsPerSourceState();
     void retargetClipToSourceKeepsAGeometricMask();
@@ -1547,8 +1545,7 @@ void CoreTest::shapeStyleSerialization()
     QVERIFY(mid.layers[1].width > 4.0 && mid.layers[1].width < 10.0);
     QCOMPARE(loadedClip.transformX.evaluateAt(0), 100.0);
     QCOMPARE(loadedClip.transformY.evaluateAt(0), 200.0);
-    QCOMPARE(json.value(QStringLiteral("version")).toInt(),
-             drift::Project::kCurrentVersion);
+    QCOMPARE(json.value(QStringLiteral("version")).toInt(), 11);
 }
 
 // A project saved before format 8 carries the flat fill/stroke keys — possibly only the original
@@ -1883,12 +1880,17 @@ void CoreTest::model3dSourceSerialization()
     clip.model3d.animation = 1;
     clip.model3d.loop = drift::VectorLoop::PingPong;
     clip.model3d.startOffsetUs = drift::secondsToUs(0.25);
+    clip.model3d.scale = 0.75;
+    clip.model3d.depth = 0.2;
+    clip.model3d.rotX = 10.0;
+    clip.model3d.rotY = -45.0;
+    clip.model3d.rotZ = 5.0;
     clip.model3d.lightYaw = 60.0;
     clip.model3d.lightPitch = -10.0;
     clip.model3d.lightIntensity = 1.5;
     clip.model3d.ambient = 0.1;
-    clip.model3d.keyframes[QStringLiteral("lightYaw")].setKeyframe(0, 0.0);
-    clip.model3d.keyframes[QStringLiteral("lightYaw")].setKeyframe(drift::secondsToUs(2.0), 360.0);
+    clip.model3d.keyframes[QStringLiteral("rotY")].setKeyframe(0, 0.0);
+    clip.model3d.keyframes[QStringLiteral("rotY")].setKeyframe(drift::secondsToUs(2.0), 360.0);
     project.tracks()[0].clips.append(clip);
 
     // Non-model clips must not grow a model3d key.
@@ -1922,14 +1924,17 @@ void CoreTest::model3dSourceSerialization()
     QCOMPARE(c.model3d.animationDurationUs(), drift::secondsToUs(0.5));
     QCOMPARE(c.model3d.loop, drift::VectorLoop::PingPong);
     QCOMPARE(c.model3d.startOffsetUs, drift::secondsToUs(0.25));
+    QCOMPARE(c.model3d.scale, 0.75);
+    QCOMPARE(c.model3d.depth, 0.2);
+    QCOMPARE(c.model3d.rotX, 10.0);
+    QCOMPARE(c.model3d.rotY, -45.0);
+    QCOMPARE(c.model3d.rotZ, 5.0);
     QCOMPARE(c.model3d.lightYaw, 60.0);
     QCOMPARE(c.model3d.lightPitch, -10.0);
     QCOMPARE(c.model3d.lightIntensity, 1.5);
     QCOMPARE(c.model3d.ambient, 0.1);
     QCOMPARE(c.model3d.keyframes.size(), 1);
-    QCOMPARE(c.model3d.keyframes.value(QStringLiteral("lightYaw")).evaluateAt(drift::secondsToUs(1.0)), 180.0);
-    // A current file carries no legacy pose, so nothing is migrated on the way back in.
-    QVERIFY(!c.model3d.legacyPose.present);
+    QCOMPARE(c.model3d.keyframes.value(QStringLiteral("rotY")).evaluateAt(drift::secondsToUs(1.0)), 180.0);
     QVERIFY(c.model3d.isAnimated());
 
     QCOMPARE(drift::Model3dSource::fromJson(QJsonObject()).loop, drift::VectorLoop::Loop);
@@ -1957,111 +1962,45 @@ void CoreTest::model3dSourceSerialization()
 void CoreTest::model3dScalarClampsAndResolves()
 {
     drift::Model3dSource m;
-    QCOMPARE(drift::model3dKeyframeProperties().size(), 4);
+    QCOMPARE(drift::model3dKeyframeProperties().size(), 9);
     for (const QString &key : drift::model3dKeyframeProperties()) {
         double v = -1.0;
         QVERIFY2(drift::model3dScalar(m, key, &v), qPrintable(key));
     }
     QVERIFY(!drift::model3dScalar(m, QStringLiteral("nope"), nullptr));
     QVERIFY(!drift::setModel3dScalar(m, QStringLiteral("nope"), 1.0));
-    // The pose moved onto the clip's transform; these are no longer the model's.
-    QVERIFY(!drift::setModel3dScalar(m, QStringLiteral("scale"), 1.0));
-    QVERIFY(!drift::setModel3dScalar(m, QStringLiteral("rotY"), 1.0));
 
+    QVERIFY(drift::setModel3dScalar(m, QStringLiteral("scale"), -3.0));
+    QCOMPARE(m.scale, 0.01);
+    QVERIFY(drift::setModel3dScalar(m, QStringLiteral("depth"), 4.0));
+    QCOMPARE(m.depth, 1.0);
     QVERIFY(drift::setModel3dScalar(m, QStringLiteral("ambient"), -1.0));
     QCOMPARE(m.ambient, 0.0);
     QVERIFY(drift::setModel3dScalar(m, QStringLiteral("lightIntensity"), -1.0));
     QCOMPARE(m.lightIntensity, 0.0);
-    QVERIFY(drift::setModel3dScalar(m, QStringLiteral("lightYaw"), 720.0));
-    QCOMPARE(m.lightYaw, 720.0);
+    QVERIFY(drift::setModel3dScalar(m, QStringLiteral("rotY"), 720.0));
+    QCOMPARE(m.rotY, 720.0);
 
     QVERIFY(!m.isAnimated());
-    m.keyframes[QStringLiteral("lightPitch")].setKeyframe(0, 20.0);
-    m.keyframes[QStringLiteral("lightPitch")].setKeyframe(drift::secondsToUs(1.0), 60.0);
+    m.keyframes[QStringLiteral("scale")].setKeyframe(0, 0.2);
+    m.keyframes[QStringLiteral("scale")].setKeyframe(drift::secondsToUs(1.0), 0.6);
     QVERIFY(m.isAnimated());
     const drift::Model3dSource baked = m.resolvedAt(drift::secondsToUs(0.5));
-    QCOMPARE(baked.lightPitch, 40.0);
+    QCOMPARE(baked.scale, 0.4);
     QVERIFY(baked.keyframes.isEmpty());
     QVERIFY(!baked.isAnimated());
-    QCOMPARE(baked.lightYaw, 720.0);
+    QCOMPARE(baked.rotY, 720.0);
 
     // A disabled track leaves the static value alone.
-    m.keyframes[QStringLiteral("lightPitch")].setEnabled(false);
+    m.keyframes[QStringLiteral("scale")].setEnabled(false);
     QVERIFY(!m.isAnimated());
-    QCOMPARE(m.resolvedAt(drift::secondsToUs(0.5)).lightPitch, 20.0);
+    QCOMPARE(m.resolvedAt(drift::secondsToUs(0.5)).scale, 0.01);
 
     m.animations = {{QStringLiteral("a"), drift::secondsToUs(1.0)}};
     m.animation = 5;
     QCOMPARE(m.animationDurationUs(), 0);
     m.animation = 0;
     QCOMPARE(m.animationDurationUs(), drift::secondsToUs(1.0));
-}
-
-void CoreTest::model3dPoseMigratesToTransform()
-{
-    // A format 12 model clip: pose on the model, x/y the centre's offset from the canvas centre.
-    QJsonObject model{
-        {QStringLiteral("path"), QStringLiteral("/media/robot.glb")},
-        {QStringLiteral("aabbMin"), QJsonArray{-1.0, -0.5, -0.25}},
-        {QStringLiteral("aabbMax"), QJsonArray{1.0, 0.5, 0.25}},
-        {QStringLiteral("scale"), 0.5},
-        {QStringLiteral("depth"), 0.25},
-        {QStringLiteral("rotX"), 10.0},
-        {QStringLiteral("rotY"), 30.0},
-        {QStringLiteral("rotZ"), 5.0},
-        {QStringLiteral("lightYaw"), 45.0},
-    };
-    drift::KeyframeTrack<double> spin;
-    spin.setKeyframe(0, 0.0);
-    spin.setKeyframe(drift::secondsToUs(2.0), 90.0);
-    model.insert(QStringLiteral("keyframes"),
-                 QJsonObject{{QStringLiteral("rotY"), drift::keyframesToJson(spin)}});
-
-    drift::Project legacy;
-    legacy.setResolution(1920, 1080);
-    legacy.tracks().clear();
-    legacy.tracks().append(drift::Track{.type = drift::TrackType::Shape});
-    drift::Clip clip;
-    clip.id = QStringLiteral("m");
-    clip.type = drift::ClipType::Model3d;
-    clip.path = QStringLiteral("/media/robot.glb");
-    clip.timelineDuration = drift::secondsToUs(3.0);
-    clip.transformX.setKeyframe(0, -200.0);
-    clip.transformY.setKeyframe(0, 100.0);
-    legacy.tracks()[0].clips.append(clip);
-    QJsonObject json = legacy.toJson();
-    json.insert(QStringLiteral("version"), 12);
-    QJsonArray tracks = json.value(QStringLiteral("tracks")).toArray();
-    QJsonObject track = tracks.at(0).toObject();
-    QJsonArray clips = track.value(QStringLiteral("clips")).toArray();
-    QJsonObject clipJson = clips.at(0).toObject();
-    clipJson.insert(QStringLiteral("model3d"), model);
-    clips[0] = clipJson;
-    track.insert(QStringLiteral("clips"), clips);
-    tracks[0] = track;
-    json.insert(QStringLiteral("tracks"), tracks);
-
-    QString error;
-    const drift::Project loaded = drift::Project::fromJson(json, &error);
-    QVERIFY2(error.isEmpty(), qPrintable(error));
-    const drift::Clip &c = loaded.tracks().at(0).clips.at(0);
-    // Largest extent (x, 2 units) spanned half the height: a 540 x 270 front face, centred where
-    // the old offset put the model (960 - 200, 540 + 100).
-    QCOMPARE(c.transformW.evaluateAt(0), 540.0);
-    QCOMPARE(c.transformH.evaluateAt(0), 270.0);
-    QCOMPARE(c.transformX.evaluateAt(0) + 270.0, 760.0);
-    QCOMPARE(c.transformY.evaluateAt(0) + 135.0, 640.0);
-    // glTF's up is the canvas's down: X and Z flip, Y keeps its keys.
-    QCOMPARE(c.rotationX.evaluateAt(0), -10.0);
-    QCOMPARE(c.rotation.evaluateAt(0), -5.0);
-    QCOMPARE(c.rotationY.evaluateAt(drift::secondsToUs(1.0)), 45.0);
-    QCOMPARE(c.rotationY.keyframes().size(), 2);
-    // The old lens put the eye height / (2 * depth) from the model.
-    QCOMPARE(c.perspective.evaluateAt(0), 1080.0 / 0.5);
-    QVERIFY(c.layer3d);
-    QCOMPARE(c.model3d.lightYaw, 45.0);
-    QVERIFY(c.model3d.keyframes.isEmpty());
-    QVERIFY(!c.model3d.legacyPose.present);
 }
 
 void CoreTest::foldVectorTimeTable_data()
@@ -3905,8 +3844,7 @@ void CoreTest::transformLayerRoundTrips()
     QVERIFY(!effects.acceptsClip(transform));
 
     const QJsonObject json = project.toJson();
-    QCOMPARE(json.value(QStringLiteral("version")).toInt(),
-             drift::Project::kCurrentVersion);
+    QCOMPARE(json.value(QStringLiteral("version")).toInt(), 11);
     QString error;
     const drift::Project loaded = drift::Project::fromJson(json, &error);
     QVERIFY(error.isEmpty());
@@ -3987,130 +3925,6 @@ void CoreTest::transformSpanFollowsTrackEdits()
     // Nested layers compose outermost first.
     drift::insertTransformTrack(tracks, 2, QStringLiteral("v2"));
     QCOMPARE(drift::transformLayersCovering(tracks, 5), (QList<int>{0, 2}));
-}
-
-void CoreTest::cameraLayerRoundTripsAndNormalizes()
-{
-    drift::Project project;
-    project.tracks().clear();
-    const int track = drift::insertCameraTrack(project.tracks());
-    QCOMPARE(track, 0);
-    QVERIFY(project.tracks().at(0).isCameraLayer());
-    // A camera is not a transform layer, and must not be mistaken for one — they share the
-    // Adjustment track type and would otherwise both answer to the span machinery.
-    QVERIFY(!project.tracks().at(0).isTransformLayer());
-    QCOMPARE(drift::transformSpanEndIndex(project.tracks(), 0), -1);
-
-    drift::Clip camera = drift::makeCameraClip(0, drift::secondsToUs(5.0));
-    QVERIFY(drift::isCameraClip(camera));
-    camera.transformX.setKeyframe(0, 0.0);
-    camera.transformX.setKeyframe(drift::secondsToUs(2.0), 120.0);
-    camera.rotationY.setKeyframe(0, 15.0);
-    camera.perspective.setKeyframe(0, 900.0);
-    QVERIFY(project.tracks().at(0).acceptsClip(camera));
-    project.tracks()[0].clips.append(camera);
-
-    drift::Track v1{.type = drift::TrackType::Video};
-    v1.id = QStringLiteral("v1");
-    project.tracks().append(v1);
-    project.ensureTrackIds();
-
-    // A camera clip belongs on a camera track and nowhere else.
-    drift::Track effects{.type = drift::TrackType::Adjustment};
-    QVERIFY(!effects.acceptsClip(camera));
-    drift::Track range{.type = drift::TrackType::Adjustment};
-    range.adjustmentScope = drift::AdjustmentScope::Range;
-    QVERIFY(!range.acceptsClip(camera));
-
-    // Round-trip, including the keyframes the camera animates through.
-    const QJsonObject json = project.toJson();
-    QCOMPARE(json.value(QStringLiteral("version")).toInt(), drift::Project::kCurrentVersion);
-    QString error;
-    const drift::Project loaded = drift::Project::fromJson(json, &error);
-    QVERIFY2(error.isEmpty(), qPrintable(error));
-    const int loadedTrack = drift::cameraTrackIndex(loaded.tracks());
-    QCOMPARE(loadedTrack, 0);
-    QCOMPARE(loaded.tracks().at(loadedTrack).clips.size(), 1);
-    const drift::Clip &back = loaded.tracks().at(loadedTrack).clips.constFirst();
-    QVERIFY(drift::isCameraClip(back));
-    QCOMPARE(back.transformX.evaluateAt(drift::secondsToUs(2.0)), 120.0);
-    QCOMPARE(back.rotationY.evaluateAt(0), 15.0);
-    QCOMPARE(back.perspective.evaluateAt(0), 900.0);
-
-    // cameraClipAt is what the compositor asks, so it has to agree about the clip's extent.
-    QVERIFY(drift::cameraClipAt(loaded.tracks(), 0) != nullptr);
-    QVERIFY(drift::cameraClipAt(loaded.tracks(), drift::secondsToUs(4.9)) != nullptr);
-    QVERIFY(drift::cameraClipAt(loaded.tracks(), drift::secondsToUs(5.5)) == nullptr);
-
-    // A hidden camera track is bypassed, as a hidden transform layer is.
-    drift::Project hidden = loaded;
-    hidden.tracks()[0].hidden = true;
-    QVERIFY(drift::cameraClipAt(hidden.tracks(), 0) == nullptr);
-
-    // Two camera tracks collapse to one, keeping every clip.
-    drift::Project doubled = loaded;
-    const int second = drift::insertCameraTrack(doubled.tracks());
-    doubled.tracks()[second].clips.append(
-        drift::makeCameraClip(drift::secondsToUs(6.0), drift::secondsToUs(2.0)));
-    drift::normalizeCameraLayers(doubled.tracks());
-    int cameraTracks = 0;
-    for (const drift::Track &t : doubled.tracks())
-        cameraTracks += t.isCameraLayer() ? 1 : 0;
-    QCOMPARE(cameraTracks, 1);
-    QCOMPARE(doubled.tracks().at(drift::cameraTrackIndex(doubled.tracks())).clips.size(), 2);
-
-    // A camera clip left on an ordinary track is moved onto the camera track, not dropped.
-    drift::Project stray = loaded;
-    stray.tracks()[1].clips.append(
-        drift::makeCameraClip(drift::secondsToUs(8.0), drift::secondsToUs(1.0)));
-    drift::normalizeCameraLayers(stray.tracks());
-    QCOMPARE(stray.tracks().at(1).clips.size(), 0);
-    QCOMPARE(stray.tracks().at(drift::cameraTrackIndex(stray.tracks())).clips.size(), 2);
-
-    // ...and with no camera track at all, one is made for it.
-    drift::Project orphan;
-    orphan.tracks().clear();
-    orphan.tracks().append(drift::Track{.type = drift::TrackType::Video});
-    orphan.tracks()[0].clips.append(drift::makeCameraClip(0, drift::secondsToUs(1.0)));
-    orphan.ensureTrackIds();
-    drift::normalizeCameraLayers(orphan.tracks());
-    QVERIFY(drift::cameraTrackIndex(orphan.tracks()) >= 0);
-    QCOMPARE(orphan.tracks().at(drift::cameraTrackIndex(orphan.tracks())).clips.size(), 1);
-
-    // Overlapping cameras would make "the camera now" ambiguous, so the earlier one is trimmed
-    // back to where the next begins.
-    drift::Project overlapping = loaded;
-    overlapping.tracks()[0].clips.append(
-        drift::makeCameraClip(drift::secondsToUs(2.0), drift::secondsToUs(5.0)));
-    drift::normalizeCameraLayers(overlapping.tracks());
-    const drift::Track &lane = overlapping.tracks().at(drift::cameraTrackIndex(overlapping.tracks()));
-    QCOMPARE(lane.clips.size(), 2);
-    QCOMPARE(lane.clips.at(0).timelineEnd(), lane.clips.at(1).timelineStart);
-    QCOMPARE(lane.clips.at(0).timelineEnd(), drift::secondsToUs(2.0));
-
-    // A non-camera clip on the camera track is lifted off onto a track of its own.
-    drift::Project mixed = loaded;
-    drift::Clip image;
-    image.id = QStringLiteral("img");
-    image.type = drift::ClipType::Image;
-    image.timelineDuration = drift::secondsToUs(1.0);
-    mixed.tracks()[0].clips.append(image);
-    drift::normalizeCameraLayers(mixed.tracks());
-    const int lane2 = drift::cameraTrackIndex(mixed.tracks());
-    for (const drift::Clip &clip : mixed.tracks().at(lane2).clips)
-        QVERIFY(drift::isCameraClip(clip));
-    bool imageSurvived = false;
-    for (const drift::Track &t : mixed.tracks()) {
-        for (const drift::Clip &clip : t.clips)
-            imageSurvived = imageSurvived || clip.id == QStringLiteral("img");
-    }
-    QVERIFY(imageSurvived);
-
-    // A project with no camera at all must not be touched by the pass.
-    drift::Project untouched;
-    const QString beforeHash = untouched.contentHash();
-    drift::normalizeCameraLayers(untouched.tracks());
-    QCOMPARE(untouched.contentHash(), beforeHash);
 }
 
 void CoreTest::transformNormalizerLiftsStrays()

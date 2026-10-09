@@ -2,33 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ar" sourcelanguage="en">
 <context>
-    <name>AboutDialog</name>
-    <message>
-        <source>About Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">إغلاق</translation>
-    </message>
-    <message>
-        <source>Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Version %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open-source video editor by CutWire Studios.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Licensed under GPLv3. Copyright © CutWire Studios.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>AddonManager</name>
     <message>
         <source>Automatic (recommended)</source>
@@ -1493,6 +1466,18 @@
 <context>
     <name>AndroidPreview</name>
     <message>
+        <source>Audio only</source>
+        <translation>صوت فقط</translation>
+    </message>
+    <message>
+        <source>No clip at the current time</source>
+        <translation>لا يوجد مقطع عند الوقت الحالي</translation>
+    </message>
+    <message>
+        <source>GPU preview unavailable</source>
+        <translation>معاينة GPU غير متوفرة</translation>
+    </message>
+    <message>
         <source>Full</source>
         <translation>كاملة</translation>
     </message>
@@ -2187,6 +2172,10 @@
         <translation>أداة القطع</translation>
     </message>
     <message>
+        <source>Faster preview takes effect after you restart Drift.</source>
+        <translation>يسري مفعول المعاينة الأسرع بعد إعادة تشغيل Drift.</translation>
+    </message>
+    <message>
         <source>System default</source>
         <translation>افتراضي النظام</translation>
     </message>
@@ -2347,16 +2336,80 @@
         <translation>تم إنشاء الترجمة</translation>
     </message>
     <message>
+        <source>Select a video clip to cut out</source>
+        <translation>حدد مقطع فيديو لعزله</translation>
+    </message>
+    <message>
+        <source>Custom speed works on video and audio clips</source>
+        <translation>تعمل السرعة المخصصة على مقاطع الفيديو والصوت</translation>
+    </message>
+    <message>
+        <source>This clip has no media to speed up or slow down</source>
+        <translation>لا يحتوي هذا المقطع على وسائط لتسريعها أو إبطائها</translation>
+    </message>
+    <message>
+        <source>That clip moved — open Custom speed again</source>
+        <translation>تم نقل ذلك المقطع — افتح السرعة المخصصة مجددًا</translation>
+    </message>
+    <message>
+        <source>Custom speed applied</source>
+        <translation>تم تطبيق السرعة المخصصة</translation>
+    </message>
+    <message>
         <source>Speed curve removed</source>
         <translation>تمت إزالة منحنى السرعة</translation>
+    </message>
+    <message>
+        <source>That clip moved — open Custom fade again</source>
+        <translation>تم نقل ذلك المقطع — افتح التلاشي المخصص مجددًا</translation>
+    </message>
+    <message>
+        <source>Custom fade applied</source>
+        <translation>تم تطبيق التلاشي المخصص</translation>
+    </message>
+    <message>
+        <source>Cutout is already running</source>
+        <translation>عملية العزل قيد التشغيل بالفعل</translation>
+    </message>
+    <message>
+        <source>This clip has no video to cut out</source>
+        <translation>لا يحتوي هذا المقطع على فيديو لعزله</translation>
+    </message>
+    <message>
+        <source>Click the subject first</source>
+        <translation>انقر على العنصر أولًا</translation>
     </message>
     <message>
         <source>Getting ready…</source>
         <translation>جارٍ التحضير…</translation>
     </message>
     <message>
+        <source>Clip is too short to cut out</source>
+        <translation>المقطع قصير جدًا لعزله</translation>
+    </message>
+    <message>
+        <source>Could not create a cutout file</source>
+        <translation>تعذر إنشاء ملف العزل</translation>
+    </message>
+    <message>
+        <source>Cutout cancelled</source>
+        <translation>تم إلغاء العزل</translation>
+    </message>
+    <message>
         <source>Could not decode frame %1</source>
         <translation>تعذر فك ترميز الإطار %1</translation>
+    </message>
+    <message>
+        <source>Processing frame %1 of %2…</source>
+        <translation>جارٍ معالجة الإطار %1 من %2…</translation>
+    </message>
+    <message>
+        <source>Cutout complete — subject cut out on %1 of %2 frames</source>
+        <translation>اكتمل العزل — تم عزل العنصر في %1 من %2 إطارًا</translation>
+    </message>
+    <message>
+        <source>Cutout complete</source>
+        <translation>اكتمل العزل</translation>
     </message>
     <message>
         <source>Clear Face Track</source>
@@ -2409,6 +2462,14 @@
     <message>
         <source>Detect Faces</source>
         <translation>اكتشاف الوجوه</translation>
+    </message>
+    <message>
+        <source>That clip no longer exists</source>
+        <translation>ذلك المقطع لم يعد موجودًا</translation>
+    </message>
+    <message>
+        <source>Cut out subject</source>
+        <translation>عزل العنصر</translation>
     </message>
     <message>
         <source>Clip</source>
@@ -2535,6 +2596,10 @@
     <message>
         <source>Save combined multicam</source>
         <translation>حفظ الكاميرات المتعددة المجمعة</translation>
+    </message>
+    <message>
+        <source>Cutting out subject…</source>
+        <translation>جارٍ عزل العنصر…</translation>
     </message>
     <message>
         <source>Select a video clip to stabilize</source>
@@ -2735,6 +2800,10 @@
         <translation>تصغير</translation>
     </message>
     <message>
+        <source>The graphics card choice takes effect after you restart Drift.</source>
+        <translation>يسري اختيار بطاقة الرسومات بعد إعادة تشغيل Drift.</translation>
+    </message>
+    <message>
         <source>Clips moved</source>
         <translation>تم نقل المقاطع</translation>
     </message>
@@ -2745,6 +2814,18 @@
     <message>
         <source>Transition curve updated</source>
         <translation>تم تحديث منحنى الانتقال</translation>
+    </message>
+    <message>
+        <source>That transition is gone — open the custom curve again</source>
+        <translation>لم يعد هذا الانتقال موجودًا — افتح المنحنى المخصص مرة أخرى</translation>
+    </message>
+    <message>
+        <source>Custom transition curve</source>
+        <translation>منحنى انتقال مخصص</translation>
+    </message>
+    <message>
+        <source>Custom transition curve applied</source>
+        <translation>تم تطبيق منحنى الانتقال المخصص</translation>
     </message>
     <message>
         <source>Building keyframes…</source>
@@ -2783,6 +2864,10 @@
         <translation>تغيير وضع تثبيت الصورة</translation>
     </message>
     <message>
+        <source>Cutout</source>
+        <translation>استقطاع</translation>
+    </message>
+    <message>
         <source> (denoised)</source>
         <translation> (تمت إزالة الضوضاء)</translation>
     </message>
@@ -2793,6 +2878,18 @@
     <message>
         <source>Noise removed</source>
         <translation>تمت إزالة الضوضاء</translation>
+    </message>
+    <message>
+        <source>This project uses &quot;%1&quot;, which isn’t installed — it won’t show. Open Extras to install it.</source>
+        <translation>يستخدم هذا المشروع &quot;%1&quot;، وهو غير مثبت — فلن يظهر. افتح الإضافات لتثبيته.</translation>
+    </message>
+    <message>
+        <source>This project uses %1 effects or transitions that aren’t installed (%2%3) — they won’t show. Open Extras to install them.</source>
+        <translation>يستخدم هذا المشروع %1 من التأثيرات أو الانتقالات غير المثبتة (%2%3) — فلن تظهر. افتح الإضافات لتثبيتها.</translation>
+    </message>
+    <message>
+        <source>, …</source>
+        <translation>, …</translation>
     </message>
     <message>
         <source>Shape added</source>
@@ -2867,6 +2964,34 @@
         <translation>ثبّت حزمة ملصقات الرموز التعبيرية لإضافة الرموز التعبيرية</translation>
     </message>
     <message>
+        <source>Frame rate</source>
+        <translation>معدل الإطارات</translation>
+    </message>
+    <message>
+        <source>Project setup</source>
+        <translation>إعداد المشروع</translation>
+    </message>
+    <message>
+        <source>Project setup updated</source>
+        <translation>تم تحديث إعداد المشروع</translation>
+    </message>
+    <message>
+        <source>Crop canvas</source>
+        <translation>اقتصاص اللوحة</translation>
+    </message>
+    <message>
+        <source>Video size cropped to %1×%2</source>
+        <translation>تم اقتصاص حجم الفيديو إلى %1×%2</translation>
+    </message>
+    <message>
+        <source>Change background</source>
+        <translation>تغيير الخلفية</translation>
+    </message>
+    <message>
+        <source>Background updated</source>
+        <translation>تم تحديث الخلفية</translation>
+    </message>
+    <message>
         <source>Edit clip</source>
         <translation>تعديل المقطع</translation>
     </message>
@@ -2909,14 +3034,6 @@
     <message>
         <source>Edit keyframe</source>
         <translation>تعديل الإطار المفتاحي</translation>
-    </message>
-    <message>
-        <source>Move camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Rotate camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Edit effect</source>
@@ -3563,22 +3680,6 @@
         <translation>المقطع مسطح</translation>
     </message>
     <message>
-        <source>Enable depth occlusion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Disable depth occlusion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clip is occluded by depth</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clip uses track order</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Subtitles merged</source>
         <translation>تم دمج الترجمة</translation>
     </message>
@@ -3624,22 +3725,6 @@
     <message>
         <source>Transform clip added</source>
         <translation>تمت إضافة مقطع التحويل</translation>
-    </message>
-    <message>
-        <source>Add camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add camera clip</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Camera added</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Camera clip added</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Transform together</source>
@@ -3807,14 +3892,6 @@
     <message>
         <source>Keyframe interpolates</source>
         <translation>الإطار المفتاحي يستكمل</translation>
-    </message>
-    <message>
-        <source>Reset camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Camera reset</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Reset transform</source>
@@ -4257,6 +4334,121 @@
         </translation>
     </message>
     <message>
+        <source>Saved a copy</source>
+        <translation>تم حفظ نسخة</translation>
+    </message>
+    <message>
+        <source>Couldn’t write %1: %2</source>
+        <translation>تعذر كتابة %1: %2</translation>
+    </message>
+    <message>
+        <source>Project JSON saved</source>
+        <translation>تم حفظ JSON المشروع</translation>
+    </message>
+    <message>
+        <source>Still opening a project — try again in a moment.</source>
+        <translation>ما زال فتح المشروع جاريًا — حاول مرة أخرى بعد قليل.</translation>
+    </message>
+    <message>
+        <source>Couldn’t read %1: %2</source>
+        <translation>تعذر قراءة %1: %2</translation>
+    </message>
+    <message>
+        <source>Project JSON loaded</source>
+        <translation>تم تحميل JSON المشروع</translation>
+    </message>
+    <message>
+        <source>Failed to open Premiere Pro project</source>
+        <translation>فشل فتح مشروع Premiere Pro</translation>
+    </message>
+    <message>
+        <source>Premiere Pro project imported: %1</source>
+        <translation>تم استيراد مشروع Premiere Pro: %1</translation>
+    </message>
+    <message>
+        <source>That template location isn’t valid</source>
+        <translation>موقع القالب هذا غير صالح</translation>
+    </message>
+    <message>
+        <source>Failed to unpack Motion Graphics Template</source>
+        <translation>فشل فك حزمة Motion Graphics Template</translation>
+    </message>
+    <message>
+        <source>Failed to apply template to project</source>
+        <translation>فشل تطبيق القالب على المشروع</translation>
+    </message>
+    <message>
+        <source>Import template: %1</source>
+        <translation>استيراد القالب: %1</translation>
+    </message>
+    <message>
+        <source>Template imported: %1</source>
+        <translation>تم استيراد القالب: %1</translation>
+    </message>
+    <message>
+        <source>Failed to open Kdenlive / MLT project</source>
+        <translation>فشل فتح مشروع Kdenlive / MLT</translation>
+    </message>
+    <message>
+        <source>Kdenlive project imported: %1</source>
+        <translation>تم استيراد مشروع Kdenlive: %1</translation>
+    </message>
+    <message>
+        <source>Failed to open DaVinci Resolve project / timeline</source>
+        <translation>فشل فتح مشروع / مخطط زمني DaVinci Resolve</translation>
+    </message>
+    <message>
+        <source>DaVinci Resolve project imported: %1</source>
+        <translation>تم استيراد مشروع DaVinci Resolve: %1</translation>
+    </message>
+    <message>
+        <source>Failed to open Edit Decision List (.edl)</source>
+        <translation>فشل فتح Edit Decision List (.edl)</translation>
+    </message>
+    <message>
+        <source>EDL imported: %1</source>
+        <translation>تم استيراد EDL: %1</translation>
+    </message>
+    <message>
+        <source>Failed to open OpenTimelineIO (.otio) sequence</source>
+        <translation>فشل فتح تسلسل OpenTimelineIO (.otio)</translation>
+    </message>
+    <message>
+        <source>OpenTimelineIO imported: %1</source>
+        <translation>تم استيراد OpenTimelineIO: %1</translation>
+    </message>
+    <message>
+        <source>That folder isn’t valid</source>
+        <translation>ذلك المجلد غير صالح</translation>
+    </message>
+    <message>
+        <source>All media is already in that folder</source>
+        <translation>جميع الوسائط موجودة بالفعل في ذلك المجلد</translation>
+    </message>
+    <message>
+        <source>Collect media</source>
+        <translation>تجميع الوسائط</translation>
+    </message>
+    <message numerus="yes">
+        <source>Media collected, but %n original(s) couldn’t be deleted</source>
+        <translation>
+            <numerusform>تم تجميع الوسائط، ولكن تعذر حذف %n ملف أصلي</numerusform>
+            <numerusform>تم تجميع الوسائط، ولكن تعذر حذف %n ملف أصلي</numerusform>
+            <numerusform>تم تجميع الوسائط، ولكن تعذر حذف %n ملفين أصليين</numerusform>
+            <numerusform>تم تجميع الوسائط، ولكن تعذر حذف %n ملفات أصلية</numerusform>
+            <numerusform>تم تجميع الوسائط، ولكن تعذر حذف %n ملفًا أصليًا</numerusform>
+            <numerusform>تم تجميع الوسائط، ولكن تعذر حذف %n ملف أصلي</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Media moved and relinked</source>
+        <translation>تم نقل الوسائط وإعادة ربطها</translation>
+    </message>
+    <message>
+        <source>Media copied and relinked</source>
+        <translation>تم نسخ الوسائط وإعادة ربطها</translation>
+    </message>
+    <message>
         <source>Exporting…</source>
         <translation>جارٍ التصدير…</translation>
     </message>
@@ -4444,6 +4636,42 @@
         <translation>موقع الحفظ هذا غير صالح</translation>
     </message>
     <message>
+        <source>Already saving</source>
+        <translation>جارٍ الحفظ بالفعل</translation>
+    </message>
+    <message>
+        <source>Project saved</source>
+        <translation>تم حفظ المشروع</translation>
+    </message>
+    <message>
+        <source>Shareable copy ready</source>
+        <translation>النسخة القابلة للمشاركة جاهزة</translation>
+    </message>
+    <message>
+        <source>That project location isn’t valid</source>
+        <translation>موقع المشروع هذا غير صالح</translation>
+    </message>
+    <message>
+        <source>Project loaded</source>
+        <translation>تم تحميل المشروع</translation>
+    </message>
+    <message>
+        <source>Unpacking project media…</source>
+        <translation>جارٍ فك وسائط المشروع…</translation>
+    </message>
+    <message>
+        <source>No recovery file found</source>
+        <translation>لم يتم العثور على ملف استرداد</translation>
+    </message>
+    <message>
+        <source>Recovered unsaved work</source>
+        <translation>تمت استعادة العمل غير المحفوظ</translation>
+    </message>
+    <message>
+        <source>Started new session</source>
+        <translation>تم بدء جلسة جديدة</translation>
+    </message>
+    <message>
         <source>Export already in progress</source>
         <translation>التصدير قيد التنفيذ بالفعل</translation>
     </message>
@@ -4512,14 +4740,6 @@
     <message>
         <source>Clip orientation set to %1°</source>
         <translation>تم ضبط اتجاه المقطع على %1°</translation>
-    </message>
-    <message>
-        <source>Crop canvas</source>
-        <translation>اقتصاص اللوحة</translation>
-    </message>
-    <message>
-        <source>Video size cropped to %1×%2</source>
-        <translation>تم اقتصاص حجم الفيديو إلى %1×%2</translation>
     </message>
 </context>
 <context>
@@ -4993,14 +5213,6 @@
         <translation>تصفح التأثيرات الصوتية</translation>
     </message>
     <message>
-        <source>Move to a time, set a value, then click the diamond to add a keyframe. With Auto keyframes on, dragging a slider also creates them.</source>
-        <translation type="unfinished">انتقل إلى وقت محدد، وعيّن قيمة، ثم انقر على رمز المعين لإضافة إطار مفتاحي. عند تفعيل الإطارات المفتاحية التلقائية، يؤدي سحب شريط التمرير إلى إنشائها أيضًا.</translation>
-    </message>
-    <message>
-        <source>Auto keyframes</source>
-        <translation type="unfinished">إطارات مفتاحية تلقائية</translation>
-    </message>
-    <message>
         <source>%1 (not installed)</source>
         <translation>%1 (غير مثبت)</translation>
     </message>
@@ -5027,6 +5239,18 @@
     <message>
         <source>Remove audio effect</source>
         <translation>إزالة التأثير الصوتي</translation>
+    </message>
+    <message>
+        <source>On</source>
+        <translation>تشغيل</translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation>إيقاف</translation>
+    </message>
+    <message>
+        <source>Edit audio effect</source>
+        <translation>تعديل التأثير الصوتي</translation>
     </message>
 </context>
 <context>
@@ -5353,57 +5577,6 @@
     </message>
 </context>
 <context>
-    <name>CameraInspector</name>
-    <message>
-        <source>Pan X</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pan Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Dolly</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pitch</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Yaw</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Roll</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Lens</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select a camera clip to frame the shot.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Everything on the timeline is seen through this camera while the clip lasts. A camera at rest looks exactly like no camera at all, so the numbers below are all offsets from the normal view.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>A short lens exaggerates depth; a long one flattens it. While this camera is running it replaces each clip&apos;s own Perspective value, because a scene has one viewer.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reset camera position</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Back to rest: no pan, dolly or turn, framing the canvas head on. The lens is kept.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ChannelKeyButton</name>
     <message>
         <source>Remove %1 keyframe at the playhead</source>
@@ -5519,29 +5692,6 @@
     <message>
         <source>Apply</source>
         <translation>تطبيق</translation>
-    </message>
-</context>
-<context>
-    <name>CurveEditorController</name>
-    <message>
-        <source>That transition is gone — open the custom curve again</source>
-        <translation type="unfinished">لم يعد هذا الانتقال موجودًا — افتح المنحنى المخصص مرة أخرى</translation>
-    </message>
-    <message>
-        <source>Custom transition curve</source>
-        <translation type="unfinished">منحنى انتقال مخصص</translation>
-    </message>
-    <message>
-        <source>Custom transition curve applied</source>
-        <translation type="unfinished">تم تطبيق منحنى الانتقال المخصص</translation>
-    </message>
-    <message>
-        <source>That clip moved — open Custom fade again</source>
-        <translation type="unfinished">تم نقل ذلك المقطع — افتح التلاشي المخصص مجددًا</translation>
-    </message>
-    <message>
-        <source>Custom fade applied</source>
-        <translation type="unfinished">تم تطبيق التلاشي المخصص</translation>
     </message>
 </context>
 <context>
@@ -7845,14 +7995,6 @@
         <translation>إطارات مفتاحية</translation>
     </message>
     <message>
-        <source>Collapse curve editor to compact view (88px)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Expand curve editor to view and edit Bezier handles (180px)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Analyzing…</source>
         <translation>جارٍ التحليل…</translation>
     </message>
@@ -7898,10 +8040,6 @@
             <numerusform>%n إطارًا مفتاحيًا</numerusform>
             <numerusform>%n إطار مفتاحي</numerusform>
         </translation>
-    </message>
-    <message>
-        <source>Expand for handles</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source> BPM</source>
@@ -8200,6 +8338,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Preferences…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>&amp;Playback</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8300,20 +8442,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>About Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Settings…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Debug Info…</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 is the latest version.</source>
-        <translation type="unfinished">Drift %1 هو أحدث إصدار.</translation>
     </message>
     <message>
         <source>Still opening a project — try again in a moment.</source>
@@ -8326,14 +8456,6 @@
     <message>
         <source>Project closed</source>
         <translation>تم إغلاق المشروع</translation>
-    </message>
-    <message>
-        <source>Already checking for updates…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Checking for updates…</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Export finished.</source>
@@ -9354,8 +9476,32 @@
         <translation>إزاحة البداية</translation>
     </message>
     <message>
-        <source>Position, size, rotation and depth occlusion are on the Transform tab.</source>
-        <translation type="unfinished"></translation>
+        <source>Pose</source>
+        <translation>الوضعية</translation>
+    </message>
+    <message>
+        <source>Rotations follow the model&apos;s own axes: X tilts, Y then spins about the tilted up axis, Z rolls after both.</source>
+        <translation>يتبع الدوران محاور النموذج الخاصة: يميل المحور X، ثم يدور المحور Y حول المحور الرأسي المائل، ويلتف المحور Z بعد كليهما.</translation>
+    </message>
+    <message>
+        <source>Size</source>
+        <translation>الحجم</translation>
+    </message>
+    <message>
+        <source>Depth</source>
+        <translation>العمق</translation>
+    </message>
+    <message>
+        <source>Rotation X</source>
+        <translation>الدوران X</translation>
+    </message>
+    <message>
+        <source>Rotation Y</source>
+        <translation>الدوران Y</translation>
+    </message>
+    <message>
+        <source>Rotation Z</source>
+        <translation>الدوران Z</translation>
     </message>
     <message>
         <source>Lighting</source>
@@ -9396,6 +9542,26 @@
 </context>
 <context>
     <name>Model3dSource</name>
+    <message>
+        <source>Size</source>
+        <translation>الحجم</translation>
+    </message>
+    <message>
+        <source>Depth</source>
+        <translation>العمق</translation>
+    </message>
+    <message>
+        <source>Rotation X</source>
+        <translation>الدوران X</translation>
+    </message>
+    <message>
+        <source>Rotation Y</source>
+        <translation>الدوران Y</translation>
+    </message>
+    <message>
+        <source>Rotation Z</source>
+        <translation>الدوران Z</translation>
+    </message>
     <message>
         <source>Light direction</source>
         <translation>اتجاه الضوء</translation>
@@ -9544,10 +9710,6 @@
     <message>
         <source>Transform</source>
         <translation>تحويل</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>New track</source>
@@ -9862,127 +10024,125 @@
     </message>
 </context>
 <context>
-    <name>PreferencesController</name>
+    <name>PreviewPanel</name>
     <message>
-        <source>Faster preview takes effect after you restart Drift.</source>
-        <translation>يسري مفعول المعاينة الأسرع بعد إعادة تشغيل Drift.</translation>
+        <source>PAUSED %1s</source>
+        <translation>متوقف مؤقتًا %1s</translation>
     </message>
     <message>
-        <source>The graphics card choice takes effect after you restart Drift.</source>
-        <translation>يسري اختيار بطاقة الرسومات بعد إعادة تشغيل Drift.</translation>
+        <source>REC %1s</source>
+        <translation>تسجيل %1s</translation>
     </message>
     <message>
-        <source>System default</source>
-        <translation>افتراضي النظام</translation>
+        <source>Nothing to preview yet</source>
+        <translation>لا يوجد شيء للمعاينة بعد</translation>
+    </message>
+    <message>
+        <source>Import media and drag it onto the timeline below to see it here.</source>
+        <translation>استورد الوسائط واسحبها إلى المخطط الزمني أدناه لرؤيتها هنا.</translation>
+    </message>
+    <message>
+        <source>GPU preview unavailable</source>
+        <translation>معاينة GPU غير متوفرة</translation>
+    </message>
+    <message>
+        <source>Your graphics driver only provides %1. Drift&apos;s preview needs OpenGL 3.3.</source>
+        <translation>يوفر برنامج تشغيل الرسومات لديك %1 فقط. تحتاج معاينة Drift إلى OpenGL 3.3.</translation>
+    </message>
+    <message>
+        <source>Drift could not start its GPU renderer, so the preview cannot draw.</source>
+        <translation>تعذر على Drift تشغيل عارض GPU الخاص به، لذا لا يمكن رسم المعاينة.</translation>
+    </message>
+    <message>
+        <source>Debug info</source>
+        <translation>معلومات تصحيح الأخطاء</translation>
+    </message>
+    <message>
+        <source>Audio only</source>
+        <translation>صوت فقط</translation>
+    </message>
+    <message>
+        <source>No clip at the current time</source>
+        <translation>لا يوجد مقطع في الوقت الحالي</translation>
+    </message>
+    <message>
+        <source>Seek</source>
+        <translation>تمرير</translation>
     </message>
 </context>
 <context>
-    <name>Preview3DTools</name>
+    <name>PreviewToolbar</name>
     <message>
         <source>%1 (%2)</source>
-        <translation type="unfinished">%1 (%2)</translation>
+        <translation>%1 (%2)</translation>
     </message>
     <message>
-        <source>Move</source>
-        <translation type="unfinished"></translation>
+        <source>Current time / total · %1 frames per second</source>
+        <translation>الوقت الحالي / الإجمالي · %1 إطار في الثانية</translation>
     </message>
     <message>
-        <source>Rotate</source>
-        <translation type="unfinished">تدوير</translation>
+        <source>Jump back 1s · Shift for 5s · Ctrl for 10s</source>
+        <translation>القفز للخلف 1s · Shift لمدة 5s · Ctrl لمدة 10s</translation>
     </message>
     <message>
-        <source>Scale</source>
-        <translation type="unfinished">الحجم</translation>
+        <source>Previous frame</source>
+        <translation>الإطار السابق</translation>
     </message>
     <message>
-        <source>Gizmo follows the selection&apos;s own axes (click for world axes)</source>
-        <translation type="unfinished"></translation>
+        <source>Pause</source>
+        <translation>إيقاف مؤقت</translation>
     </message>
     <message>
-        <source>Gizmo follows the world axes (click for the selection&apos;s own)</source>
-        <translation type="unfinished"></translation>
+        <source>Play</source>
+        <translation>تشغيل</translation>
     </message>
     <message>
-        <source>Look through the camera</source>
-        <translation type="unfinished"></translation>
+        <source>Next frame</source>
+        <translation>الإطار التالي</translation>
     </message>
     <message>
-        <source>Numpad 0</source>
-        <translation type="unfinished"></translation>
+        <source>Loop work area on — click to turn off</source>
+        <translation>تكرار مساحة العمل مفعّل — انقر للإيقاف</translation>
     </message>
     <message>
-        <source>Reset the scene camera&apos;s position</source>
-        <translation type="unfinished"></translation>
+        <source>Loop work area off — click to turn on</source>
+        <translation>تكرار مساحة العمل معطّل — انقر للتشغيل</translation>
     </message>
     <message>
-        <source>Frame the selection</source>
-        <translation type="unfinished"></translation>
+        <source>Jump forward 1s · Shift for 5s · Ctrl for 10s</source>
+        <translation>القفز للأمام 1s · Shift لمدة 5s · Ctrl لمدة 10s</translation>
     </message>
     <message>
-        <source>Reset the view</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PreviewModeSwitch</name>
-    <message>
-        <source>Camera Output</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The camera&apos;s picture, as it exports. Clips move and snap on the canvas.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>3D Scene</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The scene from a free viewpoint, with the camera in it. Middle- or right-drag orbits, Shift pans, the wheel zooms.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PreviewOptionsMenu</name>
-    <message>
-        <source>Quality</source>
-        <translation type="unfinished">الجودة</translation>
+        <source>Preview zoom — Ctrl+scroll over the preview to zoom, middle-drag to pan. Click to reset to 100%.</source>
+        <translation>تكبير/تصغير المعاينة — Ctrl+التمرير فوق المعاينة للتكبير/التصغير، والسحب بالزر الأوسط للتحريك. انقر لإعادة التعيين إلى 100%.</translation>
     </message>
     <message>
         <source>Full</source>
-        <translation type="unfinished">كاملة</translation>
+        <translation>كاملة</translation>
     </message>
     <message>
         <source>Half</source>
-        <translation type="unfinished">نصف</translation>
+        <translation>نصف</translation>
     </message>
     <message>
         <source>Quarter</source>
-        <translation type="unfinished">ربع</translation>
+        <translation>ربع</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished">تلقائي</translation>
+        <translation>تلقائي</translation>
     </message>
     <message>
         <source>Preview quality — lower is smoother while editing.
 Full, Half and Quarter are fixed fractions of the project resolution: Full composites exactly what an export would.
 Auto renders only as many pixels as the preview actually shows, and lowers that further while playback cannot keep up.</source>
-        <translation type="unfinished">جودة المعاينة — الجودة الأقل تكون أكثر سلاسة أثناء التحرير.
+        <translation>جودة المعاينة — الجودة الأقل تكون أكثر سلاسة أثناء التحرير.
 تعد Full وHalf وQuarter أجزاءً ثابتة من دقة المشروع: يركب Full تمامًا ما سينتجه التصدير.
 يعرض Auto فقط عدد وحدات البكسل التي تعرضها المعاينة فعليًا، ويخفض ذلك أكثر عندما يتعذر على التشغيل مواكبة السرعة.</translation>
     </message>
     <message>
-        <source>Speed</source>
-        <translation type="unfinished">السرعة</translation>
-    </message>
-    <message>
         <source>Playback speed</source>
-        <translation type="unfinished">سرعة التشغيل</translation>
-    </message>
-    <message>
-        <source>Decode</source>
-        <translation type="unfinished">فك الترميز</translation>
+        <translation>سرعة التشغيل</translation>
     </message>
     <message>
         <source>How video is decoded for preview.
@@ -9990,39 +10150,51 @@ Auto picks per clip: hardware for high-quality 4K, software otherwise.
 Software is smoother for most clips. It uses more CPU.
 Hardware is better for high-quality 4K, and forces one GPU decoder.
 If playback stutters, try another.</source>
-        <translation type="unfinished">كيفية فك ترميز الفيديو للمعاينة.
+        <translation>كيفية فك ترميز الفيديو للمعاينة.
 يختار Auto لكل مقطع: عتادي لـ 4K عالي الجودة، وبرمجي في الحالات الأخرى.
 البرمجي أكثر سلاسة لمعظم المقاطع. ويستخدم قدرًا أكبر من CPU.
 العتادي أفضل لـ 4K عالي الجودة، ويفرض وحدة فك ترميز GPU واحدة.
 إذا تعثر التشغيل، فجرب خيارًا آخر.</translation>
     </message>
     <message>
-        <source>Keep mask handles up</source>
-        <translation type="unfinished"></translation>
+        <source>Toggle guides</source>
+        <translation>تبديل الخطوط الإرشادية</translation>
+    </message>
+    <message>
+        <source>Guide sets</source>
+        <translation>مجموعات الخطوط الإرشادية</translation>
     </message>
     <message>
         <source>Keep mask handles on the preview while another clip is selected</source>
-        <translation type="unfinished">الإبقاء على مقابض القناع في المعاينة أثناء تحديد مقطع آخر</translation>
+        <translation>الإبقاء على مقابض القناع في المعاينة أثناء تحديد مقطع آخر</translation>
+    </message>
+    <message>
+        <source>Exit fullscreen preview (Esc)</source>
+        <translation>الخروج من معاينة ملء الشاشة (Esc)</translation>
+    </message>
+    <message>
+        <source>Fullscreen preview</source>
+        <translation>معاينة ملء الشاشة</translation>
     </message>
     <message>
         <source>Decoding on a different graphics card</source>
-        <translation type="unfinished">فك الترميز على بطاقة رسومات مختلفة</translation>
+        <translation>فك الترميز على بطاقة رسومات مختلفة</translation>
     </message>
     <message>
         <source>Use anyway</source>
-        <translation type="unfinished">استخدام على أي حال</translation>
+        <translation>استخدام على أي حال</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">إلغاء</translation>
+        <translation>إلغاء</translation>
     </message>
     <message>
         <source>Launching Drift with prime-run (or DRI_PRIME=1) puts OpenGL on the same card as the decoder.</source>
-        <translation type="unfinished">تشغيل Drift باستخدام prime-run (أو DRI_PRIME=1) يضع OpenGL على نفس بطاقة وحدة فك الترميز.</translation>
+        <translation>تشغيل Drift باستخدام prime-run (أو DRI_PRIME=1) يضع OpenGL على نفس بطاقة وحدة فك الترميز.</translation>
     </message>
     <message>
         <source>Run Drift on the high-performance graphics card</source>
-        <translation type="unfinished">تشغيل Drift على بطاقة الرسومات عالية الأداء</translation>
+        <translation>تشغيل Drift على بطاقة الرسومات عالية الأداء</translation>
     </message>
     <message>
         <source>Set Drift to High performance in Windows Settings &gt; Display &gt; Graphics, then restart Drift.</source>
@@ -10031,126 +10203,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Open graphics settings</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PreviewOsd</name>
-    <message>
-        <source>Preview zoom — Ctrl+scroll over the preview to zoom, middle-drag to pan. Click to reset to 100%.</source>
-        <translation type="unfinished">تكبير/تصغير المعاينة — Ctrl+التمرير فوق المعاينة للتكبير/التصغير، والسحب بالزر الأوسط للتحريك. انقر لإعادة التعيين إلى 100%.</translation>
-    </message>
-    <message>
-        <source>Toggle guides</source>
-        <translation type="unfinished">تبديل الخطوط الإرشادية</translation>
-    </message>
-    <message>
-        <source>Guide sets</source>
-        <translation type="unfinished">مجموعات الخطوط الإرشادية</translation>
-    </message>
-    <message>
-        <source>Preview options</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PreviewPanel</name>
-    <message>
-        <source>Seek</source>
-        <translation>تمرير</translation>
-    </message>
-</context>
-<context>
-    <name>PreviewStatusLayer</name>
-    <message>
-        <source>PAUSED %1s</source>
-        <translation type="unfinished">متوقف مؤقتًا %1s</translation>
-    </message>
-    <message>
-        <source>REC %1s</source>
-        <translation type="unfinished">تسجيل %1s</translation>
-    </message>
-    <message>
-        <source>Nothing to preview yet</source>
-        <translation type="unfinished">لا يوجد شيء للمعاينة بعد</translation>
-    </message>
-    <message>
-        <source>Import media and drag it onto the timeline below to see it here.</source>
-        <translation type="unfinished">استورد الوسائط واسحبها إلى المخطط الزمني أدناه لرؤيتها هنا.</translation>
-    </message>
-    <message>
-        <source>GPU preview unavailable</source>
-        <translation type="unfinished">معاينة GPU غير متوفرة</translation>
-    </message>
-    <message>
-        <source>Your graphics driver only provides %1. Drift&apos;s preview needs OpenGL 3.3.</source>
-        <translation type="unfinished">يوفر برنامج تشغيل الرسومات لديك %1 فقط. تحتاج معاينة Drift إلى OpenGL 3.3.</translation>
-    </message>
-    <message>
-        <source>Drift could not start its GPU renderer, so the preview cannot draw.</source>
-        <translation type="unfinished">تعذر على Drift تشغيل عارض GPU الخاص به، لذا لا يمكن رسم المعاينة.</translation>
-    </message>
-    <message>
-        <source>Debug info</source>
-        <translation type="unfinished">معلومات تصحيح الأخطاء</translation>
-    </message>
-    <message>
-        <source>Audio only</source>
-        <translation type="unfinished">الصوت فقط</translation>
-    </message>
-    <message>
-        <source>No clip at the current time</source>
-        <translation type="unfinished">لا يوجد مقطع في الوقت الحالي</translation>
-    </message>
-</context>
-<context>
-    <name>PreviewTransportBar</name>
-    <message>
-        <source>%1 (%2)</source>
-        <translation type="unfinished">%1 (%2)</translation>
-    </message>
-    <message>
-        <source>Current time / total · %1 frames per second</source>
-        <translation type="unfinished">الوقت الحالي / الإجمالي · %1 إطار في الثانية</translation>
-    </message>
-    <message>
-        <source>Jump back 1s · Shift for 5s · Ctrl for 10s</source>
-        <translation type="unfinished">القفز للخلف 1s · Shift لمدة 5s · Ctrl لمدة 10s</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation type="unfinished">الإطار السابق</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation type="unfinished">إيقاف مؤقت</translation>
-    </message>
-    <message>
-        <source>Play</source>
-        <translation type="unfinished">تشغيل</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation type="unfinished">الإطار التالي</translation>
-    </message>
-    <message>
-        <source>Loop work area on — click to turn off</source>
-        <translation type="unfinished">تكرار مساحة العمل مفعّل — انقر للإيقاف</translation>
-    </message>
-    <message>
-        <source>Loop work area off — click to turn on</source>
-        <translation type="unfinished">تكرار مساحة العمل معطّل — انقر للتشغيل</translation>
-    </message>
-    <message>
-        <source>Jump forward 1s · Shift for 5s · Ctrl for 10s</source>
-        <translation type="unfinished">القفز للأمام 1s · Shift لمدة 5s · Ctrl لمدة 10s</translation>
-    </message>
-    <message>
-        <source>Exit fullscreen preview (Esc)</source>
-        <translation type="unfinished">الخروج من معاينة ملء الشاشة (Esc)</translation>
-    </message>
-    <message>
-        <source>Fullscreen preview</source>
-        <translation type="unfinished">معاينة ملء الشاشة</translation>
     </message>
 </context>
 <context>
@@ -10296,200 +10348,6 @@ If playback stutters, try another.</source>
     </message>
 </context>
 <context>
-    <name>ProjectFileController</name>
-    <message>
-        <source>New project</source>
-        <translation>مشروع جديد</translation>
-    </message>
-    <message>
-        <source>This project uses &quot;%1&quot;, which isn’t installed — it won’t show. Open Extras to install it.</source>
-        <translation>يستخدم هذا المشروع &quot;%1&quot;، وهو غير مثبت — فلن يظهر. افتح الإضافات لتثبيته.</translation>
-    </message>
-    <message>
-        <source>This project uses %1 effects or transitions that aren’t installed (%2%3) — they won’t show. Open Extras to install them.</source>
-        <translation>يستخدم هذا المشروع %1 من التأثيرات أو الانتقالات غير المثبتة (%2%3) — فلن تظهر. افتح الإضافات لتثبيتها.</translation>
-    </message>
-    <message>
-        <source>, …</source>
-        <translation>, …</translation>
-    </message>
-    <message>
-        <source>Frame rate</source>
-        <translation>معدل الإطارات</translation>
-    </message>
-    <message>
-        <source>Project setup</source>
-        <translation>إعداد المشروع</translation>
-    </message>
-    <message>
-        <source>Project setup updated</source>
-        <translation>تم تحديث إعداد المشروع</translation>
-    </message>
-    <message>
-        <source>Change background</source>
-        <translation>تغيير الخلفية</translation>
-    </message>
-    <message>
-        <source>Background updated</source>
-        <translation>تم تحديث الخلفية</translation>
-    </message>
-    <message>
-        <source>Saved a copy</source>
-        <translation>تم حفظ نسخة</translation>
-    </message>
-    <message>
-        <source>Couldn’t write %1: %2</source>
-        <translation>تعذر كتابة %1: %2</translation>
-    </message>
-    <message>
-        <source>Project JSON saved</source>
-        <translation>تم حفظ JSON المشروع</translation>
-    </message>
-    <message>
-        <source>Still opening a project — try again in a moment.</source>
-        <translation>ما زال فتح المشروع جاريًا — حاول مرة أخرى بعد قليل.</translation>
-    </message>
-    <message>
-        <source>Couldn’t read %1: %2</source>
-        <translation>تعذر قراءة %1: %2</translation>
-    </message>
-    <message>
-        <source>Project JSON loaded</source>
-        <translation>تم تحميل JSON المشروع</translation>
-    </message>
-    <message>
-        <source>Failed to open Premiere Pro project</source>
-        <translation>فشل فتح مشروع Premiere Pro</translation>
-    </message>
-    <message>
-        <source>Premiere Pro project imported: %1</source>
-        <translation>تم استيراد مشروع Premiere Pro: %1</translation>
-    </message>
-    <message>
-        <source>That template location isn’t valid</source>
-        <translation>موقع القالب هذا غير صالح</translation>
-    </message>
-    <message>
-        <source>Failed to unpack Motion Graphics Template</source>
-        <translation>فشل فك حزمة Motion Graphics Template</translation>
-    </message>
-    <message>
-        <source>Failed to apply template to project</source>
-        <translation>فشل تطبيق القالب على المشروع</translation>
-    </message>
-    <message>
-        <source>Import template: %1</source>
-        <translation>استيراد القالب: %1</translation>
-    </message>
-    <message>
-        <source>Template imported: %1</source>
-        <translation>تم استيراد القالب: %1</translation>
-    </message>
-    <message>
-        <source>Failed to open Kdenlive / MLT project</source>
-        <translation>فشل فتح مشروع Kdenlive / MLT</translation>
-    </message>
-    <message>
-        <source>Kdenlive project imported: %1</source>
-        <translation>تم استيراد مشروع Kdenlive: %1</translation>
-    </message>
-    <message>
-        <source>Failed to open DaVinci Resolve project / timeline</source>
-        <translation>فشل فتح مشروع / مخطط زمني DaVinci Resolve</translation>
-    </message>
-    <message>
-        <source>DaVinci Resolve project imported: %1</source>
-        <translation>تم استيراد مشروع DaVinci Resolve: %1</translation>
-    </message>
-    <message>
-        <source>Failed to open Edit Decision List (.edl)</source>
-        <translation>فشل فتح Edit Decision List (.edl)</translation>
-    </message>
-    <message>
-        <source>EDL imported: %1</source>
-        <translation>تم استيراد EDL: %1</translation>
-    </message>
-    <message>
-        <source>Failed to open OpenTimelineIO (.otio) sequence</source>
-        <translation>فشل فتح تسلسل OpenTimelineIO (.otio)</translation>
-    </message>
-    <message>
-        <source>OpenTimelineIO imported: %1</source>
-        <translation>تم استيراد OpenTimelineIO: %1</translation>
-    </message>
-    <message>
-        <source>That folder isn’t valid</source>
-        <translation>ذلك المجلد غير صالح</translation>
-    </message>
-    <message>
-        <source>All media is already in that folder</source>
-        <translation>جميع الوسائط موجودة بالفعل في ذلك المجلد</translation>
-    </message>
-    <message>
-        <source>Collect media</source>
-        <translation>تجميع الوسائط</translation>
-    </message>
-    <message numerus="yes">
-        <source>Media collected, but %n original(s) couldn’t be deleted</source>
-        <translation>
-            <numerusform>تم تجميع الوسائط، ولكن تعذر حذف %n ملف أصلي</numerusform>
-            <numerusform>تم تجميع الوسائط، ولكن تعذر حذف %n ملف أصلي</numerusform>
-            <numerusform>تم تجميع الوسائط، ولكن تعذر حذف %n ملفين أصليين</numerusform>
-            <numerusform>تم تجميع الوسائط، ولكن تعذر حذف %n ملفات أصلية</numerusform>
-            <numerusform>تم تجميع الوسائط، ولكن تعذر حذف %n ملفًا أصليًا</numerusform>
-            <numerusform>تم تجميع الوسائط، ولكن تعذر حذف %n ملف أصلي</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Media moved and relinked</source>
-        <translation>تم نقل الوسائط وإعادة ربطها</translation>
-    </message>
-    <message>
-        <source>Media copied and relinked</source>
-        <translation>تم نسخ الوسائط وإعادة ربطها</translation>
-    </message>
-    <message>
-        <source>That save location isn’t valid</source>
-        <translation>موقع الحفظ هذا غير صالح</translation>
-    </message>
-    <message>
-        <source>Already saving</source>
-        <translation>جارٍ الحفظ بالفعل</translation>
-    </message>
-    <message>
-        <source>Project saved</source>
-        <translation>تم حفظ المشروع</translation>
-    </message>
-    <message>
-        <source>Shareable copy ready</source>
-        <translation>النسخة القابلة للمشاركة جاهزة</translation>
-    </message>
-    <message>
-        <source>That project location isn’t valid</source>
-        <translation>موقع المشروع هذا غير صالح</translation>
-    </message>
-    <message>
-        <source>Project loaded</source>
-        <translation>تم تحميل المشروع</translation>
-    </message>
-    <message>
-        <source>Unpacking project media…</source>
-        <translation>جارٍ فك وسائط المشروع…</translation>
-    </message>
-    <message>
-        <source>No recovery file found</source>
-        <translation>لم يتم العثور على ملف استرداد</translation>
-    </message>
-    <message>
-        <source>Recovered unsaved work</source>
-        <translation>تمت استعادة العمل غير المحفوظ</translation>
-    </message>
-    <message>
-        <source>Started new session</source>
-        <translation>تم بدء جلسة جديدة</translation>
-    </message>
-</context>
-<context>
     <name>ProjectPropertiesDialog</name>
     <message>
         <source>Project properties</source>
@@ -10616,10 +10474,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Transform</source>
         <translation>التحويل</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Stabilization</source>
@@ -11440,77 +11294,6 @@ If playback stutters, try another.</source>
     </message>
 </context>
 <context>
-    <name>SegmentationController</name>
-    <message>
-        <source>Select a video clip to cut out</source>
-        <translation type="unfinished">حدد مقطع فيديو لعزله</translation>
-    </message>
-    <message>
-        <source>Cutout is already running</source>
-        <translation type="unfinished">عملية العزل قيد التشغيل بالفعل</translation>
-    </message>
-    <message>
-        <source>This clip has no video to cut out</source>
-        <translation type="unfinished">لا يحتوي هذا المقطع على فيديو لعزله</translation>
-    </message>
-    <message>
-        <source>Click the subject first</source>
-        <translation type="unfinished">انقر على العنصر أولًا</translation>
-    </message>
-    <message>
-        <source>Getting ready…</source>
-        <translation type="unfinished">جارٍ التحضير…</translation>
-    </message>
-    <message>
-        <source>Cutting out subject…</source>
-        <translation type="unfinished">جارٍ عزل العنصر…</translation>
-    </message>
-    <message>
-        <source>Done</source>
-        <translation type="unfinished">تم</translation>
-    </message>
-    <message>
-        <source>Clip is too short to cut out</source>
-        <translation type="unfinished">المقطع قصير جدًا لعزله</translation>
-    </message>
-    <message>
-        <source>Could not create a cutout file</source>
-        <translation type="unfinished">تعذر إنشاء ملف العزل</translation>
-    </message>
-    <message>
-        <source>Cutout cancelled</source>
-        <translation type="unfinished">تم إلغاء العزل</translation>
-    </message>
-    <message>
-        <source>Could not decode frame %1</source>
-        <translation type="unfinished">تعذر فك ترميز الإطار %1</translation>
-    </message>
-    <message>
-        <source>Processing frame %1 of %2…</source>
-        <translation type="unfinished">جارٍ معالجة الإطار %1 من %2…</translation>
-    </message>
-    <message>
-        <source>Cutout complete — subject cut out on %1 of %2 frames</source>
-        <translation type="unfinished">اكتمل العزل — تم عزل العنصر في %1 من %2 إطارًا</translation>
-    </message>
-    <message>
-        <source>Cutout complete</source>
-        <translation type="unfinished">اكتمل العزل</translation>
-    </message>
-    <message>
-        <source>That clip no longer exists</source>
-        <translation type="unfinished">ذلك المقطع لم يعد موجودًا</translation>
-    </message>
-    <message>
-        <source>Cutout</source>
-        <translation type="unfinished">استقطاع</translation>
-    </message>
-    <message>
-        <source>Cut out subject</source>
-        <translation type="unfinished">عزل العنصر</translation>
-    </message>
-</context>
-<context>
     <name>SegmentationWindow</name>
     <message>
         <source>Cut out subject</source>
@@ -11807,6 +11590,10 @@ If playback stutters, try another.</source>
         <translation>التحقق عند بدء التشغيل</translation>
     </message>
     <message>
+        <source>Ask GitHub once a day whether a newer Drift has been released</source>
+        <translation>التحقق من GitHub مرة واحدة يوميًا لمعرفة ما إذا كان قد تم إصدار نسخة أحدث من Drift</translation>
+    </message>
+    <message>
         <source>Checking…</source>
         <translation>جارٍ التحقق…</translation>
     </message>
@@ -11925,14 +11712,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Unlink the marketplace account from this device</source>
         <translation>إلغاء ربط حساب المتجر من هذا الجهاز</translation>
-    </message>
-    <message>
-        <source>Once a day, check whether a newer Drift has been released</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloading…</source>
-        <translation type="unfinished">جارٍ التنزيل…</translation>
     </message>
 </context>
 <context>
@@ -12545,25 +12324,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Shortcuts reset to defaults.</source>
         <translation>تمت إعادة تعيين الاختصارات إلى الإعدادات الافتراضية.</translation>
-    </message>
-</context>
-<context>
-    <name>SpeedCurveController</name>
-    <message>
-        <source>Custom speed works on video and audio clips</source>
-        <translation type="unfinished">تعمل السرعة المخصصة على مقاطع الفيديو والصوت</translation>
-    </message>
-    <message>
-        <source>This clip has no media to speed up or slow down</source>
-        <translation type="unfinished">لا يحتوي هذا المقطع على وسائط لتسريعها أو إبطائها</translation>
-    </message>
-    <message>
-        <source>That clip moved — open Custom speed again</source>
-        <translation type="unfinished">تم نقل ذلك المقطع — افتح السرعة المخصصة مجددًا</translation>
-    </message>
-    <message>
-        <source>Custom speed applied</source>
-        <translation type="unfinished">تم تطبيق السرعة المخصصة</translation>
     </message>
 </context>
 <context>
@@ -14524,10 +14284,6 @@ If playback stutters, try another.</source>
         <translation>إضافة طبقة تحويل — تحرك مسارات المقاطع المحددة كوحدة واحدة</translation>
     </message>
     <message>
-        <source>Add camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Customize toolbar…</source>
         <translation>تخصيص شريط الأدوات…</translation>
     </message>
@@ -14574,10 +14330,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Add adjustment layer</source>
         <translation>إضافة طبقة ضبط</translation>
-    </message>
-    <message>
-        <source>Add camera — one viewpoint the whole timeline is seen through. With a camera already there, adds a new camera clip (a cut to a new framing) at the playhead</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Toggle snapping</source>
@@ -14731,10 +14483,6 @@ If playback stutters, try another.</source>
         <translation>الفيديو + الشكل الموجي</translation>
     </message>
     <message>
-        <source>CAM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>TF</source>
         <translation>TF</translation>
     </message>
@@ -14761,10 +14509,6 @@ If playback stutters, try another.</source>
     <message>
         <source>V</source>
         <translation>V</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Transform</source>
@@ -14817,10 +14561,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Turn transform off</source>
         <translation>تعطيل التحويل</translation>
-    </message>
-    <message>
-        <source>Add camera clip at playhead</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Covers…</source>
@@ -15002,16 +14742,8 @@ If playback stutters, try another.</source>
         <translation>الموضع (px)</translation>
     </message>
     <message>
-        <source>Position (px, linked)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Separate X and Y keyframes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Link X and Y keyframes and motion curves</source>
-        <translation type="unfinished"></translation>
+        <source>Offset (px)</source>
+        <translation>الإزاحة (px)</translation>
     </message>
     <message>
         <source>Measured inside %1&apos;s frame</source>
@@ -15052,18 +14784,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Tilt the clip and push it in depth, with 3D grips on the preview. Turning it off flattens the clip again.</source>
         <translation>قم بإمالة المقطع ودفعه في العمق، مع وجود مقابض 3D على المعاينة. يؤدي إيقاف تشغيله إلى تسطيح المقطع مجددًا.</translation>
-    </message>
-    <message>
-        <source>Occlude by depth</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Let depth decide what covers this clip, instead of its track position. Only clips with this on sort against each other; everything else still draws in track order.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Needs the Normal blend mode — the others read the canvas behind the clip, which depth cannot sort.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Move</source>
@@ -15120,6 +14840,10 @@ If playback stutters, try another.</source>
     <message>
         <source>Reset position &amp; size</source>
         <translation>إعادة تعيين الموضع والحجم</translation>
+    </message>
+    <message>
+        <source>Reset position</source>
+        <translation>إعادة تعيين الموضع</translation>
     </message>
     <message>
         <source>Fix orientation</source>
@@ -15486,26 +15210,6 @@ If playback stutters, try another.</source>
 <context>
     <name>UpdateChecker</name>
     <message>
-        <source>Drift %1 update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Preparing the update…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Installs when you close Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ready to install</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 will install when you close Drift.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Couldn’t check for updates: %1</source>
         <translation>تعذر التحقق من وجود تحديثات: %1</translation>
     </message>
@@ -15521,30 +15225,6 @@ If playback stutters, try another.</source>
         <source>Drift %1 is available.</source>
         <translation>Drift %1 متوفر.</translation>
     </message>
-    <message>
-        <source>Couldn’t download the update: the cache isn’t writable.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Couldn’t download the update: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>the download was interrupted.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Couldn’t download the update: the file didn’t match the release.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Couldn’t prepare the update.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 is ready to install.</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>UpdateDialog</name>
@@ -15553,36 +15233,12 @@ If playback stutters, try another.</source>
         <translation>تحديث متوفر</translation>
     </message>
     <message>
-        <source>Update ready</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 will install when you close Drift.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 is downloaded and ready to install</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Drift %1 is available</source>
         <translation>Drift %1 متوفر</translation>
     </message>
     <message>
-        <source>A new Drift update is available</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>You have %1.</source>
         <translation>لديك %1.</translation>
-    </message>
-    <message>
-        <source>Install automatically when I close Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloads in the background and installs the next time you close Drift. Unchecked, you choose when to install once the download finishes.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Skip</source>
@@ -15597,40 +15253,12 @@ If playback stutters, try another.</source>
         <translation>لاحقًا</translation>
     </message>
     <message>
-        <source>Install when I close Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update</source>
-        <translation type="unfinished">تحديث</translation>
-    </message>
-    <message>
-        <source>Closes Drift, installs the update and opens Drift again</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloads the update in the background</source>
-        <translation type="unfinished"></translation>
+        <source>Download</source>
+        <translation>تنزيل</translation>
     </message>
     <message>
         <source>Opens the release page in your browser</source>
         <translation>يفتح صفحة الإصدار في متصفحك</translation>
-    </message>
-    <message>
-        <source>Downloading Drift %1…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Preparing the update…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Restart and install</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloading…</source>
-        <translation type="unfinished">جارٍ التنزيل…</translation>
     </message>
 </context>
 <context>

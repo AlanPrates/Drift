@@ -11,9 +11,9 @@ Column {
     signal cropStarted()
     signal layoutChooserOpened()
 
-    property int canvasW: { void EditorState.tracksRevision; return EditorState.projectFile.projectWidth() }
-    property int canvasH: { void EditorState.tracksRevision; return EditorState.projectFile.projectHeight() }
-    property int canvasFps: { void EditorState.tracksRevision; return EditorState.projectFile.projectFps() }
+    property int canvasW: { void EditorState.tracksRevision; return EditorState.projectWidth() }
+    property int canvasH: { void EditorState.tracksRevision; return EditorState.projectHeight() }
+    property int canvasFps: { void EditorState.tracksRevision; return EditorState.projectFps() }
 
     readonly property var canvasPresets: [
         { label: qsTr("Custom"), w: 0, h: 0 },
@@ -30,7 +30,7 @@ Column {
         glyph: Theme.icons.ratio
         text: qsTr("Choose layout…")
         tooltip: qsTr("Pick a platform template (YouTube, Instagram, TikTok, …) and quality")
-        enabled: !EditorState.preview.canvasCropMode
+        enabled: !EditorState.canvasCropMode
         onClicked: {
             if (typeof Window !== "undefined" && Window.window && Window.window.openLayoutChooser)
                 Window.window.openLayoutChooser()
@@ -40,7 +40,7 @@ Column {
 
     ThemedComboBox {
         width: parent.width
-        enabled: !EditorState.preview.canvasCropMode
+        enabled: !EditorState.canvasCropMode
         model: root.canvasPresets.map(function (p) { return p.label })
         tooltip: qsTr("Change the video size. Clips keep their current size and position.")
         currentIndex: {
@@ -54,7 +54,7 @@ Column {
         onActivated: {
             const preset = root.canvasPresets[currentIndex]
             if (preset.w > 0)
-                EditorState.projectFile.setProjectResolution(preset.w, preset.h)
+                EditorState.setProjectResolution(preset.w, preset.h)
         }
     }
 
@@ -68,13 +68,13 @@ Column {
             ThemedLabel { text: qsTr("Width") }
             ThemedNumberField {
                 width: parent.width
-                enabled: !EditorState.preview.canvasCropMode
+                enabled: !EditorState.canvasCropMode
                 from: 16
                 to: 7680
                 step: 2
                 unit: "px"
                 value: root.canvasW
-                onEdited: v => EditorState.projectFile.setProjectResolution(v, root.canvasH)
+                onEdited: v => EditorState.setProjectResolution(v, root.canvasH)
             }
         }
 
@@ -84,13 +84,13 @@ Column {
             ThemedLabel { text: qsTr("Height") }
             ThemedNumberField {
                 width: parent.width
-                enabled: !EditorState.preview.canvasCropMode
+                enabled: !EditorState.canvasCropMode
                 from: 16
                 to: 4320
                 step: 2
                 unit: "px"
                 value: root.canvasH
-                onEdited: v => EditorState.projectFile.setProjectResolution(root.canvasW, v)
+                onEdited: v => EditorState.setProjectResolution(root.canvasW, v)
             }
         }
     }
@@ -101,24 +101,24 @@ Column {
         ThemedLabel { text: qsTr("Frames per second") }
         ThemedNumberField {
             width: parent.width
-            enabled: !EditorState.preview.canvasCropMode
+            enabled: !EditorState.canvasCropMode
             from: 1
             to: 240
             unit: "fps"
             value: root.canvasFps
-            onEdited: v => EditorState.projectFile.setProjectFps(v)
+            onEdited: v => EditorState.setProjectFps(v)
         }
     }
 
     ThemedButton {
         width: parent.width
-        variant: EditorState.preview.canvasCropMode ? "primary" : "secondary"
+        variant: EditorState.canvasCropMode ? "primary" : "secondary"
         glyph: Theme.icons.crop
-        text: EditorState.preview.canvasCropMode ? qsTr("Cancel crop") : qsTr("Crop video size")
+        text: EditorState.canvasCropMode ? qsTr("Cancel crop") : qsTr("Crop video size")
         tooltip: qsTr("Drag the preview edges to change what’s included")
         onClicked: {
-            const starting = !EditorState.preview.canvasCropMode
-            EditorState.preview.canvasCropMode = starting
+            const starting = !EditorState.canvasCropMode
+            EditorState.canvasCropMode = starting
             if (starting)
                 root.cropStarted()
         }

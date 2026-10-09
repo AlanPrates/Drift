@@ -36,8 +36,8 @@ ThemedDialog {
             size: "sm"
             wrapMode: Text.WordWrap
             text: qsTr("“%1” has unsaved changes. Save before continuing?")
-                  .arg(EditorState.projectFile.projectName.length > 0
-                       ? EditorState.projectFile.projectName
+                  .arg(EditorState.projectName.length > 0
+                       ? EditorState.projectName
                        : qsTr("Untitled project"))
         }
 

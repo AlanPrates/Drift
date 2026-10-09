@@ -6,7 +6,7 @@ set(CMAKE_OSX_DEPLOYMENT_TARGET "12.0" CACHE STRING "Oldest macOS release Drift 
 
 # C is enabled for JUCE only: its modules compile a handful of C sources (zlib, flac, oggvorbis)
 # and its CMake refuses to configure without it.
-project(Drift VERSION 0.8.0 LANGUAGES CXX C)
+project(Drift VERSION 0.7.5 LANGUAGES CXX C)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -82,9 +82,9 @@ set(DRIFT_MARKET_CLIENT_KEY "5409a0bebab4446f88e51d06024a5cf9a694ee141a6a1c6be7a
     CACHE STRING "HMAC key for marketplace client identity and request signing")
 
 # --- Update check -----------------------------------------------------------
-# Where the installer for a newer release is downloaded. The version itself comes from the TXT
-# record on drift-version.cutwire.org (see UpdateChecker); this URL is only how that version's
-# release notes and installer are found.
+# Where src/models/UpdateChecker looks for a newer release, once a day, to raise the badge in the
+# header. GitHub's releases/latest is the source of truth because the release tag already is: it
+# excludes drafts and pre-releases, and needs no service of our own.
 #
 # Set it to an empty string for builds a package manager owns — the Flatpak manifests and the Arch
 # PKGBUILD all do. There, pacman or flatpak fetches the update on its own schedule and an in-app
@@ -131,10 +131,6 @@ if(NOT DRIFT_DISTRIBUTION IN_LIST DRIFT_DISTRIBUTIONS)
     message(FATAL_ERROR "DRIFT_DISTRIBUTION must be one of ${DRIFT_DISTRIBUTIONS}, not '${DRIFT_DISTRIBUTION}'")
 endif()
 message(STATUS "Drift distribution: ${DRIFT_DISTRIBUTION}")
-# Google Play updates this build itself, and scripts/build.sh has no way to pass an empty feed.
-if(DRIFT_DISTRIBUTION STREQUAL "android-play")
-    set(DRIFT_UPDATE_FEED_URL "")
-endif()
 
 find_package(Qt6 6.10 REQUIRED COMPONENTS Quick QuickControls2 Multimedia Test Concurrent Widgets OpenGL Network QuickEffects Svg Xml)
 find_package(Qt6 COMPONENTS LinguistTools QUIET)
@@ -523,7 +519,6 @@ qt_add_resources(driftcore "drift_text_animations"
 # from spreading across driftengine. AudioEffectRack.h is the only header that leaves here and it
 # mentions no JUCE type, so driftengine stays JUCE-free at the source level.
 add_library(driftaudiodsp STATIC
-    src/engine/audio/AudioStage.h
     src/engine/audio/AudioEffectProcessor.h
     src/engine/audio/AudioEffectProcessor.cpp
     src/engine/audio/FilterProcessors.h
@@ -536,18 +531,6 @@ add_library(driftaudiodsp STATIC
     src/engine/audio/SoundTouchPitchProcessor.cpp
     src/engine/audio/AudioEffectFactory.h
     src/engine/audio/AudioEffectFactory.cpp
-    src/engine/audio/PedalCatalog.h
-    src/engine/audio/PedalCatalog.cpp
-    src/engine/audio/WavReader.h
-    src/engine/audio/WavReader.cpp
-    src/engine/audio/AudioGraph.h
-    src/engine/audio/AudioGraph.cpp
-    src/engine/audio/GraphPedals.h
-    src/engine/audio/GraphPedals.cpp
-    src/engine/audio/GraphProcessor.h
-    src/engine/audio/GraphProcessor.cpp
-    src/engine/audio/DriftGraphApi.h
-    src/engine/audio/DriftGraphApi.cpp
     src/engine/audio/AudioEffectRack.h
     src/engine/audio/AudioEffectRack.cpp
     src/engine/audio/ClipAudioRetimer.h
@@ -570,11 +553,6 @@ target_compile_definitions(driftaudiodsp PRIVATE
     # Otherwise every binary that links this, tools and tests included, opens with "JUCE v8.0.15".
     JUCE_DISABLE_JUCE_VERSION_PRINTING=1
 )
-# The same sources are built to WebAssembly for Drift Forge's preview (wasm/). Fused multiply-adds
-# would round differently from the wasm build, and on ARM the compiler contracts by default.
-if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    target_compile_options(driftaudiodsp PRIVATE -ffp-contract=off)
-endif()
 
 # --- engine: FFmpeg-facing code, no QML deps -------------------------------
 add_library(driftengine STATIC
@@ -702,16 +680,6 @@ add_library(driftengine STATIC
     src/engine/ModelAnimation.cpp
     src/engine/ClipTransform3d.h
     src/engine/ClipTransform3d.cpp
-    src/engine/SceneCamera3d.h
-    src/engine/SceneCamera3d.cpp
-    src/engine/PreviewSnap.h
-    src/engine/EditorView3d.h
-    src/engine/EditorView3d.cpp
-    src/engine/EditorOverlay.h
-    src/engine/EditorOverlay.cpp
-    src/engine/GlEditorOverlay.h
-    src/engine/GlEditorOverlay.cpp
-    src/engine/PreviewSnap.cpp
     src/engine/TransformLayer.h
     src/engine/TransformLayer.cpp
     src/engine/ClipGizmo.h
@@ -873,26 +841,8 @@ qt_add_executable(drift
     src/models/VersionCompare.h
     src/models/UpdateChecker.h
     src/models/UpdateChecker.cpp
-    src/models/UpdateAsset.h
-    src/models/UpdateAsset.cpp
     src/models/AppController.h
     src/models/AppController.cpp
-    src/models/McpController.h
-    src/models/McpController.cpp
-    src/models/PreferencesController.h
-    src/models/PreferencesController.cpp
-    src/models/ProjectFileController.h
-    src/models/ProjectFileController.cpp
-    src/models/AssetPreviewController.h
-    src/models/AssetPreviewController.cpp
-    src/models/SpeedCurveController.h
-    src/models/SpeedCurveController.cpp
-    src/models/CurveEditorController.h
-    src/models/CurveEditorController.cpp
-    src/models/SegmentationController.h
-    src/models/SegmentationController.cpp
-    src/models/McpDetail.h
-    src/models/AppControllerDetail.h
     src/models/EditorState.h
     src/models/LayoutStore.h
     src/models/LayoutStore.cpp
@@ -924,8 +874,6 @@ qt_add_executable(drift
     src/playback/PerfLog.cpp
     src/preview/PreviewItem.h
     src/preview/PreviewItem.cpp
-    src/preview/PreviewController.h
-    src/preview/PreviewController.cpp
     src/timeline/ClipThumbnailStore.h
     src/timeline/ClipThumbnailStore.cpp
     src/timeline/TimelineLayout.h
@@ -1090,17 +1038,6 @@ qt_add_qml_module(drift
         src/qml/EditorHeader.qml
         src/qml/AssetsPanel.qml
         src/qml/PreviewPanel.qml
-        src/qml/components/preview/ViewAxisWidget.qml
-        src/qml/components/preview/PreviewViewport.qml
-        src/qml/components/preview/PreviewStatusLayer.qml
-        src/qml/components/preview/PreviewToolHost.qml
-        src/qml/components/preview/PreviewOsd.qml
-        src/qml/components/preview/PreviewModeSwitch.qml
-        src/qml/components/preview/Preview3DTools.qml
-        src/qml/components/preview/PreviewOptionsMenu.qml
-        src/qml/components/preview/PreviewTransportBar.qml
-        src/qml/components/preview/modes/Preview2DMode.qml
-        src/qml/components/preview/modes/Preview3DMode.qml
         src/qml/components/preview/TransformGizmo.qml
         src/qml/components/preview/TransformOverlay.qml
         src/qml/components/preview/PreviewDropOverlay.qml
@@ -1110,6 +1047,7 @@ qt_add_qml_module(drift
         src/qml/components/preview/GuideEditOverlay.qml
         src/qml/components/preview/MaskOverlay.qml
         src/qml/components/preview/DepthEffectOverlay.qml
+        src/qml/components/preview/PreviewToolbar.qml
         src/qml/components/preview/Checkerboard.qml
         src/qml/components/preview/AndroidTransformOverlay.qml
         src/qml/components/preview/AndroidCropOverlay.qml
@@ -1131,7 +1069,6 @@ qt_add_qml_module(drift
         src/qml/components/properties/TextAnimPresetTile.qml
         src/qml/components/properties/TextLookPicker.qml
         src/qml/components/properties/TransformInspector.qml
-        src/qml/components/properties/CameraInspector.qml
         src/qml/components/properties/TransformLayerCard.qml
         src/qml/components/properties/StabilizeInspector.qml
         src/qml/components/properties/AudioInspector.qml
@@ -1226,7 +1163,6 @@ qt_add_qml_module(drift
         src/qml/components/AddonManagerDialog.qml
         src/qml/components/AddonStartupDialog.qml
         src/qml/components/MissingAddonsDialog.qml
-        src/qml/components/AboutDialog.qml
         src/qml/components/UpdateDialog.qml
         src/qml/components/DebugInfoDialog.qml
         src/qml/components/preview/PlaybackStatsOverlay.qml

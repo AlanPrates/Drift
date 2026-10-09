@@ -2,33 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ru_RU" sourcelanguage="en">
 <context>
-    <name>AboutDialog</name>
-    <message>
-        <source>About Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">Закрыть</translation>
-    </message>
-    <message>
-        <source>Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Version %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open-source video editor by CutWire Studios.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Licensed under GPLv3. Copyright © CutWire Studios.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>AddonManager</name>
     <message>
         <source>Automatic (recommended)</source>
@@ -1490,6 +1463,18 @@
 <context>
     <name>AndroidPreview</name>
     <message>
+        <source>Audio only</source>
+        <translation>Только аудио</translation>
+    </message>
+    <message>
+        <source>No clip at the current time</source>
+        <translation>В текущей точке нет клипа</translation>
+    </message>
+    <message>
+        <source>GPU preview unavailable</source>
+        <translation>Предпросмотр на видеокарте недоступен</translation>
+    </message>
+    <message>
         <source>Full</source>
         <translation>Полное</translation>
     </message>
@@ -2182,6 +2167,10 @@
         <translation>Инструмент разрезания</translation>
     </message>
     <message>
+        <source>Faster preview takes effect after you restart Drift.</source>
+        <translation>Ускоренный предпросмотр включится после перезапуска Drift.</translation>
+    </message>
+    <message>
         <source>System default</source>
         <translation>Системное значение</translation>
     </message>
@@ -2342,16 +2331,80 @@
         <translation>Субтитры созданы</translation>
     </message>
     <message>
+        <source>Select a video clip to cut out</source>
+        <translation>Выберите видеоклип для вырезания объекта</translation>
+    </message>
+    <message>
+        <source>Custom speed works on video and audio clips</source>
+        <translation>Настраиваемая скорость доступна для видео- и аудиоклипов</translation>
+    </message>
+    <message>
+        <source>This clip has no media to speed up or slow down</source>
+        <translation>В этом клипе нет медиафайла для изменения скорости</translation>
+    </message>
+    <message>
+        <source>That clip moved — open Custom speed again</source>
+        <translation>Клип переместился — откройте настройку скорости заново</translation>
+    </message>
+    <message>
+        <source>Custom speed applied</source>
+        <translation>Настраиваемая скорость применена</translation>
+    </message>
+    <message>
         <source>Speed curve removed</source>
         <translation>Кривая скорости удалена</translation>
+    </message>
+    <message>
+        <source>That clip moved — open Custom fade again</source>
+        <translation>Клип переместился — откройте настройку плавного перехода заново</translation>
+    </message>
+    <message>
+        <source>Custom fade applied</source>
+        <translation>Настраиваемый плавный переход применён</translation>
+    </message>
+    <message>
+        <source>Cutout is already running</source>
+        <translation>Вырезание объекта уже выполняется</translation>
+    </message>
+    <message>
+        <source>This clip has no video to cut out</source>
+        <translation>В этом клипе нет видео для вырезания объекта</translation>
+    </message>
+    <message>
+        <source>Click the subject first</source>
+        <translation>Сначала нажмите на объект</translation>
     </message>
     <message>
         <source>Getting ready…</source>
         <translation>Подготовка…</translation>
     </message>
     <message>
+        <source>Clip is too short to cut out</source>
+        <translation>Клип слишком короткий для вырезания объекта</translation>
+    </message>
+    <message>
+        <source>Could not create a cutout file</source>
+        <translation>Не удалось создать файл с вырезанным объектом</translation>
+    </message>
+    <message>
+        <source>Cutout cancelled</source>
+        <translation>Вырезание объекта отменено</translation>
+    </message>
+    <message>
         <source>Could not decode frame %1</source>
         <translation>Не удалось декодировать кадр %1</translation>
+    </message>
+    <message>
+        <source>Processing frame %1 of %2…</source>
+        <translation>Обработка кадра %1 из %2…</translation>
+    </message>
+    <message>
+        <source>Cutout complete — subject cut out on %1 of %2 frames</source>
+        <translation>Готово: объект вырезан в %1 из %2 кадров</translation>
+    </message>
+    <message>
+        <source>Cutout complete</source>
+        <translation>Вырезание объекта завершено</translation>
     </message>
     <message>
         <source>Clear Face Track</source>
@@ -2404,6 +2457,14 @@
     <message>
         <source>Detect Faces</source>
         <translation>Найти лица</translation>
+    </message>
+    <message>
+        <source>That clip no longer exists</source>
+        <translation>Этого клипа больше нет</translation>
+    </message>
+    <message>
+        <source>Cut out subject</source>
+        <translation>Вырезать объект</translation>
     </message>
     <message>
         <source>Clip</source>
@@ -2524,6 +2585,10 @@
     <message>
         <source>Save combined multicam</source>
         <translation>Сохранить объединённый мультикамерный монтаж</translation>
+    </message>
+    <message>
+        <source>Cutting out subject…</source>
+        <translation>Вырезание объекта…</translation>
     </message>
     <message>
         <source>Select a video clip to stabilize</source>
@@ -2742,6 +2807,10 @@
         <translation>Уменьшить масштаб</translation>
     </message>
     <message>
+        <source>The graphics card choice takes effect after you restart Drift.</source>
+        <translation>Выбор видеокарты вступит в силу после перезапуска Drift.</translation>
+    </message>
+    <message>
         <source>No audio track available for recording</source>
         <translation>Нет звуковой дорожки для записи</translation>
     </message>
@@ -2814,6 +2883,18 @@
         <translation>Кривая перехода изменена</translation>
     </message>
     <message>
+        <source>That transition is gone — open the custom curve again</source>
+        <translation>Этого перехода больше нет — откройте настройку кривой заново</translation>
+    </message>
+    <message>
+        <source>Custom transition curve</source>
+        <translation>Настраиваемая кривая перехода</translation>
+    </message>
+    <message>
+        <source>Custom transition curve applied</source>
+        <translation>Настраиваемая кривая перехода применена</translation>
+    </message>
+    <message>
         <source>Select a video or image clip to estimate depth for</source>
         <translation>Выберите видео- или графический клип для оценки глубины</translation>
     </message>
@@ -2882,6 +2963,10 @@
         <translation>Изменить режим стабилизации</translation>
     </message>
     <message>
+        <source>Cutout</source>
+        <translation>Вырезанный объект</translation>
+    </message>
+    <message>
         <source> (denoised)</source>
         <translation> (с удалённым шумом)</translation>
     </message>
@@ -2892,6 +2977,18 @@
     <message>
         <source>Noise removed</source>
         <translation>Шум удалён</translation>
+    </message>
+    <message>
+        <source>This project uses &quot;%1&quot;, which isn’t installed — it won’t show. Open Extras to install it.</source>
+        <translation>В этом проекте используется дополнение «%1», но оно не установлено и не будет отображаться. Установите его в разделе «Дополнения».</translation>
+    </message>
+    <message>
+        <source>This project uses %1 effects or transitions that aren’t installed (%2%3) — they won’t show. Open Extras to install them.</source>
+        <translation>В этом проекте используются эффекты или переходы %1, которые не установлены (%2%3) и не будут отображаться. Установите их в разделе «Дополнения».</translation>
+    </message>
+    <message>
+        <source>, …</source>
+        <translation>, …</translation>
     </message>
     <message>
         <source>Shape added</source>
@@ -2966,6 +3063,34 @@
         <translation>Установите пакет стикеров эмодзи, чтобы добавлять эмодзи</translation>
     </message>
     <message>
+        <source>Frame rate</source>
+        <translation>Частота кадров</translation>
+    </message>
+    <message>
+        <source>Project setup</source>
+        <translation>Настройки проекта</translation>
+    </message>
+    <message>
+        <source>Project setup updated</source>
+        <translation>Настройки проекта изменены</translation>
+    </message>
+    <message>
+        <source>Crop canvas</source>
+        <translation>Кадрировать холст</translation>
+    </message>
+    <message>
+        <source>Video size cropped to %1×%2</source>
+        <translation>Размер видео кадрирован до %1×%2</translation>
+    </message>
+    <message>
+        <source>Change background</source>
+        <translation>Изменить фон</translation>
+    </message>
+    <message>
+        <source>Background updated</source>
+        <translation>Фон изменён</translation>
+    </message>
+    <message>
         <source>Edit clip</source>
         <translation>Редактировать клип</translation>
     </message>
@@ -3008,14 +3133,6 @@
     <message>
         <source>Edit keyframe</source>
         <translation>Редактировать ключевой кадр</translation>
-    </message>
-    <message>
-        <source>Move camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Rotate camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Edit effect</source>
@@ -3646,22 +3763,6 @@
         <translation>Клип — плоский слой</translation>
     </message>
     <message>
-        <source>Enable depth occlusion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Disable depth occlusion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clip is occluded by depth</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clip uses track order</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Subtitles converted to text</source>
         <translation>Субтитры преобразованы в текст</translation>
     </message>
@@ -3692,22 +3793,6 @@
     <message>
         <source>Transform clip added</source>
         <translation>Клип трансформации добавлен</translation>
-    </message>
-    <message>
-        <source>Add camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add camera clip</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Camera added</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Camera clip added</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Transform together</source>
@@ -3820,14 +3905,6 @@
     <message>
         <source>Keyframe interpolates</source>
         <translation>Ключевой кадр интерполирует значение</translation>
-    </message>
-    <message>
-        <source>Reset camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Camera reset</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Reset transform</source>
@@ -4230,6 +4307,118 @@
         </translation>
     </message>
     <message>
+        <source>Saved a copy</source>
+        <translation>Копия сохранена</translation>
+    </message>
+    <message>
+        <source>Couldn’t write %1: %2</source>
+        <translation>Не удалось записать %1: %2</translation>
+    </message>
+    <message>
+        <source>Project JSON saved</source>
+        <translation>JSON проекта сохранён</translation>
+    </message>
+    <message>
+        <source>Still opening a project — try again in a moment.</source>
+        <translation>Проект всё ещё открывается — повторите попытку чуть позже.</translation>
+    </message>
+    <message>
+        <source>Couldn’t read %1: %2</source>
+        <translation>Не удалось прочитать %1: %2</translation>
+    </message>
+    <message>
+        <source>Project JSON loaded</source>
+        <translation>JSON проекта загружен</translation>
+    </message>
+    <message>
+        <source>Failed to open Premiere Pro project</source>
+        <translation>Не удалось открыть проект Premiere Pro</translation>
+    </message>
+    <message>
+        <source>Premiere Pro project imported: %1</source>
+        <translation>Проект Premiere Pro импортирован: %1</translation>
+    </message>
+    <message>
+        <source>That template location isn’t valid</source>
+        <translation>Недопустимое расположение шаблона</translation>
+    </message>
+    <message>
+        <source>Failed to unpack Motion Graphics Template</source>
+        <translation>Не удалось распаковать шаблон Motion Graphics</translation>
+    </message>
+    <message>
+        <source>Failed to apply template to project</source>
+        <translation>Не удалось применить шаблон к проекту</translation>
+    </message>
+    <message>
+        <source>Import template: %1</source>
+        <translation>Импорт шаблона: %1</translation>
+    </message>
+    <message>
+        <source>Template imported: %1</source>
+        <translation>Шаблон импортирован: %1</translation>
+    </message>
+    <message>
+        <source>Failed to open Kdenlive / MLT project</source>
+        <translation>Не удалось открыть проект Kdenlive / MLT</translation>
+    </message>
+    <message>
+        <source>Kdenlive project imported: %1</source>
+        <translation>Проект Kdenlive импортирован: %1</translation>
+    </message>
+    <message>
+        <source>Failed to open DaVinci Resolve project / timeline</source>
+        <translation>Не удалось открыть проект или таймлайн DaVinci Resolve</translation>
+    </message>
+    <message>
+        <source>DaVinci Resolve project imported: %1</source>
+        <translation>Проект DaVinci Resolve импортирован: %1</translation>
+    </message>
+    <message>
+        <source>Failed to open Edit Decision List (.edl)</source>
+        <translation>Не удалось открыть список монтажных решений (.edl)</translation>
+    </message>
+    <message>
+        <source>EDL imported: %1</source>
+        <translation>Список EDL импортирован: %1</translation>
+    </message>
+    <message>
+        <source>Failed to open OpenTimelineIO (.otio) sequence</source>
+        <translation>Не удалось открыть последовательность OpenTimelineIO (.otio)</translation>
+    </message>
+    <message>
+        <source>OpenTimelineIO imported: %1</source>
+        <translation>Последовательность OpenTimelineIO импортирована: %1</translation>
+    </message>
+    <message>
+        <source>That folder isn’t valid</source>
+        <translation>Эта папка недопустима</translation>
+    </message>
+    <message>
+        <source>All media is already in that folder</source>
+        <translation>Все медиафайлы уже в этой папке</translation>
+    </message>
+    <message>
+        <source>Collect media</source>
+        <translation>Собрать медиафайлы</translation>
+    </message>
+    <message numerus="yes">
+        <source>Media collected, but %n original(s) couldn’t be deleted</source>
+        <translation>
+            <numerusform>Медиафайлы собраны, но не удалось удалить %n оригинал</numerusform>
+            <numerusform>Медиафайлы собраны, но не удалось удалить %n оригинала</numerusform>
+            <numerusform>Медиафайлы собраны, но не удалось удалить %n оригиналов</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Media moved and relinked</source>
+        <translation>Медиафайлы перемещены и перепривязаны</translation>
+    </message>
+    <message>
+        <source>Media copied and relinked</source>
+        <translation>Медиафайлы скопированы и перепривязаны</translation>
+    </message>
+    <message>
         <source>Exporting…</source>
         <translation>Экспорт…</translation>
     </message>
@@ -4402,6 +4591,42 @@
         <translation>Недопустимое место сохранения</translation>
     </message>
     <message>
+        <source>Already saving</source>
+        <translation>Сохранение уже выполняется</translation>
+    </message>
+    <message>
+        <source>Project saved</source>
+        <translation>Проект сохранён</translation>
+    </message>
+    <message>
+        <source>Shareable copy ready</source>
+        <translation>Копия для передачи готова</translation>
+    </message>
+    <message>
+        <source>That project location isn’t valid</source>
+        <translation>Недопустимое расположение проекта</translation>
+    </message>
+    <message>
+        <source>Project loaded</source>
+        <translation>Проект загружен</translation>
+    </message>
+    <message>
+        <source>Unpacking project media…</source>
+        <translation>Распаковка медиафайлов проекта…</translation>
+    </message>
+    <message>
+        <source>No recovery file found</source>
+        <translation>Файл восстановления не найден</translation>
+    </message>
+    <message>
+        <source>Recovered unsaved work</source>
+        <translation>Несохранённая работа восстановлена</translation>
+    </message>
+    <message>
+        <source>Started new session</source>
+        <translation>Начат новый сеанс</translation>
+    </message>
+    <message>
         <source>Export already in progress</source>
         <translation>Экспорт уже выполняется</translation>
     </message>
@@ -4464,14 +4689,6 @@
     <message>
         <source>Clip orientation set to %1°</source>
         <translation>Угол ориентации клипа: %1°</translation>
-    </message>
-    <message>
-        <source>Crop canvas</source>
-        <translation>Кадрировать холст</translation>
-    </message>
-    <message>
-        <source>Video size cropped to %1×%2</source>
-        <translation>Размер видео кадрирован до %1×%2</translation>
     </message>
 </context>
 <context>
@@ -4927,14 +5144,6 @@
         <translation>Просмотр аудиоэффектов</translation>
     </message>
     <message>
-        <source>Move to a time, set a value, then click the diamond to add a keyframe. With Auto keyframes on, dragging a slider also creates them.</source>
-        <translation type="unfinished">Выберите момент времени, задайте значение и нажмите на ромб, чтобы добавить ключевой кадр. Если включены автоматические ключевые кадры, они также создаются при перетаскивании ползунка.</translation>
-    </message>
-    <message>
-        <source>Auto keyframes</source>
-        <translation type="unfinished">Автоматические ключевые кадры</translation>
-    </message>
-    <message>
         <source>%1 (not installed)</source>
         <translation>%1 (не установлено)</translation>
     </message>
@@ -4961,6 +5170,18 @@
     <message>
         <source>Remove audio effect</source>
         <translation>Удалить аудиоэффект</translation>
+    </message>
+    <message>
+        <source>On</source>
+        <translation>Вкл.</translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation>Выкл.</translation>
+    </message>
+    <message>
+        <source>Edit audio effect</source>
+        <translation>Изменить аудиоэффект</translation>
     </message>
 </context>
 <context>
@@ -5287,57 +5508,6 @@
     </message>
 </context>
 <context>
-    <name>CameraInspector</name>
-    <message>
-        <source>Pan X</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pan Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Dolly</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pitch</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Yaw</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Roll</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Lens</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select a camera clip to frame the shot.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Everything on the timeline is seen through this camera while the clip lasts. A camera at rest looks exactly like no camera at all, so the numbers below are all offsets from the normal view.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>A short lens exaggerates depth; a long one flattens it. While this camera is running it replaces each clip&apos;s own Perspective value, because a scene has one viewer.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reset camera position</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Back to rest: no pan, dolly or turn, framing the canvas head on. The lens is kept.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ChannelKeyButton</name>
     <message>
         <source>Remove %1 keyframe at the playhead</source>
@@ -5453,29 +5623,6 @@
     <message>
         <source>Apply</source>
         <translation>Применить</translation>
-    </message>
-</context>
-<context>
-    <name>CurveEditorController</name>
-    <message>
-        <source>That transition is gone — open the custom curve again</source>
-        <translation type="unfinished">Этого перехода больше нет — откройте настройку кривой заново</translation>
-    </message>
-    <message>
-        <source>Custom transition curve</source>
-        <translation type="unfinished">Настраиваемая кривая перехода</translation>
-    </message>
-    <message>
-        <source>Custom transition curve applied</source>
-        <translation type="unfinished">Настраиваемая кривая перехода применена</translation>
-    </message>
-    <message>
-        <source>That clip moved — open Custom fade again</source>
-        <translation type="unfinished">Клип переместился — откройте настройку плавного перехода заново</translation>
-    </message>
-    <message>
-        <source>Custom fade applied</source>
-        <translation type="unfinished">Настраиваемый плавный переход применён</translation>
     </message>
 </context>
 <context>
@@ -7758,14 +7905,6 @@
         <translation>Ключевые кадры</translation>
     </message>
     <message>
-        <source>Collapse curve editor to compact view (88px)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Expand curve editor to view and edit Bezier handles (180px)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Analyzing…</source>
         <translation>Анализ…</translation>
     </message>
@@ -7808,10 +7947,6 @@
             <numerusform>%n ключевых кадра</numerusform>
             <numerusform>%n ключевых кадров</numerusform>
         </translation>
-    </message>
-    <message>
-        <source>Expand for handles</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source> BPM</source>
@@ -8110,6 +8245,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Preferences…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>&amp;Playback</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8210,20 +8349,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>About Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Settings…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Debug Info…</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 is the latest version.</source>
-        <translation type="unfinished">Drift %1 — последняя версия.</translation>
     </message>
     <message>
         <source>Still opening a project — try again in a moment.</source>
@@ -8236,14 +8363,6 @@
     <message>
         <source>Project closed</source>
         <translation>Проект закрыт</translation>
-    </message>
-    <message>
-        <source>Already checking for updates…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Checking for updates…</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Export finished.</source>
@@ -9234,8 +9353,32 @@
         <translation>Смещение начала</translation>
     </message>
     <message>
-        <source>Position, size, rotation and depth occlusion are on the Transform tab.</source>
-        <translation type="unfinished"></translation>
+        <source>Pose</source>
+        <translation>Поза</translation>
+    </message>
+    <message>
+        <source>Rotations follow the model&apos;s own axes: X tilts, Y then spins about the tilted up axis, Z rolls after both.</source>
+        <translation>Повороты выполняются вокруг осей модели: X наклоняет её, Y вращает вокруг наклонённой вертикальной оси, Z поворачивает в плоскости после них.</translation>
+    </message>
+    <message>
+        <source>Size</source>
+        <translation>Размер</translation>
+    </message>
+    <message>
+        <source>Depth</source>
+        <translation>Глубина</translation>
+    </message>
+    <message>
+        <source>Rotation X</source>
+        <translation>Поворот по X</translation>
+    </message>
+    <message>
+        <source>Rotation Y</source>
+        <translation>Поворот по Y</translation>
+    </message>
+    <message>
+        <source>Rotation Z</source>
+        <translation>Поворот по Z</translation>
     </message>
     <message>
         <source>Lighting</source>
@@ -9276,6 +9419,26 @@
 </context>
 <context>
     <name>Model3dSource</name>
+    <message>
+        <source>Size</source>
+        <translation>Размер</translation>
+    </message>
+    <message>
+        <source>Depth</source>
+        <translation>Глубина</translation>
+    </message>
+    <message>
+        <source>Rotation X</source>
+        <translation>Поворот по X</translation>
+    </message>
+    <message>
+        <source>Rotation Y</source>
+        <translation>Поворот по Y</translation>
+    </message>
+    <message>
+        <source>Rotation Z</source>
+        <translation>Поворот по Z</translation>
+    </message>
     <message>
         <source>Light direction</source>
         <translation>Направление света</translation>
@@ -9424,10 +9587,6 @@
     <message>
         <source>Transform</source>
         <translation>Трансформация</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>New track</source>
@@ -9730,127 +9889,125 @@
     </message>
 </context>
 <context>
-    <name>PreferencesController</name>
+    <name>PreviewPanel</name>
     <message>
-        <source>Faster preview takes effect after you restart Drift.</source>
-        <translation>Ускоренный предпросмотр включится после перезапуска Drift.</translation>
+        <source>REC %1s</source>
+        <translation>ЗАПИСЬ %1 с</translation>
     </message>
     <message>
-        <source>The graphics card choice takes effect after you restart Drift.</source>
-        <translation>Выбор видеокарты вступит в силу после перезапуска Drift.</translation>
+        <source>PAUSED %1s</source>
+        <translation>ПАУЗА %1 с</translation>
     </message>
     <message>
-        <source>System default</source>
-        <translation>Системное значение</translation>
+        <source>Nothing to preview yet</source>
+        <translation>Пока нечего просматривать</translation>
+    </message>
+    <message>
+        <source>Import media and drag it onto the timeline below to see it here.</source>
+        <translation>Импортируйте медиафайлы и перетащите их на таймлайн ниже, чтобы увидеть здесь.</translation>
+    </message>
+    <message>
+        <source>GPU preview unavailable</source>
+        <translation>Предпросмотр через GPU недоступен</translation>
+    </message>
+    <message>
+        <source>Your graphics driver only provides %1. Drift&apos;s preview needs OpenGL 3.3.</source>
+        <translation>Ваш графический драйвер поддерживает только %1. Для предпросмотра Drift требуется OpenGL 3.3.</translation>
+    </message>
+    <message>
+        <source>Drift could not start its GPU renderer, so the preview cannot draw.</source>
+        <translation>Drift не удалось запустить рендерер GPU, поэтому предпросмотр недоступен.</translation>
+    </message>
+    <message>
+        <source>Debug info</source>
+        <translation>Отладочная информация</translation>
+    </message>
+    <message>
+        <source>Audio only</source>
+        <translation>Только аудио</translation>
+    </message>
+    <message>
+        <source>No clip at the current time</source>
+        <translation>В текущий момент нет клипа</translation>
+    </message>
+    <message>
+        <source>Seek</source>
+        <translation>Перейти к моменту</translation>
     </message>
 </context>
 <context>
-    <name>Preview3DTools</name>
+    <name>PreviewToolbar</name>
     <message>
         <source>%1 (%2)</source>
-        <translation type="unfinished">%1 (%2)</translation>
+        <translation>%1 (%2)</translation>
     </message>
     <message>
-        <source>Move</source>
-        <translation type="unfinished">Перемещение</translation>
+        <source>Current time / total · %1 frames per second</source>
+        <translation>Текущее время / всего · %1 кадров в секунду</translation>
     </message>
     <message>
-        <source>Rotate</source>
-        <translation type="unfinished"></translation>
+        <source>Jump back 1s · Shift for 5s · Ctrl for 10s</source>
+        <translation>Назад на 1 с · Shift — на 5 с · Ctrl — на 10 с</translation>
     </message>
     <message>
-        <source>Scale</source>
-        <translation type="unfinished">Масштаб</translation>
+        <source>Previous frame</source>
+        <translation>Предыдущий кадр</translation>
     </message>
     <message>
-        <source>Gizmo follows the selection&apos;s own axes (click for world axes)</source>
-        <translation type="unfinished"></translation>
+        <source>Pause</source>
+        <translation>Пауза</translation>
     </message>
     <message>
-        <source>Gizmo follows the world axes (click for the selection&apos;s own)</source>
-        <translation type="unfinished"></translation>
+        <source>Play</source>
+        <translation>Воспроизвести</translation>
     </message>
     <message>
-        <source>Look through the camera</source>
-        <translation type="unfinished"></translation>
+        <source>Next frame</source>
+        <translation>Следующий кадр</translation>
     </message>
     <message>
-        <source>Numpad 0</source>
-        <translation type="unfinished"></translation>
+        <source>Loop work area on — click to turn off</source>
+        <translation>Повтор рабочей области включён — нажмите, чтобы выключить</translation>
     </message>
     <message>
-        <source>Reset the scene camera&apos;s position</source>
-        <translation type="unfinished"></translation>
+        <source>Loop work area off — click to turn on</source>
+        <translation>Повтор рабочей области выключен — нажмите, чтобы включить</translation>
     </message>
     <message>
-        <source>Frame the selection</source>
-        <translation type="unfinished"></translation>
+        <source>Jump forward 1s · Shift for 5s · Ctrl for 10s</source>
+        <translation>Вперёд на 1 с · Shift — на 5 с · Ctrl — на 10 с</translation>
     </message>
     <message>
-        <source>Reset the view</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PreviewModeSwitch</name>
-    <message>
-        <source>Camera Output</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The camera&apos;s picture, as it exports. Clips move and snap on the canvas.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>3D Scene</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The scene from a free viewpoint, with the camera in it. Middle- or right-drag orbits, Shift pans, the wheel zooms.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PreviewOptionsMenu</name>
-    <message>
-        <source>Quality</source>
-        <translation type="unfinished">Качество</translation>
+        <source>Preview zoom — Ctrl+scroll over the preview to zoom, middle-drag to pan. Click to reset to 100%.</source>
+        <translation>Масштаб предпросмотра — Ctrl+прокрутка над окном для изменения масштаба, перетаскивание средней кнопкой для перемещения. Нажмите, чтобы вернуть 100%.</translation>
     </message>
     <message>
         <source>Full</source>
-        <translation type="unfinished">Полное</translation>
+        <translation>Полное</translation>
     </message>
     <message>
         <source>Half</source>
-        <translation type="unfinished">Половина</translation>
+        <translation>Половина</translation>
     </message>
     <message>
         <source>Quarter</source>
-        <translation type="unfinished">Четверть</translation>
+        <translation>Четверть</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished">Авто</translation>
+        <translation>Авто</translation>
     </message>
     <message>
         <source>Preview quality — lower is smoother while editing.
 Full, Half and Quarter are fixed fractions of the project resolution: Full composites exactly what an export would.
 Auto renders only as many pixels as the preview actually shows, and lowers that further while playback cannot keep up.</source>
-        <translation type="unfinished">Качество предпросмотра — более низкое качество повышает плавность при редактировании.
+        <translation>Качество предпросмотра — более низкое качество повышает плавность при редактировании.
 «Полное», «Половина» и «Четверть» — фиксированные доли разрешения проекта. «Полное» обрабатывает кадр точно как при экспорте.
 «Авто» использует только столько пикселей, сколько показывает предпросмотр, и уменьшает их число ещё сильнее, если воспроизведение замедляется.</translation>
     </message>
     <message>
-        <source>Speed</source>
-        <translation type="unfinished">Скорость</translation>
-    </message>
-    <message>
         <source>Playback speed</source>
-        <translation type="unfinished">Скорость воспроизведения</translation>
-    </message>
-    <message>
-        <source>Decode</source>
-        <translation type="unfinished">Декодирование</translation>
+        <translation>Скорость воспроизведения</translation>
     </message>
     <message>
         <source>How video is decoded for preview.
@@ -9858,39 +10015,51 @@ Auto picks per clip: hardware for high-quality 4K, software otherwise.
 Software is smoother for most clips. It uses more CPU.
 Hardware is better for high-quality 4K, and forces one GPU decoder.
 If playback stutters, try another.</source>
-        <translation type="unfinished">Способ декодирования видео для предпросмотра.
+        <translation>Способ декодирования видео для предпросмотра.
 «Авто» выбирает способ для каждого клипа: аппаратный для качественного 4K, иначе программный.
 Программный способ плавнее для большинства клипов, но сильнее нагружает ЦП.
 Аппаратный лучше для качественного 4K и принудительно использует один декодер GPU.
 Если видео воспроизводится рывками, попробуйте другой способ.</translation>
     </message>
     <message>
-        <source>Keep mask handles up</source>
-        <translation type="unfinished"></translation>
+        <source>Toggle guides</source>
+        <translation>Переключить направляющие</translation>
+    </message>
+    <message>
+        <source>Guide sets</source>
+        <translation>Наборы направляющих</translation>
     </message>
     <message>
         <source>Keep mask handles on the preview while another clip is selected</source>
-        <translation type="unfinished">Оставлять маркеры маски в предпросмотре при выборе другого клипа</translation>
+        <translation>Оставлять маркеры маски в предпросмотре при выборе другого клипа</translation>
+    </message>
+    <message>
+        <source>Exit fullscreen preview (Esc)</source>
+        <translation>Выйти из полноэкранного предпросмотра (Esc)</translation>
+    </message>
+    <message>
+        <source>Fullscreen preview</source>
+        <translation>Полноэкранный предпросмотр</translation>
     </message>
     <message>
         <source>Decoding on a different graphics card</source>
-        <translation type="unfinished">Декодирование на другой видеокарте</translation>
+        <translation>Декодирование на другой видеокарте</translation>
     </message>
     <message>
         <source>Use anyway</source>
-        <translation type="unfinished">Всё равно использовать</translation>
+        <translation>Всё равно использовать</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">Отмена</translation>
+        <translation>Отмена</translation>
     </message>
     <message>
         <source>Launching Drift with prime-run (or DRI_PRIME=1) puts OpenGL on the same card as the decoder.</source>
-        <translation type="unfinished">Запуск Drift через prime-run (или с DRI_PRIME=1) позволяет использовать одну видеокарту для OpenGL и декодирования.</translation>
+        <translation>Запуск Drift через prime-run (или с DRI_PRIME=1) позволяет использовать одну видеокарту для OpenGL и декодирования.</translation>
     </message>
     <message>
         <source>Run Drift on the high-performance graphics card</source>
-        <translation type="unfinished">Запустить Drift на высокопроизводительной видеокарте</translation>
+        <translation>Запустить Drift на высокопроизводительной видеокарте</translation>
     </message>
     <message>
         <source>Set Drift to High performance in Windows Settings &gt; Display &gt; Graphics, then restart Drift.</source>
@@ -9899,126 +10068,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Open graphics settings</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PreviewOsd</name>
-    <message>
-        <source>Preview zoom — Ctrl+scroll over the preview to zoom, middle-drag to pan. Click to reset to 100%.</source>
-        <translation type="unfinished">Масштаб предпросмотра — Ctrl+прокрутка над окном для изменения масштаба, перетаскивание средней кнопкой для перемещения. Нажмите, чтобы вернуть 100%.</translation>
-    </message>
-    <message>
-        <source>Toggle guides</source>
-        <translation type="unfinished">Показать или скрыть направляющие</translation>
-    </message>
-    <message>
-        <source>Guide sets</source>
-        <translation type="unfinished">Наборы направляющих</translation>
-    </message>
-    <message>
-        <source>Preview options</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PreviewPanel</name>
-    <message>
-        <source>Seek</source>
-        <translation>Перейти к моменту</translation>
-    </message>
-</context>
-<context>
-    <name>PreviewStatusLayer</name>
-    <message>
-        <source>PAUSED %1s</source>
-        <translation type="unfinished">ПАУЗА %1 с</translation>
-    </message>
-    <message>
-        <source>REC %1s</source>
-        <translation type="unfinished">ЗАПИСЬ %1 с</translation>
-    </message>
-    <message>
-        <source>Nothing to preview yet</source>
-        <translation type="unfinished">Пока нечего просматривать</translation>
-    </message>
-    <message>
-        <source>Import media and drag it onto the timeline below to see it here.</source>
-        <translation type="unfinished">Импортируйте медиафайлы и перетащите их на таймлайн ниже, чтобы увидеть здесь.</translation>
-    </message>
-    <message>
-        <source>GPU preview unavailable</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Your graphics driver only provides %1. Drift&apos;s preview needs OpenGL 3.3.</source>
-        <translation type="unfinished">Ваш графический драйвер поддерживает только %1. Для предпросмотра Drift требуется OpenGL 3.3.</translation>
-    </message>
-    <message>
-        <source>Drift could not start its GPU renderer, so the preview cannot draw.</source>
-        <translation type="unfinished">Drift не удалось запустить рендерер GPU, поэтому предпросмотр недоступен.</translation>
-    </message>
-    <message>
-        <source>Debug info</source>
-        <translation type="unfinished">Отладочная информация</translation>
-    </message>
-    <message>
-        <source>Audio only</source>
-        <translation type="unfinished">Только аудио</translation>
-    </message>
-    <message>
-        <source>No clip at the current time</source>
-        <translation type="unfinished">В текущий момент нет клипа</translation>
-    </message>
-</context>
-<context>
-    <name>PreviewTransportBar</name>
-    <message>
-        <source>%1 (%2)</source>
-        <translation type="unfinished">%1 (%2)</translation>
-    </message>
-    <message>
-        <source>Current time / total · %1 frames per second</source>
-        <translation type="unfinished">Текущее время / всего · %1 кадров в секунду</translation>
-    </message>
-    <message>
-        <source>Jump back 1s · Shift for 5s · Ctrl for 10s</source>
-        <translation type="unfinished">Назад на 1 с · Shift — на 5 с · Ctrl — на 10 с</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation type="unfinished">Предыдущий кадр</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation type="unfinished">Пауза</translation>
-    </message>
-    <message>
-        <source>Play</source>
-        <translation type="unfinished">Воспроизвести</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation type="unfinished">Следующий кадр</translation>
-    </message>
-    <message>
-        <source>Loop work area on — click to turn off</source>
-        <translation type="unfinished">Повтор рабочей области включён — нажмите, чтобы выключить</translation>
-    </message>
-    <message>
-        <source>Loop work area off — click to turn on</source>
-        <translation type="unfinished">Повтор рабочей области выключен — нажмите, чтобы включить</translation>
-    </message>
-    <message>
-        <source>Jump forward 1s · Shift for 5s · Ctrl for 10s</source>
-        <translation type="unfinished">Вперёд на 1 с · Shift — на 5 с · Ctrl — на 10 с</translation>
-    </message>
-    <message>
-        <source>Exit fullscreen preview (Esc)</source>
-        <translation type="unfinished">Выйти из полноэкранного предпросмотра (Esc)</translation>
-    </message>
-    <message>
-        <source>Fullscreen preview</source>
-        <translation type="unfinished">Полноэкранный просмотр</translation>
     </message>
 </context>
 <context>
@@ -10164,197 +10213,6 @@ If playback stutters, try another.</source>
     </message>
 </context>
 <context>
-    <name>ProjectFileController</name>
-    <message>
-        <source>New project</source>
-        <translation>Новый проект</translation>
-    </message>
-    <message>
-        <source>This project uses &quot;%1&quot;, which isn’t installed — it won’t show. Open Extras to install it.</source>
-        <translation>В этом проекте используется дополнение «%1», но оно не установлено и не будет отображаться. Установите его в разделе «Дополнения».</translation>
-    </message>
-    <message>
-        <source>This project uses %1 effects or transitions that aren’t installed (%2%3) — they won’t show. Open Extras to install them.</source>
-        <translation>В этом проекте используются эффекты или переходы %1, которые не установлены (%2%3) и не будут отображаться. Установите их в разделе «Дополнения».</translation>
-    </message>
-    <message>
-        <source>, …</source>
-        <translation>, …</translation>
-    </message>
-    <message>
-        <source>Frame rate</source>
-        <translation>Частота кадров</translation>
-    </message>
-    <message>
-        <source>Project setup</source>
-        <translation>Настройки проекта</translation>
-    </message>
-    <message>
-        <source>Project setup updated</source>
-        <translation>Настройки проекта изменены</translation>
-    </message>
-    <message>
-        <source>Change background</source>
-        <translation>Изменить фон</translation>
-    </message>
-    <message>
-        <source>Background updated</source>
-        <translation>Фон изменён</translation>
-    </message>
-    <message>
-        <source>Saved a copy</source>
-        <translation>Копия сохранена</translation>
-    </message>
-    <message>
-        <source>Couldn’t write %1: %2</source>
-        <translation>Не удалось записать %1: %2</translation>
-    </message>
-    <message>
-        <source>Project JSON saved</source>
-        <translation>JSON проекта сохранён</translation>
-    </message>
-    <message>
-        <source>Still opening a project — try again in a moment.</source>
-        <translation>Проект всё ещё открывается — повторите попытку чуть позже.</translation>
-    </message>
-    <message>
-        <source>Couldn’t read %1: %2</source>
-        <translation>Не удалось прочитать %1: %2</translation>
-    </message>
-    <message>
-        <source>Project JSON loaded</source>
-        <translation>JSON проекта загружен</translation>
-    </message>
-    <message>
-        <source>Failed to open Premiere Pro project</source>
-        <translation>Не удалось открыть проект Premiere Pro</translation>
-    </message>
-    <message>
-        <source>Premiere Pro project imported: %1</source>
-        <translation>Проект Premiere Pro импортирован: %1</translation>
-    </message>
-    <message>
-        <source>That template location isn’t valid</source>
-        <translation>Недопустимое расположение шаблона</translation>
-    </message>
-    <message>
-        <source>Failed to unpack Motion Graphics Template</source>
-        <translation>Не удалось распаковать шаблон Motion Graphics</translation>
-    </message>
-    <message>
-        <source>Failed to apply template to project</source>
-        <translation>Не удалось применить шаблон к проекту</translation>
-    </message>
-    <message>
-        <source>Import template: %1</source>
-        <translation>Импорт шаблона: %1</translation>
-    </message>
-    <message>
-        <source>Template imported: %1</source>
-        <translation>Шаблон импортирован: %1</translation>
-    </message>
-    <message>
-        <source>Failed to open Kdenlive / MLT project</source>
-        <translation>Не удалось открыть проект Kdenlive / MLT</translation>
-    </message>
-    <message>
-        <source>Kdenlive project imported: %1</source>
-        <translation>Проект Kdenlive импортирован: %1</translation>
-    </message>
-    <message>
-        <source>Failed to open DaVinci Resolve project / timeline</source>
-        <translation>Не удалось открыть проект или таймлайн DaVinci Resolve</translation>
-    </message>
-    <message>
-        <source>DaVinci Resolve project imported: %1</source>
-        <translation>Проект DaVinci Resolve импортирован: %1</translation>
-    </message>
-    <message>
-        <source>Failed to open Edit Decision List (.edl)</source>
-        <translation>Не удалось открыть список монтажных решений (.edl)</translation>
-    </message>
-    <message>
-        <source>EDL imported: %1</source>
-        <translation>Список EDL импортирован: %1</translation>
-    </message>
-    <message>
-        <source>Failed to open OpenTimelineIO (.otio) sequence</source>
-        <translation>Не удалось открыть последовательность OpenTimelineIO (.otio)</translation>
-    </message>
-    <message>
-        <source>OpenTimelineIO imported: %1</source>
-        <translation>Последовательность OpenTimelineIO импортирована: %1</translation>
-    </message>
-    <message>
-        <source>That folder isn’t valid</source>
-        <translation>Эта папка недопустима</translation>
-    </message>
-    <message>
-        <source>All media is already in that folder</source>
-        <translation>Все медиафайлы уже в этой папке</translation>
-    </message>
-    <message>
-        <source>Collect media</source>
-        <translation>Собрать медиафайлы</translation>
-    </message>
-    <message numerus="yes">
-        <source>Media collected, but %n original(s) couldn’t be deleted</source>
-        <translation>
-            <numerusform>Медиафайлы собраны, но не удалось удалить %n оригинал</numerusform>
-            <numerusform>Медиафайлы собраны, но не удалось удалить %n оригинала</numerusform>
-            <numerusform>Медиафайлы собраны, но не удалось удалить %n оригиналов</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Media moved and relinked</source>
-        <translation>Медиафайлы перемещены и перепривязаны</translation>
-    </message>
-    <message>
-        <source>Media copied and relinked</source>
-        <translation>Медиафайлы скопированы и перепривязаны</translation>
-    </message>
-    <message>
-        <source>That save location isn’t valid</source>
-        <translation>Недопустимое место сохранения</translation>
-    </message>
-    <message>
-        <source>Already saving</source>
-        <translation>Сохранение уже выполняется</translation>
-    </message>
-    <message>
-        <source>Project saved</source>
-        <translation>Проект сохранён</translation>
-    </message>
-    <message>
-        <source>Shareable copy ready</source>
-        <translation>Копия для передачи готова</translation>
-    </message>
-    <message>
-        <source>That project location isn’t valid</source>
-        <translation>Недопустимое расположение проекта</translation>
-    </message>
-    <message>
-        <source>Project loaded</source>
-        <translation>Проект загружен</translation>
-    </message>
-    <message>
-        <source>Unpacking project media…</source>
-        <translation>Распаковка медиафайлов проекта…</translation>
-    </message>
-    <message>
-        <source>No recovery file found</source>
-        <translation>Файл восстановления не найден</translation>
-    </message>
-    <message>
-        <source>Recovered unsaved work</source>
-        <translation>Несохранённая работа восстановлена</translation>
-    </message>
-    <message>
-        <source>Started new session</source>
-        <translation>Начат новый сеанс</translation>
-    </message>
-</context>
-<context>
     <name>ProjectPropertiesDialog</name>
     <message>
         <source>Project properties</source>
@@ -10481,10 +10339,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Transform</source>
         <translation>Трансформация</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Stabilization</source>
@@ -11305,77 +11159,6 @@ If playback stutters, try another.</source>
     </message>
 </context>
 <context>
-    <name>SegmentationController</name>
-    <message>
-        <source>Select a video clip to cut out</source>
-        <translation type="unfinished">Выберите видеоклип для вырезания объекта</translation>
-    </message>
-    <message>
-        <source>Cutout is already running</source>
-        <translation type="unfinished">Вырезание объекта уже выполняется</translation>
-    </message>
-    <message>
-        <source>This clip has no video to cut out</source>
-        <translation type="unfinished">В этом клипе нет видео для вырезания объекта</translation>
-    </message>
-    <message>
-        <source>Click the subject first</source>
-        <translation type="unfinished">Сначала нажмите на объект</translation>
-    </message>
-    <message>
-        <source>Getting ready…</source>
-        <translation type="unfinished">Подготовка…</translation>
-    </message>
-    <message>
-        <source>Cutting out subject…</source>
-        <translation type="unfinished">Вырезание объекта…</translation>
-    </message>
-    <message>
-        <source>Done</source>
-        <translation type="unfinished">Готово</translation>
-    </message>
-    <message>
-        <source>Clip is too short to cut out</source>
-        <translation type="unfinished">Клип слишком короткий для вырезания объекта</translation>
-    </message>
-    <message>
-        <source>Could not create a cutout file</source>
-        <translation type="unfinished">Не удалось создать файл с вырезанным объектом</translation>
-    </message>
-    <message>
-        <source>Cutout cancelled</source>
-        <translation type="unfinished">Вырезание объекта отменено</translation>
-    </message>
-    <message>
-        <source>Could not decode frame %1</source>
-        <translation type="unfinished">Не удалось декодировать кадр %1</translation>
-    </message>
-    <message>
-        <source>Processing frame %1 of %2…</source>
-        <translation type="unfinished">Обработка кадра %1 из %2…</translation>
-    </message>
-    <message>
-        <source>Cutout complete — subject cut out on %1 of %2 frames</source>
-        <translation type="unfinished">Готово: объект вырезан в %1 из %2 кадров</translation>
-    </message>
-    <message>
-        <source>Cutout complete</source>
-        <translation type="unfinished">Вырезание объекта завершено</translation>
-    </message>
-    <message>
-        <source>That clip no longer exists</source>
-        <translation type="unfinished">Этого клипа больше нет</translation>
-    </message>
-    <message>
-        <source>Cutout</source>
-        <translation type="unfinished">Вырезанный объект</translation>
-    </message>
-    <message>
-        <source>Cut out subject</source>
-        <translation type="unfinished">Вырезать объект</translation>
-    </message>
-</context>
-<context>
     <name>SegmentationWindow</name>
     <message>
         <source>Cut out subject</source>
@@ -11672,6 +11455,10 @@ If playback stutters, try another.</source>
         <translation>Проверять при запуске</translation>
     </message>
     <message>
+        <source>Ask GitHub once a day whether a newer Drift has been released</source>
+        <translation>Раз в день проверять на GitHub, вышла ли новая версия Drift</translation>
+    </message>
+    <message>
         <source>Checking…</source>
         <translation>Проверка…</translation>
     </message>
@@ -11790,14 +11577,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Unlink the marketplace account from this device</source>
         <translation>Отвязать аккаунт маркетплейса от этого устройства</translation>
-    </message>
-    <message>
-        <source>Once a day, check whether a newer Drift has been released</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloading…</source>
-        <translation type="unfinished">Загрузка…</translation>
     </message>
 </context>
 <context>
@@ -12410,25 +12189,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Shortcuts reset to defaults.</source>
         <translation>Сочетания клавиш восстановлены по умолчанию.</translation>
-    </message>
-</context>
-<context>
-    <name>SpeedCurveController</name>
-    <message>
-        <source>Custom speed works on video and audio clips</source>
-        <translation type="unfinished">Настраиваемая скорость доступна для видео- и аудиоклипов</translation>
-    </message>
-    <message>
-        <source>This clip has no media to speed up or slow down</source>
-        <translation type="unfinished">В этом клипе нет медиафайла для изменения скорости</translation>
-    </message>
-    <message>
-        <source>That clip moved — open Custom speed again</source>
-        <translation type="unfinished">Клип переместился — откройте настройку скорости заново</translation>
-    </message>
-    <message>
-        <source>Custom speed applied</source>
-        <translation type="unfinished">Настраиваемая скорость применена</translation>
     </message>
 </context>
 <context>
@@ -14380,10 +14140,6 @@ If playback stutters, try another.</source>
         <translation>Добавить слой трансформации — перемещает дорожки выбранных клипов вместе</translation>
     </message>
     <message>
-        <source>Add camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Main</source>
         <translation>Основной</translation>
     </message>
@@ -14426,10 +14182,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Add adjustment layer</source>
         <translation>Добавить корректирующий слой</translation>
-    </message>
-    <message>
-        <source>Add camera — one viewpoint the whole timeline is seen through. With a camera already there, adds a new camera clip (a cut to a new framing) at the playhead</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Customize toolbar…</source>
@@ -14584,10 +14336,6 @@ If playback stutters, try another.</source>
         <translation>Видео и звуковая волна</translation>
     </message>
     <message>
-        <source>CAM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>TF</source>
         <translation>TF</translation>
     </message>
@@ -14614,10 +14362,6 @@ If playback stutters, try another.</source>
     <message>
         <source>V</source>
         <translation>V</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Transform</source>
@@ -14682,10 +14426,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Turn transform off</source>
         <translation>Выключить трансформацию</translation>
-    </message>
-    <message>
-        <source>Add camera clip at playhead</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Covers…</source>
@@ -14855,16 +14595,8 @@ If playback stutters, try another.</source>
         <translation>Положение (пкс)</translation>
     </message>
     <message>
-        <source>Position (px, linked)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Separate X and Y keyframes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Link X and Y keyframes and motion curves</source>
-        <translation type="unfinished"></translation>
+        <source>Offset (px)</source>
+        <translation>Смещение (пкс)</translation>
     </message>
     <message>
         <source>Measured inside %1&apos;s frame</source>
@@ -14905,18 +14637,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Tilt the clip and push it in depth, with 3D grips on the preview. Turning it off flattens the clip again.</source>
         <translation>Наклонить клип и сместить его в глубину с помощью 3D-манипуляторов в предпросмотре. При выключении клип снова станет плоским.</translation>
-    </message>
-    <message>
-        <source>Occlude by depth</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Let depth decide what covers this clip, instead of its track position. Only clips with this on sort against each other; everything else still draws in track order.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Needs the Normal blend mode — the others read the canvas behind the clip, which depth cannot sort.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Move</source>
@@ -14973,6 +14693,10 @@ If playback stutters, try another.</source>
     <message>
         <source>Reset position &amp; size</source>
         <translation>Сбросить положение и размер</translation>
+    </message>
+    <message>
+        <source>Reset position</source>
+        <translation>Сбросить положение</translation>
     </message>
     <message>
         <source>Fix orientation</source>
@@ -15327,26 +15051,6 @@ If playback stutters, try another.</source>
 <context>
     <name>UpdateChecker</name>
     <message>
-        <source>Drift %1 update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Preparing the update…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Installs when you close Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ready to install</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 will install when you close Drift.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Couldn’t check for updates: %1</source>
         <translation>Не удалось проверить обновления: %1</translation>
     </message>
@@ -15362,30 +15066,6 @@ If playback stutters, try another.</source>
         <source>Drift %1 is available.</source>
         <translation>Доступна версия Drift %1.</translation>
     </message>
-    <message>
-        <source>Couldn’t download the update: the cache isn’t writable.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Couldn’t download the update: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>the download was interrupted.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Couldn’t download the update: the file didn’t match the release.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Couldn’t prepare the update.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 is ready to install.</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>UpdateDialog</name>
@@ -15394,36 +15074,12 @@ If playback stutters, try another.</source>
         <translation>Доступно обновление</translation>
     </message>
     <message>
-        <source>Update ready</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 will install when you close Drift.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 is downloaded and ready to install</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Drift %1 is available</source>
         <translation>Доступна версия Drift %1</translation>
     </message>
     <message>
-        <source>A new Drift update is available</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>You have %1.</source>
         <translation>У вас версия %1.</translation>
-    </message>
-    <message>
-        <source>Install automatically when I close Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloads in the background and installs the next time you close Drift. Unchecked, you choose when to install once the download finishes.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Skip</source>
@@ -15438,40 +15094,12 @@ If playback stutters, try another.</source>
         <translation>Позже</translation>
     </message>
     <message>
-        <source>Install when I close Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Closes Drift, installs the update and opens Drift again</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloads the update in the background</source>
-        <translation type="unfinished"></translation>
+        <source>Download</source>
+        <translation>Скачать</translation>
     </message>
     <message>
         <source>Opens the release page in your browser</source>
         <translation>Открывает страницу выпуска в браузере</translation>
-    </message>
-    <message>
-        <source>Downloading Drift %1…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Preparing the update…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Restart and install</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloading…</source>
-        <translation type="unfinished">Загрузка…</translation>
     </message>
 </context>
 <context>

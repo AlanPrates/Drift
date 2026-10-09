@@ -2,33 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="pt_BR" sourcelanguage="en">
 <context>
-    <name>AboutDialog</name>
-    <message>
-        <source>About Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">Fechar</translation>
-    </message>
-    <message>
-        <source>Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Version %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open-source video editor by CutWire Studios.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Licensed under GPLv3. Copyright © CutWire Studios.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>AddonManager</name>
     <message>
         <source>Automatic (recommended)</source>
@@ -1489,6 +1462,18 @@
 <context>
     <name>AndroidPreview</name>
     <message>
+        <source>Audio only</source>
+        <translation>Somente áudio</translation>
+    </message>
+    <message>
+        <source>No clip at the current time</source>
+        <translation>Nenhum clipe no tempo atual</translation>
+    </message>
+    <message>
+        <source>GPU preview unavailable</source>
+        <translation>Pré-visualização por GPU indisponível</translation>
+    </message>
+    <message>
         <source>Full</source>
         <translation>Completo</translation>
     </message>
@@ -2179,6 +2164,10 @@
         <translation>Ferramenta de corte</translation>
     </message>
     <message>
+        <source>Faster preview takes effect after you restart Drift.</source>
+        <translation>A pré-visualização mais rápida entra em vigor após reiniciar o Drift.</translation>
+    </message>
+    <message>
         <source>System default</source>
         <translation>Padrão do sistema</translation>
     </message>
@@ -2339,16 +2328,80 @@
         <translation>Legendas geradas</translation>
     </message>
     <message>
+        <source>Select a video clip to cut out</source>
+        <translation>Selecione um clipe de vídeo para recortar o assunto</translation>
+    </message>
+    <message>
+        <source>Custom speed works on video and audio clips</source>
+        <translation>A velocidade personalizada funciona em clipes de vídeo e áudio</translation>
+    </message>
+    <message>
+        <source>This clip has no media to speed up or slow down</source>
+        <translation>Este clipe não tem mídia para acelerar ou desacelerar</translation>
+    </message>
+    <message>
+        <source>That clip moved — open Custom speed again</source>
+        <translation>Esse clipe foi movido — abra Velocidade personalizada de novo</translation>
+    </message>
+    <message>
+        <source>Custom speed applied</source>
+        <translation>Velocidade personalizada aplicada</translation>
+    </message>
+    <message>
         <source>Speed curve removed</source>
         <translation>Curva de velocidade removida</translation>
+    </message>
+    <message>
+        <source>That clip moved — open Custom fade again</source>
+        <translation>Esse clipe foi movido — abra Fade personalizado de novo</translation>
+    </message>
+    <message>
+        <source>Custom fade applied</source>
+        <translation>Fade personalizado aplicado</translation>
+    </message>
+    <message>
+        <source>Cutout is already running</source>
+        <translation>O recorte já está em andamento</translation>
+    </message>
+    <message>
+        <source>This clip has no video to cut out</source>
+        <translation>Este clipe não tem vídeo para recortar</translation>
+    </message>
+    <message>
+        <source>Click the subject first</source>
+        <translation>Clique primeiro no assunto</translation>
     </message>
     <message>
         <source>Getting ready…</source>
         <translation>Preparando…</translation>
     </message>
     <message>
+        <source>Clip is too short to cut out</source>
+        <translation>O clipe é muito curto para recortar</translation>
+    </message>
+    <message>
+        <source>Could not create a cutout file</source>
+        <translation>Não foi possível criar um arquivo de recorte</translation>
+    </message>
+    <message>
+        <source>Cutout cancelled</source>
+        <translation>Recorte cancelado</translation>
+    </message>
+    <message>
         <source>Could not decode frame %1</source>
         <translation>Não foi possível decodificar o quadro %1</translation>
+    </message>
+    <message>
+        <source>Processing frame %1 of %2…</source>
+        <translation>Processando quadro %1 de %2…</translation>
+    </message>
+    <message>
+        <source>Cutout complete — subject cut out on %1 of %2 frames</source>
+        <translation>Recorte concluído — assunto recortado em %1 de %2 quadros</translation>
+    </message>
+    <message>
+        <source>Cutout complete</source>
+        <translation>Recorte concluído</translation>
     </message>
     <message>
         <source>Clear Face Track</source>
@@ -2401,6 +2454,14 @@
     <message>
         <source>Detect Faces</source>
         <translation>Detectar rostos</translation>
+    </message>
+    <message>
+        <source>That clip no longer exists</source>
+        <translation>Esse clipe não existe mais</translation>
+    </message>
+    <message>
+        <source>Cut out subject</source>
+        <translation>Recortar assunto</translation>
     </message>
     <message>
         <source>Clip</source>
@@ -2519,6 +2580,10 @@
     <message>
         <source>Save combined multicam</source>
         <translation>Salvar multicâmera combinada</translation>
+    </message>
+    <message>
+        <source>Cutting out subject…</source>
+        <translation>Recortando assunto…</translation>
     </message>
     <message>
         <source>Select a video clip to stabilize</source>
@@ -2735,6 +2800,10 @@
         <translation>Reduzir</translation>
     </message>
     <message>
+        <source>The graphics card choice takes effect after you restart Drift.</source>
+        <translation>A escolha da placa de vídeo entra em vigor após reiniciar o Drift.</translation>
+    </message>
+    <message>
         <source>No audio track available for recording</source>
         <translation>Nenhuma faixa de áudio disponível para gravação</translation>
     </message>
@@ -2807,6 +2876,18 @@
         <translation>Curva de transição atualizada</translation>
     </message>
     <message>
+        <source>That transition is gone — open the custom curve again</source>
+        <translation>Essa transição não existe mais — abra a curva personalizada de novo</translation>
+    </message>
+    <message>
+        <source>Custom transition curve</source>
+        <translation>Curva de transição personalizada</translation>
+    </message>
+    <message>
+        <source>Custom transition curve applied</source>
+        <translation>Curva de transição personalizada aplicada</translation>
+    </message>
+    <message>
         <source>Select a video or image clip to estimate depth for</source>
         <translation>Selecione um clipe de vídeo ou imagem para estimar a profundidade</translation>
     </message>
@@ -2875,6 +2956,10 @@
         <translation>Alterar modo de estabilização</translation>
     </message>
     <message>
+        <source>Cutout</source>
+        <translation>Recorte</translation>
+    </message>
+    <message>
         <source> (denoised)</source>
         <translation> (sem ruído)</translation>
     </message>
@@ -2885,6 +2970,18 @@
     <message>
         <source>Noise removed</source>
         <translation>Ruído removido</translation>
+    </message>
+    <message>
+        <source>This project uses &quot;%1&quot;, which isn’t installed — it won’t show. Open Extras to install it.</source>
+        <translation>Este projeto usa &quot;%1&quot;, que não está instalado — ele não vai aparecer. Abra Extras para instalar.</translation>
+    </message>
+    <message>
+        <source>This project uses %1 effects or transitions that aren’t installed (%2%3) — they won’t show. Open Extras to install them.</source>
+        <translation>Este projeto usa %1 efeitos ou transições que não estão instalados (%2%3) — eles não vão aparecer. Abra Extras para instalar.</translation>
+    </message>
+    <message>
+        <source>, …</source>
+        <translation>, …</translation>
     </message>
     <message>
         <source>Shape added</source>
@@ -2959,6 +3056,34 @@
         <translation>Instale o pacote de adesivos de emoji para adicionar emojis</translation>
     </message>
     <message>
+        <source>Frame rate</source>
+        <translation>Taxa de quadros</translation>
+    </message>
+    <message>
+        <source>Project setup</source>
+        <translation>Configuração do projeto</translation>
+    </message>
+    <message>
+        <source>Project setup updated</source>
+        <translation>Configuração do projeto atualizada</translation>
+    </message>
+    <message>
+        <source>Crop canvas</source>
+        <translation>Recortar tela</translation>
+    </message>
+    <message>
+        <source>Video size cropped to %1×%2</source>
+        <translation>Tamanho do vídeo recortado para %1×%2</translation>
+    </message>
+    <message>
+        <source>Change background</source>
+        <translation>Alterar fundo</translation>
+    </message>
+    <message>
+        <source>Background updated</source>
+        <translation>Fundo atualizado</translation>
+    </message>
+    <message>
         <source>Edit clip</source>
         <translation>Editar clipe</translation>
     </message>
@@ -3001,14 +3126,6 @@
     <message>
         <source>Edit keyframe</source>
         <translation>Editar quadro-chave</translation>
-    </message>
-    <message>
-        <source>Move camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Rotate camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Edit effect</source>
@@ -3639,22 +3756,6 @@
         <translation>O clipe é plano</translation>
     </message>
     <message>
-        <source>Enable depth occlusion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Disable depth occlusion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clip is occluded by depth</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clip uses track order</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Subtitles converted to text</source>
         <translation>Legendas convertidas em texto</translation>
     </message>
@@ -3684,22 +3785,6 @@
     <message>
         <source>Transform clip added</source>
         <translation>Clipe de transformação adicionado</translation>
-    </message>
-    <message>
-        <source>Add camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add camera clip</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Camera added</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Camera clip added</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Transform together</source>
@@ -3811,14 +3896,6 @@
     <message>
         <source>Keyframe interpolates</source>
         <translation>Quadro-chave com interpolação</translation>
-    </message>
-    <message>
-        <source>Reset camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Camera reset</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Reset transform</source>
@@ -4217,6 +4294,117 @@
         </translation>
     </message>
     <message>
+        <source>Saved a copy</source>
+        <translation>Cópia salva</translation>
+    </message>
+    <message>
+        <source>Couldn’t write %1: %2</source>
+        <translation>Não foi possível gravar %1: %2</translation>
+    </message>
+    <message>
+        <source>Project JSON saved</source>
+        <translation>JSON do projeto salvo</translation>
+    </message>
+    <message>
+        <source>Still opening a project — try again in a moment.</source>
+        <translation>Ainda abrindo um projeto — tente novamente em instantes.</translation>
+    </message>
+    <message>
+        <source>Couldn’t read %1: %2</source>
+        <translation>Não foi possível ler %1: %2</translation>
+    </message>
+    <message>
+        <source>Project JSON loaded</source>
+        <translation>JSON do projeto carregado</translation>
+    </message>
+    <message>
+        <source>Failed to open Premiere Pro project</source>
+        <translation>Falha ao abrir o projeto do Premiere Pro</translation>
+    </message>
+    <message>
+        <source>Premiere Pro project imported: %1</source>
+        <translation>Projeto do Premiere Pro importado: %1</translation>
+    </message>
+    <message>
+        <source>That template location isn’t valid</source>
+        <translation>Esse local de modelo não é válido</translation>
+    </message>
+    <message>
+        <source>Failed to unpack Motion Graphics Template</source>
+        <translation>Falha ao descompactar o Motion Graphics Template</translation>
+    </message>
+    <message>
+        <source>Failed to apply template to project</source>
+        <translation>Falha ao aplicar o modelo ao projeto</translation>
+    </message>
+    <message>
+        <source>Import template: %1</source>
+        <translation>Importar modelo: %1</translation>
+    </message>
+    <message>
+        <source>Template imported: %1</source>
+        <translation>Modelo importado: %1</translation>
+    </message>
+    <message>
+        <source>Failed to open Kdenlive / MLT project</source>
+        <translation>Falha ao abrir o projeto do Kdenlive / MLT</translation>
+    </message>
+    <message>
+        <source>Kdenlive project imported: %1</source>
+        <translation>Projeto do Kdenlive importado: %1</translation>
+    </message>
+    <message>
+        <source>Failed to open DaVinci Resolve project / timeline</source>
+        <translation>Falha ao abrir o projeto / linha do tempo do DaVinci Resolve</translation>
+    </message>
+    <message>
+        <source>DaVinci Resolve project imported: %1</source>
+        <translation>Projeto do DaVinci Resolve importado: %1</translation>
+    </message>
+    <message>
+        <source>Failed to open Edit Decision List (.edl)</source>
+        <translation>Falha ao abrir Edit Decision List (.edl)</translation>
+    </message>
+    <message>
+        <source>EDL imported: %1</source>
+        <translation>EDL importada: %1</translation>
+    </message>
+    <message>
+        <source>Failed to open OpenTimelineIO (.otio) sequence</source>
+        <translation>Falha ao abrir a sequência do OpenTimelineIO (.otio)</translation>
+    </message>
+    <message>
+        <source>OpenTimelineIO imported: %1</source>
+        <translation>OpenTimelineIO importado: %1</translation>
+    </message>
+    <message>
+        <source>That folder isn’t valid</source>
+        <translation>Essa pasta não é válida</translation>
+    </message>
+    <message>
+        <source>All media is already in that folder</source>
+        <translation>Toda a mídia já está nessa pasta</translation>
+    </message>
+    <message>
+        <source>Collect media</source>
+        <translation>Coletar mídia</translation>
+    </message>
+    <message numerus="yes">
+        <source>Media collected, but %n original(s) couldn’t be deleted</source>
+        <translation>
+            <numerusform>Mídia coletada, mas %n original não pôde ser excluído</numerusform>
+            <numerusform>Mídia coletada, mas %n originais não puderam ser excluídos</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Media moved and relinked</source>
+        <translation>Mídia movida e revinculada</translation>
+    </message>
+    <message>
+        <source>Media copied and relinked</source>
+        <translation>Mídia copiada e revinculada</translation>
+    </message>
+    <message>
         <source>Exporting…</source>
         <translation>Exportando…</translation>
     </message>
@@ -4388,6 +4576,42 @@
         <translation>Esse local de salvamento não é válido</translation>
     </message>
     <message>
+        <source>Already saving</source>
+        <translation>Já está salvando</translation>
+    </message>
+    <message>
+        <source>Project saved</source>
+        <translation>Projeto salvo</translation>
+    </message>
+    <message>
+        <source>Shareable copy ready</source>
+        <translation>Cópia para compartilhar pronta</translation>
+    </message>
+    <message>
+        <source>That project location isn’t valid</source>
+        <translation>Esse local de projeto não é válido</translation>
+    </message>
+    <message>
+        <source>Project loaded</source>
+        <translation>Projeto carregado</translation>
+    </message>
+    <message>
+        <source>Unpacking project media…</source>
+        <translation>Extraindo mídia do projeto…</translation>
+    </message>
+    <message>
+        <source>No recovery file found</source>
+        <translation>Nenhum arquivo de recuperação encontrado</translation>
+    </message>
+    <message>
+        <source>Recovered unsaved work</source>
+        <translation>Trabalho não salvo recuperado</translation>
+    </message>
+    <message>
+        <source>Started new session</source>
+        <translation>Nova sessão iniciada</translation>
+    </message>
+    <message>
         <source>Export already in progress</source>
         <translation>Exportação já em andamento</translation>
     </message>
@@ -4448,14 +4672,6 @@
     <message>
         <source>Clip orientation set to %1°</source>
         <translation>Orientação do clipe definida para %1°</translation>
-    </message>
-    <message>
-        <source>Crop canvas</source>
-        <translation>Recortar tela</translation>
-    </message>
-    <message>
-        <source>Video size cropped to %1×%2</source>
-        <translation>Tamanho do vídeo recortado para %1×%2</translation>
     </message>
 </context>
 <context>
@@ -4905,14 +5121,6 @@
         <translation>Explorar efeitos de áudio</translation>
     </message>
     <message>
-        <source>Move to a time, set a value, then click the diamond to add a keyframe. With Auto keyframes on, dragging a slider also creates them.</source>
-        <translation type="unfinished">Vá até um tempo, defina um valor e clique no losango para adicionar um quadro-chave. Com Quadros-chave automáticos ativados, arrastar um controle deslizante também os cria.</translation>
-    </message>
-    <message>
-        <source>Auto keyframes</source>
-        <translation type="unfinished">Quadros-chave automáticos</translation>
-    </message>
-    <message>
         <source>%1 (not installed)</source>
         <translation>%1 (não instalado)</translation>
     </message>
@@ -4939,6 +5147,18 @@
     <message>
         <source>Remove audio effect</source>
         <translation>Remover efeito de áudio</translation>
+    </message>
+    <message>
+        <source>On</source>
+        <translation>Ativado</translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation>Desativado</translation>
+    </message>
+    <message>
+        <source>Edit audio effect</source>
+        <translation>Editar efeito de áudio</translation>
     </message>
 </context>
 <context>
@@ -5265,57 +5485,6 @@
     </message>
 </context>
 <context>
-    <name>CameraInspector</name>
-    <message>
-        <source>Pan X</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pan Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Dolly</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pitch</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Yaw</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Roll</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Lens</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select a camera clip to frame the shot.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Everything on the timeline is seen through this camera while the clip lasts. A camera at rest looks exactly like no camera at all, so the numbers below are all offsets from the normal view.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>A short lens exaggerates depth; a long one flattens it. While this camera is running it replaces each clip&apos;s own Perspective value, because a scene has one viewer.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reset camera position</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Back to rest: no pan, dolly or turn, framing the canvas head on. The lens is kept.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ChannelKeyButton</name>
     <message>
         <source>Remove %1 keyframe at the playhead</source>
@@ -5431,29 +5600,6 @@
     <message>
         <source>Apply</source>
         <translation>Aplicar</translation>
-    </message>
-</context>
-<context>
-    <name>CurveEditorController</name>
-    <message>
-        <source>That transition is gone — open the custom curve again</source>
-        <translation type="unfinished">Essa transição não existe mais — abra a curva personalizada de novo</translation>
-    </message>
-    <message>
-        <source>Custom transition curve</source>
-        <translation type="unfinished">Curva de transição personalizada</translation>
-    </message>
-    <message>
-        <source>Custom transition curve applied</source>
-        <translation type="unfinished">Curva de transição personalizada aplicada</translation>
-    </message>
-    <message>
-        <source>That clip moved — open Custom fade again</source>
-        <translation type="unfinished">Esse clipe foi movido — abra Fade personalizado de novo</translation>
-    </message>
-    <message>
-        <source>Custom fade applied</source>
-        <translation type="unfinished">Fade personalizado aplicado</translation>
     </message>
 </context>
 <context>
@@ -7729,14 +7875,6 @@
         <translation>Quadros-chave</translation>
     </message>
     <message>
-        <source>Collapse curve editor to compact view (88px)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Expand curve editor to view and edit Bezier handles (180px)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Analyzing…</source>
         <translation>Analisando…</translation>
     </message>
@@ -7778,10 +7916,6 @@
             <numerusform>%n quadro-chave</numerusform>
             <numerusform>%n quadros-chave</numerusform>
         </translation>
-    </message>
-    <message>
-        <source>Expand for handles</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source> BPM</source>
@@ -8080,6 +8214,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Preferences…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>&amp;Playback</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8180,20 +8318,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>About Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Settings…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Debug Info…</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 is the latest version.</source>
-        <translation type="unfinished">O Drift %1 é a versão mais recente.</translation>
     </message>
     <message>
         <source>Still opening a project — try again in a moment.</source>
@@ -8206,14 +8332,6 @@
     <message>
         <source>Project closed</source>
         <translation>Projeto fechado</translation>
-    </message>
-    <message>
-        <source>Already checking for updates…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Checking for updates…</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Export finished.</source>
@@ -9194,8 +9312,32 @@
         <translation>Deslocamento inicial</translation>
     </message>
     <message>
-        <source>Position, size, rotation and depth occlusion are on the Transform tab.</source>
-        <translation type="unfinished"></translation>
+        <source>Pose</source>
+        <translation>Pose</translation>
+    </message>
+    <message>
+        <source>Rotations follow the model&apos;s own axes: X tilts, Y then spins about the tilted up axis, Z rolls after both.</source>
+        <translation>As rotações seguem os eixos do próprio modelo: X inclina, Y gira em torno do eixo superior inclinado e Z rola após ambos.</translation>
+    </message>
+    <message>
+        <source>Size</source>
+        <translation>Tamanho</translation>
+    </message>
+    <message>
+        <source>Depth</source>
+        <translation>Profundidade</translation>
+    </message>
+    <message>
+        <source>Rotation X</source>
+        <translation>Rotação X</translation>
+    </message>
+    <message>
+        <source>Rotation Y</source>
+        <translation>Rotação Y</translation>
+    </message>
+    <message>
+        <source>Rotation Z</source>
+        <translation>Rotação Z</translation>
     </message>
     <message>
         <source>Lighting</source>
@@ -9236,6 +9378,26 @@
 </context>
 <context>
     <name>Model3dSource</name>
+    <message>
+        <source>Size</source>
+        <translation>Tamanho</translation>
+    </message>
+    <message>
+        <source>Depth</source>
+        <translation>Profundidade</translation>
+    </message>
+    <message>
+        <source>Rotation X</source>
+        <translation>Rotação X</translation>
+    </message>
+    <message>
+        <source>Rotation Y</source>
+        <translation>Rotação Y</translation>
+    </message>
+    <message>
+        <source>Rotation Z</source>
+        <translation>Rotação Z</translation>
+    </message>
     <message>
         <source>Light direction</source>
         <translation>Direção da luz</translation>
@@ -9384,10 +9546,6 @@
     <message>
         <source>Transform</source>
         <translation>Transformação</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>New track</source>
@@ -9686,127 +9844,125 @@
     </message>
 </context>
 <context>
-    <name>PreferencesController</name>
+    <name>PreviewPanel</name>
     <message>
-        <source>Faster preview takes effect after you restart Drift.</source>
-        <translation>A pré-visualização mais rápida entra em vigor após reiniciar o Drift.</translation>
+        <source>REC %1s</source>
+        <translation>REC %1s</translation>
     </message>
     <message>
-        <source>The graphics card choice takes effect after you restart Drift.</source>
-        <translation>A escolha da placa de vídeo entra em vigor após reiniciar o Drift.</translation>
+        <source>PAUSED %1s</source>
+        <translation>PAUSED %1s</translation>
     </message>
     <message>
-        <source>System default</source>
-        <translation>Padrão do sistema</translation>
+        <source>Nothing to preview yet</source>
+        <translation>Nada para pré-visualizar ainda</translation>
+    </message>
+    <message>
+        <source>Import media and drag it onto the timeline below to see it here.</source>
+        <translation>Importe mídia e arraste-a para a linha do tempo abaixo para vê-la aqui.</translation>
+    </message>
+    <message>
+        <source>GPU preview unavailable</source>
+        <translation>Pré-visualização por GPU não disponível</translation>
+    </message>
+    <message>
+        <source>Your graphics driver only provides %1. Drift&apos;s preview needs OpenGL 3.3.</source>
+        <translation>Seu driver de vídeo fornece apenas %1. A pré-visualização do Drift precisa de OpenGL 3.3.</translation>
+    </message>
+    <message>
+        <source>Drift could not start its GPU renderer, so the preview cannot draw.</source>
+        <translation>O Drift não conseguiu iniciar seu renderizador por GPU, então a pré-visualização não pode ser desenhada.</translation>
+    </message>
+    <message>
+        <source>Debug info</source>
+        <translation>Informações de depuração</translation>
+    </message>
+    <message>
+        <source>Audio only</source>
+        <translation>Somente áudio</translation>
+    </message>
+    <message>
+        <source>No clip at the current time</source>
+        <translation>Nenhum clipe no tempo atual</translation>
+    </message>
+    <message>
+        <source>Seek</source>
+        <translation>Buscar</translation>
     </message>
 </context>
 <context>
-    <name>Preview3DTools</name>
+    <name>PreviewToolbar</name>
     <message>
         <source>%1 (%2)</source>
-        <translation type="unfinished">%1 (%2)</translation>
+        <translation>%1 (%2)</translation>
     </message>
     <message>
-        <source>Move</source>
-        <translation type="unfinished">Mover</translation>
+        <source>Current time / total · %1 frames per second</source>
+        <translation>Tempo atual / total · %1 quadros por segundo</translation>
     </message>
     <message>
-        <source>Rotate</source>
-        <translation type="unfinished">Girar</translation>
+        <source>Jump back 1s · Shift for 5s · Ctrl for 10s</source>
+        <translation>Voltar 1s · Shift para 5s · Ctrl para 10s</translation>
     </message>
     <message>
-        <source>Scale</source>
-        <translation type="unfinished">Escala</translation>
+        <source>Previous frame</source>
+        <translation>Quadro anterior</translation>
     </message>
     <message>
-        <source>Gizmo follows the selection&apos;s own axes (click for world axes)</source>
-        <translation type="unfinished"></translation>
+        <source>Pause</source>
+        <translation>Pausar</translation>
     </message>
     <message>
-        <source>Gizmo follows the world axes (click for the selection&apos;s own)</source>
-        <translation type="unfinished"></translation>
+        <source>Play</source>
+        <translation>Reproduzir</translation>
     </message>
     <message>
-        <source>Look through the camera</source>
-        <translation type="unfinished"></translation>
+        <source>Next frame</source>
+        <translation>Próximo quadro</translation>
     </message>
     <message>
-        <source>Numpad 0</source>
-        <translation type="unfinished"></translation>
+        <source>Loop work area on — click to turn off</source>
+        <translation>Loop da área de trabalho ativado — clique para desativar</translation>
     </message>
     <message>
-        <source>Reset the scene camera&apos;s position</source>
-        <translation type="unfinished"></translation>
+        <source>Loop work area off — click to turn on</source>
+        <translation>Loop da área de trabalho desativado — clique para ativar</translation>
     </message>
     <message>
-        <source>Frame the selection</source>
-        <translation type="unfinished"></translation>
+        <source>Jump forward 1s · Shift for 5s · Ctrl for 10s</source>
+        <translation>Avançar 1s · Shift para 5s · Ctrl para 10s</translation>
     </message>
     <message>
-        <source>Reset the view</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PreviewModeSwitch</name>
-    <message>
-        <source>Camera Output</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The camera&apos;s picture, as it exports. Clips move and snap on the canvas.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>3D Scene</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The scene from a free viewpoint, with the camera in it. Middle- or right-drag orbits, Shift pans, the wheel zooms.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PreviewOptionsMenu</name>
-    <message>
-        <source>Quality</source>
-        <translation type="unfinished">Qualidade</translation>
+        <source>Preview zoom — Ctrl+scroll over the preview to zoom, middle-drag to pan. Click to reset to 100%.</source>
+        <translation>Zoom da pré-visualização — Ctrl+rolagem sobre a pré-visualização para dar zoom, arraste com o botão do meio para deslocar. Clique para redefinir para 100%.</translation>
     </message>
     <message>
         <source>Full</source>
-        <translation type="unfinished">Completo</translation>
+        <translation>Total</translation>
     </message>
     <message>
         <source>Half</source>
-        <translation type="unfinished">Metade</translation>
+        <translation>Metade</translation>
     </message>
     <message>
         <source>Quarter</source>
-        <translation type="unfinished">Um quarto</translation>
+        <translation>Um quarto</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished">Automático</translation>
+        <translation>Automático</translation>
     </message>
     <message>
         <source>Preview quality — lower is smoother while editing.
 Full, Half and Quarter are fixed fractions of the project resolution: Full composites exactly what an export would.
 Auto renders only as many pixels as the preview actually shows, and lowers that further while playback cannot keep up.</source>
-        <translation type="unfinished">Qualidade da pré-visualização — mais baixa fica mais fluida durante a edição.
+        <translation>Qualidade da pré-visualização — mais baixa fica mais fluida durante a edição.
 Total, Metade e Um quarto são frações fixas da resolução do projeto: Total compõe exatamente o que uma exportação faria.
 Automático renderiza só os pixels que a pré-visualização realmente mostra, e reduz ainda mais enquanto a reprodução não consegue acompanhar.</translation>
     </message>
     <message>
-        <source>Speed</source>
-        <translation type="unfinished">Velocidade</translation>
-    </message>
-    <message>
         <source>Playback speed</source>
-        <translation type="unfinished">Velocidade de reprodução</translation>
-    </message>
-    <message>
-        <source>Decode</source>
-        <translation type="unfinished">Decodificação</translation>
+        <translation>Velocidade de reprodução</translation>
     </message>
     <message>
         <source>How video is decoded for preview.
@@ -9814,39 +9970,51 @@ Auto picks per clip: hardware for high-quality 4K, software otherwise.
 Software is smoother for most clips. It uses more CPU.
 Hardware is better for high-quality 4K, and forces one GPU decoder.
 If playback stutters, try another.</source>
-        <translation type="unfinished">Como o vídeo é decodificado para a pré-visualização.
+        <translation>Como o vídeo é decodificado para a pré-visualização.
 Automático escolhe por clipe: hardware para 4K de alta qualidade, software nos demais casos.
 Software é mais fluido para a maioria dos clipes. Usa mais CPU.
 Hardware é melhor para 4K de alta qualidade e força um único decodificador de GPU.
 Se a reprodução travar, experimente outro.</translation>
     </message>
     <message>
-        <source>Keep mask handles up</source>
-        <translation type="unfinished"></translation>
+        <source>Toggle guides</source>
+        <translation>Alternar guias</translation>
+    </message>
+    <message>
+        <source>Guide sets</source>
+        <translation>Conjuntos de guias</translation>
     </message>
     <message>
         <source>Keep mask handles on the preview while another clip is selected</source>
-        <translation type="unfinished">Manter as alças da máscara na pré-visualização enquanto outro clipe estiver selecionado</translation>
+        <translation>Manter as alças da máscara na pré-visualização enquanto outro clipe estiver selecionado</translation>
+    </message>
+    <message>
+        <source>Exit fullscreen preview (Esc)</source>
+        <translation>Sair da pré-visualização em tela cheia (Esc)</translation>
+    </message>
+    <message>
+        <source>Fullscreen preview</source>
+        <translation>Pré-visualização em tela cheia</translation>
     </message>
     <message>
         <source>Decoding on a different graphics card</source>
-        <translation type="unfinished">Decodificando em uma placa de vídeo diferente</translation>
+        <translation>Decodificando em uma placa de vídeo diferente</translation>
     </message>
     <message>
         <source>Use anyway</source>
-        <translation type="unfinished">Usar mesmo assim</translation>
+        <translation>Usar mesmo assim</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">Cancelar</translation>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <source>Launching Drift with prime-run (or DRI_PRIME=1) puts OpenGL on the same card as the decoder.</source>
-        <translation type="unfinished">Iniciar o Drift com prime-run (ou DRI_PRIME=1) coloca o OpenGL na mesma placa que o decodificador.</translation>
+        <translation>Iniciar o Drift com prime-run (ou DRI_PRIME=1) coloca o OpenGL na mesma placa que o decodificador.</translation>
     </message>
     <message>
         <source>Run Drift on the high-performance graphics card</source>
-        <translation type="unfinished">Executar o Drift na placa de vídeo de alto desempenho</translation>
+        <translation>Executar o Drift na placa de vídeo de alto desempenho</translation>
     </message>
     <message>
         <source>Set Drift to High performance in Windows Settings &gt; Display &gt; Graphics, then restart Drift.</source>
@@ -9855,126 +10023,6 @@ Se a reprodução travar, experimente outro.</translation>
     <message>
         <source>Open graphics settings</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PreviewOsd</name>
-    <message>
-        <source>Preview zoom — Ctrl+scroll over the preview to zoom, middle-drag to pan. Click to reset to 100%.</source>
-        <translation type="unfinished">Zoom da pré-visualização — Ctrl+rolagem sobre a pré-visualização para dar zoom, arraste com o botão do meio para deslocar. Clique para redefinir para 100%.</translation>
-    </message>
-    <message>
-        <source>Toggle guides</source>
-        <translation type="unfinished">Alternar guias</translation>
-    </message>
-    <message>
-        <source>Guide sets</source>
-        <translation type="unfinished">Conjuntos de guias</translation>
-    </message>
-    <message>
-        <source>Preview options</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PreviewPanel</name>
-    <message>
-        <source>Seek</source>
-        <translation>Buscar</translation>
-    </message>
-</context>
-<context>
-    <name>PreviewStatusLayer</name>
-    <message>
-        <source>PAUSED %1s</source>
-        <translation type="unfinished">PAUSED %1s</translation>
-    </message>
-    <message>
-        <source>REC %1s</source>
-        <translation type="unfinished">REC %1s</translation>
-    </message>
-    <message>
-        <source>Nothing to preview yet</source>
-        <translation type="unfinished">Nada para pré-visualizar ainda</translation>
-    </message>
-    <message>
-        <source>Import media and drag it onto the timeline below to see it here.</source>
-        <translation type="unfinished">Importe mídia e arraste-a para a linha do tempo abaixo para vê-la aqui.</translation>
-    </message>
-    <message>
-        <source>GPU preview unavailable</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Your graphics driver only provides %1. Drift&apos;s preview needs OpenGL 3.3.</source>
-        <translation type="unfinished">Seu driver de vídeo fornece apenas %1. A pré-visualização do Drift precisa de OpenGL 3.3.</translation>
-    </message>
-    <message>
-        <source>Drift could not start its GPU renderer, so the preview cannot draw.</source>
-        <translation type="unfinished">O Drift não conseguiu iniciar seu renderizador por GPU, então a pré-visualização não pode ser desenhada.</translation>
-    </message>
-    <message>
-        <source>Debug info</source>
-        <translation type="unfinished">Informações de depuração</translation>
-    </message>
-    <message>
-        <source>Audio only</source>
-        <translation type="unfinished">Somente áudio</translation>
-    </message>
-    <message>
-        <source>No clip at the current time</source>
-        <translation type="unfinished">Nenhum clipe no tempo atual</translation>
-    </message>
-</context>
-<context>
-    <name>PreviewTransportBar</name>
-    <message>
-        <source>%1 (%2)</source>
-        <translation type="unfinished">%1 (%2)</translation>
-    </message>
-    <message>
-        <source>Current time / total · %1 frames per second</source>
-        <translation type="unfinished">Tempo atual / total · %1 quadros por segundo</translation>
-    </message>
-    <message>
-        <source>Jump back 1s · Shift for 5s · Ctrl for 10s</source>
-        <translation type="unfinished">Voltar 1s · Shift para 5s · Ctrl para 10s</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation type="unfinished">Quadro anterior</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation type="unfinished">Pausar</translation>
-    </message>
-    <message>
-        <source>Play</source>
-        <translation type="unfinished">Reproduzir</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation type="unfinished">Próximo quadro</translation>
-    </message>
-    <message>
-        <source>Loop work area on — click to turn off</source>
-        <translation type="unfinished">Loop da área de trabalho ativado — clique para desativar</translation>
-    </message>
-    <message>
-        <source>Loop work area off — click to turn on</source>
-        <translation type="unfinished">Loop da área de trabalho desativado — clique para ativar</translation>
-    </message>
-    <message>
-        <source>Jump forward 1s · Shift for 5s · Ctrl for 10s</source>
-        <translation type="unfinished">Avançar 1s · Shift para 5s · Ctrl para 10s</translation>
-    </message>
-    <message>
-        <source>Exit fullscreen preview (Esc)</source>
-        <translation type="unfinished">Sair da pré-visualização em tela cheia (Esc)</translation>
-    </message>
-    <message>
-        <source>Fullscreen preview</source>
-        <translation type="unfinished">Pré-visualização em tela cheia</translation>
     </message>
 </context>
 <context>
@@ -10120,196 +10168,6 @@ Se a reprodução travar, experimente outro.</translation>
     </message>
 </context>
 <context>
-    <name>ProjectFileController</name>
-    <message>
-        <source>New project</source>
-        <translation>Novo projeto</translation>
-    </message>
-    <message>
-        <source>This project uses &quot;%1&quot;, which isn’t installed — it won’t show. Open Extras to install it.</source>
-        <translation>Este projeto usa &quot;%1&quot;, que não está instalado — ele não vai aparecer. Abra Extras para instalar.</translation>
-    </message>
-    <message>
-        <source>This project uses %1 effects or transitions that aren’t installed (%2%3) — they won’t show. Open Extras to install them.</source>
-        <translation>Este projeto usa %1 efeitos ou transições que não estão instalados (%2%3) — eles não vão aparecer. Abra Extras para instalar.</translation>
-    </message>
-    <message>
-        <source>, …</source>
-        <translation>, …</translation>
-    </message>
-    <message>
-        <source>Frame rate</source>
-        <translation>Taxa de quadros</translation>
-    </message>
-    <message>
-        <source>Project setup</source>
-        <translation>Configuração do projeto</translation>
-    </message>
-    <message>
-        <source>Project setup updated</source>
-        <translation>Configuração do projeto atualizada</translation>
-    </message>
-    <message>
-        <source>Change background</source>
-        <translation>Alterar fundo</translation>
-    </message>
-    <message>
-        <source>Background updated</source>
-        <translation>Fundo atualizado</translation>
-    </message>
-    <message>
-        <source>Saved a copy</source>
-        <translation>Cópia salva</translation>
-    </message>
-    <message>
-        <source>Couldn’t write %1: %2</source>
-        <translation>Não foi possível gravar %1: %2</translation>
-    </message>
-    <message>
-        <source>Project JSON saved</source>
-        <translation>JSON do projeto salvo</translation>
-    </message>
-    <message>
-        <source>Still opening a project — try again in a moment.</source>
-        <translation>Ainda abrindo um projeto — tente novamente em instantes.</translation>
-    </message>
-    <message>
-        <source>Couldn’t read %1: %2</source>
-        <translation>Não foi possível ler %1: %2</translation>
-    </message>
-    <message>
-        <source>Project JSON loaded</source>
-        <translation>JSON do projeto carregado</translation>
-    </message>
-    <message>
-        <source>Failed to open Premiere Pro project</source>
-        <translation>Falha ao abrir o projeto do Premiere Pro</translation>
-    </message>
-    <message>
-        <source>Premiere Pro project imported: %1</source>
-        <translation>Projeto do Premiere Pro importado: %1</translation>
-    </message>
-    <message>
-        <source>That template location isn’t valid</source>
-        <translation>Esse local de modelo não é válido</translation>
-    </message>
-    <message>
-        <source>Failed to unpack Motion Graphics Template</source>
-        <translation>Falha ao descompactar o Motion Graphics Template</translation>
-    </message>
-    <message>
-        <source>Failed to apply template to project</source>
-        <translation>Falha ao aplicar o modelo ao projeto</translation>
-    </message>
-    <message>
-        <source>Import template: %1</source>
-        <translation>Importar modelo: %1</translation>
-    </message>
-    <message>
-        <source>Template imported: %1</source>
-        <translation>Modelo importado: %1</translation>
-    </message>
-    <message>
-        <source>Failed to open Kdenlive / MLT project</source>
-        <translation>Falha ao abrir o projeto do Kdenlive / MLT</translation>
-    </message>
-    <message>
-        <source>Kdenlive project imported: %1</source>
-        <translation>Projeto do Kdenlive importado: %1</translation>
-    </message>
-    <message>
-        <source>Failed to open DaVinci Resolve project / timeline</source>
-        <translation>Falha ao abrir o projeto / linha do tempo do DaVinci Resolve</translation>
-    </message>
-    <message>
-        <source>DaVinci Resolve project imported: %1</source>
-        <translation>Projeto do DaVinci Resolve importado: %1</translation>
-    </message>
-    <message>
-        <source>Failed to open Edit Decision List (.edl)</source>
-        <translation>Falha ao abrir Edit Decision List (.edl)</translation>
-    </message>
-    <message>
-        <source>EDL imported: %1</source>
-        <translation>EDL importada: %1</translation>
-    </message>
-    <message>
-        <source>Failed to open OpenTimelineIO (.otio) sequence</source>
-        <translation>Falha ao abrir a sequência do OpenTimelineIO (.otio)</translation>
-    </message>
-    <message>
-        <source>OpenTimelineIO imported: %1</source>
-        <translation>OpenTimelineIO importado: %1</translation>
-    </message>
-    <message>
-        <source>That folder isn’t valid</source>
-        <translation>Essa pasta não é válida</translation>
-    </message>
-    <message>
-        <source>All media is already in that folder</source>
-        <translation>Toda a mídia já está nessa pasta</translation>
-    </message>
-    <message>
-        <source>Collect media</source>
-        <translation>Coletar mídia</translation>
-    </message>
-    <message numerus="yes">
-        <source>Media collected, but %n original(s) couldn’t be deleted</source>
-        <translation>
-            <numerusform>Mídia coletada, mas %n original não pôde ser excluído</numerusform>
-            <numerusform>Mídia coletada, mas %n originais não puderam ser excluídos</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Media moved and relinked</source>
-        <translation>Mídia movida e revinculada</translation>
-    </message>
-    <message>
-        <source>Media copied and relinked</source>
-        <translation>Mídia copiada e revinculada</translation>
-    </message>
-    <message>
-        <source>That save location isn’t valid</source>
-        <translation>Esse local de salvamento não é válido</translation>
-    </message>
-    <message>
-        <source>Already saving</source>
-        <translation>Já está salvando</translation>
-    </message>
-    <message>
-        <source>Project saved</source>
-        <translation>Projeto salvo</translation>
-    </message>
-    <message>
-        <source>Shareable copy ready</source>
-        <translation>Cópia para compartilhar pronta</translation>
-    </message>
-    <message>
-        <source>That project location isn’t valid</source>
-        <translation>Esse local de projeto não é válido</translation>
-    </message>
-    <message>
-        <source>Project loaded</source>
-        <translation>Projeto carregado</translation>
-    </message>
-    <message>
-        <source>Unpacking project media…</source>
-        <translation>Extraindo mídia do projeto…</translation>
-    </message>
-    <message>
-        <source>No recovery file found</source>
-        <translation>Nenhum arquivo de recuperação encontrado</translation>
-    </message>
-    <message>
-        <source>Recovered unsaved work</source>
-        <translation>Trabalho não salvo recuperado</translation>
-    </message>
-    <message>
-        <source>Started new session</source>
-        <translation>Nova sessão iniciada</translation>
-    </message>
-</context>
-<context>
     <name>ProjectPropertiesDialog</name>
     <message>
         <source>Project properties</source>
@@ -10436,10 +10294,6 @@ Se a reprodução travar, experimente outro.</translation>
     <message>
         <source>Transform</source>
         <translation>Transformação</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Stabilization</source>
@@ -11260,77 +11114,6 @@ Se a reprodução travar, experimente outro.</translation>
     </message>
 </context>
 <context>
-    <name>SegmentationController</name>
-    <message>
-        <source>Select a video clip to cut out</source>
-        <translation type="unfinished">Selecione um clipe de vídeo para recortar o assunto</translation>
-    </message>
-    <message>
-        <source>Cutout is already running</source>
-        <translation type="unfinished">O recorte já está em andamento</translation>
-    </message>
-    <message>
-        <source>This clip has no video to cut out</source>
-        <translation type="unfinished">Este clipe não tem vídeo para recortar</translation>
-    </message>
-    <message>
-        <source>Click the subject first</source>
-        <translation type="unfinished">Clique primeiro no assunto</translation>
-    </message>
-    <message>
-        <source>Getting ready…</source>
-        <translation type="unfinished">Preparando…</translation>
-    </message>
-    <message>
-        <source>Cutting out subject…</source>
-        <translation type="unfinished">Recortando assunto…</translation>
-    </message>
-    <message>
-        <source>Done</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clip is too short to cut out</source>
-        <translation type="unfinished">O clipe é muito curto para recortar</translation>
-    </message>
-    <message>
-        <source>Could not create a cutout file</source>
-        <translation type="unfinished">Não foi possível criar um arquivo de recorte</translation>
-    </message>
-    <message>
-        <source>Cutout cancelled</source>
-        <translation type="unfinished">Recorte cancelado</translation>
-    </message>
-    <message>
-        <source>Could not decode frame %1</source>
-        <translation type="unfinished">Não foi possível decodificar o quadro %1</translation>
-    </message>
-    <message>
-        <source>Processing frame %1 of %2…</source>
-        <translation type="unfinished">Processando quadro %1 de %2…</translation>
-    </message>
-    <message>
-        <source>Cutout complete — subject cut out on %1 of %2 frames</source>
-        <translation type="unfinished">Recorte concluído — assunto recortado em %1 de %2 quadros</translation>
-    </message>
-    <message>
-        <source>Cutout complete</source>
-        <translation type="unfinished">Recorte concluído</translation>
-    </message>
-    <message>
-        <source>That clip no longer exists</source>
-        <translation type="unfinished">Esse clipe não existe mais</translation>
-    </message>
-    <message>
-        <source>Cutout</source>
-        <translation type="unfinished">Recorte</translation>
-    </message>
-    <message>
-        <source>Cut out subject</source>
-        <translation type="unfinished">Recorte automático</translation>
-    </message>
-</context>
-<context>
     <name>SegmentationWindow</name>
     <message>
         <source>Cut out subject</source>
@@ -11627,6 +11410,10 @@ Se a reprodução travar, experimente outro.</translation>
         <translation>Verificar ao iniciar</translation>
     </message>
     <message>
+        <source>Ask GitHub once a day whether a newer Drift has been released</source>
+        <translation>Perguntar ao GitHub uma vez por dia se saiu uma versão mais nova do Drift</translation>
+    </message>
+    <message>
         <source>Checking…</source>
         <translation>Verificando…</translation>
     </message>
@@ -11745,14 +11532,6 @@ Se a reprodução travar, experimente outro.</translation>
     <message>
         <source>Unlink the marketplace account from this device</source>
         <translation>Desvincular a conta do marketplace deste dispositivo</translation>
-    </message>
-    <message>
-        <source>Once a day, check whether a newer Drift has been released</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloading…</source>
-        <translation type="unfinished">Baixando…</translation>
     </message>
 </context>
 <context>
@@ -12365,25 +12144,6 @@ Se a reprodução travar, experimente outro.</translation>
     <message>
         <source>Shortcuts reset to defaults.</source>
         <translation>Atalhos restaurados para os padrões.</translation>
-    </message>
-</context>
-<context>
-    <name>SpeedCurveController</name>
-    <message>
-        <source>Custom speed works on video and audio clips</source>
-        <translation type="unfinished">A velocidade personalizada funciona em clipes de vídeo e áudio</translation>
-    </message>
-    <message>
-        <source>This clip has no media to speed up or slow down</source>
-        <translation type="unfinished">Este clipe não tem mídia para acelerar ou desacelerar</translation>
-    </message>
-    <message>
-        <source>That clip moved — open Custom speed again</source>
-        <translation type="unfinished">Esse clipe foi movido — abra Velocidade personalizada de novo</translation>
-    </message>
-    <message>
-        <source>Custom speed applied</source>
-        <translation type="unfinished">Velocidade personalizada aplicada</translation>
     </message>
 </context>
 <context>
@@ -14332,10 +14092,6 @@ Se a reprodução travar, experimente outro.</translation>
         <translation>Adicionar camada de transformação — move as faixas dos clipes selecionados como uma só</translation>
     </message>
     <message>
-        <source>Add camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Main</source>
         <translation>Principal</translation>
     </message>
@@ -14378,10 +14134,6 @@ Se a reprodução travar, experimente outro.</translation>
     <message>
         <source>Add adjustment layer</source>
         <translation>Adicionar camada de ajuste</translation>
-    </message>
-    <message>
-        <source>Add camera — one viewpoint the whole timeline is seen through. With a camera already there, adds a new camera clip (a cut to a new framing) at the playhead</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Customize toolbar…</source>
@@ -14535,10 +14287,6 @@ Se a reprodução travar, experimente outro.</translation>
         <translation>Vídeo + forma de onda</translation>
     </message>
     <message>
-        <source>CAM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>TF</source>
         <translation>TF</translation>
     </message>
@@ -14565,10 +14313,6 @@ Se a reprodução travar, experimente outro.</translation>
     <message>
         <source>V</source>
         <translation>V</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Transform</source>
@@ -14633,10 +14377,6 @@ Se a reprodução travar, experimente outro.</translation>
     <message>
         <source>Turn transform off</source>
         <translation>Desativar transformação</translation>
-    </message>
-    <message>
-        <source>Add camera clip at playhead</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Covers…</source>
@@ -14806,16 +14546,8 @@ Se a reprodução travar, experimente outro.</translation>
         <translation>Posição (px)</translation>
     </message>
     <message>
-        <source>Position (px, linked)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Separate X and Y keyframes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Link X and Y keyframes and motion curves</source>
-        <translation type="unfinished"></translation>
+        <source>Offset (px)</source>
+        <translation>Deslocamento (px)</translation>
     </message>
     <message>
         <source>Measured inside %1&apos;s frame</source>
@@ -14856,18 +14588,6 @@ Se a reprodução travar, experimente outro.</translation>
     <message>
         <source>Tilt the clip and push it in depth, with 3D grips on the preview. Turning it off flattens the clip again.</source>
         <translation>Incline o clipe e empurre-o em profundidade, com alças 3D na pré-visualização. Desativar deixa o clipe plano novamente.</translation>
-    </message>
-    <message>
-        <source>Occlude by depth</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Let depth decide what covers this clip, instead of its track position. Only clips with this on sort against each other; everything else still draws in track order.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Needs the Normal blend mode — the others read the canvas behind the clip, which depth cannot sort.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Move</source>
@@ -14924,6 +14644,10 @@ Se a reprodução travar, experimente outro.</translation>
     <message>
         <source>Reset position &amp; size</source>
         <translation>Redefinir posição &amp; tamanho</translation>
+    </message>
+    <message>
+        <source>Reset position</source>
+        <translation>Redefinir posição</translation>
     </message>
     <message>
         <source>Fix orientation</source>
@@ -15274,26 +14998,6 @@ Se a reprodução travar, experimente outro.</translation>
 <context>
     <name>UpdateChecker</name>
     <message>
-        <source>Drift %1 update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Preparing the update…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Installs when you close Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ready to install</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 will install when you close Drift.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Couldn’t check for updates: %1</source>
         <translation>Não foi possível verificar atualizações: %1</translation>
     </message>
@@ -15309,30 +15013,6 @@ Se a reprodução travar, experimente outro.</translation>
         <source>Drift %1 is available.</source>
         <translation>O Drift %1 está disponível.</translation>
     </message>
-    <message>
-        <source>Couldn’t download the update: the cache isn’t writable.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Couldn’t download the update: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>the download was interrupted.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Couldn’t download the update: the file didn’t match the release.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Couldn’t prepare the update.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 is ready to install.</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>UpdateDialog</name>
@@ -15341,36 +15021,12 @@ Se a reprodução travar, experimente outro.</translation>
         <translation>Atualização disponível</translation>
     </message>
     <message>
-        <source>Update ready</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 will install when you close Drift.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 is downloaded and ready to install</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Drift %1 is available</source>
         <translation>O Drift %1 está disponível</translation>
     </message>
     <message>
-        <source>A new Drift update is available</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>You have %1.</source>
         <translation>Você tem a versão %1.</translation>
-    </message>
-    <message>
-        <source>Install automatically when I close Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloads in the background and installs the next time you close Drift. Unchecked, you choose when to install once the download finishes.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Skip</source>
@@ -15385,40 +15041,12 @@ Se a reprodução travar, experimente outro.</translation>
         <translation>Mais tarde</translation>
     </message>
     <message>
-        <source>Install when I close Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update</source>
-        <translation type="unfinished">Atualizar</translation>
-    </message>
-    <message>
-        <source>Closes Drift, installs the update and opens Drift again</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloads the update in the background</source>
-        <translation type="unfinished"></translation>
+        <source>Download</source>
+        <translation>Baixar</translation>
     </message>
     <message>
         <source>Opens the release page in your browser</source>
         <translation>Abre a página da versão no seu navegador</translation>
-    </message>
-    <message>
-        <source>Downloading Drift %1…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Preparing the update…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Restart and install</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloading…</source>
-        <translation type="unfinished">Baixando…</translation>
     </message>
 </context>
 <context>

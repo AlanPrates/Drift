@@ -67,9 +67,7 @@ Item {
         "adjustmentLayer": { glyph: Theme.icons.wand, label: qsTr("Add adjustment layer") },
         "transformLayer": { glyph: Theme.icons.group, label: qsTr("Add transform layer"),
                             tip: qsTr("Add transform layer — moves the selected clips' tracks as one"),
-                            shortcut: "transformTogether" },
-        "camera": { glyph: Theme.icons.video, label: qsTr("Add camera"),
-                    tip: qsTr("Add camera — one viewpoint the whole timeline is seen through. With a camera already there, adds a new camera clip (a cut to a new framing) at the playhead") }
+                            shortcut: "transformTogether" }
     })
 
     readonly property var defaultToolbarItems: [
@@ -79,14 +77,14 @@ Item {
     readonly property var defaultMenuItems: [
         "trimStart", "trimEnd", "separator", "copy", "paste", "duplicate", "separator",
         "bookmark", "markIn", "markOut", "loop", "clearWorkArea", "separator",
-        "merge", "freeze", "adjustmentLayer", "transformLayer", "camera"
+        "merge", "freeze", "adjustmentLayer", "transformLayer"
     ]
 
     // The stored layout, cleaned: unknown or repeated ids are dropped and any action missing
     // from both lists (one added in a later version) lands at the end of the menu.
     readonly property var layout: {
-        const storedToolbar = EditorState.preferences.timelineToolbarItems
-        const storedMenu = EditorState.preferences.timelineMenuItems
+        const storedToolbar = EditorState.timelineToolbarItems
+        const storedMenu = EditorState.timelineMenuItems
         if (storedToolbar.length === 0 && storedMenu.length === 0)
             return { toolbar: defaultToolbarItems, menu: defaultMenuItems }
         const seen = {}
@@ -136,7 +134,6 @@ Item {
         case "freeze": EditorState.freezeFrameAtPlayhead(); break
         case "adjustmentLayer": EditorState.addAdjustmentClip(-1, -1); break
         case "transformLayer": EditorState.addTransformLayerForSelection(); break
-        case "camera": EditorState.addCameraTrack(); break
         }
     }
 
@@ -575,16 +572,16 @@ Item {
             glyph: Theme.icons.slidersVertical
             variant: "text"
             tooltip: qsTr("Toggle audio mixer strip")
-            active: EditorState.preferences.audioMixerVisible
-            onClicked: EditorState.preferences.audioMixerVisible = !EditorState.preferences.audioMixerVisible
+            active: EditorState.audioMixerVisible
+            onClicked: EditorState.audioMixerVisible = !EditorState.audioMixerVisible
         }
 
         IconButton {
             glyph: Theme.icons.panelTop
             variant: "text"
             tooltip: qsTr("Timeline overview — a minimap of the whole project; click or drag it to jump the view")
-            active: EditorState.preferences.timelineOverviewVisible
-            onClicked: EditorState.preferences.timelineOverviewVisible = !EditorState.preferences.timelineOverviewVisible
+            active: EditorState.timelineOverviewVisible
+            onClicked: EditorState.timelineOverviewVisible = !EditorState.timelineOverviewVisible
         }
     }
 }

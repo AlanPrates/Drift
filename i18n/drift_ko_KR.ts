@@ -2,33 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ko_KR" sourcelanguage="en">
 <context>
-    <name>AboutDialog</name>
-    <message>
-        <source>About Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">닫기</translation>
-    </message>
-    <message>
-        <source>Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Version %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open-source video editor by CutWire Studios.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Licensed under GPLv3. Copyright © CutWire Studios.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>AddonManager</name>
     <message>
         <source>Automatic (recommended)</source>
@@ -1488,6 +1461,18 @@
 <context>
     <name>AndroidPreview</name>
     <message>
+        <source>Audio only</source>
+        <translation>오디오만</translation>
+    </message>
+    <message>
+        <source>No clip at the current time</source>
+        <translation>현재 시점에 클립이 없습니다</translation>
+    </message>
+    <message>
+        <source>GPU preview unavailable</source>
+        <translation>GPU 미리보기를 사용할 수 없음</translation>
+    </message>
+    <message>
         <source>Full</source>
         <translation>전체</translation>
     </message>
@@ -2176,6 +2161,10 @@
         <translation>자르기 도구</translation>
     </message>
     <message>
+        <source>Faster preview takes effect after you restart Drift.</source>
+        <translation>더 빠른 미리보기는 Drift를 다시 시작한 후 적용됩니다.</translation>
+    </message>
+    <message>
         <source>System default</source>
         <translation>시스템 기본값</translation>
     </message>
@@ -2336,16 +2325,80 @@
         <translation>자막이 생성되었습니다</translation>
     </message>
     <message>
+        <source>Select a video clip to cut out</source>
+        <translation>분리할 동영상 클립을 선택하세요</translation>
+    </message>
+    <message>
+        <source>Custom speed works on video and audio clips</source>
+        <translation>사용자 지정 속도는 동영상 및 오디오 클립에서 작동합니다</translation>
+    </message>
+    <message>
+        <source>This clip has no media to speed up or slow down</source>
+        <translation>이 클립에는 속도를 높이거나 낮출 미디어가 없습니다</translation>
+    </message>
+    <message>
+        <source>That clip moved — open Custom speed again</source>
+        <translation>클립이 이동했습니다 — 사용자 지정 속도를 다시 열어주세요</translation>
+    </message>
+    <message>
+        <source>Custom speed applied</source>
+        <translation>사용자 지정 속도가 적용됨</translation>
+    </message>
+    <message>
         <source>Speed curve removed</source>
         <translation>속도 곡선이 제거됨</translation>
+    </message>
+    <message>
+        <source>That clip moved — open Custom fade again</source>
+        <translation>클립이 이동했습니다 — 사용자 지정 페이드를 다시 열어주세요</translation>
+    </message>
+    <message>
+        <source>Custom fade applied</source>
+        <translation>사용자 지정 페이드가 적용됨</translation>
+    </message>
+    <message>
+        <source>Cutout is already running</source>
+        <translation>피사체 분리가 이미 실행 중입니다</translation>
+    </message>
+    <message>
+        <source>This clip has no video to cut out</source>
+        <translation>이 클립에는 분리할 동영상이 없습니다</translation>
+    </message>
+    <message>
+        <source>Click the subject first</source>
+        <translation>먼저 피사체를 클릭하세요</translation>
     </message>
     <message>
         <source>Getting ready…</source>
         <translation>준비 중…</translation>
     </message>
     <message>
+        <source>Clip is too short to cut out</source>
+        <translation>클립이 너무 짧아 피사체를 분리할 수 없습니다</translation>
+    </message>
+    <message>
+        <source>Could not create a cutout file</source>
+        <translation>피사체 분리 파일을 만들 수 없습니다</translation>
+    </message>
+    <message>
+        <source>Cutout cancelled</source>
+        <translation>피사체 분리가 취소됨</translation>
+    </message>
+    <message>
         <source>Could not decode frame %1</source>
         <translation>프레임 %1을(를) 디코딩할 수 없습니다</translation>
+    </message>
+    <message>
+        <source>Processing frame %1 of %2…</source>
+        <translation>%2개 중 %1번째 프레임 처리 중…</translation>
+    </message>
+    <message>
+        <source>Cutout complete — subject cut out on %1 of %2 frames</source>
+        <translation>피사체 분리 완료 — %2개 프레임 중 %1개에서 피사체가 분리됨</translation>
+    </message>
+    <message>
+        <source>Cutout complete</source>
+        <translation>피사체 분리 완료</translation>
     </message>
     <message>
         <source>Clear Face Track</source>
@@ -2398,6 +2451,14 @@
     <message>
         <source>Detect Faces</source>
         <translation>얼굴 감지</translation>
+    </message>
+    <message>
+        <source>That clip no longer exists</source>
+        <translation>해당 클립이 더 이상 존재하지 않습니다</translation>
+    </message>
+    <message>
+        <source>Cut out subject</source>
+        <translation>피사체 분리</translation>
     </message>
     <message>
         <source>Clip</source>
@@ -2514,6 +2575,10 @@
     <message>
         <source>Save combined multicam</source>
         <translation>통합 멀티캠 저장</translation>
+    </message>
+    <message>
+        <source>Cutting out subject…</source>
+        <translation>피사체 분리 중…</translation>
     </message>
     <message>
         <source>Select a video clip to stabilize</source>
@@ -2728,6 +2793,10 @@
         <translation>축소</translation>
     </message>
     <message>
+        <source>The graphics card choice takes effect after you restart Drift.</source>
+        <translation>그래픽 카드 선택은 Drift를 다시 시작한 후 적용됩니다.</translation>
+    </message>
+    <message>
         <source>No audio track available for recording</source>
         <translation>녹음할 오디오 트랙이 없습니다</translation>
     </message>
@@ -2800,6 +2869,18 @@
         <translation>전환 곡선이 업데이트됨</translation>
     </message>
     <message>
+        <source>That transition is gone — open the custom curve again</source>
+        <translation>해당 전환이 사라졌습니다 — 사용자 지정 곡선을 다시 여세요</translation>
+    </message>
+    <message>
+        <source>Custom transition curve</source>
+        <translation>사용자 지정 전환 곡선</translation>
+    </message>
+    <message>
+        <source>Custom transition curve applied</source>
+        <translation>사용자 지정 전환 곡선이 적용됨</translation>
+    </message>
+    <message>
         <source>Select a video or image clip to estimate depth for</source>
         <translation>깊이를 추정할 동영상 또는 이미지 클립을 선택하세요</translation>
     </message>
@@ -2868,6 +2949,10 @@
         <translation>안정화 모드 변경</translation>
     </message>
     <message>
+        <source>Cutout</source>
+        <translation>피사체 분리</translation>
+    </message>
+    <message>
         <source> (denoised)</source>
         <translation> (노이즈 제거됨)</translation>
     </message>
@@ -2878,6 +2963,18 @@
     <message>
         <source>Noise removed</source>
         <translation>노이즈가 제거됨</translation>
+    </message>
+    <message>
+        <source>This project uses &quot;%1&quot;, which isn’t installed — it won’t show. Open Extras to install it.</source>
+        <translation>이 프로젝트는 “%1”을 사용하지만 설치되어 있지 않아 표시되지 않습니다. 추가 기능을 열어 설치하세요.</translation>
+    </message>
+    <message>
+        <source>This project uses %1 effects or transitions that aren’t installed (%2%3) — they won’t show. Open Extras to install them.</source>
+        <translation>이 프로젝트에는 설치되지 않은 %1개의 효과 또는 전환(%2%3)이 사용되어 표시되지 않습니다. 추가 기능을 열어 설치하세요.</translation>
+    </message>
+    <message>
+        <source>, …</source>
+        <translation>, …</translation>
     </message>
     <message>
         <source>Shape added</source>
@@ -2952,6 +3049,34 @@
         <translation>이모지 스티커 팩을 설치하여 이모지를 추가하세요</translation>
     </message>
     <message>
+        <source>Frame rate</source>
+        <translation>프레임 속도</translation>
+    </message>
+    <message>
+        <source>Project setup</source>
+        <translation>프로젝트 설정</translation>
+    </message>
+    <message>
+        <source>Project setup updated</source>
+        <translation>프로젝트 설정이 업데이트됨</translation>
+    </message>
+    <message>
+        <source>Crop canvas</source>
+        <translation>캔버스 크롭</translation>
+    </message>
+    <message>
+        <source>Video size cropped to %1×%2</source>
+        <translation>동영상 크기가 %1×%2로 크롭됨</translation>
+    </message>
+    <message>
+        <source>Change background</source>
+        <translation>배경 변경</translation>
+    </message>
+    <message>
+        <source>Background updated</source>
+        <translation>배경이 업데이트됨</translation>
+    </message>
+    <message>
         <source>Edit clip</source>
         <translation>클립 편집</translation>
     </message>
@@ -2994,14 +3119,6 @@
     <message>
         <source>Edit keyframe</source>
         <translation>키프레임 편집</translation>
-    </message>
-    <message>
-        <source>Move camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Rotate camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Edit effect</source>
@@ -3632,22 +3749,6 @@
         <translation>클립은 평면입니다</translation>
     </message>
     <message>
-        <source>Enable depth occlusion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Disable depth occlusion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clip is occluded by depth</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clip uses track order</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Subtitles converted to text</source>
         <translation>자막이 텍스트로 변환됨</translation>
     </message>
@@ -3676,22 +3777,6 @@
     <message>
         <source>Transform clip added</source>
         <translation>변환 클립이 추가됨</translation>
-    </message>
-    <message>
-        <source>Add camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add camera clip</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Camera added</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Camera clip added</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Transform together</source>
@@ -3802,14 +3887,6 @@
     <message>
         <source>Keyframe interpolates</source>
         <translation>키프레임 보간</translation>
-    </message>
-    <message>
-        <source>Reset camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Camera reset</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Reset transform</source>
@@ -4204,6 +4281,116 @@
         </translation>
     </message>
     <message>
+        <source>Saved a copy</source>
+        <translation>복사본이 저장됨</translation>
+    </message>
+    <message>
+        <source>Couldn’t write %1: %2</source>
+        <translation>%1을(를) 쓸 수 없습니다: %2</translation>
+    </message>
+    <message>
+        <source>Project JSON saved</source>
+        <translation>프로젝트 JSON 저장됨</translation>
+    </message>
+    <message>
+        <source>Still opening a project — try again in a moment.</source>
+        <translation>아직 프로젝트를 여는 중입니다 — 잠시 후 다시 시도하세요.</translation>
+    </message>
+    <message>
+        <source>Couldn’t read %1: %2</source>
+        <translation>%1을(를) 읽을 수 없습니다: %2</translation>
+    </message>
+    <message>
+        <source>Project JSON loaded</source>
+        <translation>프로젝트 JSON이 로드됨</translation>
+    </message>
+    <message>
+        <source>Failed to open Premiere Pro project</source>
+        <translation>Premiere Pro 프로젝트를 열지 못했습니다</translation>
+    </message>
+    <message>
+        <source>Premiere Pro project imported: %1</source>
+        <translation>Premiere Pro 프로젝트 가져옴: %1</translation>
+    </message>
+    <message>
+        <source>That template location isn’t valid</source>
+        <translation>해당 템플릿 위치가 올바르지 않습니다</translation>
+    </message>
+    <message>
+        <source>Failed to unpack Motion Graphics Template</source>
+        <translation>Motion Graphics Template 압축을 풀지 못했습니다</translation>
+    </message>
+    <message>
+        <source>Failed to apply template to project</source>
+        <translation>프로젝트에 템플릿을 적용하지 못했습니다</translation>
+    </message>
+    <message>
+        <source>Import template: %1</source>
+        <translation>템플릿 가져오기: %1</translation>
+    </message>
+    <message>
+        <source>Template imported: %1</source>
+        <translation>템플릿 가져옴: %1</translation>
+    </message>
+    <message>
+        <source>Failed to open Kdenlive / MLT project</source>
+        <translation>Kdenlive / MLT 프로젝트를 열지 못했습니다</translation>
+    </message>
+    <message>
+        <source>Kdenlive project imported: %1</source>
+        <translation>Kdenlive 프로젝트 가져옴: %1</translation>
+    </message>
+    <message>
+        <source>Failed to open DaVinci Resolve project / timeline</source>
+        <translation>DaVinci Resolve 프로젝트/타임라인을 열지 못했습니다</translation>
+    </message>
+    <message>
+        <source>DaVinci Resolve project imported: %1</source>
+        <translation>DaVinci Resolve 프로젝트 가져옴: %1</translation>
+    </message>
+    <message>
+        <source>Failed to open Edit Decision List (.edl)</source>
+        <translation>Edit Decision List(.edl)을 열지 못했습니다</translation>
+    </message>
+    <message>
+        <source>EDL imported: %1</source>
+        <translation>EDL 가져옴: %1</translation>
+    </message>
+    <message>
+        <source>Failed to open OpenTimelineIO (.otio) sequence</source>
+        <translation>OpenTimelineIO(.otio) 시퀀스를 열지 못했습니다</translation>
+    </message>
+    <message>
+        <source>OpenTimelineIO imported: %1</source>
+        <translation>OpenTimelineIO 가져옴: %1</translation>
+    </message>
+    <message>
+        <source>That folder isn’t valid</source>
+        <translation>해당 폴더가 올바르지 않습니다</translation>
+    </message>
+    <message>
+        <source>All media is already in that folder</source>
+        <translation>모든 미디어가 이미 해당 폴더에 있습니다</translation>
+    </message>
+    <message>
+        <source>Collect media</source>
+        <translation>미디어 수집</translation>
+    </message>
+    <message numerus="yes">
+        <source>Media collected, but %n original(s) couldn’t be deleted</source>
+        <translation>
+            <numerusform>미디어가 수집되었지만 원본 %n개를 삭제하지 못했습니다</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Media moved and relinked</source>
+        <translation>미디어를 이동하고 링크를 다시 설정함</translation>
+    </message>
+    <message>
+        <source>Media copied and relinked</source>
+        <translation>미디어를 복사하고 링크를 다시 설정함</translation>
+    </message>
+    <message>
         <source>Exporting…</source>
         <translation>내보내는 중…</translation>
     </message>
@@ -4374,6 +4561,42 @@
         <translation>해당 저장 위치가 올바르지 않습니다</translation>
     </message>
     <message>
+        <source>Already saving</source>
+        <translation>이미 저장 중입니다</translation>
+    </message>
+    <message>
+        <source>Project saved</source>
+        <translation>프로젝트가 저장됨</translation>
+    </message>
+    <message>
+        <source>Shareable copy ready</source>
+        <translation>공유 가능한 복사본이 준비됨</translation>
+    </message>
+    <message>
+        <source>That project location isn’t valid</source>
+        <translation>해당 프로젝트 위치가 올바르지 않습니다</translation>
+    </message>
+    <message>
+        <source>Project loaded</source>
+        <translation>프로젝트가 로드됨</translation>
+    </message>
+    <message>
+        <source>Unpacking project media…</source>
+        <translation>프로젝트 미디어 압축을 푸는 중…</translation>
+    </message>
+    <message>
+        <source>No recovery file found</source>
+        <translation>복구 파일을 찾을 수 없습니다</translation>
+    </message>
+    <message>
+        <source>Recovered unsaved work</source>
+        <translation>저장되지 않은 작업이 복구됨</translation>
+    </message>
+    <message>
+        <source>Started new session</source>
+        <translation>새 세션 시작됨</translation>
+    </message>
+    <message>
         <source>Export already in progress</source>
         <translation>내보내기가 이미 진행 중입니다</translation>
     </message>
@@ -4432,14 +4655,6 @@
     <message>
         <source>Clip orientation set to %1°</source>
         <translation>클립 방향을 %1°로 설정</translation>
-    </message>
-    <message>
-        <source>Crop canvas</source>
-        <translation>캔버스 크롭</translation>
-    </message>
-    <message>
-        <source>Video size cropped to %1×%2</source>
-        <translation>동영상 크기가 %1×%2로 크롭됨</translation>
     </message>
 </context>
 <context>
@@ -4883,14 +5098,6 @@
         <translation>오디오 효과 찾아보기</translation>
     </message>
     <message>
-        <source>Move to a time, set a value, then click the diamond to add a keyframe. With Auto keyframes on, dragging a slider also creates them.</source>
-        <translation type="unfinished">시간 위치로 이동하고 값을 설정한 다음 다이아몬드를 클릭하여 키프레임을 추가하세요. 자동 키프레임이 켜져 있으면 슬라이더를 드래그해도 키프레임이 생성됩니다.</translation>
-    </message>
-    <message>
-        <source>Auto keyframes</source>
-        <translation type="unfinished">자동 키프레임</translation>
-    </message>
-    <message>
         <source>%1 (not installed)</source>
         <translation>%1(설치되지 않음)</translation>
     </message>
@@ -4917,6 +5124,18 @@
     <message>
         <source>Remove audio effect</source>
         <translation>오디오 효과 제거</translation>
+    </message>
+    <message>
+        <source>On</source>
+        <translation>켜기</translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation>끄기</translation>
+    </message>
+    <message>
+        <source>Edit audio effect</source>
+        <translation>오디오 효과 편집</translation>
     </message>
 </context>
 <context>
@@ -5243,57 +5462,6 @@
     </message>
 </context>
 <context>
-    <name>CameraInspector</name>
-    <message>
-        <source>Pan X</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pan Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Dolly</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pitch</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Yaw</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Roll</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Lens</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select a camera clip to frame the shot.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Everything on the timeline is seen through this camera while the clip lasts. A camera at rest looks exactly like no camera at all, so the numbers below are all offsets from the normal view.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>A short lens exaggerates depth; a long one flattens it. While this camera is running it replaces each clip&apos;s own Perspective value, because a scene has one viewer.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reset camera position</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Back to rest: no pan, dolly or turn, framing the canvas head on. The lens is kept.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ChannelKeyButton</name>
     <message>
         <source>Remove %1 keyframe at the playhead</source>
@@ -5409,29 +5577,6 @@
     <message>
         <source>Apply</source>
         <translation>적용</translation>
-    </message>
-</context>
-<context>
-    <name>CurveEditorController</name>
-    <message>
-        <source>That transition is gone — open the custom curve again</source>
-        <translation type="unfinished">해당 전환이 사라졌습니다 — 사용자 지정 곡선을 다시 여세요</translation>
-    </message>
-    <message>
-        <source>Custom transition curve</source>
-        <translation type="unfinished">사용자 지정 전환 곡선</translation>
-    </message>
-    <message>
-        <source>Custom transition curve applied</source>
-        <translation type="unfinished">사용자 지정 전환 곡선이 적용됨</translation>
-    </message>
-    <message>
-        <source>That clip moved — open Custom fade again</source>
-        <translation type="unfinished">클립이 이동했습니다 — 사용자 지정 페이드를 다시 열어주세요</translation>
-    </message>
-    <message>
-        <source>Custom fade applied</source>
-        <translation type="unfinished">사용자 지정 페이드가 적용됨</translation>
     </message>
 </context>
 <context>
@@ -7700,14 +7845,6 @@
         <translation>키프레임</translation>
     </message>
     <message>
-        <source>Collapse curve editor to compact view (88px)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Expand curve editor to view and edit Bezier handles (180px)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Analyzing…</source>
         <translation>분석 중…</translation>
     </message>
@@ -7748,10 +7885,6 @@
         <translation>
             <numerusform>키프레임 %n개</numerusform>
         </translation>
-    </message>
-    <message>
-        <source>Expand for handles</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source> BPM</source>
@@ -8050,6 +8183,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Preferences…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>&amp;Playback</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8150,20 +8287,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>About Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Settings…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Debug Info…</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 is the latest version.</source>
-        <translation type="unfinished">Drift %1이(가) 최신 버전입니다.</translation>
     </message>
     <message>
         <source>Still opening a project — try again in a moment.</source>
@@ -8176,14 +8301,6 @@
     <message>
         <source>Project closed</source>
         <translation>프로젝트가 닫힘</translation>
-    </message>
-    <message>
-        <source>Already checking for updates…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Checking for updates…</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Export finished.</source>
@@ -9154,8 +9271,32 @@
         <translation>시작 오프셋</translation>
     </message>
     <message>
-        <source>Position, size, rotation and depth occlusion are on the Transform tab.</source>
-        <translation type="unfinished"></translation>
+        <source>Pose</source>
+        <translation>포즈</translation>
+    </message>
+    <message>
+        <source>Rotations follow the model&apos;s own axes: X tilts, Y then spins about the tilted up axis, Z rolls after both.</source>
+        <translation>회전은 모델 자체의 축을 따릅니다. X는 기울이고, Y는 기울어진 위쪽 축을 기준으로 회전하며, Z는 그 이후에 롤합니다.</translation>
+    </message>
+    <message>
+        <source>Size</source>
+        <translation>크기</translation>
+    </message>
+    <message>
+        <source>Depth</source>
+        <translation>깊이</translation>
+    </message>
+    <message>
+        <source>Rotation X</source>
+        <translation>회전 X</translation>
+    </message>
+    <message>
+        <source>Rotation Y</source>
+        <translation>회전 Y</translation>
+    </message>
+    <message>
+        <source>Rotation Z</source>
+        <translation>회전 Z</translation>
     </message>
     <message>
         <source>Lighting</source>
@@ -9196,6 +9337,26 @@
 </context>
 <context>
     <name>Model3dSource</name>
+    <message>
+        <source>Size</source>
+        <translation>크기</translation>
+    </message>
+    <message>
+        <source>Depth</source>
+        <translation>깊이</translation>
+    </message>
+    <message>
+        <source>Rotation X</source>
+        <translation>회전 X</translation>
+    </message>
+    <message>
+        <source>Rotation Y</source>
+        <translation>회전 Y</translation>
+    </message>
+    <message>
+        <source>Rotation Z</source>
+        <translation>회전 Z</translation>
+    </message>
     <message>
         <source>Light direction</source>
         <translation>조명 방향</translation>
@@ -9344,10 +9505,6 @@
     <message>
         <source>Transform</source>
         <translation>변환</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>New track</source>
@@ -9642,125 +9799,123 @@
     </message>
 </context>
 <context>
-    <name>PreferencesController</name>
+    <name>PreviewPanel</name>
     <message>
-        <source>Faster preview takes effect after you restart Drift.</source>
-        <translation>더 빠른 미리보기는 Drift를 다시 시작한 후 적용됩니다.</translation>
+        <source>REC %1s</source>
+        <translation>REC %1초</translation>
     </message>
     <message>
-        <source>The graphics card choice takes effect after you restart Drift.</source>
-        <translation>그래픽 카드 선택은 Drift를 다시 시작한 후 적용됩니다.</translation>
+        <source>PAUSED %1s</source>
+        <translation>일시정지 %1초</translation>
     </message>
     <message>
-        <source>System default</source>
-        <translation>시스템 기본값</translation>
+        <source>Nothing to preview yet</source>
+        <translation>아직 미리볼 항목이 없습니다</translation>
+    </message>
+    <message>
+        <source>Import media and drag it onto the timeline below to see it here.</source>
+        <translation>미디어를 가져와 아래 타임라인으로 드래그하면 여기에 표시됩니다.</translation>
+    </message>
+    <message>
+        <source>GPU preview unavailable</source>
+        <translation>GPU 미리보기를 사용할 수 없음</translation>
+    </message>
+    <message>
+        <source>Your graphics driver only provides %1. Drift&apos;s preview needs OpenGL 3.3.</source>
+        <translation>그래픽 드라이버가 %1만 제공합니다. Drift의 미리보기에는 OpenGL 3.3이 필요합니다.</translation>
+    </message>
+    <message>
+        <source>Drift could not start its GPU renderer, so the preview cannot draw.</source>
+        <translation>Drift에서 GPU 렌더러를 시작할 수 없어 미리보기를 표시할 수 없습니다.</translation>
+    </message>
+    <message>
+        <source>Debug info</source>
+        <translation>디버그 정보</translation>
+    </message>
+    <message>
+        <source>Audio only</source>
+        <translation>오디오만</translation>
+    </message>
+    <message>
+        <source>No clip at the current time</source>
+        <translation>현재 시점에 클립이 없습니다</translation>
+    </message>
+    <message>
+        <source>Seek</source>
+        <translation>이동</translation>
     </message>
 </context>
 <context>
-    <name>Preview3DTools</name>
+    <name>PreviewToolbar</name>
     <message>
         <source>%1 (%2)</source>
-        <translation type="unfinished">%1(%2)</translation>
+        <translation>%1(%2)</translation>
     </message>
     <message>
-        <source>Move</source>
-        <translation type="unfinished">이동</translation>
+        <source>Current time / total · %1 frames per second</source>
+        <translation>현재 시간/전체 · 초당 %1프레임</translation>
     </message>
     <message>
-        <source>Rotate</source>
-        <translation type="unfinished">회전</translation>
+        <source>Jump back 1s · Shift for 5s · Ctrl for 10s</source>
+        <translation>1초 뒤로 · Shift: 5초 · Ctrl: 10초</translation>
     </message>
     <message>
-        <source>Scale</source>
-        <translation type="unfinished">크기 조정</translation>
+        <source>Previous frame</source>
+        <translation>이전 프레임</translation>
     </message>
     <message>
-        <source>Gizmo follows the selection&apos;s own axes (click for world axes)</source>
-        <translation type="unfinished"></translation>
+        <source>Pause</source>
+        <translation>일시정지</translation>
     </message>
     <message>
-        <source>Gizmo follows the world axes (click for the selection&apos;s own)</source>
-        <translation type="unfinished"></translation>
+        <source>Play</source>
+        <translation>재생</translation>
     </message>
     <message>
-        <source>Look through the camera</source>
-        <translation type="unfinished"></translation>
+        <source>Next frame</source>
+        <translation>다음 프레임</translation>
     </message>
     <message>
-        <source>Numpad 0</source>
-        <translation type="unfinished"></translation>
+        <source>Loop work area on — click to turn off</source>
+        <translation>작업 영역 반복 재생 켜짐 — 클릭하여 끄기</translation>
     </message>
     <message>
-        <source>Reset the scene camera&apos;s position</source>
-        <translation type="unfinished"></translation>
+        <source>Loop work area off — click to turn on</source>
+        <translation>작업 영역 반복 재생 꺼짐 — 클릭하여 켜기</translation>
     </message>
     <message>
-        <source>Frame the selection</source>
-        <translation type="unfinished"></translation>
+        <source>Jump forward 1s · Shift for 5s · Ctrl for 10s</source>
+        <translation>1초 앞으로 · Shift: 5초 · Ctrl: 10초</translation>
     </message>
     <message>
-        <source>Reset the view</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PreviewModeSwitch</name>
-    <message>
-        <source>Camera Output</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The camera&apos;s picture, as it exports. Clips move and snap on the canvas.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>3D Scene</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The scene from a free viewpoint, with the camera in it. Middle- or right-drag orbits, Shift pans, the wheel zooms.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PreviewOptionsMenu</name>
-    <message>
-        <source>Quality</source>
-        <translation type="unfinished">화질</translation>
+        <source>Preview zoom — Ctrl+scroll over the preview to zoom, middle-drag to pan. Click to reset to 100%.</source>
+        <translation>미리보기 확대/축소 — 미리보기 위에서 Ctrl+스크롤로 확대/축소하고 가운데 버튼 드래그로 패닝합니다. 클릭하면 100%로 초기화됩니다.</translation>
     </message>
     <message>
         <source>Full</source>
-        <translation type="unfinished">전체</translation>
+        <translation>전체</translation>
     </message>
     <message>
         <source>Half</source>
-        <translation type="unfinished">절반</translation>
+        <translation>절반</translation>
     </message>
     <message>
         <source>Quarter</source>
-        <translation type="unfinished">1/4</translation>
+        <translation>1/4</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished">자동</translation>
+        <translation>자동</translation>
     </message>
     <message>
         <source>Preview quality — lower is smoother while editing.
 Full, Half and Quarter are fixed fractions of the project resolution: Full composites exactly what an export would.
 Auto renders only as many pixels as the preview actually shows, and lowers that further while playback cannot keep up.</source>
-        <translation type="unfinished">미리보기 화질 — 낮을수록 편집 중 더 부드럽습니다.\n전체, 절반 및 1/4은 프로젝트 해상도의 고정 비율입니다. 전체는 내보내기와 동일한 픽셀을 정확히 합성합니다.\n자동은 미리보기에 실제로 표시되는 픽셀 수만큼만 렌더링하며, 재생이 따라가지 못하면 더 낮춥니다.</translation>
-    </message>
-    <message>
-        <source>Speed</source>
-        <translation type="unfinished">속도</translation>
+        <translation>미리보기 화질 — 낮을수록 편집 중 더 부드럽습니다.\n전체, 절반 및 1/4은 프로젝트 해상도의 고정 비율입니다. 전체는 내보내기와 동일한 픽셀을 정확히 합성합니다.\n자동은 미리보기에 실제로 표시되는 픽셀 수만큼만 렌더링하며, 재생이 따라가지 못하면 더 낮춥니다.</translation>
     </message>
     <message>
         <source>Playback speed</source>
-        <translation type="unfinished">재생 속도</translation>
-    </message>
-    <message>
-        <source>Decode</source>
-        <translation type="unfinished">디코딩</translation>
+        <translation>재생 속도</translation>
     </message>
     <message>
         <source>How video is decoded for preview.
@@ -9768,35 +9923,47 @@ Auto picks per clip: hardware for high-quality 4K, software otherwise.
 Software is smoother for most clips. It uses more CPU.
 Hardware is better for high-quality 4K, and forces one GPU decoder.
 If playback stutters, try another.</source>
-        <translation type="unfinished">미리보기를 위해 동영상을 디코딩하는 방식입니다.\n자동은 클립마다 선택합니다: 고화질 4K에는 하드웨어, 그 외에는 소프트웨어를 사용합니다.\n소프트웨어는 대부분의 클립에서 더 부드럽지만 CPU를 더 사용합니다.\n하드웨어는 고화질 4K에 적합하며 GPU 디코더 하나를 사용합니다.\n재생이 끊기면 다른 옵션을 사용해 보세요.</translation>
+        <translation>미리보기를 위해 동영상을 디코딩하는 방식입니다.\n자동은 클립마다 선택합니다: 고화질 4K에는 하드웨어, 그 외에는 소프트웨어를 사용합니다.\n소프트웨어는 대부분의 클립에서 더 부드럽지만 CPU를 더 사용합니다.\n하드웨어는 고화질 4K에 적합하며 GPU 디코더 하나를 사용합니다.\n재생이 끊기면 다른 옵션을 사용해 보세요.</translation>
     </message>
     <message>
-        <source>Keep mask handles up</source>
-        <translation type="unfinished"></translation>
+        <source>Toggle guides</source>
+        <translation>안내선 전환</translation>
+    </message>
+    <message>
+        <source>Guide sets</source>
+        <translation>안내선 세트</translation>
     </message>
     <message>
         <source>Keep mask handles on the preview while another clip is selected</source>
-        <translation type="unfinished">다른 클립을 선택한 상태에서도 미리보기에 마스크 핸들을 유지</translation>
+        <translation>다른 클립을 선택한 상태에서도 미리보기에 마스크 핸들을 유지</translation>
+    </message>
+    <message>
+        <source>Exit fullscreen preview (Esc)</source>
+        <translation>전체 화면 미리보기 종료(Esc)</translation>
+    </message>
+    <message>
+        <source>Fullscreen preview</source>
+        <translation>전체 화면 미리보기</translation>
     </message>
     <message>
         <source>Decoding on a different graphics card</source>
-        <translation type="unfinished">다른 그래픽 카드에서 디코딩 중</translation>
+        <translation>다른 그래픽 카드에서 디코딩 중</translation>
     </message>
     <message>
         <source>Use anyway</source>
-        <translation type="unfinished">그래도 사용</translation>
+        <translation>그래도 사용</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">취소</translation>
+        <translation>취소</translation>
     </message>
     <message>
         <source>Launching Drift with prime-run (or DRI_PRIME=1) puts OpenGL on the same card as the decoder.</source>
-        <translation type="unfinished">prime-run(또는 DRI_PRIME=1)으로 Drift를 실행하면 OpenGL이 디코더와 같은 그래픽 카드를 사용합니다.</translation>
+        <translation>prime-run(또는 DRI_PRIME=1)으로 Drift를 실행하면 OpenGL이 디코더와 같은 그래픽 카드를 사용합니다.</translation>
     </message>
     <message>
         <source>Run Drift on the high-performance graphics card</source>
-        <translation type="unfinished">고성능 그래픽 카드에서 Drift 실행</translation>
+        <translation>고성능 그래픽 카드에서 Drift 실행</translation>
     </message>
     <message>
         <source>Set Drift to High performance in Windows Settings &gt; Display &gt; Graphics, then restart Drift.</source>
@@ -9805,126 +9972,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Open graphics settings</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PreviewOsd</name>
-    <message>
-        <source>Preview zoom — Ctrl+scroll over the preview to zoom, middle-drag to pan. Click to reset to 100%.</source>
-        <translation type="unfinished">미리보기 확대/축소 — 미리보기 위에서 Ctrl+스크롤로 확대/축소하고 가운데 버튼 드래그로 패닝합니다. 클릭하면 100%로 초기화됩니다.</translation>
-    </message>
-    <message>
-        <source>Toggle guides</source>
-        <translation type="unfinished">안내선 전환</translation>
-    </message>
-    <message>
-        <source>Guide sets</source>
-        <translation type="unfinished">안내선 세트</translation>
-    </message>
-    <message>
-        <source>Preview options</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PreviewPanel</name>
-    <message>
-        <source>Seek</source>
-        <translation>이동</translation>
-    </message>
-</context>
-<context>
-    <name>PreviewStatusLayer</name>
-    <message>
-        <source>PAUSED %1s</source>
-        <translation type="unfinished">일시정지 %1초</translation>
-    </message>
-    <message>
-        <source>REC %1s</source>
-        <translation type="unfinished">REC %1초</translation>
-    </message>
-    <message>
-        <source>Nothing to preview yet</source>
-        <translation type="unfinished">아직 미리볼 항목이 없습니다</translation>
-    </message>
-    <message>
-        <source>Import media and drag it onto the timeline below to see it here.</source>
-        <translation type="unfinished">미디어를 가져와 아래 타임라인으로 드래그하면 여기에 표시됩니다.</translation>
-    </message>
-    <message>
-        <source>GPU preview unavailable</source>
-        <translation type="unfinished">GPU 미리보기를 사용할 수 없음</translation>
-    </message>
-    <message>
-        <source>Your graphics driver only provides %1. Drift&apos;s preview needs OpenGL 3.3.</source>
-        <translation type="unfinished">그래픽 드라이버가 %1만 제공합니다. Drift의 미리보기에는 OpenGL 3.3이 필요합니다.</translation>
-    </message>
-    <message>
-        <source>Drift could not start its GPU renderer, so the preview cannot draw.</source>
-        <translation type="unfinished">Drift에서 GPU 렌더러를 시작할 수 없어 미리보기를 표시할 수 없습니다.</translation>
-    </message>
-    <message>
-        <source>Debug info</source>
-        <translation type="unfinished">디버그 정보</translation>
-    </message>
-    <message>
-        <source>Audio only</source>
-        <translation type="unfinished">오디오만</translation>
-    </message>
-    <message>
-        <source>No clip at the current time</source>
-        <translation type="unfinished">현재 시점에 클립이 없습니다</translation>
-    </message>
-</context>
-<context>
-    <name>PreviewTransportBar</name>
-    <message>
-        <source>%1 (%2)</source>
-        <translation type="unfinished">%1(%2)</translation>
-    </message>
-    <message>
-        <source>Current time / total · %1 frames per second</source>
-        <translation type="unfinished">현재 시간/전체 · 초당 %1프레임</translation>
-    </message>
-    <message>
-        <source>Jump back 1s · Shift for 5s · Ctrl for 10s</source>
-        <translation type="unfinished">1초 뒤로 · Shift: 5초 · Ctrl: 10초</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation type="unfinished">이전 프레임</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation type="unfinished">일시정지</translation>
-    </message>
-    <message>
-        <source>Play</source>
-        <translation type="unfinished">재생</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation type="unfinished">다음 프레임</translation>
-    </message>
-    <message>
-        <source>Loop work area on — click to turn off</source>
-        <translation type="unfinished">작업 영역 반복 재생 켜짐 — 클릭하여 끄기</translation>
-    </message>
-    <message>
-        <source>Loop work area off — click to turn on</source>
-        <translation type="unfinished">작업 영역 반복 재생 꺼짐 — 클릭하여 켜기</translation>
-    </message>
-    <message>
-        <source>Jump forward 1s · Shift for 5s · Ctrl for 10s</source>
-        <translation type="unfinished">1초 앞으로 · Shift: 5초 · Ctrl: 10초</translation>
-    </message>
-    <message>
-        <source>Exit fullscreen preview (Esc)</source>
-        <translation type="unfinished">전체 화면 미리보기 종료(Esc)</translation>
-    </message>
-    <message>
-        <source>Fullscreen preview</source>
-        <translation type="unfinished">전체 화면 미리보기</translation>
     </message>
 </context>
 <context>
@@ -10070,195 +10117,6 @@ If playback stutters, try another.</source>
     </message>
 </context>
 <context>
-    <name>ProjectFileController</name>
-    <message>
-        <source>New project</source>
-        <translation>새 프로젝트</translation>
-    </message>
-    <message>
-        <source>This project uses &quot;%1&quot;, which isn’t installed — it won’t show. Open Extras to install it.</source>
-        <translation>이 프로젝트는 “%1”을 사용하지만 설치되어 있지 않아 표시되지 않습니다. 추가 기능을 열어 설치하세요.</translation>
-    </message>
-    <message>
-        <source>This project uses %1 effects or transitions that aren’t installed (%2%3) — they won’t show. Open Extras to install them.</source>
-        <translation>이 프로젝트에는 설치되지 않은 %1개의 효과 또는 전환(%2%3)이 사용되어 표시되지 않습니다. 추가 기능을 열어 설치하세요.</translation>
-    </message>
-    <message>
-        <source>, …</source>
-        <translation>, …</translation>
-    </message>
-    <message>
-        <source>Frame rate</source>
-        <translation>프레임 속도</translation>
-    </message>
-    <message>
-        <source>Project setup</source>
-        <translation>프로젝트 설정</translation>
-    </message>
-    <message>
-        <source>Project setup updated</source>
-        <translation>프로젝트 설정이 업데이트됨</translation>
-    </message>
-    <message>
-        <source>Change background</source>
-        <translation>배경 변경</translation>
-    </message>
-    <message>
-        <source>Background updated</source>
-        <translation>배경이 업데이트됨</translation>
-    </message>
-    <message>
-        <source>Saved a copy</source>
-        <translation>복사본이 저장됨</translation>
-    </message>
-    <message>
-        <source>Couldn’t write %1: %2</source>
-        <translation>%1을(를) 쓸 수 없습니다: %2</translation>
-    </message>
-    <message>
-        <source>Project JSON saved</source>
-        <translation>프로젝트 JSON 저장됨</translation>
-    </message>
-    <message>
-        <source>Still opening a project — try again in a moment.</source>
-        <translation>아직 프로젝트를 여는 중입니다 — 잠시 후 다시 시도하세요.</translation>
-    </message>
-    <message>
-        <source>Couldn’t read %1: %2</source>
-        <translation>%1을(를) 읽을 수 없습니다: %2</translation>
-    </message>
-    <message>
-        <source>Project JSON loaded</source>
-        <translation>프로젝트 JSON이 로드됨</translation>
-    </message>
-    <message>
-        <source>Failed to open Premiere Pro project</source>
-        <translation>Premiere Pro 프로젝트를 열지 못했습니다</translation>
-    </message>
-    <message>
-        <source>Premiere Pro project imported: %1</source>
-        <translation>Premiere Pro 프로젝트 가져옴: %1</translation>
-    </message>
-    <message>
-        <source>That template location isn’t valid</source>
-        <translation>해당 템플릿 위치가 올바르지 않습니다</translation>
-    </message>
-    <message>
-        <source>Failed to unpack Motion Graphics Template</source>
-        <translation>Motion Graphics Template 압축을 풀지 못했습니다</translation>
-    </message>
-    <message>
-        <source>Failed to apply template to project</source>
-        <translation>프로젝트에 템플릿을 적용하지 못했습니다</translation>
-    </message>
-    <message>
-        <source>Import template: %1</source>
-        <translation>템플릿 가져오기: %1</translation>
-    </message>
-    <message>
-        <source>Template imported: %1</source>
-        <translation>템플릿 가져옴: %1</translation>
-    </message>
-    <message>
-        <source>Failed to open Kdenlive / MLT project</source>
-        <translation>Kdenlive / MLT 프로젝트를 열지 못했습니다</translation>
-    </message>
-    <message>
-        <source>Kdenlive project imported: %1</source>
-        <translation>Kdenlive 프로젝트 가져옴: %1</translation>
-    </message>
-    <message>
-        <source>Failed to open DaVinci Resolve project / timeline</source>
-        <translation>DaVinci Resolve 프로젝트/타임라인을 열지 못했습니다</translation>
-    </message>
-    <message>
-        <source>DaVinci Resolve project imported: %1</source>
-        <translation>DaVinci Resolve 프로젝트 가져옴: %1</translation>
-    </message>
-    <message>
-        <source>Failed to open Edit Decision List (.edl)</source>
-        <translation>Edit Decision List(.edl)을 열지 못했습니다</translation>
-    </message>
-    <message>
-        <source>EDL imported: %1</source>
-        <translation>EDL 가져옴: %1</translation>
-    </message>
-    <message>
-        <source>Failed to open OpenTimelineIO (.otio) sequence</source>
-        <translation>OpenTimelineIO(.otio) 시퀀스를 열지 못했습니다</translation>
-    </message>
-    <message>
-        <source>OpenTimelineIO imported: %1</source>
-        <translation>OpenTimelineIO 가져옴: %1</translation>
-    </message>
-    <message>
-        <source>That folder isn’t valid</source>
-        <translation>해당 폴더가 올바르지 않습니다</translation>
-    </message>
-    <message>
-        <source>All media is already in that folder</source>
-        <translation>모든 미디어가 이미 해당 폴더에 있습니다</translation>
-    </message>
-    <message>
-        <source>Collect media</source>
-        <translation>미디어 수집</translation>
-    </message>
-    <message numerus="yes">
-        <source>Media collected, but %n original(s) couldn’t be deleted</source>
-        <translation>
-            <numerusform>미디어가 수집되었지만 원본 %n개를 삭제하지 못했습니다</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Media moved and relinked</source>
-        <translation>미디어를 이동하고 링크를 다시 설정함</translation>
-    </message>
-    <message>
-        <source>Media copied and relinked</source>
-        <translation>미디어를 복사하고 링크를 다시 설정함</translation>
-    </message>
-    <message>
-        <source>That save location isn’t valid</source>
-        <translation>해당 저장 위치가 올바르지 않습니다</translation>
-    </message>
-    <message>
-        <source>Already saving</source>
-        <translation>이미 저장 중입니다</translation>
-    </message>
-    <message>
-        <source>Project saved</source>
-        <translation>프로젝트가 저장됨</translation>
-    </message>
-    <message>
-        <source>Shareable copy ready</source>
-        <translation>공유 가능한 복사본이 준비됨</translation>
-    </message>
-    <message>
-        <source>That project location isn’t valid</source>
-        <translation>해당 프로젝트 위치가 올바르지 않습니다</translation>
-    </message>
-    <message>
-        <source>Project loaded</source>
-        <translation>프로젝트가 로드됨</translation>
-    </message>
-    <message>
-        <source>Unpacking project media…</source>
-        <translation>프로젝트 미디어 압축을 푸는 중…</translation>
-    </message>
-    <message>
-        <source>No recovery file found</source>
-        <translation>복구 파일을 찾을 수 없습니다</translation>
-    </message>
-    <message>
-        <source>Recovered unsaved work</source>
-        <translation>저장되지 않은 작업이 복구됨</translation>
-    </message>
-    <message>
-        <source>Started new session</source>
-        <translation>새 세션 시작됨</translation>
-    </message>
-</context>
-<context>
     <name>ProjectPropertiesDialog</name>
     <message>
         <source>Project properties</source>
@@ -10385,10 +10243,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Transform</source>
         <translation>변환</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Stabilization</source>
@@ -11208,77 +11062,6 @@ If playback stutters, try another.</source>
     </message>
 </context>
 <context>
-    <name>SegmentationController</name>
-    <message>
-        <source>Select a video clip to cut out</source>
-        <translation type="unfinished">분리할 동영상 클립을 선택하세요</translation>
-    </message>
-    <message>
-        <source>Cutout is already running</source>
-        <translation type="unfinished">피사체 분리가 이미 실행 중입니다</translation>
-    </message>
-    <message>
-        <source>This clip has no video to cut out</source>
-        <translation type="unfinished">이 클립에는 분리할 동영상이 없습니다</translation>
-    </message>
-    <message>
-        <source>Click the subject first</source>
-        <translation type="unfinished">먼저 피사체를 클릭하세요</translation>
-    </message>
-    <message>
-        <source>Getting ready…</source>
-        <translation type="unfinished">준비 중…</translation>
-    </message>
-    <message>
-        <source>Cutting out subject…</source>
-        <translation type="unfinished">피사체 분리 중…</translation>
-    </message>
-    <message>
-        <source>Done</source>
-        <translation type="unfinished">완료</translation>
-    </message>
-    <message>
-        <source>Clip is too short to cut out</source>
-        <translation type="unfinished">클립이 너무 짧아 피사체를 분리할 수 없습니다</translation>
-    </message>
-    <message>
-        <source>Could not create a cutout file</source>
-        <translation type="unfinished">피사체 분리 파일을 만들 수 없습니다</translation>
-    </message>
-    <message>
-        <source>Cutout cancelled</source>
-        <translation type="unfinished">피사체 분리가 취소됨</translation>
-    </message>
-    <message>
-        <source>Could not decode frame %1</source>
-        <translation type="unfinished">프레임 %1을(를) 디코딩할 수 없습니다</translation>
-    </message>
-    <message>
-        <source>Processing frame %1 of %2…</source>
-        <translation type="unfinished">%2개 중 %1번째 프레임 처리 중…</translation>
-    </message>
-    <message>
-        <source>Cutout complete — subject cut out on %1 of %2 frames</source>
-        <translation type="unfinished">피사체 분리 완료 — %2개 프레임 중 %1개에서 피사체가 분리됨</translation>
-    </message>
-    <message>
-        <source>Cutout complete</source>
-        <translation type="unfinished">피사체 분리 완료</translation>
-    </message>
-    <message>
-        <source>That clip no longer exists</source>
-        <translation type="unfinished">해당 클립이 더 이상 존재하지 않습니다</translation>
-    </message>
-    <message>
-        <source>Cutout</source>
-        <translation type="unfinished">피사체 분리</translation>
-    </message>
-    <message>
-        <source>Cut out subject</source>
-        <translation type="unfinished">피사체 분리</translation>
-    </message>
-</context>
-<context>
     <name>SegmentationWindow</name>
     <message>
         <source>Cut out subject</source>
@@ -11575,6 +11358,10 @@ If playback stutters, try another.</source>
         <translation>시작 시 확인</translation>
     </message>
     <message>
+        <source>Ask GitHub once a day whether a newer Drift has been released</source>
+        <translation>하루에 한 번 GitHub에 최신 Drift 릴리스가 있는지 확인</translation>
+    </message>
+    <message>
         <source>Checking…</source>
         <translation>확인 중…</translation>
     </message>
@@ -11693,14 +11480,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Unlink the marketplace account from this device</source>
         <translation>이 장치에서 마켓플레이스 계정 연결 해제</translation>
-    </message>
-    <message>
-        <source>Once a day, check whether a newer Drift has been released</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloading…</source>
-        <translation type="unfinished">다운로드 중…</translation>
     </message>
 </context>
 <context>
@@ -12313,25 +12092,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Shortcuts reset to defaults.</source>
         <translation>단축키가 기본값으로 초기화되었습니다.</translation>
-    </message>
-</context>
-<context>
-    <name>SpeedCurveController</name>
-    <message>
-        <source>Custom speed works on video and audio clips</source>
-        <translation type="unfinished">사용자 지정 속도는 동영상 및 오디오 클립에서 작동합니다</translation>
-    </message>
-    <message>
-        <source>This clip has no media to speed up or slow down</source>
-        <translation type="unfinished">이 클립에는 속도를 높이거나 낮출 미디어가 없습니다</translation>
-    </message>
-    <message>
-        <source>That clip moved — open Custom speed again</source>
-        <translation type="unfinished">클립이 이동했습니다 — 사용자 지정 속도를 다시 열어주세요</translation>
-    </message>
-    <message>
-        <source>Custom speed applied</source>
-        <translation type="unfinished">사용자 지정 속도가 적용됨</translation>
     </message>
 </context>
 <context>
@@ -14276,10 +14036,6 @@ If playback stutters, try another.</source>
         <translation>변환 레이어 추가 — 선택한 클립의 트랙을 하나처럼 이동</translation>
     </message>
     <message>
-        <source>Add camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Main</source>
         <translation>메인</translation>
     </message>
@@ -14322,10 +14078,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Add adjustment layer</source>
         <translation>보정 레이어 추가</translation>
-    </message>
-    <message>
-        <source>Add camera — one viewpoint the whole timeline is seen through. With a camera already there, adds a new camera clip (a cut to a new framing) at the playhead</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Customize toolbar…</source>
@@ -14478,10 +14230,6 @@ If playback stutters, try another.</source>
         <translation>동영상 + 파형</translation>
     </message>
     <message>
-        <source>CAM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>TF</source>
         <translation>TF</translation>
     </message>
@@ -14508,10 +14256,6 @@ If playback stutters, try another.</source>
     <message>
         <source>V</source>
         <translation>V</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Transform</source>
@@ -14576,10 +14320,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Turn transform off</source>
         <translation>변환 끄기</translation>
-    </message>
-    <message>
-        <source>Add camera clip at playhead</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Covers…</source>
@@ -14749,16 +14489,8 @@ If playback stutters, try another.</source>
         <translation>위치(px)</translation>
     </message>
     <message>
-        <source>Position (px, linked)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Separate X and Y keyframes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Link X and Y keyframes and motion curves</source>
-        <translation type="unfinished"></translation>
+        <source>Offset (px)</source>
+        <translation>오프셋(px)</translation>
     </message>
     <message>
         <source>Measured inside %1&apos;s frame</source>
@@ -14799,18 +14531,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Tilt the clip and push it in depth, with 3D grips on the preview. Turning it off flattens the clip again.</source>
         <translation>클립을 기울이고 깊이 방향으로 밀어 넣습니다. 미리보기에는 3D 핸들이 표시됩니다. 끄면 클립이 다시 평면으로 바뀝니다.</translation>
-    </message>
-    <message>
-        <source>Occlude by depth</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Let depth decide what covers this clip, instead of its track position. Only clips with this on sort against each other; everything else still draws in track order.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Needs the Normal blend mode — the others read the canvas behind the clip, which depth cannot sort.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Move</source>
@@ -14867,6 +14587,10 @@ If playback stutters, try another.</source>
     <message>
         <source>Reset position &amp; size</source>
         <translation>위치 및 크기 초기화</translation>
+    </message>
+    <message>
+        <source>Reset position</source>
+        <translation>위치 초기화</translation>
     </message>
     <message>
         <source>Fix orientation</source>
@@ -15213,26 +14937,6 @@ If playback stutters, try another.</source>
 <context>
     <name>UpdateChecker</name>
     <message>
-        <source>Drift %1 update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Preparing the update…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Installs when you close Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ready to install</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 will install when you close Drift.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Couldn’t check for updates: %1</source>
         <translation>업데이트를 확인할 수 없습니다: %1</translation>
     </message>
@@ -15248,30 +14952,6 @@ If playback stutters, try another.</source>
         <source>Drift %1 is available.</source>
         <translation>Drift %1을(를) 사용할 수 있습니다.</translation>
     </message>
-    <message>
-        <source>Couldn’t download the update: the cache isn’t writable.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Couldn’t download the update: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>the download was interrupted.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Couldn’t download the update: the file didn’t match the release.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Couldn’t prepare the update.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 is ready to install.</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>UpdateDialog</name>
@@ -15280,36 +14960,12 @@ If playback stutters, try another.</source>
         <translation>업데이트 사용 가능</translation>
     </message>
     <message>
-        <source>Update ready</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 will install when you close Drift.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 is downloaded and ready to install</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Drift %1 is available</source>
         <translation>Drift %1을(를) 사용할 수 있습니다</translation>
     </message>
     <message>
-        <source>A new Drift update is available</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>You have %1.</source>
         <translation>현재 버전은 %1입니다.</translation>
-    </message>
-    <message>
-        <source>Install automatically when I close Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloads in the background and installs the next time you close Drift. Unchecked, you choose when to install once the download finishes.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Skip</source>
@@ -15324,40 +14980,12 @@ If playback stutters, try another.</source>
         <translation>나중에</translation>
     </message>
     <message>
-        <source>Install when I close Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update</source>
-        <translation type="unfinished">업데이트</translation>
-    </message>
-    <message>
-        <source>Closes Drift, installs the update and opens Drift again</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloads the update in the background</source>
-        <translation type="unfinished"></translation>
+        <source>Download</source>
+        <translation>다운로드</translation>
     </message>
     <message>
         <source>Opens the release page in your browser</source>
         <translation>브라우저에서 릴리스 페이지를 엽니다</translation>
-    </message>
-    <message>
-        <source>Downloading Drift %1…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Preparing the update…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Restart and install</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloading…</source>
-        <translation type="unfinished">다운로드 중…</translation>
     </message>
 </context>
 <context>

@@ -1,4 +1,3 @@
-import Qt.labs.platform as Platform
 import QtQuick
 import QtQuick.Controls.Basic
 import QtQuick.Window
@@ -59,313 +58,303 @@ ApplicationWindow {
 
     // Set true after the unsaved prompt resolves so onClosing can finish quit.
     property bool forceClose: false
-    property bool manualUpdateCheck: false
 
-    // On macOS, instantiate a native MenuBar via Qt.labs.platform.
-    // On other platforms (Windows, Linux, Android), no menu bar is created so the
+    // On macOS, assign a native MenuBar to the ApplicationWindow.
+    // On other platforms (Windows, Linux, Android), menuBar remains null so the
     // custom in-window header (EditorHeader) and window chrome are completely untouched.
-    Loader {
-        active: Theme.isMacOS
-        sourceComponent: Component {
-        Platform.MenuBar {
-            window: window
+    menuBar: Theme.isMacOS ? macMenuBar : null
 
-            Platform.Menu {
-                title: qsTr("&File")
+    MenuBar {
+        id: macMenuBar
+        visible: Theme.isMacOS
 
-                Platform.MenuItem {
-                    text: qsTr("&New Project")
-                    shortcut: StandardKey.New
-                    onTriggered: window.requestNewProject()
-                }
-                Platform.MenuItem {
-                    text: qsTr("&Open Project…")
-                    shortcut: StandardKey.Open
-                    onTriggered: window.requestOpenProjectDialog()
-                }
-                Platform.MenuSeparator {}
-                Platform.MenuItem {
-                    text: qsTr("&Save Project")
-                    shortcut: StandardKey.Save
-                    enabled: !window.showStartScreen
-                    onTriggered: editorHeader.saveProject()
-                }
-                Platform.MenuItem {
-                    text: qsTr("Save Project &As…")
-                    shortcut: StandardKey.SaveAs
-                    enabled: !window.showStartScreen
-                    onTriggered: editorHeader.saveProjectAs()
-                }
-                Platform.MenuItem {
-                    text: qsTr("Save Project &JSON…")
-                    enabled: !window.showStartScreen
-                    onTriggered: editorHeader.saveProjectJson()
-                }
-                Platform.MenuItem {
-                    text: qsTr("Open Project JSON…")
-                    onTriggered: editorHeader.openProjectJson()
-                }
-                Platform.MenuSeparator {}
-                Platform.MenuItem {
-                    text: qsTr("&Export Video…")
-                    enabled: !window.showStartScreen && !EditorState.exportInProgress
-                    onTriggered: editorHeader.exportVideo()
-                }
-                Platform.MenuItem {
-                    text: qsTr("&Package Project…")
-                    enabled: !window.showStartScreen
-                    onTriggered: editorHeader.packageProject()
-                }
-                Platform.MenuSeparator {}
-                Platform.MenuItem {
-                    text: qsTr("&Close Project")
-                    shortcut: StandardKey.Close
-                    enabled: !window.showStartScreen
-                    onTriggered: window.requestCloseProject()
-                }
+        Menu {
+            title: qsTr("&File")
+
+            Action {
+                text: qsTr("&New Project")
+                shortcut: StandardKey.New
+                onTriggered: window.requestNewProject()
             }
-
-            Platform.Menu {
-                title: qsTr("&Edit")
-
-                Platform.MenuItem {
-                    text: qsTr("&Undo")
-                    shortcut: StandardKey.Undo
-                    enabled: !window.showStartScreen && EditorState.canUndo
-                    onTriggered: window.dispatchAction("undo")
-                }
-                Platform.MenuItem {
-                    text: qsTr("&Redo")
-                    shortcut: StandardKey.Redo
-                    enabled: !window.showStartScreen && EditorState.canRedo
-                    onTriggered: window.dispatchAction("redo")
-                }
-                Platform.MenuSeparator {}
-                Platform.MenuItem {
-                    text: qsTr("Cu&t")
-                    shortcut: StandardKey.Cut
-                    enabled: !window.showStartScreen
-                    onTriggered: window.dispatchAction("cut")
-                }
-                Platform.MenuItem {
-                    text: qsTr("&Copy")
-                    shortcut: StandardKey.Copy
-                    enabled: !window.showStartScreen
-                    onTriggered: window.dispatchAction("copy")
-                }
-                Platform.MenuItem {
-                    text: qsTr("&Paste")
-                    shortcut: StandardKey.Paste
-                    enabled: !window.showStartScreen
-                    onTriggered: window.dispatchAction("paste")
-                }
-                Platform.MenuItem {
-                    text: qsTr("&Delete")
-                    shortcut: StandardKey.Delete
-                    enabled: !window.showStartScreen
-                    onTriggered: window.dispatchAction("delete")
-                }
-                Platform.MenuItem {
-                    text: qsTr("Select &All")
-                    shortcut: StandardKey.SelectAll
-                    enabled: !window.showStartScreen
-                    onTriggered: window.dispatchAction("selectAll")
-                }
-                Platform.MenuItem {
-                    text: qsTr("Clear Selection")
-                    enabled: !window.showStartScreen
-                    onTriggered: window.dispatchAction("clearSelection")
-                }
-                Platform.MenuSeparator {}
-                Platform.MenuItem {
-                    text: qsTr("Split Clip")
-                    shortcut: "S"
-                    enabled: !window.showStartScreen
-                    onTriggered: window.dispatchAction("split")
-                }
-                Platform.MenuItem {
-                    text: qsTr("Duplicate Clip")
-                    shortcut: "Ctrl+D"
-                    enabled: !window.showStartScreen
-                    onTriggered: window.dispatchAction("duplicate")
-                }
-                Platform.MenuItem {
-                    text: qsTr("Copy Effects")
-                    enabled: !window.showStartScreen
-                    onTriggered: window.dispatchAction("copyEffects")
-                }
-                Platform.MenuItem {
-                    text: qsTr("Paste Effects")
-                    enabled: !window.showStartScreen
-                    onTriggered: window.dispatchAction("pasteEffects")
-                }
-                Platform.MenuItem {
-                    text: qsTr("Paste Attributes…")
-                    shortcut: "Ctrl+Alt+V"
-                    enabled: !window.showStartScreen
-                    onTriggered: window.openPasteAttributes()
-                }
-                Platform.MenuSeparator {}
-                Platform.MenuItem {
-                    text: qsTr("About Drift")
-                    role: Platform.MenuItem.AboutRole
-                    onTriggered: window.openAboutDialog()
-                }
-                Platform.MenuItem {
-                    text: qsTr("Settings…")
-                    shortcut: StandardKey.Preferences
-                    role: Platform.MenuItem.ApplicationSpecificRole
-                    onTriggered: window.openSettings()
-                }
-                Platform.MenuItem {
-                    text: qsTr("Check for Updates…")
-                    role: Platform.MenuItem.ApplicationSpecificRole
-                    onTriggered: window.checkForUpdates()
-                }
+            Action {
+                text: qsTr("&Open Project…")
+                shortcut: StandardKey.Open
+                onTriggered: window.requestOpenProjectDialog()
             }
-
-            Platform.Menu {
-                title: qsTr("&Playback")
-
-                Platform.MenuItem {
-                    text: qsTr("Play / Pause")
-                    shortcut: "Space"
-                    enabled: !window.showStartScreen
-                    onTriggered: window.dispatchAction("playPause")
-                }
-                Platform.MenuSeparator {}
-                Platform.MenuItem {
-                    text: qsTr("Step Back One Frame")
-                    shortcut: "Left"
-                    enabled: !window.showStartScreen
-                    onTriggered: window.dispatchAction("stepBack")
-                }
-                Platform.MenuItem {
-                    text: qsTr("Step Forward One Frame")
-                    shortcut: "Right"
-                    enabled: !window.showStartScreen
-                    onTriggered: window.dispatchAction("stepForward")
-                }
-                Platform.MenuItem {
-                    text: qsTr("Previous Cut Point")
-                    shortcut: "Up"
-                    enabled: !window.showStartScreen
-                    onTriggered: window.dispatchAction("previousEdit")
-                }
-                Platform.MenuItem {
-                    text: qsTr("Next Cut Point")
-                    shortcut: "Down"
-                    enabled: !window.showStartScreen
-                    onTriggered: window.dispatchAction("nextEdit")
-                }
-                Platform.MenuItem {
-                    text: qsTr("Go to Start of Timeline")
-                    shortcut: "Home"
-                    enabled: !window.showStartScreen
-                    onTriggered: window.dispatchAction("goToStart")
-                }
-                Platform.MenuSeparator {}
-                Platform.MenuItem {
-                    text: qsTr("Toggle Bookmark")
-                    shortcut: "M"
-                    enabled: !window.showStartScreen
-                    onTriggered: window.dispatchAction("toggleBookmark")
-                }
-                Platform.MenuItem {
-                    text: qsTr("Next Bookmark")
-                    enabled: !window.showStartScreen
-                    onTriggered: window.dispatchAction("nextBookmark")
-                }
-                Platform.MenuItem {
-                    text: qsTr("Previous Bookmark")
-                    enabled: !window.showStartScreen
-                    onTriggered: window.dispatchAction("previousBookmark")
-                }
+            MenuSeparator {}
+            Action {
+                text: qsTr("&Save Project")
+                shortcut: StandardKey.Save
+                enabled: !window.showStartScreen
+                onTriggered: editorHeader.saveProject()
             }
-
-            Platform.Menu {
-                title: qsTr("&View")
-
-                Platform.MenuItem {
-                    text: qsTr("Zoom &In")
-                    shortcut: StandardKey.ZoomIn
-                    enabled: !window.showStartScreen
-                    onTriggered: window.dispatchAction("zoomIn")
-                }
-                Platform.MenuItem {
-                    text: qsTr("Zoom &Out")
-                    shortcut: StandardKey.ZoomOut
-                    enabled: !window.showStartScreen
-                    onTriggered: window.dispatchAction("zoomOut")
-                }
-                Platform.MenuSeparator {}
-                Platform.MenuItem {
-                    text: qsTr("Toggle Fullscreen Preview")
-                    enabled: !window.showStartScreen
-                    onTriggered: window.togglePreviewFullscreen()
-                }
-                Platform.MenuItem {
-                    text: qsTr("Toggle Guides")
-                    enabled: !window.showStartScreen
-                    onTriggered: window.dispatchAction("toggleGuides")
-                }
+            Action {
+                text: qsTr("Save Project &As…")
+                shortcut: StandardKey.SaveAs
+                enabled: !window.showStartScreen
+                onTriggered: editorHeader.saveProjectAs()
             }
-
-            Platform.Menu {
-                title: qsTr("&Window")
-
-                Platform.MenuItem {
-                    text: qsTr("Landscape Workspace")
-                    checkable: true
-                    checked: !EditorState.preferences.workspaceLayoutOverridden || EditorState.preferences.workspaceLayoutPreferred === "landscape"
-                    onTriggered: EditorState.preferences.setWorkspaceLayoutPreference("landscape")
-                }
-                Platform.MenuItem {
-                    text: qsTr("Portrait Workspace")
-                    checkable: true
-                    checked: EditorState.preferences.workspaceLayoutOverridden && EditorState.preferences.workspaceLayoutPreferred === "portrait"
-                    onTriggered: EditorState.preferences.setWorkspaceLayoutPreference("portrait")
-                }
-                Platform.MenuItem {
-                    text: qsTr("Auto Workspace (Follow Canvas)")
-                    checkable: true
-                    checked: !EditorState.preferences.workspaceLayoutOverridden
-                    onTriggered: EditorState.preferences.clearWorkspaceLayoutPreference()
-                }
-                Platform.MenuSeparator {}
-                Platform.MenuItem {
-                    text: qsTr("Downloads")
-                    onTriggered: downloadsWindowLoader.ensure().show()
-                }
-                Platform.MenuItem {
-                    text: qsTr("Multicam")
-                    onTriggered: window.openMulticam()
-                }
+            Action {
+                text: qsTr("Save Project &JSON…")
+                enabled: !window.showStartScreen
+                onTriggered: editorHeader.saveProjectJson()
             }
-
-            Platform.Menu {
-                title: qsTr("&Help")
-
-                Platform.MenuItem {
-                    text: qsTr("Keyboard Shortcuts")
-                    shortcut: "F1"
-                    onTriggered: {
-                        if (window.previewFullscreen)
-                            window.togglePreviewFullscreen()
-                        assetsPanel.showTab("shortcuts")
-                    }
-                }
-                Platform.MenuItem {
-                    text: qsTr("Extras…")
-                    onTriggered: window.openExtras()
-                }
-                Platform.MenuSeparator {}
-                Platform.MenuItem {
-                    text: qsTr("Debug Info…")
-                    onTriggered: window.openDebugInfo()
-                }
+            Action {
+                text: qsTr("Open Project JSON…")
+                onTriggered: editorHeader.openProjectJson()
+            }
+            MenuSeparator {}
+            Action {
+                text: qsTr("&Export Video…")
+                enabled: !window.showStartScreen && !EditorState.exportInProgress
+                onTriggered: editorHeader.exportVideo()
+            }
+            Action {
+                text: qsTr("&Package Project…")
+                enabled: !window.showStartScreen
+                onTriggered: editorHeader.packageProject()
+            }
+            MenuSeparator {}
+            Action {
+                text: qsTr("&Close Project")
+                shortcut: StandardKey.Close
+                enabled: !window.showStartScreen
+                onTriggered: window.requestCloseProject()
             }
         }
+
+        Menu {
+            title: qsTr("&Edit")
+
+            Action {
+                text: qsTr("&Undo")
+                shortcut: StandardKey.Undo
+                enabled: !window.showStartScreen && EditorState.canUndo
+                onTriggered: window.dispatchAction("undo")
+            }
+            Action {
+                text: qsTr("&Redo")
+                shortcut: StandardKey.Redo
+                enabled: !window.showStartScreen && EditorState.canRedo
+                onTriggered: window.dispatchAction("redo")
+            }
+            MenuSeparator {}
+            Action {
+                text: qsTr("Cu&t")
+                shortcut: StandardKey.Cut
+                enabled: !window.showStartScreen
+                onTriggered: window.dispatchAction("cut")
+            }
+            Action {
+                text: qsTr("&Copy")
+                shortcut: StandardKey.Copy
+                enabled: !window.showStartScreen
+                onTriggered: window.dispatchAction("copy")
+            }
+            Action {
+                text: qsTr("&Paste")
+                shortcut: StandardKey.Paste
+                enabled: !window.showStartScreen
+                onTriggered: window.dispatchAction("paste")
+            }
+            Action {
+                text: qsTr("&Delete")
+                shortcut: StandardKey.Delete
+                enabled: !window.showStartScreen
+                onTriggered: window.dispatchAction("delete")
+            }
+            Action {
+                text: qsTr("Select &All")
+                shortcut: StandardKey.SelectAll
+                enabled: !window.showStartScreen
+                onTriggered: window.dispatchAction("selectAll")
+            }
+            Action {
+                text: qsTr("Clear Selection")
+                enabled: !window.showStartScreen
+                onTriggered: window.dispatchAction("clearSelection")
+            }
+            MenuSeparator {}
+            Action {
+                text: qsTr("Split Clip")
+                shortcut: "S"
+                enabled: !window.showStartScreen
+                onTriggered: window.dispatchAction("split")
+            }
+            Action {
+                text: qsTr("Duplicate Clip")
+                shortcut: "Ctrl+D"
+                enabled: !window.showStartScreen
+                onTriggered: window.dispatchAction("duplicate")
+            }
+            Action {
+                text: qsTr("Copy Effects")
+                enabled: !window.showStartScreen
+                onTriggered: window.dispatchAction("copyEffects")
+            }
+            Action {
+                text: qsTr("Paste Effects")
+                enabled: !window.showStartScreen
+                onTriggered: window.dispatchAction("pasteEffects")
+            }
+            Action {
+                text: qsTr("Paste Attributes…")
+                shortcut: "Ctrl+Alt+V"
+                enabled: !window.showStartScreen
+                onTriggered: window.openPasteAttributes()
+            }
+            MenuSeparator {}
+            Action {
+                text: qsTr("Preferences…")
+                shortcut: StandardKey.Preferences
+                onTriggered: window.openSettings()
+            }
+        }
+
+        Menu {
+            title: qsTr("&Playback")
+
+            Action {
+                text: qsTr("Play / Pause")
+                shortcut: "Space"
+                enabled: !window.showStartScreen
+                onTriggered: window.dispatchAction("playPause")
+            }
+            MenuSeparator {}
+            Action {
+                text: qsTr("Step Back One Frame")
+                shortcut: "Left"
+                enabled: !window.showStartScreen
+                onTriggered: window.dispatchAction("stepBack")
+            }
+            Action {
+                text: qsTr("Step Forward One Frame")
+                shortcut: "Right"
+                enabled: !window.showStartScreen
+                onTriggered: window.dispatchAction("stepForward")
+            }
+            Action {
+                text: qsTr("Previous Cut Point")
+                shortcut: "Up"
+                enabled: !window.showStartScreen
+                onTriggered: window.dispatchAction("previousEdit")
+            }
+            Action {
+                text: qsTr("Next Cut Point")
+                shortcut: "Down"
+                enabled: !window.showStartScreen
+                onTriggered: window.dispatchAction("nextEdit")
+            }
+            Action {
+                text: qsTr("Go to Start of Timeline")
+                shortcut: "Home"
+                enabled: !window.showStartScreen
+                onTriggered: window.dispatchAction("goToStart")
+            }
+            MenuSeparator {}
+            Action {
+                text: qsTr("Toggle Bookmark")
+                shortcut: "M"
+                enabled: !window.showStartScreen
+                onTriggered: window.dispatchAction("toggleBookmark")
+            }
+            Action {
+                text: qsTr("Next Bookmark")
+                enabled: !window.showStartScreen
+                onTriggered: window.dispatchAction("nextBookmark")
+            }
+            Action {
+                text: qsTr("Previous Bookmark")
+                enabled: !window.showStartScreen
+                onTriggered: window.dispatchAction("previousBookmark")
+            }
+        }
+
+        Menu {
+            title: qsTr("&View")
+
+            Action {
+                text: qsTr("Zoom &In")
+                shortcut: StandardKey.ZoomIn
+                enabled: !window.showStartScreen
+                onTriggered: window.dispatchAction("zoomIn")
+            }
+            Action {
+                text: qsTr("Zoom &Out")
+                shortcut: StandardKey.ZoomOut
+                enabled: !window.showStartScreen
+                onTriggered: window.dispatchAction("zoomOut")
+            }
+            MenuSeparator {}
+            Action {
+                text: qsTr("Toggle Fullscreen Preview")
+                enabled: !window.showStartScreen
+                onTriggered: window.togglePreviewFullscreen()
+            }
+            Action {
+                text: qsTr("Toggle Guides")
+                enabled: !window.showStartScreen
+                onTriggered: window.dispatchAction("toggleGuides")
+            }
+        }
+
+        Menu {
+            title: qsTr("&Window")
+
+            Action {
+                text: qsTr("Landscape Workspace")
+                checkable: true
+                checked: !EditorState.workspaceLayoutOverridden || EditorState.workspaceLayoutPreferred === "landscape"
+                onTriggered: EditorState.setWorkspaceLayoutPreference("landscape")
+            }
+            Action {
+                text: qsTr("Portrait Workspace")
+                checkable: true
+                checked: EditorState.workspaceLayoutOverridden && EditorState.workspaceLayoutPreferred === "portrait"
+                onTriggered: EditorState.setWorkspaceLayoutPreference("portrait")
+            }
+            Action {
+                text: qsTr("Auto Workspace (Follow Canvas)")
+                checkable: true
+                checked: !EditorState.workspaceLayoutOverridden
+                onTriggered: EditorState.clearWorkspaceLayoutPreference()
+            }
+            MenuSeparator {}
+            Action {
+                text: qsTr("Downloads")
+                onTriggered: downloadsWindowLoader.ensure().show()
+            }
+            Action {
+                text: qsTr("Multicam")
+                onTriggered: window.openMulticam()
+            }
+        }
+
+        Menu {
+            title: qsTr("&Help")
+
+            Action {
+                text: qsTr("Keyboard Shortcuts")
+                shortcut: "F1"
+                onTriggered: {
+                    if (window.previewFullscreen)
+                        window.togglePreviewFullscreen()
+                    assetsPanel.showTab("shortcuts")
+                }
+            }
+            Action {
+                text: qsTr("Extras…")
+                onTriggered: window.openExtras()
+            }
+            Action {
+                text: qsTr("Check for Updates…")
+                onTriggered: window.openUpdateDialog()
+            }
+            MenuSeparator {}
+            Action {
+                text: qsTr("Debug Info…")
+                onTriggered: window.openDebugInfo()
+            }
         }
     }
 
@@ -374,7 +363,7 @@ ApplicationWindow {
         // Before any of the branches below, so a quit that is cancelled at the
         // unsaved prompt still records where the window was.
         window.persistLayout()
-        if (window.forceClose || !EditorState.projectFile.hasUnsavedChanges)
+        if (window.forceClose || !EditorState.hasUnsavedChanges)
             return
         close.accepted = false
         // Leave preview fullscreen so the save prompt isn't sitting on a blank
@@ -384,7 +373,7 @@ ApplicationWindow {
         editorHeader.confirmIfDirty(function () {
             // Don't Save leaves dirty true; clear it so aboutToQuit does not
             // write a recovery the user just declined. Harmless after Save.
-            EditorState.projectFile.discardUnsavedChanges()
+            EditorState.discardUnsavedChanges()
             window.forceClose = true
             window.close()
         })
@@ -605,8 +594,8 @@ ApplicationWindow {
     // the canvas can keep driving it until the user takes the decision away — the
     // effective value is resolved here because it depends on both preference and
     // canvas, which are separate notifiers on the C++ side.
-    readonly property string workspaceLayout: EditorState.preferences.workspaceLayoutOverridden
-                                              ? EditorState.preferences.workspaceLayoutPreferred
+    readonly property string workspaceLayout: EditorState.workspaceLayoutOverridden
+                                              ? EditorState.workspaceLayoutPreferred
                                               : (EditorState.projectPortrait ? "portrait" : "landscape")
     readonly property bool portraitWorkspace: workspaceLayout === "portrait"
 
@@ -644,7 +633,7 @@ ApplicationWindow {
     readonly property alias addonAttentionNeeded: addonStartupDialog.needsAttention
 
     function promptLanguageChooserIfNeeded() {
-        if (!EditorState.preferences.needsUiLanguagePrompt)
+        if (!EditorState.needsUiLanguagePrompt)
             return false
         if (languageChooserDialogLoader.shown)
             return true
@@ -653,9 +642,9 @@ ApplicationWindow {
     }
 
     function promptLayoutChooserIfNeeded() {
-        if (EditorState.preferences.needsUiLanguagePrompt || languageChooserDialogLoader.shown)
+        if (EditorState.needsUiLanguagePrompt || languageChooserDialogLoader.shown)
             return
-        if (EditorState.projectFile.recoveryAvailable || EditorState.projectLayoutChosen)
+        if (EditorState.recoveryAvailable || EditorState.projectLayoutChosen)
             return
         if (window.layoutPromptDismissed)
             return
@@ -748,45 +737,6 @@ ApplicationWindow {
         }
     }
 
-    Connections {
-        target: Updates
-        function onUpdateReady() {
-            window.openUpdateDialog()
-        }
-        function onInstallReady() {
-            window.openUpdateDialog()
-        }
-        function onDownloadStarted() {
-            downloadsWindowLoader.ensure().show()
-        }
-        function onQuitRequested() {
-            window.close()
-        }
-        function onActivityChanged() {
-            if (!Updates.checking && window.manualUpdateCheck) {
-                window.manualUpdateCheck = false
-                if (Updates.updateAvailable) {
-                    window.openUpdateDialog()
-                } else if (Updates.status.length > 0) {
-                    if (Updates.status.indexOf(Updates.currentVersion) !== -1) {
-                        Toasts.success(Updates.status)
-                    } else {
-                        Toasts.info(Updates.status)
-                    }
-                } else {
-                    Toasts.success(qsTr("Drift %1 is the latest version.").arg(Updates.currentVersion))
-                }
-            }
-        }
-    }
-
-    LazyLoader {
-        id: aboutDialogLoader
-        sourceComponent: Component {
-            AboutDialog { }
-        }
-    }
-
     LazyLoader {
         id: updateDialogLoader
         sourceComponent: Component {
@@ -825,14 +775,10 @@ ApplicationWindow {
     }
 
     Connections {
-        target: EditorState.segmentation
-        function onOpenWindowRequested(track, clip, startSeconds, durationSeconds) {
+        target: EditorState
+        function onOpenSegmentationWindowRequested(track, clip, startSeconds, durationSeconds) {
             segmentationWindowLoader.ensure().openFor(track, clip, startSeconds, durationSeconds, true)
         }
-    }
-
-    Connections {
-        target: EditorState
         function onOpenPasteAttributesRequested() {
             window.openPasteAttributes()
         }
@@ -988,7 +934,7 @@ ApplicationWindow {
     // on top of a *newer* one, but nothing invalidates one that is discarded by New/Close.
     // Simplest correct fix: only one project action in flight at a time.
     function rejectIfProjectOpenPending() {
-        if (!EditorState.projectFile.projectLoadPending)
+        if (!EditorState.projectLoadPending)
             return false
         Toasts.info(qsTr("Still opening a project — try again in a moment."))
         return true
@@ -998,7 +944,7 @@ ApplicationWindow {
         if (window.rejectIfProjectOpenPending())
             return
         editorHeader.confirmIfDirty(function () {
-            EditorState.projectFile.newProject()
+            EditorState.newProject()
             window.showStartScreen = false
             window.promptLayoutChooserIfNeeded()
         })
@@ -1012,7 +958,7 @@ ApplicationWindow {
                                            editorHeader.projectMimeTypes)
             if (url == "")
                 return
-            EditorState.projectFile.loadProject(url)
+            EditorState.loadProject(url)
         })
     }
 
@@ -1022,7 +968,7 @@ ApplicationWindow {
         if (!path || path.length === 0)
             return
         editorHeader.confirmIfDirty(function () {
-            EditorState.projectFile.openRecentProject(path)
+            EditorState.openRecentProject(path)
         })
     }
 
@@ -1041,7 +987,7 @@ ApplicationWindow {
             // silent: newProject()'s own "New project" toast is right for the header's
             // New Project action, wrong here — setting lastMessage again afterwards
             // would not replace it, since every change queues its own toast.
-            EditorState.projectFile.newProject(true)
+            EditorState.newProject(true)
             EditorState.setLastMessage(qsTr("Project closed"))
         })
     }
@@ -1069,24 +1015,6 @@ ApplicationWindow {
     }
 
     // Opened from the header badge, which only exists while there is something to show.
-    function openAboutDialog() {
-        aboutDialogLoader.ensure().open()
-    }
-
-    function checkForUpdates() {
-        if (Updates.updateAvailable) {
-            openUpdateDialog()
-            return
-        }
-        if (Updates.checking) {
-            Toasts.info(qsTr("Already checking for updates…"))
-            return
-        }
-        window.manualUpdateCheck = true
-        Toasts.info(qsTr("Checking for updates…"))
-        Updates.checkNow()
-    }
-
     function openUpdateDialog() {
         updateDialogLoader.ensure().open()
     }
@@ -1100,12 +1028,12 @@ ApplicationWindow {
     }
 
     function promptRecoveryIfNeeded() {
-        if (EditorState.preferences.needsUiLanguagePrompt || languageChooserDialogLoader.shown)
+        if (EditorState.needsUiLanguagePrompt || languageChooserDialogLoader.shown)
             return
-        if (!EditorState.projectFile.recoveryAvailable || recoveryDialogLoader.shown)
+        if (!EditorState.recoveryAvailable || recoveryDialogLoader.shown)
             return
         // Opt-in reopen handles recovery (and last .drift) without asking.
-        if (EditorState.preferences.reopenLastProject)
+        if (EditorState.reopenLastProject)
             return
         recoveryDialogLoader.ensure().open()
     }
@@ -1119,7 +1047,7 @@ ApplicationWindow {
         triggeredOnStart: false
         property int attempts: 0
         onTriggered: {
-            if (!EditorState.projectFile.recoveryAvailable) {
+            if (!EditorState.recoveryAvailable) {
                 stop()
                 attempts = 0
                 Qt.callLater(window.promptLayoutChooserIfNeeded)
@@ -1144,7 +1072,7 @@ ApplicationWindow {
         window.beginStartupProject()
         // Independent of the project-restore sequence above — it neither gates nor is
         // gated by it, so ordering here doesn't matter.
-        EditorState.mcp.applyStartOnLaunch()
+        EditorState.applyMcpStartOnLaunch()
         // Last: the window is placed by now, and the startup flow keeps the ordering
         // it had when the window was shown at the end of completion.
         window.showRestored()
@@ -1159,18 +1087,18 @@ ApplicationWindow {
     function continueStartupAfterLanguage() {
         // A document the shell asked us to open (argv / QFileOpenEvent) wins over last-session
         // reopen and the recovery prompt.
-        if (EditorState.projectFile.consumeStartupProject())
+        if (EditorState.consumeStartupProject())
             return
         // Opt-in: restore unsaved recovery or the last clean project silently.
-        if (EditorState.projectFile.restoreLastSessionIfEnabled())
+        if (EditorState.restoreLastSessionIfEnabled())
             return
-        if (EditorState.projectFile.recoveryAvailable) {
+        if (EditorState.recoveryAvailable) {
             recoveryOpenTimer.start()
             return
         }
         // Reopen is off (or the last project could not be restored): rather than land in a
         // fresh empty project, ask which project to work on.
-        if (!EditorState.preferences.reopenLastProject) {
+        if (!EditorState.reopenLastProject) {
             window.showStartScreen = true
             return
         }
@@ -1181,7 +1109,7 @@ ApplicationWindow {
         // Maximizing does not have to change the window size (a window already filling
         // the work area does not), so the geometry sampler alone can miss the switch.
         window.persistWindowState()
-        if (visible && EditorState.projectFile.recoveryAvailable && !EditorState.preferences.reopenLastProject)
+        if (visible && EditorState.recoveryAvailable && !EditorState.reopenLastProject)
             recoveryOpenTimer.start()
     }
 
@@ -1191,8 +1119,19 @@ ApplicationWindow {
             if (window.rejectIfProjectOpenPending())
                 return
             editorHeader.confirmIfDirty(function () {
-                EditorState.projectFile.loadProject(url)
+                EditorState.loadProject(url)
             })
+        }
+        function onRecoveryChanged() {
+            if (EditorState.needsUiLanguagePrompt || languageChooserDialogLoader.shown)
+                return
+            if (EditorState.reopenLastProject)
+                return
+            if (EditorState.recoveryAvailable) {
+                recoveryOpenTimer.start()
+            } else {
+                Qt.callLater(window.promptLayoutChooserIfNeeded)
+            }
         }
 
         // Each of these edits one clip of the project that was just discarded, so there is
@@ -1215,6 +1154,17 @@ ApplicationWindow {
 
         function onOpenMulticamWindowRequested() {
             multicamWindowLoader.ensure().openSession()
+        }
+
+        // Terminal result of a loadProject()/loadProjectJson() call, from any source —
+        // unlike lastMessageChanged, this does not also fire for the "Unpacking project
+        // media…" progress message a bundle with embedded media raises first, so it's
+        // safe to treat as "the open is done" rather than mistaking progress for success.
+        // rejectIfProjectOpenPending() keeps at most one load in flight at a time, so
+        // whichever request this is, it's the one the start screen (if up) is waiting on.
+        function onProjectLoadFinished(ok) {
+            if (ok)
+                window.showStartScreen = false
         }
 
         function onProjectLayoutChosenChanged() {
@@ -1241,6 +1191,17 @@ ApplicationWindow {
                 Toasts.info(qsTr("Export cancelled."))
             else
                 Toasts.error(qsTr("Export failed. Check the save location and free space on your disk."))
+        }
+
+        function onMissingAddons(addons) {
+            missingAddonsDialogLoader.ensure().openFor(addons)
+        }
+
+        function onPackageFinished(ok, message) {
+            if (ok)
+                Toasts.success(message)
+            else
+                Toasts.error(qsTr("Couldn't create the shareable copy: %1").arg(message))
         }
 
         function onSubtitleGenerationFinished(ok, message) {
@@ -1276,44 +1237,6 @@ ApplicationWindow {
         // the timeline was silent.
         function onTransformBlocked(reason) {
             Toasts.warning(reason)
-        }
-    }
-
-    Connections {
-        target: EditorState.projectFile
-
-        function onRecoveryChanged() {
-            if (EditorState.preferences.needsUiLanguagePrompt || languageChooserDialogLoader.shown)
-                return
-            if (EditorState.preferences.reopenLastProject)
-                return
-            if (EditorState.projectFile.recoveryAvailable) {
-                recoveryOpenTimer.start()
-            } else {
-                Qt.callLater(window.promptLayoutChooserIfNeeded)
-            }
-        }
-
-        // Terminal result of a loadProject()/loadProjectJson() call, from any source —
-        // unlike lastMessageChanged, this does not also fire for the "Unpacking project
-        // media…" progress message a bundle with embedded media raises first, so it's
-        // safe to treat as "the open is done" rather than mistaking progress for success.
-        // rejectIfProjectOpenPending() keeps at most one load in flight at a time, so
-        // whichever request this is, it's the one the start screen (if up) is waiting on.
-        function onProjectLoadFinished(ok) {
-            if (ok)
-                window.showStartScreen = false
-        }
-
-        function onMissingAddons(addons) {
-            missingAddonsDialogLoader.ensure().openFor(addons)
-        }
-
-        function onPackageFinished(ok, message) {
-            if (ok)
-                Toasts.success(message)
-            else
-                Toasts.error(qsTr("Couldn't create the shareable copy: %1").arg(message))
         }
     }
 
@@ -1370,8 +1293,8 @@ ApplicationWindow {
     // Escape (clearSelection): CapCut-style — if a timeline cut tool is active,
     // first press returns to Select; only then does Escape clear the selection.
     function dispatchAction(id) {
-        if (id === "clearSelection" && EditorState.preview.guideEditSetId !== "") {
-            EditorState.preview.guideEditSetId = ""
+        if (id === "clearSelection" && EditorState.guideEditSetId !== "") {
+            EditorState.guideEditSetId = ""
             return
         }
         if (id === "clearSelection"
@@ -1624,13 +1547,13 @@ ApplicationWindow {
                             // the stack is hidden and the preview is all there is.
                             SplitView.fillWidth: !window.portraitWorkspace || window.previewFullscreen
                             // Portrait default: wide enough for the tall frame once
-                            // the panel's transport row and gutters are discounted,
+                            // the panel's toolbar and transport rows are discounted,
                             // capped so the libraries and timeline keep a usable
                             // share. Ignored while fillWidth is set, and replaced
                             // outright once the user drags the handle — SplitView
                             // writes this attached property, which drops the binding.
                             SplitView.preferredWidth: Math.max(0, Math.min(rootSplit.width * 0.4,
-                                                                           (rootSplit.height - 72) * 9 / 16))
+                                                                           (rootSplit.height - 120) * 9 / 16))
                             SplitView.minimumWidth: window.portraitWorkspace
                                                     ? Math.min(260, Math.max(0, rootSplit.width * 0.2))
                                                     : Math.min(320, Math.max(0, innerSplit.width * 0.3))

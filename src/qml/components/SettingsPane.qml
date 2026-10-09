@@ -82,14 +82,14 @@ Item {
                 title: qsTr("Preview")
 
                 ThemedSwitch {
-                    checked: EditorState.preview.guidesEnabled
+                    checked: EditorState.guidesEnabled
                     text: qsTr("Show guides")
                     tooltip: qsTr("Show alignment guides over the preview")
-                    onToggled: EditorState.preview.guidesEnabled = checked
+                    onToggled: EditorState.guidesEnabled = checked
                 }
 
                 Repeater {
-                    model: EditorState.preview.guidesEnabled ? EditorState.guideSets : []
+                    model: EditorState.guidesEnabled ? EditorState.guideSets : []
 
                     ThemedCheckBox {
                         required property var modelData
@@ -117,25 +117,25 @@ Item {
                     tooltip: qsTr("Fill behind clips that don’t cover the whole screen")
                     currentIndex: {
                         for (var i = 0; i < model.length; ++i) {
-                            if (model[i].id === EditorState.projectFile.background.kind)
+                            if (model[i].id === EditorState.background.kind)
                                 return i
                         }
                         return 0
                     }
-                    onActivated: EditorState.projectFile.setBackground({ kind: model[currentIndex].id })
+                    onActivated: EditorState.setBackground({ kind: model[currentIndex].id })
                 }
 
                 ColorSwatchField {
-                    visible: EditorState.projectFile.background.kind === "color"
-                    hex: EditorState.projectFile.background.color || "#ff000000"
+                    visible: EditorState.background.kind === "color"
+                    hex: EditorState.background.color || "#ff000000"
                     tooltip: qsTr("Choose background colour")
-                    onEdited: value => EditorState.projectFile.setBackground({ kind: "color", color: value })
+                    onEdited: value => EditorState.setBackground({ kind: "color", color: value })
                 }
 
                 Column {
                     width: parent.width
                     spacing: Theme.spacingSm
-                    visible: EditorState.projectFile.background.kind === "blur"
+                    visible: EditorState.background.kind === "blur"
 
                     ThemedSlider {
                         width: parent.width
@@ -144,10 +144,10 @@ Item {
                         to: 100
                         stepSize: 1
                         valueFormatter: function (v) { return Math.round(v) }
-                        value: EditorState.projectFile.background.blurStrength || 20
+                        value: EditorState.background.blurStrength || 20
                         onPressedChanged: {
                             if (!pressed)
-                                EditorState.projectFile.setBackground({ kind: "blur", blurStrength: value })
+                                EditorState.setBackground({ kind: "blur", blurStrength: value })
                         }
                     }
                 }
@@ -185,30 +185,30 @@ Item {
                 }
 
                 ThemedSwitch {
-                    visible: EditorState.preferences.vaapiZeroCopySupported
-                    checked: EditorState.preferences.vaapiZeroCopy
+                    visible: EditorState.vaapiZeroCopySupported
+                    checked: EditorState.vaapiZeroCopy
                     text: qsTr("Faster preview (experimental)")
                     tooltip: qsTr("Can make playback smoother by keeping video on the graphics card. Turn it off if the picture looks wrong. Takes effect after restart.")
-                    onToggled: EditorState.preferences.vaapiZeroCopy = checked
+                    onToggled: EditorState.vaapiZeroCopy = checked
                 }
 
                 // Same wording as the VAAPI switch above: only one of the two is ever visible,
                 // since each is supported on exactly the platform the other is not.
                 ThemedSwitch {
-                    visible: EditorState.preferences.mediaCodecZeroCopySupported
-                    checked: EditorState.preferences.mediaCodecZeroCopy
+                    visible: EditorState.mediaCodecZeroCopySupported
+                    checked: EditorState.mediaCodecZeroCopy
                     text: qsTr("Faster preview (experimental)")
                     tooltip: qsTr("Can make playback smoother by keeping video on the graphics card. Turn it off if the picture looks wrong. Takes effect after restart.")
-                    onToggled: EditorState.preferences.mediaCodecZeroCopy = checked
+                    onToggled: EditorState.mediaCodecZeroCopy = checked
                 }
 
                 ThemedLabel {
-                    visible: EditorState.preferences.gpuPreferenceSupported
+                    visible: EditorState.gpuPreferenceSupported
                     text: qsTr("Graphics card")
                 }
 
                 ThemedComboBox {
-                    visible: EditorState.preferences.gpuPreferenceSupported
+                    visible: EditorState.gpuPreferenceSupported
                     width: parent.width
                     textRole: "label"
                     valueRole: "id"
@@ -220,28 +220,28 @@ Item {
                     tooltip: qsTr("Which graphics card Drift runs on. High performance keeps video decoded on an NVIDIA card on that card; power saving uses less battery. Takes effect after restart.")
                     currentIndex: {
                         for (var i = 0; i < model.length; ++i) {
-                            if (model[i].id === EditorState.preferences.preferredGpu)
+                            if (model[i].id === EditorState.preferredGpu)
                                 return i
                         }
                         return 0
                     }
-                    onActivated: EditorState.preferences.preferredGpu = model[currentIndex].id
+                    onActivated: EditorState.preferredGpu = model[currentIndex].id
                 }
 
                 ThemedLabel {
-                    visible: EditorState.preferences.gpuPreferenceInSystemSettings
+                    visible: EditorState.gpuPreferenceInSystemSettings
                     text: qsTr("Graphics card")
                 }
 
                 ThemedLabel {
-                    visible: EditorState.preferences.gpuPreferenceInSystemSettings
+                    visible: EditorState.gpuPreferenceInSystemSettings
                     width: parent.width
                     text: qsTr("Choose which graphics card Drift runs on in Windows Settings, under "
                                + "Display > Graphics. Takes effect after restart.")
                 }
 
                 ThemedButton {
-                    visible: EditorState.preferences.gpuPreferenceInSystemSettings
+                    visible: EditorState.gpuPreferenceInSystemSettings
                     variant: "secondary"
                     text: qsTr("Open graphics settings")
                     onClicked: Qt.openUrlExternally("ms-settings:display-advancedgraphics")
@@ -316,30 +316,30 @@ Item {
                     currentIndex: {
                         const opts = model
                         for (var i = 0; i < opts.length; ++i) {
-                            if (Math.abs(opts[i].id - EditorState.preferences.uiScale) < 0.001)
+                            if (Math.abs(opts[i].id - EditorState.uiScale) < 0.001)
                                 return i
                         }
                         return 0
                     }
                     onActivated: {
                         if (currentIndex >= 0 && currentIndex < model.length)
-                            EditorState.preferences.uiScale = model[currentIndex].id
+                            EditorState.uiScale = model[currentIndex].id
                     }
                 }
 
                 ThemedLabel {
                     width: parent.width
-                    visible: EditorState.preferences.uiScaleNeedsRestart
+                    visible: EditorState.uiScaleNeedsRestart
                     text: qsTr("Restart Drift to apply this size.")
                     color: Theme.panelSecondaryForeground
                 }
 
                 ThemedSwitch {
                     visible: !Theme.touchUi
-                    checked: EditorState.preferences.invertTimelineScroll
+                    checked: EditorState.invertTimelineScroll
                     text: qsTr("Horizontal mouse-wheel pan")
                     tooltip: qsTr("Scroll pans left and right along the timeline. Shift+scroll moves between tracks. Middle-click drag also pans.")
-                    onToggled: EditorState.preferences.invertTimelineScroll = checked
+                    onToggled: EditorState.invertTimelineScroll = checked
                 }
 
                 ThemedSwitch {
@@ -360,20 +360,20 @@ Item {
                     visible: Theme.touchUi
                     textRole: "label"
                     valueRole: "id"
-                    model: EditorState.preferences.uiLanguages
+                    model: EditorState.uiLanguages
                     tooltip: qsTr("Language for menus and labels. Takes effect immediately.")
                     currentIndex: {
-                        const langs = EditorState.preferences.uiLanguages
+                        const langs = EditorState.uiLanguages
                         for (var i = 0; i < langs.length; ++i) {
-                            if (langs[i].id === EditorState.preferences.uiLanguage)
+                            if (langs[i].id === EditorState.uiLanguage)
                                 return i
                         }
                         return 0
                     }
                     onActivated: {
-                        const langs = EditorState.preferences.uiLanguages
+                        const langs = EditorState.uiLanguages
                         if (currentIndex >= 0 && currentIndex < langs.length)
-                            EditorState.preferences.uiLanguage = langs[currentIndex].id
+                            EditorState.uiLanguage = langs[currentIndex].id
                     }
                 }
             }
@@ -382,10 +382,10 @@ Item {
                 title: qsTr("App")
 
                 ThemedSwitch {
-                    checked: EditorState.preferences.reopenLastProject
+                    checked: EditorState.reopenLastProject
                     text: qsTr("Reopen last project on startup")
                     tooltip: qsTr("Automatically restore the last open project on startup. Closing still asks you to save; a crash snapshot never overwrites your save file.")
-                    onToggled: EditorState.preferences.reopenLastProject = checked
+                    onToggled: EditorState.reopenLastProject = checked
                 }
 
                 Column {
@@ -406,7 +406,7 @@ Item {
                     ThemedSwitch {
                         checked: Updates.enabled
                         text: qsTr("Check on startup")
-                        tooltip: qsTr("Once a day, check whether a newer Drift has been released")
+                        tooltip: qsTr("Ask GitHub once a day whether a newer Drift has been released")
                         onToggled: Updates.enabled = checked
                     }
 
@@ -418,10 +418,8 @@ Item {
                             id: checkNowButton
                             variant: "secondary"
                             glyph: Theme.icons.refresh
-                            text: Updates.checking ? qsTr("Checking…")
-                                  : Updates.downloading ? qsTr("Downloading…")
-                                  : qsTr("Check now")
-                            enabled: !Updates.checking && !Updates.downloading && !Updates.preparing
+                            text: Updates.checking ? qsTr("Checking…") : qsTr("Check now")
+                            enabled: !Updates.checking
                             onClicked: Updates.checkNow()
                         }
 

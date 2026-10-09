@@ -135,18 +135,18 @@ QtObject {
 
     // --- Light/dark mode: follows the OS until the user picks a side -----------
     // Qt.styleHints.colorScheme is live-updated by the platform theme (Qt 6.5+).
-    // Once toggled, the choice lives in QSettings via EditorState.preferences and survives
+    // Once toggled, the choice lives in QSettings via EditorState and survives
     // restarts; it is app-wide, not stored per project.
     readonly property bool systemPrefersDark: Qt.styleHints.colorScheme !== Qt.Light
-    readonly property bool darkMode: EditorState.preferences.darkModeOverridden ? EditorState.preferences.darkModePreferred
+    readonly property bool darkMode: EditorState.darkModeOverridden ? EditorState.darkModePreferred
                                                                     : systemPrefersDark
 
     function toggleDarkMode() {
-        EditorState.preferences.setDarkModePreference(!darkMode);
+        EditorState.setDarkModePreference(!darkMode);
     }
 
     function setDarkMode(enabled) {
-        EditorState.preferences.setDarkModePreference(enabled);
+        EditorState.setDarkModePreference(enabled);
     }
 
     // --- Color palettes: app shell vs. panel surfaces, light and dark ------------
@@ -485,8 +485,8 @@ QtObject {
     }
 
     // --- Layout: preview panel -----------------------------------------------
-    // Above and below the transport bar's buttons.
-    readonly property real previewTransportPadding: 6
+    readonly property real previewToolbarPaddingTop: 20
+    readonly property real previewToolbarPaddingBottom: 12
 
     // --- Layout: timeline ------------------------------------------------------
     readonly property real timelineToolbarHeight: 40

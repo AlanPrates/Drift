@@ -97,8 +97,8 @@ Item {
                     width: Math.min(implicitWidth,
                                     Math.max(0, barBody.width - actionsRow.width - backBtn.width
                                                 - Theme.iconSizeMd - Theme.spacing3xl))
-                    text: EditorState.projectFile.projectName.length > 0
-                          ? EditorState.projectFile.projectName
+                    text: EditorState.projectName.length > 0
+                          ? EditorState.projectName
                           : qsTr("Untitled")
                     color: Theme.foreground
                     font.family: Theme.fontFamily
@@ -112,7 +112,7 @@ Item {
                     width: 8
                     height: 8
                     radius: 4
-                    color: EditorState.projectFile.hasUnsavedChanges ? Theme.destructive : Theme.constructive
+                    color: EditorState.hasUnsavedChanges ? Theme.destructive : Theme.constructive
                 }
 
                 IconGlyph {

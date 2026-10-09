@@ -275,7 +275,7 @@ Item {
         }
     }
     function _requestRefresh() {
-        if (EditorState.assetPreview.windowOpen)
+        if (EditorState.assetPreviewWindowOpen)
             root._refreshPending = true
         else
             refreshCoalesceTimer.restart()
@@ -283,11 +283,8 @@ Item {
     Connections {
         target: EditorState
         function onUndoStackChanged() { root._requestRefresh() }
-    }
-    Connections {
-        target: EditorState.assetPreview
-        function onWindowOpenChanged() {
-            if (!EditorState.assetPreview.windowOpen && root._refreshPending) {
+        function onAssetPreviewWindowOpenChanged() {
+            if (!EditorState.assetPreviewWindowOpen && root._refreshPending) {
                 root._refreshPending = false
                 refreshCoalesceTimer.restart()
             }
@@ -560,7 +557,7 @@ Item {
             ThemedToolTip {
                 text: cardRoot.isFolder ? name
                       : qsTr("%1 — drag to the timeline, right-click to preview").arg(name)
-                visible: cardHover.hovered && !cardMenu.visible && !folderMenu.visible
+                visible: cardHover.hovered
                 // Explicit rather than the default above-parent Popup placement: for the top
                 // row, that placement had no room to spare and overlapped the folder row/search
                 // field above the grid.
@@ -1223,7 +1220,7 @@ Item {
             ThemedToolTip {
                 text: listRow.isFolder ? name
                       : qsTr("%1 — drag to the timeline, right-click to preview").arg(name)
-                visible: rowHover.hovered && !rowMenu.visible && !folderRowMenu.visible
+                visible: rowHover.hovered
                 y: parent.height + 4
             }
 

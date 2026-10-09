@@ -6,7 +6,7 @@ import Drift
 Item {
     id: root
 
-    visible: EditorState.preview.guidesEnabled
+    visible: EditorState.guidesEnabled
 
     Repeater {
         model: EditorState.guideItems

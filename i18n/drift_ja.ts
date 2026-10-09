@@ -2,33 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ja_JP" sourcelanguage="en_US">
 <context>
-    <name>AboutDialog</name>
-    <message>
-        <source>About Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
-    <message>
-        <source>Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Version %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open-source video editor by CutWire Studios.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Licensed under GPLv3. Copyright © CutWire Studios.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>AddonManager</name>
     <message>
         <source>Automatic (recommended)</source>
@@ -1488,6 +1461,18 @@
 <context>
     <name>AndroidPreview</name>
     <message>
+        <source>Audio only</source>
+        <translation>オーディオのみ</translation>
+    </message>
+    <message>
+        <source>No clip at the current time</source>
+        <translation>現在の時間にクリップがありません</translation>
+    </message>
+    <message>
+        <source>GPU preview unavailable</source>
+        <translation>GPUプレビューは利用できません</translation>
+    </message>
+    <message>
         <source>Full</source>
         <translation>フル</translation>
     </message>
@@ -2176,6 +2161,10 @@
         <translation>切り取りツール</translation>
     </message>
     <message>
+        <source>Faster preview takes effect after you restart Drift.</source>
+        <translation>高速プレビューは Drift 再起動後に有効になります。</translation>
+    </message>
+    <message>
         <source>System default</source>
         <translation>システムデフォルト</translation>
     </message>
@@ -2336,16 +2325,80 @@
         <translation>字幕を生成しました</translation>
     </message>
     <message>
+        <source>Select a video clip to cut out</source>
+        <translation>切り抜くビデオクリップを選択してください</translation>
+    </message>
+    <message>
+        <source>Custom speed works on video and audio clips</source>
+        <translation>カスタムスピードはビデオおよびオーディオクリップで機能します</translation>
+    </message>
+    <message>
+        <source>This clip has no media to speed up or slow down</source>
+        <translation>このクリップには速度を変更するメディアがありません</translation>
+    </message>
+    <message>
+        <source>That clip moved — open Custom speed again</source>
+        <translation>クリップが移動しました — カスタムスピードを再度開いてください</translation>
+    </message>
+    <message>
+        <source>Custom speed applied</source>
+        <translation>カスタムスピードを適用しました</translation>
+    </message>
+    <message>
         <source>Speed curve removed</source>
         <translation>スピードカーブを削除しました</translation>
+    </message>
+    <message>
+        <source>That clip moved — open Custom fade again</source>
+        <translation>クリップが移動しました — カスタムフェードを再度開いてください</translation>
+    </message>
+    <message>
+        <source>Custom fade applied</source>
+        <translation>カスタムフェードを適用しました</translation>
+    </message>
+    <message>
+        <source>Cutout is already running</source>
+        <translation>切り抜きは既に実行中です</translation>
+    </message>
+    <message>
+        <source>This clip has no video to cut out</source>
+        <translation>このクリップには切り抜くビデオがありません</translation>
+    </message>
+    <message>
+        <source>Click the subject first</source>
+        <translation>まず被写体をクリックしてください</translation>
     </message>
     <message>
         <source>Getting ready…</source>
         <translation>準備中…</translation>
     </message>
     <message>
+        <source>Clip is too short to cut out</source>
+        <translation>クリップが短すぎて切り抜けません</translation>
+    </message>
+    <message>
+        <source>Could not create a cutout file</source>
+        <translation>切り抜きファイルを作成できませんでした</translation>
+    </message>
+    <message>
+        <source>Cutout cancelled</source>
+        <translation>切り抜きをキャンセルしました</translation>
+    </message>
+    <message>
         <source>Could not decode frame %1</source>
         <translation>フレーム %1 をデコードできませんでした</translation>
+    </message>
+    <message>
+        <source>Processing frame %1 of %2…</source>
+        <translation>フレーム %1 / %2 を処理中…</translation>
+    </message>
+    <message>
+        <source>Cutout complete — subject cut out on %1 of %2 frames</source>
+        <translation>切り抜き完了 — %2 フレーム中 %1 フレームで被写体を切り抜きました</translation>
+    </message>
+    <message>
+        <source>Cutout complete</source>
+        <translation>切り抜き完了</translation>
     </message>
     <message>
         <source>Clear Face Track</source>
@@ -2398,6 +2451,14 @@
     <message>
         <source>Detect Faces</source>
         <translation>顔を検出</translation>
+    </message>
+    <message>
+        <source>That clip no longer exists</source>
+        <translation>そのクリップは存在しなくなりました</translation>
+    </message>
+    <message>
+        <source>Cut out subject</source>
+        <translation>被写体を切り抜く</translation>
     </message>
     <message>
         <source>Clip</source>
@@ -2514,6 +2575,10 @@
     <message>
         <source>Save combined multicam</source>
         <translation>マルチカムを結合して保存</translation>
+    </message>
+    <message>
+        <source>Cutting out subject…</source>
+        <translation>被写体を切り抜き中…</translation>
     </message>
     <message>
         <source>Select a video clip to stabilize</source>
@@ -2728,6 +2793,10 @@
         <translation>ズームアウト</translation>
     </message>
     <message>
+        <source>The graphics card choice takes effect after you restart Drift.</source>
+        <translation>グラフィックカードの選択は、Driftを再起動した後に反映されます。</translation>
+    </message>
+    <message>
         <source>No audio track available for recording</source>
         <translation>録音に使用できるオーディオトラックがありません</translation>
     </message>
@@ -2800,6 +2869,18 @@
         <translation>トランジションカーブを更新しました</translation>
     </message>
     <message>
+        <source>That transition is gone — open the custom curve again</source>
+        <translation>対象のトランジションが存在しません — カスタムカーブを再度開いてください</translation>
+    </message>
+    <message>
+        <source>Custom transition curve</source>
+        <translation>カスタムトランジションカーブ</translation>
+    </message>
+    <message>
+        <source>Custom transition curve applied</source>
+        <translation>カスタムトランジションカーブを適用しました</translation>
+    </message>
+    <message>
         <source>Select a video or image clip to estimate depth for</source>
         <translation>深度を推定するビデオまたは画像クリップを選択してください</translation>
     </message>
@@ -2868,6 +2949,10 @@
         <translation>手ぶれ補正モードを変更</translation>
     </message>
     <message>
+        <source>Cutout</source>
+        <translation>切り抜き</translation>
+    </message>
+    <message>
         <source> (denoised)</source>
         <translation> (ノイズ除去済み)</translation>
     </message>
@@ -2878,6 +2963,18 @@
     <message>
         <source>Noise removed</source>
         <translation>ノイズを除去しました</translation>
+    </message>
+    <message>
+        <source>This project uses &quot;%1&quot;, which isn’t installed — it won’t show. Open Extras to install it.</source>
+        <translation>このプロジェクトはインストールされていない「%1」を使用しています — 表示されません。拡張機能を開いてインストールしてください。</translation>
+    </message>
+    <message>
+        <source>This project uses %1 effects or transitions that aren’t installed (%2%3) — they won’t show. Open Extras to install them.</source>
+        <translation>このプロジェクトはインストールされていない %1 個のエフェクトまたはトランジションを使用しています (%2%3) — 表示されません。拡張機能を開いてインストールしてください。</translation>
+    </message>
+    <message>
+        <source>, …</source>
+        <translation>、…</translation>
     </message>
     <message>
         <source>Shape added</source>
@@ -2952,6 +3049,34 @@
         <translation>絵文字を追加するには絵文字スタンプパックをインストールしてください</translation>
     </message>
     <message>
+        <source>Frame rate</source>
+        <translation>フレームレート</translation>
+    </message>
+    <message>
+        <source>Project setup</source>
+        <translation>プロジェクト設定</translation>
+    </message>
+    <message>
+        <source>Project setup updated</source>
+        <translation>プロジェクト設定を更新しました</translation>
+    </message>
+    <message>
+        <source>Crop canvas</source>
+        <translation>キャンバスをクロップ</translation>
+    </message>
+    <message>
+        <source>Video size cropped to %1×%2</source>
+        <translation>ビデオサイズを %1×%2 にクロップしました</translation>
+    </message>
+    <message>
+        <source>Change background</source>
+        <translation>背景を変更</translation>
+    </message>
+    <message>
+        <source>Background updated</source>
+        <translation>背景を更新しました</translation>
+    </message>
+    <message>
         <source>Edit clip</source>
         <translation>クリップを編集</translation>
     </message>
@@ -2994,14 +3119,6 @@
     <message>
         <source>Edit keyframe</source>
         <translation>キーフレームを編集</translation>
-    </message>
-    <message>
-        <source>Move camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Rotate camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Edit effect</source>
@@ -3632,22 +3749,6 @@
         <translation>クリップはフラットです</translation>
     </message>
     <message>
-        <source>Enable depth occlusion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Disable depth occlusion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clip is occluded by depth</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clip uses track order</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Subtitles converted to text</source>
         <translation>字幕をテキストに変換しました</translation>
     </message>
@@ -3676,22 +3777,6 @@
     <message>
         <source>Transform clip added</source>
         <translation>変形クリップを追加しました</translation>
-    </message>
-    <message>
-        <source>Add camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add camera clip</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Camera added</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Camera clip added</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Transform together</source>
@@ -3802,14 +3887,6 @@
     <message>
         <source>Keyframe interpolates</source>
         <translation>キーフレームを補間</translation>
-    </message>
-    <message>
-        <source>Reset camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Camera reset</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Reset transform</source>
@@ -4204,6 +4281,116 @@
         </translation>
     </message>
     <message>
+        <source>Saved a copy</source>
+        <translation>コピーを保存しました</translation>
+    </message>
+    <message>
+        <source>Couldn’t write %1: %2</source>
+        <translation>%1 に書き込めませんでした : %2</translation>
+    </message>
+    <message>
+        <source>Project JSON saved</source>
+        <translation>プロジェクト JSON を保存しました</translation>
+    </message>
+    <message>
+        <source>Still opening a project — try again in a moment.</source>
+        <translation>プロジェクトの読み込み中です — しばらくしてからもう一度試してください。</translation>
+    </message>
+    <message>
+        <source>Couldn’t read %1: %2</source>
+        <translation>%1 を読み取れませんでした : %2</translation>
+    </message>
+    <message>
+        <source>Project JSON loaded</source>
+        <translation>プロジェクト JSON を読み込みました</translation>
+    </message>
+    <message>
+        <source>Failed to open Premiere Pro project</source>
+        <translation>Premiere Pro プロジェクトを開けません</translation>
+    </message>
+    <message>
+        <source>Premiere Pro project imported: %1</source>
+        <translation>インポートされたPremiere Proプロジェクト : %1</translation>
+    </message>
+    <message>
+        <source>That template location isn’t valid</source>
+        <translation>そのテンプレートの場所は無効です</translation>
+    </message>
+    <message>
+        <source>Failed to unpack Motion Graphics Template</source>
+        <translation>モーショングラフィックス テンプレートの展開に失敗しました</translation>
+    </message>
+    <message>
+        <source>Failed to apply template to project</source>
+        <translation>プロジェクトへのテンプレートの適用に失敗しました</translation>
+    </message>
+    <message>
+        <source>Import template: %1</source>
+        <translation>テンプレートをインポート : %1</translation>
+    </message>
+    <message>
+        <source>Template imported: %1</source>
+        <translation>テンプレートをインポートしました : %1</translation>
+    </message>
+    <message>
+        <source>Failed to open Kdenlive / MLT project</source>
+        <translation>Kdenlive / MLT プロジェクトのオープンに失敗しました</translation>
+    </message>
+    <message>
+        <source>Kdenlive project imported: %1</source>
+        <translation>Kdenlive プロジェクトをインポートしました : %1</translation>
+    </message>
+    <message>
+        <source>Failed to open DaVinci Resolve project / timeline</source>
+        <translation>DaVinci Resolve プロジェクト / タイムラインのオープンに失敗しました</translation>
+    </message>
+    <message>
+        <source>DaVinci Resolve project imported: %1</source>
+        <translation>DaVinci Resolve プロジェクトをインポートしました : %1</translation>
+    </message>
+    <message>
+        <source>Failed to open Edit Decision List (.edl)</source>
+        <translation>Edit Decision List (.edl) のオープンに失敗しました</translation>
+    </message>
+    <message>
+        <source>EDL imported: %1</source>
+        <translation>EDL をインポートしました : %1</translation>
+    </message>
+    <message>
+        <source>Failed to open OpenTimelineIO (.otio) sequence</source>
+        <translation>OpenTimelineIO (.otio) シーケンスのオープンに失敗しました</translation>
+    </message>
+    <message>
+        <source>OpenTimelineIO imported: %1</source>
+        <translation>OpenTimelineIO をインポートしました : %1</translation>
+    </message>
+    <message>
+        <source>That folder isn’t valid</source>
+        <translation>そのフォルダーは無効です</translation>
+    </message>
+    <message>
+        <source>All media is already in that folder</source>
+        <translation>すべてのメディアはすでにそのフォルダーにあります</translation>
+    </message>
+    <message>
+        <source>Collect media</source>
+        <translation>メディアを収集</translation>
+    </message>
+    <message numerus="yes">
+        <source>Media collected, but %n original(s) couldn’t be deleted</source>
+        <translation>
+            <numerusform>メディアを収集しましたが、%n 個の元ファイルを削除できませんでした</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Media moved and relinked</source>
+        <translation>メディアを移動して再リンクしました</translation>
+    </message>
+    <message>
+        <source>Media copied and relinked</source>
+        <translation>メディアをコピーして再リンクしました</translation>
+    </message>
+    <message>
         <source>Exporting…</source>
         <translation>エクスポート中…</translation>
     </message>
@@ -4374,6 +4561,42 @@
         <translation>その保存先は無効です</translation>
     </message>
     <message>
+        <source>Already saving</source>
+        <translation>既に保存中です</translation>
+    </message>
+    <message>
+        <source>Project saved</source>
+        <translation>プロジェクトを保存しました</translation>
+    </message>
+    <message>
+        <source>Shareable copy ready</source>
+        <translation>共有可能なコピーの準備ができました</translation>
+    </message>
+    <message>
+        <source>That project location isn’t valid</source>
+        <translation>そのプロジェクトの場所は無効です</translation>
+    </message>
+    <message>
+        <source>Project loaded</source>
+        <translation>プロジェクトを読み込みました</translation>
+    </message>
+    <message>
+        <source>Unpacking project media…</source>
+        <translation>プロジェクトメディアを展開中…</translation>
+    </message>
+    <message>
+        <source>No recovery file found</source>
+        <translation>リカバリファイルが見つかりません</translation>
+    </message>
+    <message>
+        <source>Recovered unsaved work</source>
+        <translation>未保存の作業を復元しました</translation>
+    </message>
+    <message>
+        <source>Started new session</source>
+        <translation>新しいセッションを開始しました</translation>
+    </message>
+    <message>
         <source>Export already in progress</source>
         <translation>エクスポートは既に実行中です</translation>
     </message>
@@ -4432,14 +4655,6 @@
     <message>
         <source>Clip orientation set to %1°</source>
         <translation>クリップの向きを %1° に設定しました</translation>
-    </message>
-    <message>
-        <source>Crop canvas</source>
-        <translation>キャンバスをクロップ</translation>
-    </message>
-    <message>
-        <source>Video size cropped to %1×%2</source>
-        <translation>ビデオサイズを %1×%2 にクロップしました</translation>
     </message>
 </context>
 <context>
@@ -4883,14 +5098,6 @@
         <translation>オーディオエフェクトを参照</translation>
     </message>
     <message>
-        <source>Move to a time, set a value, then click the diamond to add a keyframe. With Auto keyframes on, dragging a slider also creates them.</source>
-        <translation type="unfinished">時間を移動し、値を設定して、ダイヤモンドをクリックしてキーフレームを追加します。自動キーフレームがオンの場合、スライダーをドラッグしてもキーフレームが作成されます。</translation>
-    </message>
-    <message>
-        <source>Auto keyframes</source>
-        <translation type="unfinished">自動キーフレーム</translation>
-    </message>
-    <message>
         <source>%1 (not installed)</source>
         <translation>%1 (インストールされていません)</translation>
     </message>
@@ -4917,6 +5124,18 @@
     <message>
         <source>Remove audio effect</source>
         <translation>オーディオエフェクトを削除</translation>
+    </message>
+    <message>
+        <source>On</source>
+        <translation>オン</translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation>オフ</translation>
+    </message>
+    <message>
+        <source>Edit audio effect</source>
+        <translation>オーディオエフェクトを編集</translation>
     </message>
 </context>
 <context>
@@ -5243,57 +5462,6 @@
     </message>
 </context>
 <context>
-    <name>CameraInspector</name>
-    <message>
-        <source>Pan X</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pan Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Dolly</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pitch</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Yaw</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Roll</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Lens</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select a camera clip to frame the shot.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Everything on the timeline is seen through this camera while the clip lasts. A camera at rest looks exactly like no camera at all, so the numbers below are all offsets from the normal view.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>A short lens exaggerates depth; a long one flattens it. While this camera is running it replaces each clip&apos;s own Perspective value, because a scene has one viewer.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reset camera position</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Back to rest: no pan, dolly or turn, framing the canvas head on. The lens is kept.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ChannelKeyButton</name>
     <message>
         <source>Remove %1 keyframe at the playhead</source>
@@ -5409,29 +5577,6 @@
     <message>
         <source>Apply</source>
         <translation>適用</translation>
-    </message>
-</context>
-<context>
-    <name>CurveEditorController</name>
-    <message>
-        <source>That transition is gone — open the custom curve again</source>
-        <translation type="unfinished">対象のトランジションが存在しません — カスタムカーブを再度開いてください</translation>
-    </message>
-    <message>
-        <source>Custom transition curve</source>
-        <translation type="unfinished">カスタムトランジションカーブ</translation>
-    </message>
-    <message>
-        <source>Custom transition curve applied</source>
-        <translation type="unfinished">カスタムトランジションカーブを適用しました</translation>
-    </message>
-    <message>
-        <source>That clip moved — open Custom fade again</source>
-        <translation type="unfinished">クリップが移動しました — カスタムフェードを再度開いてください</translation>
-    </message>
-    <message>
-        <source>Custom fade applied</source>
-        <translation type="unfinished">カスタムフェードを適用しました</translation>
     </message>
 </context>
 <context>
@@ -7700,14 +7845,6 @@
         <translation>キーフレーム</translation>
     </message>
     <message>
-        <source>Collapse curve editor to compact view (88px)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Expand curve editor to view and edit Bezier handles (180px)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Analyzing…</source>
         <translation>分析中…</translation>
     </message>
@@ -7748,10 +7885,6 @@
         <translation>
             <numerusform>%n キーフレーム</numerusform>
         </translation>
-    </message>
-    <message>
-        <source>Expand for handles</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source> BPM</source>
@@ -8050,6 +8183,10 @@
         <translation>属性を貼り付け…</translation>
     </message>
     <message>
+        <source>Preferences…</source>
+        <translation>環境設定…</translation>
+    </message>
+    <message>
         <source>&amp;Playback</source>
         <translation>再生(&amp;P)</translation>
     </message>
@@ -8150,20 +8287,8 @@
         <translation>更新の確認…</translation>
     </message>
     <message>
-        <source>About Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Settings…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Debug Info…</source>
         <translation>デバッグ情報…</translation>
-    </message>
-    <message>
-        <source>Drift %1 is the latest version.</source>
-        <translation type="unfinished">Drift %1 は最新バージョンです。</translation>
     </message>
     <message>
         <source>Still opening a project — try again in a moment.</source>
@@ -8176,14 +8301,6 @@
     <message>
         <source>Project closed</source>
         <translation>プロジェクトを閉じました</translation>
-    </message>
-    <message>
-        <source>Already checking for updates…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Checking for updates…</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Export finished.</source>
@@ -9154,8 +9271,32 @@
         <translation>開始オフセット</translation>
     </message>
     <message>
-        <source>Position, size, rotation and depth occlusion are on the Transform tab.</source>
-        <translation type="unfinished"></translation>
+        <source>Pose</source>
+        <translation>ポーズ</translation>
+    </message>
+    <message>
+        <source>Rotations follow the model&apos;s own axes: X tilts, Y then spins about the tilted up axis, Z rolls after both.</source>
+        <translation>回転はモデル自身の軸に沿って行われます。まず X軸でチルトし、次に Y軸でチルトした軸を中心にスピンし、最後に Z軸でロールします。</translation>
+    </message>
+    <message>
+        <source>Size</source>
+        <translation>サイズ</translation>
+    </message>
+    <message>
+        <source>Depth</source>
+        <translation>深さ</translation>
+    </message>
+    <message>
+        <source>Rotation X</source>
+        <translation>回転 X</translation>
+    </message>
+    <message>
+        <source>Rotation Y</source>
+        <translation>回転 Y</translation>
+    </message>
+    <message>
+        <source>Rotation Z</source>
+        <translation>回転 Z</translation>
     </message>
     <message>
         <source>Lighting</source>
@@ -9196,6 +9337,26 @@
 </context>
 <context>
     <name>Model3dSource</name>
+    <message>
+        <source>Size</source>
+        <translation>サイズ</translation>
+    </message>
+    <message>
+        <source>Depth</source>
+        <translation>深さ</translation>
+    </message>
+    <message>
+        <source>Rotation X</source>
+        <translation>回転 X</translation>
+    </message>
+    <message>
+        <source>Rotation Y</source>
+        <translation>回転 Y</translation>
+    </message>
+    <message>
+        <source>Rotation Z</source>
+        <translation>回転 Z</translation>
+    </message>
     <message>
         <source>Light direction</source>
         <translation>ライトの方向</translation>
@@ -9344,10 +9505,6 @@
     <message>
         <source>Transform</source>
         <translation>変形</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>New track</source>
@@ -9642,127 +9799,125 @@
     </message>
 </context>
 <context>
-    <name>PreferencesController</name>
+    <name>PreviewPanel</name>
     <message>
-        <source>Faster preview takes effect after you restart Drift.</source>
-        <translation>高速プレビューは Drift 再起動後に有効になります。</translation>
+        <source>REC %1s</source>
+        <translation>録画中 %1s</translation>
     </message>
     <message>
-        <source>The graphics card choice takes effect after you restart Drift.</source>
-        <translation>グラフィックカードの選択は、Driftを再起動した後に反映されます。</translation>
+        <source>PAUSED %1s</source>
+        <translation>一時停止中 %1s</translation>
     </message>
     <message>
-        <source>System default</source>
-        <translation>システムデフォルト</translation>
+        <source>Nothing to preview yet</source>
+        <translation>プレビューするものはまだありません</translation>
+    </message>
+    <message>
+        <source>Import media and drag it onto the timeline below to see it here.</source>
+        <translation>メディアをインポートし、下のタイムラインにドラッグしてここで表示します。</translation>
+    </message>
+    <message>
+        <source>GPU preview unavailable</source>
+        <translation>GPUプレビューは利用できません</translation>
+    </message>
+    <message>
+        <source>Your graphics driver only provides %1. Drift&apos;s preview needs OpenGL 3.3.</source>
+        <translation>お使いのグラフィックスドライバーは %1 にしか対応していません。プレビューには OpenGL 3.3 が必要です。</translation>
+    </message>
+    <message>
+        <source>Drift could not start its GPU renderer, so the preview cannot draw.</source>
+        <translation>Drift は GPU レンダラーを起動できなかったため、プレビューを描画できません。</translation>
+    </message>
+    <message>
+        <source>Debug info</source>
+        <translation>デバッグ情報</translation>
+    </message>
+    <message>
+        <source>Audio only</source>
+        <translation>オーディオのみ</translation>
+    </message>
+    <message>
+        <source>No clip at the current time</source>
+        <translation>現在の時間にクリップがありません</translation>
+    </message>
+    <message>
+        <source>Seek</source>
+        <translation>シーク</translation>
     </message>
 </context>
 <context>
-    <name>Preview3DTools</name>
+    <name>PreviewToolbar</name>
     <message>
         <source>%1 (%2)</source>
-        <translation type="unfinished">%1 (%2)</translation>
+        <translation>%1 (%2)</translation>
     </message>
     <message>
-        <source>Move</source>
-        <translation type="unfinished">移動</translation>
+        <source>Current time / total · %1 frames per second</source>
+        <translation>現在の時間 / 合計 · %1 フレーム/秒</translation>
     </message>
     <message>
-        <source>Rotate</source>
-        <translation type="unfinished">回転</translation>
+        <source>Jump back 1s · Shift for 5s · Ctrl for 10s</source>
+        <translation>1秒戻る · Shiftキーで5秒 · Ctrlキーで10秒</translation>
     </message>
     <message>
-        <source>Scale</source>
-        <translation type="unfinished">スケール</translation>
+        <source>Previous frame</source>
+        <translation>前のフレーム</translation>
     </message>
     <message>
-        <source>Gizmo follows the selection&apos;s own axes (click for world axes)</source>
-        <translation type="unfinished"></translation>
+        <source>Pause</source>
+        <translation>一時停止</translation>
     </message>
     <message>
-        <source>Gizmo follows the world axes (click for the selection&apos;s own)</source>
-        <translation type="unfinished"></translation>
+        <source>Play</source>
+        <translation>再生</translation>
     </message>
     <message>
-        <source>Look through the camera</source>
-        <translation type="unfinished"></translation>
+        <source>Next frame</source>
+        <translation>次のフレーム</translation>
     </message>
     <message>
-        <source>Numpad 0</source>
-        <translation type="unfinished"></translation>
+        <source>Loop work area on — click to turn off</source>
+        <translation>ワークエリアループオン — クリックでオフ</translation>
     </message>
     <message>
-        <source>Reset the scene camera&apos;s position</source>
-        <translation type="unfinished"></translation>
+        <source>Loop work area off — click to turn on</source>
+        <translation>ワークエリアループオフ — クリックでオン</translation>
     </message>
     <message>
-        <source>Frame the selection</source>
-        <translation type="unfinished"></translation>
+        <source>Jump forward 1s · Shift for 5s · Ctrl for 10s</source>
+        <translation>1秒進む · Shiftキーで5秒 · Ctrlキーで10秒</translation>
     </message>
     <message>
-        <source>Reset the view</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PreviewModeSwitch</name>
-    <message>
-        <source>Camera Output</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The camera&apos;s picture, as it exports. Clips move and snap on the canvas.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>3D Scene</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The scene from a free viewpoint, with the camera in it. Middle- or right-drag orbits, Shift pans, the wheel zooms.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PreviewOptionsMenu</name>
-    <message>
-        <source>Quality</source>
-        <translation type="unfinished">品質</translation>
+        <source>Preview zoom — Ctrl+scroll over the preview to zoom, middle-drag to pan. Click to reset to 100%.</source>
+        <translation>プレビューズーム — プレビュー上で Ctrl+スクロールでズーム、中ボタンドラッグでパン。クリックで 100% にリセット。</translation>
     </message>
     <message>
         <source>Full</source>
-        <translation type="unfinished">フル</translation>
+        <translation>フル</translation>
     </message>
     <message>
         <source>Half</source>
-        <translation type="unfinished">半分</translation>
+        <translation>半分</translation>
     </message>
     <message>
         <source>Quarter</source>
-        <translation type="unfinished">4分の1</translation>
+        <translation>4分の1</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished">自動</translation>
+        <translation>自動</translation>
     </message>
     <message>
         <source>Preview quality — lower is smoother while editing.
 Full, Half and Quarter are fixed fractions of the project resolution: Full composites exactly what an export would.
 Auto renders only as many pixels as the preview actually shows, and lowers that further while playback cannot keep up.</source>
-        <translation type="unfinished">プレビュー品質 — 低いほど編集中は滑らかです。
+        <translation>プレビュー品質 — 低いほど編集中は滑らかです。
 フル、半分、4分の1はプロジェクト解像度に対する固定比率です : フルはエクスポートとまったく同じように合成します。
 自動はプレビューに実際に表示されるピクセル数だけをレンダリングし、再生が追いつかない場合はさらに解像度を下げます。</translation>
     </message>
     <message>
-        <source>Speed</source>
-        <translation type="unfinished">速度</translation>
-    </message>
-    <message>
         <source>Playback speed</source>
-        <translation type="unfinished">再生速度</translation>
-    </message>
-    <message>
-        <source>Decode</source>
-        <translation type="unfinished">デコード</translation>
+        <translation>再生速度</translation>
     </message>
     <message>
         <source>How video is decoded for preview.
@@ -9770,167 +9925,59 @@ Auto picks per clip: hardware for high-quality 4K, software otherwise.
 Software is smoother for most clips. It uses more CPU.
 Hardware is better for high-quality 4K, and forces one GPU decoder.
 If playback stutters, try another.</source>
-        <translation type="unfinished">プレビュー用のビデオデコード方法。
+        <translation>プレビュー用のビデオデコード方法。
 自動はクリップごとに選択 : 高品質 4K にはハードウェア、それ以外はソフトウェア。
 ソフトウェアはほとんどのクリップで滑らかです。CPU をより多く使用します。
 高品質な 4K 映像にはハードウェア処理の方が適しており、GPU デコーダーの使用が強制されます。
 再生がカクつく場合は、別の設定を試してください。</translation>
     </message>
     <message>
-        <source>Keep mask handles up</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Keep mask handles on the preview while another clip is selected</source>
-        <translation type="unfinished">別のクリップが選択されている間も、プレビュー上にマスクのハンドルを表示したままにする</translation>
-    </message>
-    <message>
-        <source>Decoding on a different graphics card</source>
-        <translation type="unfinished">別のグラフィックカードでデコード</translation>
-    </message>
-    <message>
-        <source>Use anyway</source>
-        <translation type="unfinished">とにかく使用する</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="unfinished">キャンセル</translation>
-    </message>
-    <message>
-        <source>Launching Drift with prime-run (or DRI_PRIME=1) puts OpenGL on the same card as the decoder.</source>
-        <translation type="unfinished">prime-run (または DRI_PRIME=1) を指定して Drift を起動すると、OpenGL がデコーダーと同じグラフィックカード上で動作するようになります。</translation>
-    </message>
-    <message>
-        <source>Run Drift on the high-performance graphics card</source>
-        <translation type="unfinished">高性能グラフィックスカードで Drift を実行する</translation>
-    </message>
-    <message>
-        <source>Set Drift to High performance in Windows Settings &gt; Display &gt; Graphics, then restart Drift.</source>
-        <translation type="unfinished">Windows の設定 &gt; ディスプレイ &gt; グラフィックス で Drift を「ハイパフォーマンス」に設定し、Drift を再起動してください。</translation>
-    </message>
-    <message>
-        <source>Open graphics settings</source>
-        <translation type="unfinished">グラフィック設定を開く</translation>
-    </message>
-</context>
-<context>
-    <name>PreviewOsd</name>
-    <message>
-        <source>Preview zoom — Ctrl+scroll over the preview to zoom, middle-drag to pan. Click to reset to 100%.</source>
-        <translation type="unfinished">プレビューズーム — プレビュー上で Ctrl+スクロールでズーム、中ボタンドラッグでパン。クリックで 100% にリセット。</translation>
-    </message>
-    <message>
         <source>Toggle guides</source>
-        <translation type="unfinished">ガイドの切り替え</translation>
+        <translation>ガイドの切り替え</translation>
     </message>
     <message>
         <source>Guide sets</source>
-        <translation type="unfinished">ガイドセット</translation>
+        <translation>ガイドセット</translation>
     </message>
     <message>
-        <source>Preview options</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PreviewPanel</name>
-    <message>
-        <source>Seek</source>
-        <translation>シーク</translation>
-    </message>
-</context>
-<context>
-    <name>PreviewStatusLayer</name>
-    <message>
-        <source>PAUSED %1s</source>
-        <translation type="unfinished">一時停止中 %1s</translation>
-    </message>
-    <message>
-        <source>REC %1s</source>
-        <translation type="unfinished">録画中 %1s</translation>
-    </message>
-    <message>
-        <source>Nothing to preview yet</source>
-        <translation type="unfinished">プレビューするものはまだありません</translation>
-    </message>
-    <message>
-        <source>Import media and drag it onto the timeline below to see it here.</source>
-        <translation type="unfinished">メディアをインポートし、下のタイムラインにドラッグしてここで表示します。</translation>
-    </message>
-    <message>
-        <source>GPU preview unavailable</source>
-        <translation type="unfinished">GPUプレビューは利用できません</translation>
-    </message>
-    <message>
-        <source>Your graphics driver only provides %1. Drift&apos;s preview needs OpenGL 3.3.</source>
-        <translation type="unfinished">お使いのグラフィックスドライバーは %1 にしか対応していません。プレビューには OpenGL 3.3 が必要です。</translation>
-    </message>
-    <message>
-        <source>Drift could not start its GPU renderer, so the preview cannot draw.</source>
-        <translation type="unfinished">Drift は GPU レンダラーを起動できなかったため、プレビューを描画できません。</translation>
-    </message>
-    <message>
-        <source>Debug info</source>
-        <translation type="unfinished">デバッグ情報</translation>
-    </message>
-    <message>
-        <source>Audio only</source>
-        <translation type="unfinished">オーディオのみ</translation>
-    </message>
-    <message>
-        <source>No clip at the current time</source>
-        <translation type="unfinished">現在の時間にクリップがありません</translation>
-    </message>
-</context>
-<context>
-    <name>PreviewTransportBar</name>
-    <message>
-        <source>%1 (%2)</source>
-        <translation type="unfinished">%1 (%2)</translation>
-    </message>
-    <message>
-        <source>Current time / total · %1 frames per second</source>
-        <translation type="unfinished">現在の時間 / 合計 · %1 フレーム/秒</translation>
-    </message>
-    <message>
-        <source>Jump back 1s · Shift for 5s · Ctrl for 10s</source>
-        <translation type="unfinished">1秒戻る · Shiftキーで5秒 · Ctrlキーで10秒</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation type="unfinished">前のフレーム</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation type="unfinished">一時停止</translation>
-    </message>
-    <message>
-        <source>Play</source>
-        <translation type="unfinished">再生</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation type="unfinished">次のフレーム</translation>
-    </message>
-    <message>
-        <source>Loop work area on — click to turn off</source>
-        <translation type="unfinished">ワークエリアループオン — クリックでオフ</translation>
-    </message>
-    <message>
-        <source>Loop work area off — click to turn on</source>
-        <translation type="unfinished">ワークエリアループオフ — クリックでオン</translation>
-    </message>
-    <message>
-        <source>Jump forward 1s · Shift for 5s · Ctrl for 10s</source>
-        <translation type="unfinished">1秒進む · Shiftキーで5秒 · Ctrlキーで10秒</translation>
+        <source>Keep mask handles on the preview while another clip is selected</source>
+        <translation>別のクリップが選択されている間も、プレビュー上にマスクのハンドルを表示したままにする</translation>
     </message>
     <message>
         <source>Exit fullscreen preview (Esc)</source>
-        <translation type="unfinished">フルスクリーンプレビューを終了 (Esc)</translation>
+        <translation>フルスクリーンプレビューを終了 (Esc)</translation>
     </message>
     <message>
         <source>Fullscreen preview</source>
-        <translation type="unfinished">フルスクリーンプレビュー</translation>
+        <translation>フルスクリーンプレビュー</translation>
+    </message>
+    <message>
+        <source>Decoding on a different graphics card</source>
+        <translation>別のグラフィックカードでデコード</translation>
+    </message>
+    <message>
+        <source>Use anyway</source>
+        <translation>とにかく使用する</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>キャンセル</translation>
+    </message>
+    <message>
+        <source>Launching Drift with prime-run (or DRI_PRIME=1) puts OpenGL on the same card as the decoder.</source>
+        <translation>prime-run (または DRI_PRIME=1) を指定して Drift を起動すると、OpenGL がデコーダーと同じグラフィックカード上で動作するようになります。</translation>
+    </message>
+    <message>
+        <source>Run Drift on the high-performance graphics card</source>
+        <translation>高性能グラフィックスカードで Drift を実行する</translation>
+    </message>
+    <message>
+        <source>Set Drift to High performance in Windows Settings &gt; Display &gt; Graphics, then restart Drift.</source>
+        <translation>Windows の設定 &gt; ディスプレイ &gt; グラフィックス で Drift を「ハイパフォーマンス」に設定し、Drift を再起動してください。</translation>
+    </message>
+    <message>
+        <source>Open graphics settings</source>
+        <translation>グラフィック設定を開く</translation>
     </message>
 </context>
 <context>
@@ -10076,195 +10123,6 @@ If playback stutters, try another.</source>
     </message>
 </context>
 <context>
-    <name>ProjectFileController</name>
-    <message>
-        <source>New project</source>
-        <translation>新規プロジェクト</translation>
-    </message>
-    <message>
-        <source>This project uses &quot;%1&quot;, which isn’t installed — it won’t show. Open Extras to install it.</source>
-        <translation>このプロジェクトはインストールされていない「%1」を使用しています — 表示されません。拡張機能を開いてインストールしてください。</translation>
-    </message>
-    <message>
-        <source>This project uses %1 effects or transitions that aren’t installed (%2%3) — they won’t show. Open Extras to install them.</source>
-        <translation>このプロジェクトはインストールされていない %1 個のエフェクトまたはトランジションを使用しています (%2%3) — 表示されません。拡張機能を開いてインストールしてください。</translation>
-    </message>
-    <message>
-        <source>, …</source>
-        <translation>、…</translation>
-    </message>
-    <message>
-        <source>Frame rate</source>
-        <translation>フレームレート</translation>
-    </message>
-    <message>
-        <source>Project setup</source>
-        <translation>プロジェクト設定</translation>
-    </message>
-    <message>
-        <source>Project setup updated</source>
-        <translation>プロジェクト設定を更新しました</translation>
-    </message>
-    <message>
-        <source>Change background</source>
-        <translation>背景を変更</translation>
-    </message>
-    <message>
-        <source>Background updated</source>
-        <translation>背景を更新しました</translation>
-    </message>
-    <message>
-        <source>Saved a copy</source>
-        <translation>コピーを保存しました</translation>
-    </message>
-    <message>
-        <source>Couldn’t write %1: %2</source>
-        <translation>%1 に書き込めませんでした : %2</translation>
-    </message>
-    <message>
-        <source>Project JSON saved</source>
-        <translation>プロジェクト JSON を保存しました</translation>
-    </message>
-    <message>
-        <source>Still opening a project — try again in a moment.</source>
-        <translation>プロジェクトの読み込み中です — しばらくしてからもう一度試してください。</translation>
-    </message>
-    <message>
-        <source>Couldn’t read %1: %2</source>
-        <translation>%1 を読み取れませんでした : %2</translation>
-    </message>
-    <message>
-        <source>Project JSON loaded</source>
-        <translation>プロジェクト JSON を読み込みました</translation>
-    </message>
-    <message>
-        <source>Failed to open Premiere Pro project</source>
-        <translation>Premiere Pro プロジェクトを開けません</translation>
-    </message>
-    <message>
-        <source>Premiere Pro project imported: %1</source>
-        <translation>インポートされたPremiere Proプロジェクト : %1</translation>
-    </message>
-    <message>
-        <source>That template location isn’t valid</source>
-        <translation>そのテンプレートの場所は無効です</translation>
-    </message>
-    <message>
-        <source>Failed to unpack Motion Graphics Template</source>
-        <translation>モーショングラフィックス テンプレートの展開に失敗しました</translation>
-    </message>
-    <message>
-        <source>Failed to apply template to project</source>
-        <translation>プロジェクトへのテンプレートの適用に失敗しました</translation>
-    </message>
-    <message>
-        <source>Import template: %1</source>
-        <translation>テンプレートをインポート : %1</translation>
-    </message>
-    <message>
-        <source>Template imported: %1</source>
-        <translation>テンプレートをインポートしました : %1</translation>
-    </message>
-    <message>
-        <source>Failed to open Kdenlive / MLT project</source>
-        <translation>Kdenlive / MLT プロジェクトのオープンに失敗しました</translation>
-    </message>
-    <message>
-        <source>Kdenlive project imported: %1</source>
-        <translation>Kdenlive プロジェクトをインポートしました : %1</translation>
-    </message>
-    <message>
-        <source>Failed to open DaVinci Resolve project / timeline</source>
-        <translation>DaVinci Resolve プロジェクト / タイムラインのオープンに失敗しました</translation>
-    </message>
-    <message>
-        <source>DaVinci Resolve project imported: %1</source>
-        <translation>DaVinci Resolve プロジェクトをインポートしました : %1</translation>
-    </message>
-    <message>
-        <source>Failed to open Edit Decision List (.edl)</source>
-        <translation>Edit Decision List (.edl) のオープンに失敗しました</translation>
-    </message>
-    <message>
-        <source>EDL imported: %1</source>
-        <translation>EDL をインポートしました : %1</translation>
-    </message>
-    <message>
-        <source>Failed to open OpenTimelineIO (.otio) sequence</source>
-        <translation>OpenTimelineIO (.otio) シーケンスのオープンに失敗しました</translation>
-    </message>
-    <message>
-        <source>OpenTimelineIO imported: %1</source>
-        <translation>OpenTimelineIO をインポートしました : %1</translation>
-    </message>
-    <message>
-        <source>That folder isn’t valid</source>
-        <translation>そのフォルダーは無効です</translation>
-    </message>
-    <message>
-        <source>All media is already in that folder</source>
-        <translation>すべてのメディアはすでにそのフォルダーにあります</translation>
-    </message>
-    <message>
-        <source>Collect media</source>
-        <translation>メディアを収集</translation>
-    </message>
-    <message numerus="yes">
-        <source>Media collected, but %n original(s) couldn’t be deleted</source>
-        <translation>
-            <numerusform>メディアを収集しましたが、%n 個の元ファイルを削除できませんでした</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Media moved and relinked</source>
-        <translation>メディアを移動して再リンクしました</translation>
-    </message>
-    <message>
-        <source>Media copied and relinked</source>
-        <translation>メディアをコピーして再リンクしました</translation>
-    </message>
-    <message>
-        <source>That save location isn’t valid</source>
-        <translation>その保存先は無効です</translation>
-    </message>
-    <message>
-        <source>Already saving</source>
-        <translation>既に保存中です</translation>
-    </message>
-    <message>
-        <source>Project saved</source>
-        <translation>プロジェクトを保存しました</translation>
-    </message>
-    <message>
-        <source>Shareable copy ready</source>
-        <translation>共有可能なコピーの準備ができました</translation>
-    </message>
-    <message>
-        <source>That project location isn’t valid</source>
-        <translation>そのプロジェクトの場所は無効です</translation>
-    </message>
-    <message>
-        <source>Project loaded</source>
-        <translation>プロジェクトを読み込みました</translation>
-    </message>
-    <message>
-        <source>Unpacking project media…</source>
-        <translation>プロジェクトメディアを展開中…</translation>
-    </message>
-    <message>
-        <source>No recovery file found</source>
-        <translation>リカバリファイルが見つかりません</translation>
-    </message>
-    <message>
-        <source>Recovered unsaved work</source>
-        <translation>未保存の作業を復元しました</translation>
-    </message>
-    <message>
-        <source>Started new session</source>
-        <translation>新しいセッションを開始しました</translation>
-    </message>
-</context>
-<context>
     <name>ProjectPropertiesDialog</name>
     <message>
         <source>Project properties</source>
@@ -10391,10 +10249,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Transform</source>
         <translation>変形</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Stabilization</source>
@@ -11215,77 +11069,6 @@ If playback stutters, try another.</source>
     </message>
 </context>
 <context>
-    <name>SegmentationController</name>
-    <message>
-        <source>Select a video clip to cut out</source>
-        <translation type="unfinished">切り抜くビデオクリップを選択してください</translation>
-    </message>
-    <message>
-        <source>Cutout is already running</source>
-        <translation type="unfinished">切り抜きは既に実行中です</translation>
-    </message>
-    <message>
-        <source>This clip has no video to cut out</source>
-        <translation type="unfinished">このクリップには切り抜くビデオがありません</translation>
-    </message>
-    <message>
-        <source>Click the subject first</source>
-        <translation type="unfinished">まず被写体をクリックしてください</translation>
-    </message>
-    <message>
-        <source>Getting ready…</source>
-        <translation type="unfinished">準備中…</translation>
-    </message>
-    <message>
-        <source>Cutting out subject…</source>
-        <translation type="unfinished">被写体を切り抜き中…</translation>
-    </message>
-    <message>
-        <source>Done</source>
-        <translation type="unfinished">完了</translation>
-    </message>
-    <message>
-        <source>Clip is too short to cut out</source>
-        <translation type="unfinished">クリップが短すぎて切り抜けません</translation>
-    </message>
-    <message>
-        <source>Could not create a cutout file</source>
-        <translation type="unfinished">切り抜きファイルを作成できませんでした</translation>
-    </message>
-    <message>
-        <source>Cutout cancelled</source>
-        <translation type="unfinished">切り抜きをキャンセルしました</translation>
-    </message>
-    <message>
-        <source>Could not decode frame %1</source>
-        <translation type="unfinished">フレーム %1 をデコードできませんでした</translation>
-    </message>
-    <message>
-        <source>Processing frame %1 of %2…</source>
-        <translation type="unfinished">フレーム %1 / %2 を処理中…</translation>
-    </message>
-    <message>
-        <source>Cutout complete — subject cut out on %1 of %2 frames</source>
-        <translation type="unfinished">切り抜き完了 — %2 フレーム中 %1 フレームで被写体を切り抜きました</translation>
-    </message>
-    <message>
-        <source>Cutout complete</source>
-        <translation type="unfinished">切り抜き完了</translation>
-    </message>
-    <message>
-        <source>That clip no longer exists</source>
-        <translation type="unfinished">そのクリップは存在しなくなりました</translation>
-    </message>
-    <message>
-        <source>Cutout</source>
-        <translation type="unfinished">切り抜き</translation>
-    </message>
-    <message>
-        <source>Cut out subject</source>
-        <translation type="unfinished">被写体を切り抜く</translation>
-    </message>
-</context>
-<context>
     <name>SegmentationWindow</name>
     <message>
         <source>Cut out subject</source>
@@ -11582,6 +11365,10 @@ If playback stutters, try another.</source>
         <translation>起動時に確認</translation>
     </message>
     <message>
+        <source>Ask GitHub once a day whether a newer Drift has been released</source>
+        <translation>1日1回 GitHub に新しい Drift がリリースされていないか問い合わせる</translation>
+    </message>
+    <message>
         <source>Checking…</source>
         <translation>確認中…</translation>
     </message>
@@ -11700,14 +11487,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Unlink the marketplace account from this device</source>
         <translation>このデバイスからマーケットプレイスアカウントのリンクを解除する</translation>
-    </message>
-    <message>
-        <source>Once a day, check whether a newer Drift has been released</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloading…</source>
-        <translation type="unfinished">ダウンロード中…</translation>
     </message>
 </context>
 <context>
@@ -12320,25 +12099,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Shortcuts reset to defaults.</source>
         <translation>ショートカットをデフォルトにリセットしました。</translation>
-    </message>
-</context>
-<context>
-    <name>SpeedCurveController</name>
-    <message>
-        <source>Custom speed works on video and audio clips</source>
-        <translation type="unfinished">カスタムスピードはビデオおよびオーディオクリップで機能します</translation>
-    </message>
-    <message>
-        <source>This clip has no media to speed up or slow down</source>
-        <translation type="unfinished">このクリップには速度を変更するメディアがありません</translation>
-    </message>
-    <message>
-        <source>That clip moved — open Custom speed again</source>
-        <translation type="unfinished">クリップが移動しました — カスタムスピードを再度開いてください</translation>
-    </message>
-    <message>
-        <source>Custom speed applied</source>
-        <translation type="unfinished">カスタムスピードを適用しました</translation>
     </message>
 </context>
 <context>
@@ -14284,10 +14044,6 @@ If playback stutters, try another.</source>
         <translation>変形レイヤーを追加 — 選択したクリップのトラックをまとめて移動します</translation>
     </message>
     <message>
-        <source>Add camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Main</source>
         <translation>メイン</translation>
     </message>
@@ -14330,10 +14086,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Add adjustment layer</source>
         <translation>調整レイヤーを追加</translation>
-    </message>
-    <message>
-        <source>Add camera — one viewpoint the whole timeline is seen through. With a camera already there, adds a new camera clip (a cut to a new framing) at the playhead</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Customize toolbar…</source>
@@ -14486,10 +14238,6 @@ If playback stutters, try another.</source>
         <translation>ビデオ + 波形</translation>
     </message>
     <message>
-        <source>CAM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>TF</source>
         <translation>TF</translation>
     </message>
@@ -14516,10 +14264,6 @@ If playback stutters, try another.</source>
     <message>
         <source>V</source>
         <translation>V</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Transform</source>
@@ -14584,10 +14328,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Turn transform off</source>
         <translation>変形をオフにする</translation>
-    </message>
-    <message>
-        <source>Add camera clip at playhead</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Covers…</source>
@@ -14757,16 +14497,8 @@ If playback stutters, try another.</source>
         <translation>位置 (px)</translation>
     </message>
     <message>
-        <source>Position (px, linked)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Separate X and Y keyframes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Link X and Y keyframes and motion curves</source>
-        <translation type="unfinished"></translation>
+        <source>Offset (px)</source>
+        <translation>オフセット (px)</translation>
     </message>
     <message>
         <source>Measured inside %1&apos;s frame</source>
@@ -14807,18 +14539,6 @@ If playback stutters, try another.</source>
     <message>
         <source>Tilt the clip and push it in depth, with 3D grips on the preview. Turning it off flattens the clip again.</source>
         <translation>プレビュー上の 3D グリップでクリップを傾けたり奥行き方向に移動したりします。オフにすると、クリップは再び平面に戻ります。</translation>
-    </message>
-    <message>
-        <source>Occlude by depth</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Let depth decide what covers this clip, instead of its track position. Only clips with this on sort against each other; everything else still draws in track order.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Needs the Normal blend mode — the others read the canvas behind the clip, which depth cannot sort.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Move</source>
@@ -14875,6 +14595,10 @@ If playback stutters, try another.</source>
     <message>
         <source>Reset position &amp; size</source>
         <translation>位置とサイズをリセット</translation>
+    </message>
+    <message>
+        <source>Reset position</source>
+        <translation>位置をリセット</translation>
     </message>
     <message>
         <source>Fix orientation</source>
@@ -15221,26 +14945,6 @@ If playback stutters, try another.</source>
 <context>
     <name>UpdateChecker</name>
     <message>
-        <source>Drift %1 update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Preparing the update…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Installs when you close Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ready to install</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 will install when you close Drift.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Couldn’t check for updates: %1</source>
         <translation>アップデートを確認できませんでした : %1</translation>
     </message>
@@ -15256,30 +14960,6 @@ If playback stutters, try another.</source>
         <source>Drift %1 is available.</source>
         <translation>Drift %1 が利用可能です。</translation>
     </message>
-    <message>
-        <source>Couldn’t download the update: the cache isn’t writable.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Couldn’t download the update: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>the download was interrupted.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Couldn’t download the update: the file didn’t match the release.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Couldn’t prepare the update.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 is ready to install.</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>UpdateDialog</name>
@@ -15288,36 +14968,12 @@ If playback stutters, try another.</source>
         <translation>アップデートが利用可能</translation>
     </message>
     <message>
-        <source>Update ready</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 will install when you close Drift.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 is downloaded and ready to install</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Drift %1 is available</source>
         <translation>Drift %1 が利用可能です</translation>
     </message>
     <message>
-        <source>A new Drift update is available</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>You have %1.</source>
         <translation>現在のバージョンは %1 です。</translation>
-    </message>
-    <message>
-        <source>Install automatically when I close Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloads in the background and installs the next time you close Drift. Unchecked, you choose when to install once the download finishes.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Skip</source>
@@ -15332,40 +14988,12 @@ If playback stutters, try another.</source>
         <translation>後で</translation>
     </message>
     <message>
-        <source>Install when I close Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update</source>
-        <translation type="unfinished">アップデート</translation>
-    </message>
-    <message>
-        <source>Closes Drift, installs the update and opens Drift again</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloads the update in the background</source>
-        <translation type="unfinished"></translation>
+        <source>Download</source>
+        <translation>ダウンロード</translation>
     </message>
     <message>
         <source>Opens the release page in your browser</source>
         <translation>ブラウザでリリースページを開きます</translation>
-    </message>
-    <message>
-        <source>Downloading Drift %1…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Preparing the update…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Restart and install</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloading…</source>
-        <translation type="unfinished">ダウンロード中…</translation>
     </message>
 </context>
 <context>

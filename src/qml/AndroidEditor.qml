@@ -136,8 +136,8 @@ Item {
             root.closeSheets()
             return true
         }
-        if (EditorState.preview.canvasCropMode) {
-            EditorState.preview.canvasCropMode = false
+        if (EditorState.canvasCropMode) {
+            EditorState.canvasCropMode = false
             return true
         }
         if (root.previewFullscreen) {
@@ -148,16 +148,16 @@ Item {
     }
 
     function saveProject() {
-        if (EditorState.projectFile.currentProjectPath && EditorState.projectFile.currentProjectPath.length > 0) {
-            EditorState.projectFile.saveProject(EditorState.fileUrl(EditorState.projectFile.currentProjectPath))
-            return !EditorState.projectFile.hasUnsavedChanges
+        if (EditorState.currentProjectPath && EditorState.currentProjectPath.length > 0) {
+            EditorState.saveProject(EditorState.fileUrl(EditorState.currentProjectPath))
+            return !EditorState.hasUnsavedChanges
         }
         const url = FileDialogs.saveFile(qsTr("Save Project"), root.projectFilter,
-                                         EditorState.projectFile.projectName, "drift")
+                                         EditorState.projectName, "drift")
         if (url === "")
             return false
-        EditorState.projectFile.saveProject(url)
-        return !EditorState.projectFile.hasUnsavedChanges
+        EditorState.saveProject(url)
+        return !EditorState.hasUnsavedChanges
     }
 
     // Save As: the open project written to a second file, which the session then continues in.
@@ -165,18 +165,18 @@ Item {
     // variation. Suggests "<name> copy" so the default cannot land back on the original.
     function saveProjectAs() {
         const url = FileDialogs.saveFile(qsTr("Save Project As"), root.projectFilter,
-                                         qsTr("%1 copy").arg(EditorState.projectFile.projectName), "drift")
+                                         qsTr("%1 copy").arg(EditorState.projectName), "drift")
         if (url === "")
             return false
-        EditorState.projectFile.saveProjectAs(url)
-        return !EditorState.projectFile.hasUnsavedChanges
+        EditorState.saveProjectAs(url)
+        return !EditorState.hasUnsavedChanges
     }
 
     function packageProject() {
         const url = FileDialogs.saveFile(qsTr("Save Shareable Copy"), root.projectFilter,
-                                         EditorState.projectFile.projectName, "drift")
+                                         EditorState.projectName, "drift")
         if (url !== "")
-            EditorState.projectFile.packageProject(url)
+            EditorState.packageProject(url)
     }
 
     // Reached from EditorState's own signals (desktop menus, launch intents), not from any
@@ -185,13 +185,13 @@ Item {
         Window.window.confirmIfDirty(function () {
             const url = FileDialogs.openFile(qsTr("Open Project"), root.projectFilter)
             if (url !== "")
-                EditorState.projectFile.loadProject(url)
+                EditorState.loadProject(url)
         })
     }
 
     function requestNewProject() {
         Window.window.confirmIfDirty(function () {
-            EditorState.projectFile.newProject()
+            EditorState.newProject()
             Window.window.showHome()
         })
     }
@@ -224,7 +224,7 @@ Item {
         case "crop":
             // The overlay carries its own Cancel/Apply, and the preview goes
             // fullscreen for it, so this only has to start the mode.
-            EditorState.preview.canvasCropMode = true
+            EditorState.canvasCropMode = true
             break
         case "properties":
             Window.window.openProjectProperties()
@@ -561,11 +561,14 @@ Item {
                 exportProgressDialog.openDialog()
             }
         }
-    }
-
-    Connections {
-        target: EditorState.projectFile
-
+        // The crop frame is dragged on the preview, and the Settings tab it is
+        // started from covers most of the screen. Cropping therefore takes the page
+        // for as long as it is on, and hands it back when it ends.
+        function onCanvasCropModeChanged() {
+            if (EditorState.canvasCropMode)
+                root.closeSheets()
+            root.previewFullscreen = EditorState.canvasCropMode
+        }
         // Selection must not auto-open the Edit sheet: that ran on press (before
         // release), stole the gesture so clips could not drag, and blocked long-press
         // menus. Open via the Edit rail; an already-open sheet still updates via
@@ -574,18 +577,6 @@ Item {
         function onSaveAsRequested() { root.saveProjectAs() }
         function onOpenRequested() { root.openProject() }
         function onNewProjectRequested() { root.requestNewProject() }
-    }
-
-    // The crop frame is dragged on the preview, and the Settings tab it is
-    // started from covers most of the screen. Cropping therefore takes the page
-    // for as long as it is on, and hands it back when it ends.
-    Connections {
-        target: EditorState.preview
-        function onCanvasCropModeChanged() {
-            if (EditorState.preview.canvasCropMode)
-                root.closeSheets()
-            root.previewFullscreen = EditorState.preview.canvasCropMode
-        }
     }
 
     Component.onCompleted: AssetLibrary.ensureAllMedia()

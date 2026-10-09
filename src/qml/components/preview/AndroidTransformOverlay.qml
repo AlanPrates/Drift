@@ -11,7 +11,7 @@ import ".."
 // the mouse-only affordances (hover, wheel pass-through, arrow-key nudging,
 // Shift/Ctrl modifiers) are gone — a phone has none of them. Corner grips
 // therefore keep footage aspect unconditionally and snapping is always on.
-// Geometry and visibility are driven by PreviewToolHost.
+// Geometry (x/y/width/height/z/visible) is driven by AndroidPreview.
 Item {
     id: root
 
@@ -22,8 +22,15 @@ Item {
     // edited in place, so the inline editor delegate is not destroyed mid-edit.)
     property bool interacting: false
 
-    // Phones only have the camera output view, which edits with the flat grips: no 3D gizmo.
-    readonly property var gizmoBox: null
+    // The selected clip's gizmo, when it is a 3D layer, and its pose while a handle is dragged.
+    readonly property var gizmoBox: {
+        for (const b of overlayClips) {
+            if (b.layer3d && b.kind !== "model3d" && b.track === EditorState.selectedTrack
+                    && b.clip === EditorState.selectedClip)
+                return b
+        }
+        return null
+    }
     readonly property var gizmoLive: gizmo.livePose
 
     // A transform layer being moved: the clips under it are drawn from a model that is not
@@ -77,7 +84,6 @@ Item {
                     || x.width !== y.width || x.height !== y.height
                     || x.rotation !== y.rotation
                     || x.layer3d !== y.layer3d
-                    || x.cameraActive !== y.cameraActive
                     || x.rotationX !== y.rotationX || x.rotationY !== y.rotationY
                     || x.z !== y.z || x.perspective !== y.perspective
                     || x.canvasWidth !== y.canvasWidth
@@ -103,7 +109,7 @@ Item {
             return
         if (EditorState.playing)
             return
-        const next = EditorState.preview.clipsAtPlayhead()
+        const next = EditorState.previewClipsAtPlayhead()
         if (clipsOverlayEqual(overlayClips, next))
             return
         const sameClips = sameOverlayClips(overlayClips, next)
@@ -138,6 +144,23 @@ Item {
     onSnapGuideXChanged: if (snapGuideX >= 0) Haptics.detent()
     onSnapGuideYChanged: if (snapGuideY >= 0) Haptics.detent()
 
+    // Nearest target within `tol` of any candidate, returned as the delta to add
+    // to the moving value. `guide` is the target that won, or -1 for no snap.
+    function snapAxis(candidates, targets, tol) {
+        let result = { delta: 0, guide: -1 }
+        let best = tol
+        for (const c of candidates) {
+            for (const t of targets) {
+                const d = t - c
+                if (Math.abs(d) < best) {
+                    best = Math.abs(d)
+                    result = { delta: d, guide: t }
+                }
+            }
+        }
+        return result
+    }
+
     Component.onCompleted: refreshOverlay()
 
     Connections {
@@ -168,11 +191,6 @@ Item {
         }
     }
 
-    Connections {
-        target: EditorState.preview
-        function onViewChanged() { root.refreshOverlay() }
-    }
-
     Repeater {
         id: clipRepeater
 
@@ -190,7 +208,7 @@ Item {
             readonly property bool isTransform: box.kind === "transform"
             readonly property bool hasParent: box.parentActive === true
             readonly property var parentInverse: hasParent
-                ? EditorState.preview.parentOverlayMatrix(box, handle.sx).inverted() : null
+                ? EditorState.previewParentOverlayMatrix(box, handle.sx).inverted() : null
             // Overlay point (in the parented frame) -> the box's own overlay frame.
             function toParentLocal(p) {
                 if (!handle.hasParent)
@@ -217,17 +235,25 @@ Item {
             visible: (!isTransform || selected) && !childOfMovingLayer
             enabled: visible
             readonly property bool isText: box.kind === "text"
+            // A 3D model: the box is the projected model, not the clip's layout rect, so a drag
+            // moves the clip anchor by the box delta and there is nothing to resize or spin.
+            readonly property bool isModel3d: box.kind === "model3d"
             // Tilted or pushed in depth: the box is drawn through the clip's perspective
             // transform, so its outline and grips land on the rendered quad.
             // The gizmo's live pose while it drags this clip: the model is not rebuilt mid-drag.
             readonly property var gizmoPose: root.gizmoLive && root.gizmoLive.track === box.track
                                              && root.gizmoLive.clip === box.clip ? root.gizmoLive : null
             readonly property var pose3d: gizmoPose || box
-            readonly property bool is3d: ((pose3d.rotationX || 0) !== 0
+            readonly property bool is3d: !isModel3d && ((pose3d.rotationX || 0) !== 0
                                                          || (pose3d.rotationY || 0) !== 0
                                                          || (pose3d.z || 0) !== 0)
-            // A camera reframes every box, flat ones included.
-            readonly property bool viaCamera: box.cameraActive === true
+            // How much the perspective magnifies the clip's plane at its depth, so a body drag
+            // keeps the clip under the finger.
+            readonly property real depthScale: is3d
+                ? (box.perspective || 2000) / Math.max(1, (box.perspective || 2000) - (pose3d.z || 0))
+                : 1
+            readonly property real anchorOffsetX: box.anchorX !== undefined ? box.anchorX - box.x : 0
+            readonly property real anchorOffsetY: box.anchorY !== undefined ? box.anchorY - box.y : 0
             readonly property bool editing: root.editingKey
                                             === (box.track + ":" + box.clip)
             // True when this clip was just added with no text and should open
@@ -336,11 +362,11 @@ Item {
             transformOrigin: Item.Center
             readonly property real layoutRotation: gizmoPose ? gizmoPose.rotation
                                                    : liveRotation < 1e8 ? liveRotation : box.rotation
-            rotation: is3d || hasParent || viaCamera ? 0 : layoutRotation
+            rotation: is3d || hasParent ? 0 : layoutRotation
             transform: Matrix4x4 {
                 id: poseTransform
-                matrix: (void EditorState.preview.viewRevision, handle.is3d || handle.hasParent || handle.viaCamera)
-                        ? EditorState.preview.clipPoseMatrix({
+                matrix: handle.is3d || handle.hasParent
+                        ? EditorState.previewClipPoseMatrix({
                                                                 "canvasWidth": handle.box.canvasWidth,
                                                                 "canvasHeight": handle.box.canvasHeight,
                                                                 "rotationX": handle.pose3d.rotationX || 0,
@@ -374,24 +400,19 @@ Item {
             // True while a resize grip is held, for the size readout.
             property bool resizing: false
 
+            // Visible guides, in layout px. Reading guideItems re-runs this when the
+            // active sets change.
+            readonly property var guideSnap: EditorState.guidesEnabled && EditorState.guideItems.length > 0
+                ? EditorState.guideSnapTargets(handle.canvasW, handle.canvasH) : ({ x: [], y: [] })
+            // Canvas edges and centre lines, plus the guides.
+            readonly property var snapTargetsX: [0, handle.canvasW / 2, handle.canvasW].concat(guideSnap.x)
+            readonly property var snapTargetsY: [0, handle.canvasH / 2, handle.canvasH].concat(guideSnap.y)
+            readonly property real snapTolX: root.snapTolPx / handle.sx
+            readonly property real snapTolY: root.snapTolPx / handle.sy
             // A rotated box has no axis-aligned edges to stick with, so it does
-            // not snap — pulling its bounding box would move it sideways. Tilts, parents and
-            // the camera are fine: the snap works on the projected edges, and skips any that
-            // do not run along the screen axes.
-            // The 3D view's screen is not the canvas, so there is nothing there to snap to.
-            readonly property bool canSnap: Math.abs(handle.layoutRotation) < 0.01
-                                            && EditorState.preview.mode !== "3d"
-
-            // The box as it stood at the grab, in the shape the snapping calls take.
-            function grabBox() {
-                return Object.assign({}, handle.box, {
-                    "x": handle.dragStartX, "y": handle.dragStartY,
-                    "width": handle.dragStartW, "height": handle.dragStartH,
-                    "rotation": handle.layoutRotation,
-                    "rotationX": handle.pose3d.rotationX || 0, "rotationY": handle.pose3d.rotationY || 0,
-                    "z": handle.pose3d.z || 0
-                })
-            }
+            // not snap — pulling its bounding box would move it sideways.
+            readonly property bool canSnap: !handle.is3d && !handle.hasParent
+                                            && Math.abs(handle.layoutRotation) < 0.01
 
             // Guides are published in overlay px so they can be drawn once, at
             // root level, spanning the whole canvas rather than the clip box.
@@ -481,7 +502,7 @@ Item {
                     if (handle.isTransform) {
                         const p = root.mapFromItem(null, eventPoint.scenePosition.x,
                                                    eventPoint.scenePosition.y)
-                        const hit = EditorState.preview.clipAtCanvasPoint(p.x / handle.sx, p.y / handle.sy)
+                        const hit = EditorState.previewClipAtCanvasPoint(p.x / handle.sx, p.y / handle.sy)
                         if (hit && hit.track !== undefined) {
                             EditorState.selectClip(hit.track, hit.clip)
                             Haptics.select()
@@ -525,22 +546,18 @@ Item {
                 // otherwise take the grab from the grip once the drag threshold
                 // is passed, turning a resize into a move.
                 enabled: handle.selected && !handle.editing && !handle.resizing
-                // The press point in canvas px, and the box as it stood then: the drag is solved
-                // through the box's pose, parents and the camera.
-                property point pressCanvas: Qt.point(0, 0)
-                property var startBox: null
+                // 3D or parented: the press point in the box's own overlay frame, since
+                // translation arrives through a projective matrix and is unreliable there.
+                property point pressOverlay: Qt.point(0, 0)
                 onActiveChanged: {
                     if (active) {
                         root.interacting = true
                         if (handle.isTransform)
                             root.movingLayerTrack = handle.box.track
-                        const p = root.mapFromItem(null, centroid.scenePosition.x, centroid.scenePosition.y)
-                        pressCanvas = Qt.point(p.x / handle.sx, p.y / handle.sy)
+                        pressOverlay = handle.toParentLocal(root.mapFromItem(null, centroid.scenePosition.x,
+                                                                             centroid.scenePosition.y))
                         handle.dragStartX = handle.box.x
                         handle.dragStartY = handle.box.y
-                        handle.dragStartW = handle.layoutW
-                        handle.dragStartH = handle.layoutH
-                        startBox = handle.grabBox()
                         handle.liveX = handle.dragStartX
                         handle.liveY = handle.dragStartY
                         EditorState.selectClip(handle.box.track, handle.box.clip)
@@ -555,28 +572,57 @@ Item {
                     }
                 }
                 onTranslationChanged: {
-                    if (!active || !startBox)
-                        return
-                    const p = root.mapFromItem(null, centroid.scenePosition.x, centroid.scenePosition.y)
+                    let dx = 0
+                    let dy = 0
+                    if (handle.is3d || handle.hasParent) {
+                        const p = handle.toParentLocal(root.mapFromItem(null, centroid.scenePosition.x,
+                                                                        centroid.scenePosition.y))
+                        dx = (p.x - pressOverlay.x) / handle.depthScale
+                        dy = (p.y - pressOverlay.y) / handle.depthScale
+                    } else {
+                        // translation is in the rotated box frame; rotate it back to canvas axes
+                        const a = handle.layoutRotation * Math.PI / 180
+                        dx = translation.x * Math.cos(a) - translation.y * Math.sin(a)
+                        dy = translation.x * Math.sin(a) + translation.y * Math.cos(a)
+                    }
+                    let xPx = handle.dragStartX + dx / handle.sx
+                    let yPx = handle.dragStartY + dy / handle.sy
                     // Both edges and the centre stick, so a clip can be landed
                     // flush against a canvas edge or dead-centre by feel.
-                    const moved = EditorState.preview.snapMove(startBox, pressCanvas.x, pressCanvas.y,
-                                                              p.x / handle.sx, p.y / handle.sy,
-                                                              root.snapTolPx / handle.sx, handle.canSnap)
-                    // Seen edge-on, the plane has no point under the finger: hold still.
-                    if (!moved.valid)
-                        return
-                    const xPx = moved.x
-                    const yPx = moved.y
-                    handle.publishGuides(moved.guideX, moved.guideY)
+                    if (handle.canSnap) {
+                        const w = handle.layoutW
+                        const h = handle.layoutH
+                        const snapX = root.snapAxis([xPx, xPx + w / 2, xPx + w],
+                                                    handle.snapTargetsX, handle.snapTolX)
+                        const snapY = root.snapAxis([yPx, yPx + h / 2, yPx + h],
+                                                    handle.snapTargetsY, handle.snapTolY)
+                        xPx += snapX.delta
+                        yPx += snapY.delta
+                        handle.publishGuides(snapX.guide, snapY.guide)
+                    } else {
+                        handle.publishGuides(-1, -1)
+                    }
                     handle.liveX = xPx
                     handle.liveY = yPx
                     EditorState.previewSetClipPosition(
                         handle.box.track,
                         handle.box.clip,
-                        xPx,
-                        yPx)
+                        xPx + handle.anchorOffsetX,
+                        yPx + handle.anchorOffsetY)
                 }
+            }
+
+            // The single move handle of a 3D model: an affordance at the box centre (the whole
+            // box drags), where the corner and rotation grips would otherwise invite resizing.
+            Rectangle {
+                visible: handle.selected && handle.isModel3d && !handle.editing
+                anchors.centerIn: parent
+                width: 18
+                height: 18
+                radius: 9
+                color: Theme.primary
+                border.width: Theme.borderWidth
+                border.color: Theme.onMedia
             }
 
             // Resize grips: 4 edges then 4 corners, the same frame the canvas crop
@@ -585,7 +631,7 @@ Item {
             // anchor and does not move.
             Repeater {
                 // A 3D layer is sized with the gizmo's scale tool instead.
-                model: (handle.selected && !handle.editing)
+                model: (handle.selected && !handle.editing && !handle.isModel3d && !handle.box.layer3d)
                        ? [
                            { dx: -1, dy:  0 },
                            { dx:  1, dy:  0 },
@@ -641,10 +687,9 @@ Item {
                     // stands still.
                     property real startPx: 0
                     property real startPy: 0
-                    // Tilted or under the camera: the grab mapped into the box's own layout px.
+                    // 3D only: the grab mapped into the box's own layout px.
                     property var toLocal: null
                     property point startLocal: Qt.point(0, 0)
-                    property var startBox: null
 
                     // Resize about the fixed anchor. The maths runs in the box's own
                     // axes, so a rotated clip grows along the direction the grip
@@ -657,15 +702,13 @@ Item {
                         const a = handle.layoutRotation * Math.PI / 180
                         let lx = 0
                         let ly = 0
-                        if (grip.toLocal) {
-                            // Through the pose, so the finger is read in the box's own plane. A
-                            // tilted box resizes about its centre, which is also the tilt pivot:
+                        if (handle.is3d) {
+                            // A tilted box resizes about its centre, which is also the tilt pivot:
                             // holding an edge still would drag it through depth. Doubling the
                             // finger's travel in the box plane keeps the grip under the finger.
                             const l = grip.toLocal(px, py)
-                            const k = handle.is3d ? 2 : 1
-                            lx = k * (l.x - grip.startLocal.x) / handle.sx
-                            ly = k * (l.y - grip.startLocal.y) / handle.sy
+                            lx = 2 * (l.x - grip.startLocal.x) / handle.sx
+                            ly = 2 * (l.y - grip.startLocal.y) / handle.sy
                         } else {
                             const ddx = (px - grip.startPx) / handle.sx
                             const ddy = (py - grip.startPy) / handle.sy
@@ -695,36 +738,43 @@ Item {
                         let guideX = -1
                         let guideY = -1
                         if (handle.canSnap) {
-                            // Each moving edge is snapped as it projects, through the pose,
-                            // parents and camera.
-                            const snapped = EditorState.preview.snapResize(grip.startBox, w, h, dxSign, dySign,
-                                                                          handle.is3d,
-                                                                          root.snapTolPx / handle.sx)
+                            const anchorX = dxSign < 0 ? handle.dragStartX + handle.dragStartW
+                                                       : handle.dragStartX
+                            const anchorY = dySign < 0 ? handle.dragStartY + handle.dragStartH
+                                                       : handle.dragStartY
+                            const snapX = dxSign === 0
+                                    ? { delta: 0, guide: -1 }
+                                    : root.snapAxis([anchorX + dxSign * w],
+                                                    handle.snapTargetsX, handle.snapTolX)
+                            const snapY = dySign === 0
+                                    ? { delta: 0, guide: -1 }
+                                    : root.snapAxis([anchorY + dySign * h],
+                                                    handle.snapTargetsY, handle.snapTolY)
                             if (locked) {
                                 // The axes are tied, so only the closer of the two
                                 // snaps wins and it sets the scale for both.
-                                const rx = snapped.distX >= 0 ? snapped.distX : Infinity
-                                const ry = snapped.distY >= 0 ? snapped.distY : Infinity
+                                const rx = snapX.guide >= 0 ? Math.abs(snapX.delta) : Infinity
+                                const ry = snapY.guide >= 0 ? Math.abs(snapY.delta) : Infinity
                                 let s = -1
-                                if (rx <= ry && rx < Infinity) {
-                                    s = snapped.width / handle.dragStartW
-                                    guideX = snapped.guideX
+                                if (rx <= ry && snapX.guide >= 0) {
+                                    s = Math.abs(snapX.guide - anchorX) / handle.dragStartW
+                                    guideX = snapX.guide
                                 } else if (ry < Infinity) {
-                                    s = snapped.height / handle.dragStartH
-                                    guideY = snapped.guideY
+                                    s = Math.abs(snapY.guide - anchorY) / handle.dragStartH
+                                    guideY = snapY.guide
                                 }
                                 if (s > 0) {
                                     w = Math.max(1, handle.dragStartW * s)
                                     h = Math.max(1, handle.dragStartH * s)
                                 }
                             } else {
-                                if (snapped.distX >= 0) {
-                                    w = snapped.width
-                                    guideX = snapped.guideX
+                                if (snapX.guide >= 0) {
+                                    w = Math.max(1, w + snapX.delta * dxSign)
+                                    guideX = snapX.guide
                                 }
-                                if (snapped.distY >= 0) {
-                                    h = snapped.height
-                                    guideY = snapped.guideY
+                                if (snapY.guide >= 0) {
+                                    h = Math.max(1, h + snapY.delta * dySign)
+                                    guideY = snapY.guide
                                 }
                             }
                         }
@@ -772,13 +822,13 @@ Item {
 
                         onPressed: (mouse) => {
                             const raw = mapToItem(root, mouse.x, mouse.y)
-                            const throughPose = handle.is3d || handle.viaCamera
-                            const p = throughPose ? raw : handle.toParentLocal(raw)
+                            const p = handle.is3d ? raw : handle.toParentLocal(raw)
                             grip.startPx = p.x
                             grip.startPy = p.y
-                            grip.toLocal = throughPose ? handle.overlayToLocalMapper() : null
-                            if (grip.toLocal)
+                            if (handle.is3d) {
+                                grip.toLocal = handle.overlayToLocalMapper()
                                 grip.startLocal = grip.toLocal(p.x, p.y)
+                            }
                             if (handle.isTransform)
                                 root.movingLayerTrack = handle.box.track
                             handle.dragStartX = handle.layoutX
@@ -786,7 +836,6 @@ Item {
                             handle.dragStartW = handle.layoutW
                             handle.dragStartH = handle.layoutH
                             handle.dragStartPixelSize = handle.box.pixelSize || 64
-                            grip.startBox = handle.grabBox()
                             handle.liveX = handle.dragStartX
                             handle.liveY = handle.dragStartY
                             handle.liveW = handle.dragStartW
@@ -803,7 +852,7 @@ Item {
                             if (!pressed)
                                 return
                             const raw = mapToItem(root, mouse.x, mouse.y)
-                            const p = grip.toLocal ? raw : handle.toParentLocal(raw)
+                            const p = handle.is3d ? raw : handle.toParentLocal(raw)
                             grip.resizeTo(p.x, p.y)
                         }
 
@@ -855,7 +904,7 @@ Item {
             // Rotation handle above the box.
             Item {
                 id: rotateGrip
-                visible: handle.selected && !handle.editing
+                visible: handle.selected && !handle.editing && !handle.isModel3d && !handle.box.layer3d
                 width: root.gripTouch
                 height: root.gripTouch
                 x: handle.width / 2 - width / 2
@@ -882,18 +931,12 @@ Item {
                 DragHandler {
                     id: rotateDrag
                     target: null
-                    // Under the camera: the finger read in the box's own plane as it stood at the grab.
-                    property var toLocal: null
-                    property real startRotation: 0
                     onActiveChanged: {
                         if (active) {
                             root.interacting = true
                             if (handle.isTransform)
                                 root.movingLayerTrack = handle.box.track
                             handle.liveRotation = handle.box.rotation
-                            rotateDrag.toLocal = handle.viaCamera || handle.is3d
-                                    ? handle.overlayToLocalMapper() : null
-                            rotateDrag.startRotation = handle.box.rotation
                             EditorState.selectClip(handle.box.track, handle.box.clip)
                             handle.forceActiveFocus()
                             EditorState.beginPreviewDrag()
@@ -907,27 +950,15 @@ Item {
                     onCentroidChanged: {
                         if (!active)
                             return
-                        let deg = 0
-                        if (rotateDrag.toLocal) {
-                            // Under the camera: read in the box's own plane as it stood at the grab,
-                            // whose frame is already turned by the starting rotation.
-                            const raw = root.mapFromItem(null, rotateDrag.centroid.scenePosition.x,
-                                                         rotateDrag.centroid.scenePosition.y)
-                            const l = rotateDrag.toLocal(raw.x, raw.y)
-                            deg = Math.atan2(l.y - handle.layoutH * handle.sy / 2,
-                                             l.x - handle.layoutW * handle.sx / 2) * 180 / Math.PI + 90
-                                  + rotateDrag.startRotation
-                            deg = ((deg + 180) % 360 + 360) % 360 - 180
-                        } else {
-                            const p = handle.toParentLocal(root.mapFromItem(null, rotateDrag.centroid.scenePosition.x,
-                                                                            rotateDrag.centroid.scenePosition.y))
-                            // A tilted box spins about its projected centre.
-                            const c = handle.is3d
-                                    ? handle.toParentLocal(handle.mapToItem(root, handle.layoutW * handle.sx / 2,
-                                                                            handle.layoutH * handle.sy / 2))
-                                    : Qt.point(handle.centerX, handle.centerY)
-                            deg = Math.atan2(p.y - c.y, p.x - c.x) * 180 / Math.PI + 90
-                        }
+                        const p = handle.toParentLocal(root.mapFromItem(null, rotateDrag.centroid.scenePosition.x,
+                                                                        rotateDrag.centroid.scenePosition.y))
+                        // A tilted box spins about its projected centre.
+                        const c = handle.is3d
+                                ? handle.toParentLocal(handle.mapToItem(root, handle.layoutW * handle.sx / 2,
+                                                                        handle.layoutH * handle.sy / 2))
+                                : Qt.point(handle.centerX, handle.centerY)
+                        const ang = Math.atan2(p.y - c.y, p.x - c.x)
+                        const deg = ang * 180 / Math.PI + 90
                         handle.liveRotation = deg
                         EditorState.previewSetClipRotation(
                             handle.box.track,

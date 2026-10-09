@@ -317,24 +317,11 @@ Item {
         return false
     }
 
-    // Drag the bottom edge or wheel over the header to grow the lane.
+    // Drag the bottom edge to grow the lane. Session-only by design: it is a working
+    // preference, not something worth persisting into settings or the project file.
     property real laneHeight: 88
     readonly property real minLaneHeight: 60
     readonly property real maxLaneHeight: 460
-    readonly property real compactHeight: 88
-    readonly property real expandedHeight: 180
-
-    Behavior on laneHeight {
-        enabled: !resizeDrag.active
-        NumberAnimation { duration: 160; easing.type: Easing.OutCubic }
-    }
-
-    function toggleExpanded() {
-        if (curveEditing)
-            laneHeight = compactHeight
-        else
-            laneHeight = expandedHeight
-    }
 
     height: visible ? laneHeight : 0
     // Open whenever the clip has an animation to show, even if every curve is currently folded
@@ -412,35 +399,8 @@ Item {
 
         // Left gutter — same width as track labels so the graph lines up.
         Item {
-            id: leftGutter
             width: root.labelsWidth
             height: parent.height
-
-            // DAW-style lane zoom: wheel over this header grows/shrinks the keyframe lane
-            MouseArea {
-                anchors.fill: parent
-                acceptedButtons: Qt.NoButton
-                z: 30
-                onWheel: (wheel) => {
-                    // Modified wheel belongs to the timeline's zoom/pan.
-                    if (wheel.modifiers & (Qt.ControlModifier | Qt.ShiftModifier)) {
-                        wheel.accepted = false
-                        return
-                    }
-                    const dy = wheel.angleDelta.y !== 0 ? wheel.angleDelta.y
-                                                        : wheel.pixelDelta.y
-                    if (dy === 0)
-                        return
-                    const step = 20
-                    const next = root.laneHeight + (dy > 0 ? step : -step)
-                    root.laneHeight = Math.max(root.minLaneHeight,
-                                               Math.min(root.maxLaneHeight, next))
-                }
-            }
-
-            TapHandler {
-                onDoubleTapped: root.toggleExpanded()
-            }
 
             Column {
                 anchors.fill: parent
@@ -458,18 +418,6 @@ Item {
                         font.family: Theme.fontFamily
                         font.pixelSize: Theme.fontSizeXs
                         font.weight: Font.Medium
-                    }
-
-                    IconButton {
-                        anchors.verticalCenter: parent.verticalCenter
-                        glyph: root.curveEditing ? Theme.icons.minimize : Theme.icons.maximize
-                        variant: "text"
-                        buttonSize: 20
-                        iconSize: 14
-                        tooltip: root.curveEditing
-                                 ? qsTr("Collapse curve editor to compact view (88px)")
-                                 : qsTr("Expand curve editor to view and edit Bezier handles (180px)")
-                        onClicked: root.toggleExpanded()
                     }
 
                     // Beat grid / tempo.
@@ -558,27 +506,17 @@ Item {
                     text: {
                         const keys = root.keyCount === 0 ? qsTr("No keyframes")
                                                          : qsTr("%n keyframes", "", root.keyCount)
-                        let hint = ""
-                        if (!root.curveEditing && root.keyCount > 0)
-                            hint = " · " + qsTr("Expand for handles")
                         if (!EditorState.beatGridVisible || !root.analyzed)
-                            return keys + hint
+                            return keys
                         // The detector publishes no bpm when the tempo estimate was not
                         // confident — say so, rather than leaving the grid button lit over
                         // an empty lane. Onsets may still be perfectly usable.
-                        return (root.bpm > 0 ? keys + " · " + Math.round(root.bpm) + qsTr(" BPM")
-                                             : keys + qsTr(" · no beat found")) + hint
+                        return root.bpm > 0 ? keys + " · " + Math.round(root.bpm) + qsTr(" BPM")
+                                            : keys + qsTr(" · no beat found")
                     }
-                    color: (!root.curveEditing && root.keyCount > 0) ? Theme.primary : Theme.mutedForeground
+                    color: Theme.mutedForeground
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.fontSizeXs
-
-                    MouseArea {
-                        anchors.fill: parent
-                        enabled: !root.curveEditing && root.keyCount > 0
-                        cursorShape: enabled ? Qt.PointingHandCursor : Qt.ArrowCursor
-                        onClicked: root.toggleExpanded()
-                    }
                 }
             }
 
@@ -736,66 +674,26 @@ Item {
 
                             for (let s = 0; s < root.series.length; ++s) {
                                 const entry = root.series[s]
-                                const isLinkedPartner = EditorState.positionLinked
-                                    && ((root.dragProp === "x" && entry.prop === "y") || (root.dragProp === "y" && entry.prop === "x"))
-
                                 const live = entry.points.map(function (p, i) {
-                                    if (entry.prop === root.dragProp) {
-                                        if (i === root.dragTangentIndex) {
-                                            // Handle being dragged: same key, reshaped.
-                                            return {
-                                                seconds: p.seconds, value: p.value, hold: p.hold,
-                                                inDx: root.dragTangentInDx, inDy: root.dragTangentInDy,
-                                                outDx: root.dragTangentOutDx, outDy: root.dragTangentOutDy
-                                            }
-                                        }
-                                        if (i === root.dragIndex) {
-                                            // Key being moved: carry its tangents through, so the
-                                            // curve shape does not snap back to linear mid-drag.
-                                            return {
-                                                seconds: root.dragSeconds, value: root.dragValue,
-                                                inDx: p.inDx, inDy: p.inDy,
-                                                outDx: p.outDx, outDy: p.outDy, hold: p.hold
-                                            }
-                                        }
-                                    } else if (isLinkedPartner) {
-                                        if (root.dragTangentIndex >= 0 && root.focusedIndex >= 0 && root.focusedIndex < root.series.length) {
-                                            const masterPts = root.series[root.focusedIndex].points
-                                            const masterP = masterPts ? masterPts[root.dragTangentIndex] : null
-                                            if (masterP && Math.abs(masterP.seconds - p.seconds) < (1 / 30)) {
-                                                let partnerInDy = 0.0
-                                                let partnerOutDy = 0.0
-                                                if (i + 1 < entry.points.length && root.dragTangentIndex + 1 < masterPts.length) {
-                                                    const mSpan = masterPts[root.dragTangentIndex + 1].value - masterP.value
-                                                    const sSpan = entry.points[i + 1].value - p.value
-                                                    if (Math.abs(mSpan) > 1e-6)
-                                                        partnerOutDy = root.dragTangentOutDy * (sSpan / mSpan)
-                                                }
-                                                if (i > 0 && root.dragTangentIndex > 0) {
-                                                    const mSpan = masterP.value - masterPts[root.dragTangentIndex - 1].value
-                                                    const sSpan = p.value - entry.points[i - 1].value
-                                                    if (Math.abs(mSpan) > 1e-6)
-                                                        partnerInDy = root.dragTangentInDy * (sSpan / mSpan)
-                                                }
-                                                return {
-                                                    seconds: p.seconds, value: p.value, hold: p.hold,
-                                                    inDx: root.dragTangentInDx, inDy: partnerInDy,
-                                                    outDx: root.dragTangentOutDx, outDy: partnerOutDy
-                                                }
-                                            }
-                                        } else if (root.dragIndex >= 0 && root.focusedIndex >= 0 && root.focusedIndex < root.series.length) {
-                                            const masterPts = root.series[root.focusedIndex].points
-                                            const masterP = masterPts ? masterPts[root.dragIndex] : null
-                                            if (masterP && Math.abs(masterP.seconds - p.seconds) < (1 / 30)) {
-                                                return {
-                                                    seconds: root.dragSeconds, value: p.value,
-                                                    inDx: p.inDx, inDy: p.inDy,
-                                                    outDx: p.outDx, outDy: p.outDy, hold: p.hold
-                                                }
-                                            }
+                                    if (entry.prop !== root.dragProp)
+                                        return p
+                                    if (i === root.dragTangentIndex) {
+                                        // Handle being dragged: same key, reshaped.
+                                        return {
+                                            seconds: p.seconds, value: p.value, hold: p.hold,
+                                            inDx: root.dragTangentInDx, inDy: root.dragTangentInDy,
+                                            outDx: root.dragTangentOutDx, outDy: root.dragTangentOutDy
                                         }
                                     }
-                                    return p
+                                    if (i !== root.dragIndex)
+                                        return p
+                                    // Key being moved: carry its tangents through, so the
+                                    // curve shape does not snap back to linear mid-drag.
+                                    return {
+                                        seconds: root.dragSeconds, value: root.dragValue,
+                                        inDx: p.inDx, inDy: p.inDy,
+                                        outDx: p.outDx, outDy: p.outDy, hold: p.hold
+                                    }
                                 })
                                 const sorted = live.sort((a, b) => a.seconds - b.seconds)
 
@@ -899,11 +797,7 @@ Item {
                             border.color: "#ffffff"
                             opacity: (root.curveEditing && !root.isFocused(modelData.seriesIndex))
                                      ? 0.4 : 1.0
-                            readonly property bool isLinkedPartnerKey: EditorState.positionLinked
-                                && ((root.dragProp === "x" && modelData.prop === "y") || (root.dragProp === "y" && modelData.prop === "x"))
-                                && root.dragIndex >= 0 && root.focusedIndex >= 0 && root.focusedIndex < root.series.length
-                                && Math.abs((root.series[root.focusedIndex].points[root.dragIndex] ? root.series[root.focusedIndex].points[root.dragIndex].seconds : -999) - modelData.seconds) < (1 / 30)
-                            x: root.xForSeconds(modelData.seconds) - width / 2 + (isLinkedPartnerKey ? (root.xForSeconds(root.dragSeconds) - root.xForSeconds(modelData.seconds)) : dragDx)
+                            x: root.xForSeconds(modelData.seconds) - width / 2 + dragDx
                             y: root.yForValue(modelData.value, entry) - height / 2 + dragDy
                             z: 2
 
@@ -964,8 +858,7 @@ Item {
                                         root.clipStart,
                                         Math.min(root.clipStart + root.clipDuration,
                                                  EditorState.snapTime(rawSec)))
-                                    const isShift = (EditorState.keyboardModifiers() & Qt.ShiftModifier) !== 0
-                                    const newVal = isShift ? baseVal : Math.max(
+                                    const newVal = Math.max(
                                         entry.valueMin,
                                         Math.min(entry.valueMax,
                                                  root.valueForY(
@@ -1071,14 +964,13 @@ Item {
                                         const p = tangent.modelData.point
                                         const outgoing = tangent.modelData.outgoing
 
-                                        const isShift = (EditorState.keyboardModifiers() & Qt.ShiftModifier) !== 0
                                         const newX = tangent.tipX + translation.x
-                                        const newY = isShift ? tangent.keyY : (tangent.tipY + translation.y)
+                                        const newY = tangent.tipY + translation.y
                                         // dx keeps its sign: an out-handle may not reach back
                                         // past its key, nor an in-handle forward past its own.
                                         let dx = root.secondsForX(newX - tangent.keyX)
                                         dx = outgoing ? Math.max(0, dx) : Math.min(0, dx)
-                                        const dy = isShift ? 0.0 : (root.valueForY(newY, tangent.entry) - p.value)
+                                        const dy = root.valueForY(newY, tangent.entry) - p.value
 
                                         const inDx = outgoing ? (p.inDx || 0) : dx
                                         const outDx = outgoing ? dx : (p.outDx || 0)
@@ -1106,7 +998,7 @@ Item {
                                         root.dragTangentOutDx = outDx
                                         root.dragTangentOutDy = outDy
                                         tangent.dragDx = newX - tangent.tipX
-                                        tangent.dragDy = isShift ? (tangent.keyY - tangent.tipY) : (newY - tangent.tipY)
+                                        tangent.dragDy = newY - tangent.tipY
                                     }
                                 }
                             }
@@ -1133,9 +1025,6 @@ Item {
         HoverHandler {
             id: resizeHover
             cursorShape: Qt.SizeVerCursor
-        }
-        TapHandler {
-            onDoubleTapped: root.toggleExpanded()
         }
         DragHandler {
             id: resizeDrag

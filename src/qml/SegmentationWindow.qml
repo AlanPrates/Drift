@@ -31,13 +31,13 @@ Window {
         root.clipDurationSeconds = durationSeconds
         frameSlider.value = 0
         if (!sessionAlreadyStarted)
-            EditorState.segmentation.beginSession(track, clip, startSeconds)
+            EditorState.beginSegmentationSession(track, clip, startSeconds)
         root.show()
         root.raise()
         root.requestActivate()
     }
 
-    onClosing: EditorState.segmentation.endSession()
+    onClosing: EditorState.endSegmentationSession()
 
     // Rebuilt rather than bound: segmentationBackends() and rvmQualities() are plain calls, so
     // nothing would re-evaluate them when an addon is installed while this window is open.
@@ -45,7 +45,7 @@ Window {
     property var qualityModel: []
 
     function refreshBackends() {
-        const installed = EditorState.segmentation.backends()
+        const installed = EditorState.segmentationBackends()
         const backends = []
         if (installed.indexOf("sam2") >= 0)
             backends.push({ label: qsTr("Anything (click to pick)"), value: "sam2" })
@@ -54,7 +54,7 @@ Window {
         root.backendModel = backends
 
         const qualities = []
-        const variants = EditorState.segmentation.rvmQualities()
+        const variants = EditorState.rvmQualities()
         for (let i = 0; i < variants.length; ++i) {
             qualities.push({
                 label: variants[i] === "resnet50" ? qsTr("Best quality (slower)") : qsTr("Fast"),
@@ -75,15 +75,15 @@ Window {
     }
 
     Connections {
-        target: EditorState.segmentation
-        function onFinished(ok, message) {
+        target: EditorState
+        function onSegmentationFinished(ok, message) {
             if (ok)
                 root.close()
         }
         // The session corrects a remembered backend that is no longer installed, so the control
         // follows the session rather than the other way round.
-        function onSessionChanged() {
-            backendBox.currentIndex = backendBox.indexOfValue(EditorState.segmentation.backend)
+        function onSegmentSessionChanged() {
+            backendBox.currentIndex = backendBox.indexOfValue(EditorState.segmentBackend)
         }
     }
 
@@ -103,8 +103,8 @@ Window {
                 width: parent.width
                 height: parent.height - scrubRow.height - Theme.spacingMd
 
-                readonly property real frameW: EditorState.segmentation.frameSize.width
-                readonly property real frameH: EditorState.segmentation.frameSize.height
+                readonly property real frameW: EditorState.segmentFrameSize.width
+                readonly property real frameH: EditorState.segmentFrameSize.height
                 readonly property real aspect: frameH > 0 ? frameW / frameH : 16 / 9
 
                 // Letterboxed fit, and the single source of truth for mapping clicks back into
@@ -130,8 +130,8 @@ Window {
                     cache: false
                     // The revision defeats QML's URL-keyed image cache; the pixels behind these
                     // URLs change on every prompt edit.
-                    source: EditorState.segmentation.sessionActive
-                            ? "image://segment/frame?rev=" + EditorState.segmentation.revision
+                    source: EditorState.segmentSessionActive
+                            ? "image://segment/frame?rev=" + EditorState.segmentRevision
                             : ""
                 }
 
@@ -144,28 +144,28 @@ Window {
                     fillMode: Image.Stretch
                     cache: false
                     opacity: 0.45
-                    source: EditorState.segmentation.sessionActive
-                            ? "image://segment/mask?rev=" + EditorState.segmentation.revision
+                    source: EditorState.segmentSessionActive
+                            ? "image://segment/mask?rev=" + EditorState.segmentRevision
                             : ""
                 }
 
                 MouseArea {
                     anchors.fill: parent
                     acceptedButtons: Qt.LeftButton | Qt.RightButton
-                    enabled: EditorState.segmentation.sessionActive && EditorState.segmentation.backendUsesPoints
-                             && !EditorState.segmentation.encoding && !EditorState.segmentation.running
+                    enabled: EditorState.segmentSessionActive && EditorState.segmentBackendUsesPoints
+                             && !EditorState.segmentEncoding && !EditorState.segmenting
                     onClicked: function (mouse) {
                         const nx = (mouse.x - stage.fitX) / stage.fitW
                         const ny = (mouse.y - stage.fitY) / stage.fitH
                         if (nx < 0 || nx > 1 || ny < 0 || ny > 1)
                             return
-                        EditorState.segmentation.addPoint(nx, ny, mouse.button === Qt.LeftButton)
+                        EditorState.addSegmentationPoint(nx, ny, mouse.button === Qt.LeftButton)
                     }
                 }
 
                 // Prompt markers. Green includes the subject, red carves it out; click one to drop it.
                 Repeater {
-                    model: EditorState.segmentation.backendUsesPoints ? EditorState.segmentation.points : []
+                    model: EditorState.segmentBackendUsesPoints ? EditorState.segmentPoints : []
                     delegate: Rectangle {
                         required property int index
                         required property var modelData
@@ -181,15 +181,15 @@ Window {
 
                         MouseArea {
                             anchors.fill: parent
-                            enabled: !EditorState.segmentation.running
-                            onClicked: EditorState.segmentation.removePoint(parent.index)
+                            enabled: !EditorState.segmenting
+                            onClicked: EditorState.removeSegmentationPoint(parent.index)
                         }
                     }
                 }
 
                 Rectangle {
                     anchors.centerIn: parent
-                    visible: EditorState.segmentation.encoding
+                    visible: EditorState.segmentEncoding
                     width: encodingLabel.width + Theme.spacingXl
                     height: encodingLabel.height + Theme.spacingLg
                     radius: Theme.radiusMd
@@ -220,16 +220,16 @@ Window {
                     anchors.verticalCenter: parent.verticalCenter
                     from: 0
                     to: Math.max(0.001, root.clipDurationSeconds)
-                    enabled: !EditorState.segmentation.encoding && !EditorState.segmentation.running
+                    enabled: !EditorState.segmentEncoding && !EditorState.segmenting
                     // Re-encoding on every slider tick would queue seconds of work per drag, so a
                     // drag only shows frames and the encode waits for the release.
                     onMoved: {
                         if (pressed)
-                            EditorState.segmentation.scrubFrame(root.clipStartSeconds + value)
+                            EditorState.scrubSegmentationFrame(root.clipStartSeconds + value)
                     }
                     onPressedChanged: {
                         if (!pressed)
-                            EditorState.segmentation.setFrame(root.clipStartSeconds + value)
+                            EditorState.setSegmentationFrame(root.clipStartSeconds + value)
                     }
                 }
 
@@ -250,7 +250,7 @@ Window {
             ThemedLabel {
                 width: parent.width
                 wrapMode: Text.WordWrap
-                text: EditorState.segmentation.backendUsesPoints
+                text: EditorState.segmentBackendUsesPoints
                       ? qsTr("Left-click marks the subject, right-click marks what to exclude. Click a marker to remove it.")
                       : qsTr("Everyone in the shot is cut out automatically — there is nothing to click.")
             }
@@ -267,35 +267,35 @@ Window {
                 ThemedComboBox {
                     id: backendBox
                     width: parent.width
-                    enabled: !EditorState.segmentation.running && !EditorState.segmentation.encoding
+                    enabled: !EditorState.segmenting && !EditorState.segmentEncoding
                     textRole: "label"
                     valueRole: "value"
                     model: root.backendModel
-                    onActivated: EditorState.segmentation.setBackend(currentValue, qualityBox.currentValue || "")
+                    onActivated: EditorState.setSegmentationBackend(currentValue, qualityBox.currentValue || "")
                 }
             }
 
             Column {
                 width: parent.width
                 spacing: Theme.spacingSm
-                visible: !EditorState.segmentation.backendUsesPoints && qualityBox.count > 1
+                visible: !EditorState.segmentBackendUsesPoints && qualityBox.count > 1
 
                 ThemedLabel { text: qsTr("Quality") }
 
                 ThemedComboBox {
                     id: qualityBox
                     width: parent.width
-                    enabled: !EditorState.segmentation.running && !EditorState.segmentation.encoding
+                    enabled: !EditorState.segmenting && !EditorState.segmentEncoding
                     textRole: "label"
                     valueRole: "value"
                     model: root.qualityModel
-                    onActivated: EditorState.segmentation.setBackend(EditorState.segmentation.backend, currentValue)
+                    onActivated: EditorState.setSegmentationBackend(EditorState.segmentBackend, currentValue)
                 }
             }
 
             ThemedLabel {
                 width: parent.width
-                text: qsTr("AI: %1").arg(EditorState.segmentation.modelVariant() || qsTr("not installed"))
+                text: qsTr("AI: %1").arg(EditorState.segmentationModelVariant() || qsTr("not installed"))
             }
 
             Column {
@@ -311,7 +311,7 @@ Window {
                 ThemedLabel {
                     width: parent.width
                     wrapMode: Text.WordWrap
-                    visible: !EditorState.segmentation.forTemplate
+                    visible: !EditorState.segmentationForTemplate
                     text: qsTr("Adds a mask layer under the clip. The clip itself is left alone — "
                                + "flip it to the background, or remove it, from the Masks tab.")
                 }
@@ -319,65 +319,65 @@ Window {
                 ThemedLabel {
                     width: parent.width
                     wrapMode: Text.WordWrap
-                    visible: EditorState.segmentation.forTemplate
+                    visible: EditorState.segmentationForTemplate
                     text: qsTr("The cutout is only for this effect — no extra tracks are added.")
                 }
             }
 
             ThemedButton {
                 width: parent.width
-                visible: EditorState.segmentation.backendUsesPoints
+                visible: EditorState.segmentBackendUsesPoints
                 variant: "secondary"
                 text: qsTr("Clear points")
-                enabled: EditorState.segmentation.points.length > 0 && !EditorState.segmentation.running
-                onClicked: EditorState.segmentation.clearPoints()
+                enabled: EditorState.segmentPoints.length > 0 && !EditorState.segmenting
+                onClicked: EditorState.clearSegmentationPoints()
             }
 
             ThemedButton {
                 width: parent.width
                 variant: "primary"
-                text: EditorState.segmentation.running
-                      ? qsTr("Cutting out… %1%").arg(Math.round(EditorState.segmentation.progress * 100))
-                      : (EditorState.segmentation.forTemplate
+                text: EditorState.segmenting
+                      ? qsTr("Cutting out… %1%").arg(Math.round(EditorState.segmentProgress * 100))
+                      : (EditorState.segmentationForTemplate
                          ? qsTr("Cut out & apply effect")
                          : qsTr("Cut out subject"))
-                enabled: (!EditorState.segmentation.backendUsesPoints
-                          || EditorState.segmentation.points.length > 0)
-                         && !EditorState.segmentation.running && !EditorState.segmentation.encoding
-                onClicked: EditorState.segmentation.runSession(
-                    EditorState.segmentation.forTemplate ? "template" : "adjustment")
+                enabled: (!EditorState.segmentBackendUsesPoints
+                          || EditorState.segmentPoints.length > 0)
+                         && !EditorState.segmenting && !EditorState.segmentEncoding
+                onClicked: EditorState.runSegmentationSession(
+                    EditorState.segmentationForTemplate ? "template" : "adjustment")
             }
 
             Column {
                 width: parent.width
                 spacing: Theme.spacingSm
-                visible: EditorState.segmentation.running
+                visible: EditorState.segmenting
 
                 LabelledProgressRing {
                     anchors.horizontalCenter: parent.horizontalCenter
-                    value: EditorState.segmentation.progress
-                    indeterminate: EditorState.segmentation.progress <= 0
+                    value: EditorState.segmentProgress
+                    indeterminate: EditorState.segmentProgress <= 0
                 }
 
                 ThemedLabel {
                     width: parent.width
                     horizontalAlignment: Text.AlignHCenter
                     wrapMode: Text.WordWrap
-                    text: EditorState.segmentation.status
+                    text: EditorState.segmentStatus
                 }
 
                 ThemedButton {
                     width: parent.width
                     variant: "destructive"
                     text: qsTr("Cancel")
-                    onClicked: EditorState.segmentation.cancel()
+                    onClicked: EditorState.cancelSegmentation()
                 }
             }
 
             ThemedLabel {
                 width: parent.width
                 wrapMode: Text.WordWrap
-                visible: !EditorState.segmentation.running
+                visible: !EditorState.segmenting
                 text: qsTr("Each moment is processed, so longer clips take longer.")
             }
         }

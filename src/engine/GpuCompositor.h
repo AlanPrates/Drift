@@ -1,12 +1,10 @@
 #pragma once
 
-#include "engine/EditorOverlay.h"
 #include "core/Clip.h"
 #include "core/Effect.h"
 #include "core/Mask.h"
 #include "core/Time.h"
 #include "engine/ClipTransform3d.h"
-#include "engine/SceneCamera3d.h"
 #include "engine/DepthSidecar.h"
 #include "engine/FaceLandmarker.h"
 #include "engine/GpuStatus.h"
@@ -85,20 +83,6 @@ struct GpuLayer
     // Transform layers over this clip's track, in canvas pixels; see drift::transformParentsAt.
     QTransform parent;
     bool hasParent = false;
-    // The shared viewpoint at this frame, world -> homogeneous canvas px: the scene camera's
-    // (drift::cameraViewProjection), or the preview's free 3D view. Carried per layer rather than
-    // read off the scene so modelMatrixFor stays a pure function of the layer, the same way
-    // `parent` resolves a scene-level concept down to each layer. `viewActive` is false for any
-    // project without a camera clip outside the 3D view, and that is what keeps every frame
-    // rendered so far on the untouched per-clip path.
-    QMatrix4x4 viewProj;
-    bool viewActive = false;
-    // The canvas the layer's rect is laid out on, when the frame being rendered is not it (the 3D
-    // view renders the panel's frame around the project's): world space is centred on this one.
-    QSizeF layoutCanvas;
-    // Drawn already in place (a model clip renders itself through the viewpoint into a
-    // canvas-sized target): the layer covers the canvas and is not placed a second time.
-    bool screenSpace = false;
     double opacity = 1.0;
     drift::TimeUs clipTimeUs = 0; // effect time base (relative to clip start)
     // This frame's baked face anchors, one per tracked slot, sampled by FrameCompositor. Carried
@@ -111,10 +95,6 @@ struct GpuLayer
     // lay `depth` out on the canvas once the layer is drawn. On an occluded layer, occluderItem
     // is the scene index of that occluder, and wherever it is nearer than occludeDepth this layer
     // gives way.
-    // Per-clip opt-in: let depth decide what covers this layer instead of the track order it was
-    // emitted in. Set only for a clip whose 3D switch is on and whose blend is Normal; the
-    // compositor gives the canvas a depth buffer when any layer in the scene asks for this.
-    bool depthOcclude = false;
     bool emitDepthCanvas = false;
     int occluderItem = -1;
     float occludeDepth = 0.f;
@@ -161,12 +141,6 @@ struct GpuScene
     QList<GpuItem> items; // back-to-front
     // Paused preview: keep converted video sources on the GPU between composites.
     bool cacheVideoSources = false;
-    // The preview's 3D mode: every layer is placed through `editorViewProj` (world -> homogeneous
-    // canvas px), and the scene camera at `editorCamera` is drawn as a guide. Never set on export.
-    bool editorView = false;
-    QMatrix4x4 editorViewProj;
-    // The guides drawn into the 3D view: grid, stage, camera, selection. See EditorOverlay.
-    QList<drift::EditorLine> editorLines;
 };
 
 // A composited frame still living in GPU memory. The texture belongs to the GL

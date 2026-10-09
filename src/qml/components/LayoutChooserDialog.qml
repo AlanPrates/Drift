@@ -68,8 +68,8 @@ ThemedDialog {
     }
 
     function matchCurrentProject() {
-        const match = LayoutPresets.matchProject(EditorState.projectFile.projectWidth(),
-                                                 EditorState.projectFile.projectHeight())
+        const match = LayoutPresets.matchProject(EditorState.projectWidth(),
+                                                 EditorState.projectHeight())
         templateId = match.templateId
         activeCategory = match.categoryId
         qualityId = match.qualityId
@@ -88,7 +88,7 @@ ThemedDialog {
     }
 
     onAccepted: {
-        EditorState.projectFile.setProjectSetup(outWidth, outHeight, EditorState.projectFile.projectFps())
+        EditorState.setProjectSetup(outWidth, outHeight, EditorState.projectFps())
         EditorState.markProjectLayoutChosen()
     }
 

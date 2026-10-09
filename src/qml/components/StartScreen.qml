@@ -16,7 +16,7 @@ Rectangle {
 
     color: Theme.appBackground
 
-    readonly property var items: EditorState.projectFile.recentProjects
+    readonly property var items: EditorState.recentProjects
 
     component ProjectRow: Rectangle {
         id: projectRow
@@ -122,7 +122,7 @@ Rectangle {
                 cursorShape: Qt.PointingHandCursor
                 onClicked: (mouse) => {
                     mouse.accepted = true
-                    EditorState.projectFile.removeRecentProject(projectRow.modelData.path)
+                    EditorState.removeRecentProject(projectRow.modelData.path)
                 }
             }
         }

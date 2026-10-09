@@ -4,7 +4,6 @@
 #include "FaceModelTransform.h"
 #include "GlRuntime.h"
 
-#include <QMatrix4x4>
 #include <QOpenGLExtraFunctions>
 #include <QSize>
 #include <QString>
@@ -92,14 +91,10 @@ GlModelGpu *acquireGlModel(GlRuntime &rt, QOpenGLExtraFunctions *gl, const QStri
 GlModelGpu *acquireGlModel(GlRuntime &rt, QOpenGLExtraFunctions *gl, const QString &path,
                            std::shared_ptr<const ModelAsset> cpu);
 
-// Draw a Model3d clip into a new pooled, straight-alpha layer target the size of the canvas,
-// placed in the world by the request and seen through `viewProjection` (world -> homogeneous
-// canvas px, as cameraViewProjection). With `depthOut`, also its depth in that projection's
-// z, packed for the compositor's depth test (left invalid if the GPU cannot provide it).
+// Draw a Model3d clip into a new pooled, straight-alpha layer target the size of the canvas.
 // Invalid on any failure (the compositor then draws nothing for the clip).
 GlTarget drawModelClip(GlRuntime &rt, QOpenGLExtraFunctions *gl,
-                       const model3d::ModelDrawRequest &request, const QSize &canvasSize,
-                       const QMatrix4x4 &viewProjection, GlTarget *depthOut = nullptr);
+                       const model3d::ModelDrawRequest &request, const QSize &canvasSize);
 
 void destroyGlModels(GlRuntime &rt, QOpenGLExtraFunctions *gl);
 

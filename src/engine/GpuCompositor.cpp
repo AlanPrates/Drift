@@ -7,13 +7,11 @@
 #include "FaceModelTransform.h"
 #include "FaceTrack.h"
 #include "GlFaceSwapRenderer.h"
-#include "GlEditorOverlay.h"
 #include "GlModelRenderer.h"
 #include "GlRuntime.h"
 #include "GpuDevice.h"
 #include "GpuEffectDefinition.h"
 #include "MaskApplier.h"
-#include "ModelClipRenderer.h"
 #include "TransformLayer.h"
 
 #include <QLineF>
@@ -75,10 +73,6 @@ float occlusion() {
     float cover = o.a * mix(1.0, o.b, u_occCutout);
     return 1.0 - cover * nearer;
 }
-// Depth occlusion by geometry rather than by a depth map: while this is 1 the layer writes the
-// depth buffer, and a fragment the layer does not really cover must not write it or it would hide
-// whatever is behind it. Transparent corners of a tilted card are exactly that case.
-uniform float u_depthWrite;
 void main() {
     vec4 c = texture(u_layer, v_texCoord);
     float s = u_opacity;
@@ -88,31 +82,9 @@ void main() {
     }
     s *= occlusion();
     float a = c.a * s;
-    if (u_depthWrite > 0.5 && a < 0.5)
-        discard;
     fragColor = vec4(u_layerPremul > 0.5 ? c.rgb * s : c.rgb * a, a);
 }
 )";
-
-// kLayerFragShader writing the layer's own depth (a model clip's, packed by drawModelClip) rather
-// than the flat quad's, so a model occludes and is occluded by its real surface.
-const char *layerDepthFragShader()
-{
-    static const QByteArray source = [] {
-        QByteArray s(kLayerFragShader);
-        s.replace("uniform float u_depthWrite;",
-                  "uniform float u_depthWrite;\n"
-                  "uniform sampler2D u_layerDepth;\n"
-                  "float layerDepth() {\n"
-                  "    vec3 b = floor(texture(u_layerDepth, v_texCoord).rgb * 255.0 + 0.5);\n"
-                  "    return (b.r * 65536.0 + b.g * 256.0 + b.b) / 16777215.0;\n"
-                  "}");
-        s.replace("    fragColor = vec4(u_layerPremul",
-                  "    gl_FragDepth = layerDepth();\n    fragColor = vec4(u_layerPremul");
-        return s;
-    }();
-    return source.constData();
-}
 
 // Separable blend modes need the destination, which GL fixed-function blending
 // cannot express. The canvas is copied into the target first, then the layer's
@@ -288,22 +260,7 @@ bool isFixedFunctionBlend(drift::BlendMode mode)
 // the top of the readback image (see promoteImageToTarget), so y is not flipped.
 QMatrix4x4 modelMatrixFor(const GpuLayer &layer, const QSize &canvas)
 {
-    // In the 3D view the frame is not the layout canvas, and a layer drawn already in place (a
-    // model) covers the whole frame: the unit quad is exactly clip space.
-    if (layer.screenSpace && !layer.layoutCanvas.isEmpty())
-        return QMatrix4x4();
-    if (layer.viewActive && !layer.screenSpace) {
-        // One shared rule, so the preview's grips are drawn from the same placement as the pixels.
-        const QSizeF canvasF(canvas);
-        QMatrix4x4 ndc;
-        ndc.translate(-1.f, -1.f);
-        ndc.scale(2.f / canvas.width(), 2.f / canvas.height());
-        return ndc
-               * drift::viewQuadToCanvas(layer.viewProj, layer.rect, layer.rotation, layer.flipH,
-                                         layer.flipV, layer.pose3d, layer.parent, layer.hasParent,
-                                         layer.layoutCanvas.isEmpty() ? canvasF : layer.layoutCanvas);
-    }
-    if (layer.hasParent && !layer.screenSpace) {
+    if (layer.hasParent) {
         QMatrix4x4 m;
         m.translate(-1.f, -1.f);
         m.scale(2.f / canvas.width(), 2.f / canvas.height());
@@ -527,35 +484,15 @@ bool chainConsumesMasks(const GpuLayer &layer)
     return false;
 }
 
-// World -> homogeneous canvas px for a layer that draws itself in place: the scene camera when one
-// is active, otherwise the layer's own eye, through any affine transform-layer parent.
-QMatrix4x4 layerViewProjection(const GpuLayer &layer, const QSize &canvas)
-{
-    const QSizeF canvasF(canvas);
-    QMatrix4x4 view = layer.viewProj;
-    if (!layer.viewActive) {
-        drift::SceneCamera3d eye;
-        eye.perspective = layer.model3d ? layer.model3d->pose3d.perspective : layer.pose3d.perspective;
-        view = drift::cameraViewProjection(eye, canvasF);
-    }
-    if (layer.hasParent && layer.parent.isAffine())
-        view = view * drift::worldParentFromAffine(layer.parent,
-                                                   layer.layoutCanvas.isEmpty() ? canvasF : layer.layoutCanvas);
-    return view;
-}
-
-// `modelDepth`: for a model layer that takes part in depth occlusion, its packed depth.
 GlTarget buildLayerTarget(GlRuntime &rt, QOpenGLExtraFunctions *gl, const GpuLayer &layer,
-                          const QSize &canvasSize, GlTarget *modelDepth = nullptr)
+                          const QSize &canvasSize)
 {
     if (!layer.valid || !layer.hasPixels())
         return {};
 
     GlTarget target;
     if (layer.model3d) {
-        target = drift::gl::drawModelClip(rt, gl, *layer.model3d, canvasSize,
-                                          layerViewProjection(layer, canvasSize),
-                                          layer.depthOcclude ? modelDepth : nullptr);
+        target = drift::gl::drawModelClip(rt, gl, *layer.model3d, canvasSize);
     } else if (layer.nested) {
         target = nestedLayerTarget(rt, gl, *layer.nested);
     } else if (layer.video.isValid()) {
@@ -756,12 +693,10 @@ struct OcclusionDraw
 // coverage and Add sums onto it; the two together replace the canvas by the layer's coverage.
 enum class CanvasWrite { Over, Erase, Add };
 
-// `layerDepth`, when set, is the layer's own packed depth (a model clip's), written in place of
-// the quad's when the layer takes part in depth occlusion.
 void drawLayerOnCanvas(GlRuntime &rt, QOpenGLExtraFunctions *gl, GlTarget &canvas,
                        const GlTarget &layerTarget, const GpuLayer &layer, drift::BlendMode blend,
                        const QSize &canvasSize, const OcclusionDraw *occlusion = nullptr,
-                       CanvasWrite write = CanvasWrite::Over, GLuint layerDepth = 0);
+                       CanvasWrite write = CanvasWrite::Over);
 
 // Where a media mask's pixels land inside the coverage target. The mask's rect is normalized to
 // the clip frame; the fit mode then decides what happens when the media's aspect differs from it.
@@ -1019,8 +954,7 @@ GlTarget depthCanvasTarget(GlRuntime &rt, QOpenGLExtraFunctions *gl, const GpuLa
 // blend mode. For non-fixed-function modes the canvas is ping-ponged.
 void drawLayerOnCanvas(GlRuntime &rt, QOpenGLExtraFunctions *gl, GlTarget &canvas,
                        const GlTarget &layerTarget, const GpuLayer &layer, drift::BlendMode blend,
-                       const QSize &canvasSize, const OcclusionDraw *occlusion, CanvasWrite write,
-                       GLuint layerDepth)
+                       const QSize &canvasSize, const OcclusionDraw *occlusion, CanvasWrite write)
 {
     if (!layerTarget.isValid() || layer.rect.width() < 0.5 || layer.rect.height() < 0.5)
         return;
@@ -1062,9 +996,8 @@ void drawLayerOnCanvas(GlRuntime &rt, QOpenGLExtraFunctions *gl, GlTarget &canva
 
     // Only worth it when the quad is actually smaller than the texture; at ~1:1 the
     // single bilinear tap is already exact and the copy would be pure cost.
-    QSizeF drawnSize = layer.screenSpace && !layer.layoutCanvas.isEmpty() ? QSizeF(canvasSize)
-                                                                           : layer.rect.size();
-    if (layer.hasParent && !layer.screenSpace) {
+    QSizeF drawnSize = layer.rect.size();
+    if (layer.hasParent) {
         const QMatrix4x4 quad =
             layer.pose3d.isActive()
                 ? drift::clipQuadToCanvas(layer.rect, layer.rotation, false, false, layer.pose3d,
@@ -1107,13 +1040,8 @@ void drawLayerOnCanvas(GlRuntime &rt, QOpenGLExtraFunctions *gl, GlTarget &canva
     } mipGuard{rt, gl, mipTarget};
 
     if (isFixedFunctionBlend(blend)) {
-        const bool ownDepth = layerDepth && layer.depthOcclude && canvas.hasDepth
-                              && write == CanvasWrite::Over && blend == drift::BlendMode::Normal;
         QOpenGLShaderProgram *program =
-            ownDepth ? rt.builtinProgram(QStringLiteral("__layer_depth__"), kLayerVertexShader,
-                                         layerDepthFragShader())
-                     : rt.builtinProgram(QStringLiteral("__layer__"), kLayerVertexShader,
-                                         kLayerFragShader);
+            rt.builtinProgram(QStringLiteral("__layer__"), kLayerVertexShader, kLayerFragShader);
         if (!program)
             return;
 
@@ -1127,20 +1055,6 @@ void drawLayerOnCanvas(GlRuntime &rt, QOpenGLExtraFunctions *gl, GlTarget &canva
         else
             gl->glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA); // premultiplied source-over
 
-        // Per-clip depth occlusion. Only for a layer that asked for it, only on a canvas that has
-        // a depth buffer (composeOnGlThread arranges one when any layer does), and only for a
-        // plain source-over draw — the erase/add passes of a see-through adjustment are not a
-        // picture's depth. Layers that did not opt in never enable the test and never write depth,
-        // so they keep drawing in track order exactly as before.
-        const bool depthWrite = layer.depthOcclude && canvas.hasDepth
-                                && write == CanvasWrite::Over
-                                && blend == drift::BlendMode::Normal;
-        if (depthWrite) {
-            gl->glEnable(GL_DEPTH_TEST);
-            gl->glDepthFunc(GL_LESS);
-            gl->glDepthMask(GL_TRUE);
-        }
-
         program->bind();
         program->setUniformValue("u_model", model);
         program->setUniformValue("u_opacity", float(layer.opacity));
@@ -1149,15 +1063,7 @@ void drawLayerOnCanvas(GlRuntime &rt, QOpenGLExtraFunctions *gl, GlTarget &canva
         program->setUniformValue("u_layer", 0);
         program->setUniformValue("u_mask", 1);
         program->setUniformValue("u_layerPremul", layerPremul);
-        // Set either way: the program is cached and reused, so a 1 left over from the last
-        // depth-writing layer would make the next one discard its soft edges.
-        program->setUniformValue("u_depthWrite", depthWrite ? 1.f : 0.f);
         setOcclusionUniforms(program, gl, occlusion, canvas);
-        if (ownDepth) {
-            program->setUniformValue("u_layerDepth", 5);
-            gl->glActiveTexture(GL_TEXTURE5);
-            gl->glBindTexture(GL_TEXTURE_2D, layerDepth);
-        }
         gl->glActiveTexture(GL_TEXTURE0);
         gl->glBindTexture(GL_TEXTURE_2D, layerTex);
         gl->glActiveTexture(GL_TEXTURE1);
@@ -1165,12 +1071,6 @@ void drawLayerOnCanvas(GlRuntime &rt, QOpenGLExtraFunctions *gl, GlTarget &canva
         bindQuad(rt, gl);
         program->release();
         gl->glDisable(GL_BLEND);
-        if (depthWrite) {
-            gl->glDisable(GL_DEPTH_TEST);
-            // Back to GL's default rather than closed: a closed mask would make the next
-            // glClear(GL_DEPTH_BUFFER_BIT) anywhere in the process do nothing at all.
-            gl->glDepthMask(GL_TRUE);
-        }
         canvas.fbo->release();
         return;
     }
@@ -1394,7 +1294,7 @@ void fillBackground(GlRuntime &rt, QOpenGLExtraFunctions *gl, GlTarget &canvas, 
 // to publish nothing rather than a canvas with that layer missing from it, which is a black
 // flash on screen. Only video reports: a still or a vector that cannot be built fails the
 // same way on every frame, and holding the preview for that would freeze it for good.
-void composeOnGlThread(GlRuntime &rt, const GpuScene &scene, GlTarget &outCanvas, bool *lostVideo)
+void composeOnGlThread(GlRuntime &rt, const GpuScene &scene, GlTarget &canvas, bool *lostVideo)
 {
     auto *gl = rt.functions();
     if (!gl)
@@ -1402,41 +1302,7 @@ void composeOnGlThread(GlRuntime &rt, const GpuScene &scene, GlTarget &outCanvas
 
     const QSize canvasSize = scene.canvasSize;
 
-    // Per-clip depth occlusion needs a depth buffer, and the canvas the caller owns has none — a
-    // presentation-ring target is colour only. When some layer has opted in, the scene is composed
-    // into a depth-attached target of the same size and copied onto the caller's canvas at the
-    // end. That costs one extra full-canvas blit, and only for a scene that uses the feature;
-    // everything else composes straight into the caller's canvas as it always has.
-    bool wantsDepth = false;
-    for (const GpuItem &item : scene.items) {
-        wantsDepth = wantsDepth || item.layer.depthOcclude || item.from.depthOcclude
-                     || item.to.depthOcclude;
-    }
-    GlTarget depthScratch;
-    if (wantsDepth) {
-        depthScratch = rt.acquireTarget(canvasSize.width(), canvasSize.height(), /*wantDepth=*/true);
-        if (depthScratch.isValid()) {
-            depthScratch.fbo->bind();
-            // Farthest, so the first depth-writing layer always passes GL_LESS. The mask has to be
-            // open for this: glClear honours it, so clearing under a closed depth mask silently
-            // does nothing and the target — which comes from a pool and may have been used for
-            // this before — would keep the previous frame's depth and reject everything.
-            gl->glDepthMask(GL_TRUE);
-            gl->glClearDepthf(1.f);
-            gl->glClear(GL_DEPTH_BUFFER_BIT);
-            depthScratch.fbo->release();
-        }
-    }
-    const auto releaseScratch = qScopeGuard([&] {
-        if (depthScratch.isValid())
-            rt.releaseTarget(std::move(depthScratch));
-    });
-    GlTarget &canvas = depthScratch.isValid() ? depthScratch : outCanvas;
-
     fillBackground(rt, gl, canvas, scene);
-    // The 3D view's floor goes down first, so the clips stand on it.
-    if (scene.editorView)
-        drift::gl::drawEditorLines(rt, gl, canvas, scene.editorViewProj, scene.editorLines, true);
 
     // Depth canvases of the occluders in this scene, by item index, for the layers above them
     // that sit inside their depth. Released once the scene is composed.
@@ -1533,12 +1399,7 @@ void composeOnGlThread(GlRuntime &rt, const GpuScene &scene, GlTarget &outCanvas
         }
 
         if (!item.isTransition) {
-            GlTarget modelDepth;
-            GlTarget layerTarget = buildLayerTarget(rt, gl, item.layer, canvasSize, &modelDepth);
-            const auto releaseModelDepth = qScopeGuard([&] {
-                if (modelDepth.isValid())
-                    rt.releaseTarget(std::move(modelDepth));
-            });
+            GlTarget layerTarget = buildLayerTarget(rt, gl, item.layer, canvasSize);
             if (!layerTarget.isValid()) {
                 if (lostVideo && item.layer.valid && item.layer.video.isValid())
                     *lostVideo = true;
@@ -1551,8 +1412,7 @@ void composeOnGlThread(GlRuntime &rt, const GpuScene &scene, GlTarget &outCanvas
                              item.layer.occludeSoftness, item.layer.occludeCutout};
             }
             drawLayerOnCanvas(rt, gl, canvas, layerTarget, item.layer, item.blend, canvasSize,
-                              occlusion.texture ? &occlusion : nullptr, CanvasWrite::Over,
-                              modelDepth.isValid() ? modelDepth.texture() : 0u);
+                              occlusion.texture ? &occlusion : nullptr);
             rt.releaseTarget(std::move(layerTarget));
             if (item.layer.emitDepthCanvas)
                 depthCanvases[itemIndex] = depthCanvasTarget(rt, gl, item.layer, canvasSize);
@@ -1608,13 +1468,6 @@ void composeOnGlThread(GlRuntime &rt, const GpuScene &scene, GlTarget &outCanvas
         rt.releaseTarget(std::move(toTarget));
     }
 
-    // The rest of the 3D view's guides sit on top: the stage, the camera and the selection.
-    if (scene.editorView)
-        drift::gl::drawEditorLines(rt, gl, canvas, scene.editorViewProj, scene.editorLines, false);
-
-    // Hand the depth-sorted composite back on the canvas the caller is waiting for.
-    if (depthScratch.isValid())
-        blitTextureToTarget(rt, gl, depthScratch.texture(), outCanvas);
 }
 
 } // namespace

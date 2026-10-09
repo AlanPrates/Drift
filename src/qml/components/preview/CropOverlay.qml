@@ -11,13 +11,13 @@ import ".."
 Item {
     id: root
 
-    // The PreviewViewport (zoom/pan math + reset) and the canvas
+    // Owning PreviewPanel viewport (zoom/pan math + reset) and the canvas
     // rectangle whose on-screen geometry the crop frame maps against.
     property var previewViewport
     property var previewCanvas
 
-    readonly property int projW: { void EditorState.tracksRevision; return Math.max(1, EditorState.projectFile.projectWidth()) }
-    readonly property int projH: { void EditorState.tracksRevision; return Math.max(1, EditorState.projectFile.projectHeight()) }
+    readonly property int projW: { void EditorState.tracksRevision; return Math.max(1, EditorState.projectWidth()) }
+    readonly property int projH: { void EditorState.tracksRevision; return Math.max(1, EditorState.projectHeight()) }
     // Project px → viewport px.
     readonly property real pxScale: root.previewCanvas.width / projW
 
@@ -57,7 +57,7 @@ Item {
     function apply() {
         if (changed)
             EditorState.applyCanvasCrop(cropX, cropY, cropW, cropH)
-        EditorState.preview.canvasCropMode = false
+        EditorState.canvasCropMode = false
     }
 
     // Screen-space crop frame, relative to the viewport.
@@ -65,6 +65,12 @@ Item {
     readonly property real frameY: root.previewCanvas.y + cropY * pxScale
     readonly property real frameW: cropW * pxScale
     readonly property real frameH: cropH * pxScale
+
+    onVisibleChanged: {
+        root.previewViewport.resetView()
+        if (visible)
+            reset()
+    }
 
     // Navigation sits below the handles in stacking order, and takes
     // only the middle button, so left-drags still reach the grips.

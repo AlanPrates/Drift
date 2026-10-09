@@ -2,33 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="vi" sourcelanguage="en">
 <context>
-    <name>AboutDialog</name>
-    <message>
-        <source>About Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">Đóng</translation>
-    </message>
-    <message>
-        <source>Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Version %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open-source video editor by CutWire Studios.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Licensed under GPLv3. Copyright © CutWire Studios.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>AddonManager</name>
     <message>
         <source>Automatic (recommended)</source>
@@ -1488,6 +1461,18 @@
 <context>
     <name>AndroidPreview</name>
     <message>
+        <source>Audio only</source>
+        <translation>Chỉ âm thanh</translation>
+    </message>
+    <message>
+        <source>No clip at the current time</source>
+        <translation>Hiện tại chưa có clip</translation>
+    </message>
+    <message>
+        <source>GPU preview unavailable</source>
+        <translation>Xem trước GPU không có sẵn</translation>
+    </message>
+    <message>
         <source>Full</source>
         <translation>Toàn màn hình</translation>
     </message>
@@ -2176,6 +2161,10 @@
         <translation>Công cụ cắt</translation>
     </message>
     <message>
+        <source>Faster preview takes effect after you restart Drift.</source>
+        <translation>Bản xem trước nhanh hơn sẽ có hiệu lực sau khi bạn khởi động lại Drift.</translation>
+    </message>
+    <message>
         <source>System default</source>
         <translation>Mặc định hệ thống</translation>
     </message>
@@ -2336,16 +2325,80 @@
         <translation>Phụ đề đã được tạo</translation>
     </message>
     <message>
+        <source>Select a video clip to cut out</source>
+        <translation>Chọn một video clip để cắt ra</translation>
+    </message>
+    <message>
+        <source>Custom speed works on video and audio clips</source>
+        <translation>Tốc độ tùy chỉnh hoạt động trên các clip video và âm thanh</translation>
+    </message>
+    <message>
+        <source>This clip has no media to speed up or slow down</source>
+        <translation>Clip này không có phương tiện để tăng tốc hoặc giảm tốc độ</translation>
+    </message>
+    <message>
+        <source>That clip moved — open Custom speed again</source>
+        <translation>Clip đó đã được di chuyển — mở lại Tốc độ tùy chỉnh</translation>
+    </message>
+    <message>
+        <source>Custom speed applied</source>
+        <translation>Đã áp dụng tốc độ tùy chỉnh</translation>
+    </message>
+    <message>
         <source>Speed curve removed</source>
         <translation>Đã xóa đường cong tốc độ</translation>
+    </message>
+    <message>
+        <source>That clip moved — open Custom fade again</source>
+        <translation>Đã di chuyển clip — Hãy mở lại Tùy chỉnh làm mờ</translation>
+    </message>
+    <message>
+        <source>Custom fade applied</source>
+        <translation>Đã áp dụng độ mờ tùy chỉnh</translation>
+    </message>
+    <message>
+        <source>Cutout is already running</source>
+        <translation>Phần cắt ra đang chạy</translation>
+    </message>
+    <message>
+        <source>This clip has no video to cut out</source>
+        <translation>Clip này không có video để cắt</translation>
+    </message>
+    <message>
+        <source>Click the subject first</source>
+        <translation>Nhấn vào chủ đề đầu tiên</translation>
     </message>
     <message>
         <source>Getting ready…</source>
         <translation>Đang chuẩn bị…</translation>
     </message>
     <message>
+        <source>Clip is too short to cut out</source>
+        <translation>Clip quá ngắn để cắt ra</translation>
+    </message>
+    <message>
+        <source>Could not create a cutout file</source>
+        <translation>Không thể tạo tệp cắt</translation>
+    </message>
+    <message>
+        <source>Cutout cancelled</source>
+        <translation>Cắt đã bị hủy</translation>
+    </message>
+    <message>
         <source>Could not decode frame %1</source>
         <translation>Không thể giải mã khung %1</translation>
+    </message>
+    <message>
+        <source>Processing frame %1 of %2…</source>
+        <translation>Đang xử lý khung %1 của %2…</translation>
+    </message>
+    <message>
+        <source>Cutout complete — subject cut out on %1 of %2 frames</source>
+        <translation>Quá trình cắt hoàn tất - chủ đề bị cắt trên %1 của %2 khung</translation>
+    </message>
+    <message>
+        <source>Cutout complete</source>
+        <translation>Cắt hoàn tất</translation>
     </message>
     <message>
         <source>Clear Face Track</source>
@@ -2398,6 +2451,14 @@
     <message>
         <source>Detect Faces</source>
         <translation>Nhận diện khuôn mặt</translation>
+    </message>
+    <message>
+        <source>That clip no longer exists</source>
+        <translation>Clip đó không còn tồn tại</translation>
+    </message>
+    <message>
+        <source>Cut out subject</source>
+        <translation>Cắt bỏ chủ đề</translation>
     </message>
     <message>
         <source>Clip</source>
@@ -2514,6 +2575,10 @@
     <message>
         <source>Save combined multicam</source>
         <translation>Lưu hợp nhất đa góc quay</translation>
+    </message>
+    <message>
+        <source>Cutting out subject…</source>
+        <translation>Đang cắt bỏ chủ đề…</translation>
     </message>
     <message>
         <source>Select a video clip to stabilize</source>
@@ -2728,6 +2793,10 @@
         <translation>Thu nhỏ</translation>
     </message>
     <message>
+        <source>The graphics card choice takes effect after you restart Drift.</source>
+        <translation>Lựa chọn card đồ họa có hiệu lực sau khi bạn khởi động lại Drift.</translation>
+    </message>
+    <message>
         <source>No audio track available for recording</source>
         <translation>Không có track âm thanh nào để ghi</translation>
     </message>
@@ -2800,6 +2869,18 @@
         <translation>Đã cập nhật đường cong chuyển cảnh</translation>
     </message>
     <message>
+        <source>That transition is gone — open the custom curve again</source>
+        <translation>Hiệu ứng chuyển cảnh đó đã bị mất — hãy mở lại đường cong tùy chỉnh</translation>
+    </message>
+    <message>
+        <source>Custom transition curve</source>
+        <translation>Đường cong chuyển cảnh tùy chỉnh</translation>
+    </message>
+    <message>
+        <source>Custom transition curve applied</source>
+        <translation>Đã áp dụng đường cong chuyển cảnh tùy chỉnh</translation>
+    </message>
+    <message>
         <source>Select a video or image clip to estimate depth for</source>
         <translation>Chọn một video hoặc clip hình ảnh để ước tính độ sâu</translation>
     </message>
@@ -2868,6 +2949,10 @@
         <translation>Thay đổi chế độ ổn định</translation>
     </message>
     <message>
+        <source>Cutout</source>
+        <translation>Tách nền</translation>
+    </message>
+    <message>
         <source> (denoised)</source>
         <translation> (đã khử nhiễu)</translation>
     </message>
@@ -2878,6 +2963,18 @@
     <message>
         <source>Noise removed</source>
         <translation>Đã khử tiếng ồn</translation>
+    </message>
+    <message>
+        <source>This project uses &quot;%1&quot;, which isn’t installed — it won’t show. Open Extras to install it.</source>
+        <translation>Dự án này sử dụng &quot;%1&quot;, chưa được cài đặt — nó sẽ không hiển thị. Mở Bổ trợ để cài đặt nó.</translation>
+    </message>
+    <message>
+        <source>This project uses %1 effects or transitions that aren’t installed (%2%3) — they won’t show. Open Extras to install them.</source>
+        <translation>Dự án này sử dụng các hiệu ứng hoặc chuyển cảnh %1 chưa được cài đặt (%2%3) — chúng sẽ không hiển thị. Mở Bổ trợ để cài đặt chúng.</translation>
+    </message>
+    <message>
+        <source>, …</source>
+        <translation>, …</translation>
     </message>
     <message>
         <source>Shape added</source>
@@ -2952,6 +3049,34 @@
         <translation>Cài đặt gói nhãn dán biểu tượng cảm xúc để thêm biểu tượng cảm xúc</translation>
     </message>
     <message>
+        <source>Frame rate</source>
+        <translation>Tốc độ khung hình</translation>
+    </message>
+    <message>
+        <source>Project setup</source>
+        <translation>Cài đặt dự án</translation>
+    </message>
+    <message>
+        <source>Project setup updated</source>
+        <translation>Đã cập nhật cài đặt dự án</translation>
+    </message>
+    <message>
+        <source>Crop canvas</source>
+        <translation>Xén khung hình</translation>
+    </message>
+    <message>
+        <source>Video size cropped to %1×%2</source>
+        <translation>Kích thước video được cắt thành %1×%2</translation>
+    </message>
+    <message>
+        <source>Change background</source>
+        <translation>Thay đổi nền</translation>
+    </message>
+    <message>
+        <source>Background updated</source>
+        <translation>Đã cập nhật nền</translation>
+    </message>
+    <message>
         <source>Edit clip</source>
         <translation>Chỉnh sửa clip</translation>
     </message>
@@ -2994,14 +3119,6 @@
     <message>
         <source>Edit keyframe</source>
         <translation>Chỉnh sửa điểm mốc</translation>
-    </message>
-    <message>
-        <source>Move camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Rotate camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Edit effect</source>
@@ -3640,22 +3757,6 @@
         <translation>Clip phẳng</translation>
     </message>
     <message>
-        <source>Enable depth occlusion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Disable depth occlusion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clip is occluded by depth</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clip uses track order</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Subtitles converted to text</source>
         <translation>Phụ đề được chuyển thành văn bản</translation>
     </message>
@@ -3684,22 +3785,6 @@
     <message>
         <source>Transform clip added</source>
         <translation>Đã thêm chuyển đổi clip</translation>
-    </message>
-    <message>
-        <source>Add camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add camera clip</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Camera added</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Camera clip added</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Transform together</source>
@@ -3810,14 +3895,6 @@
     <message>
         <source>Keyframe interpolates</source>
         <translation>Nội suy keyframe</translation>
-    </message>
-    <message>
-        <source>Reset camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Camera reset</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Reset transform</source>
@@ -4212,6 +4289,116 @@
         </translation>
     </message>
     <message>
+        <source>Saved a copy</source>
+        <translation>Đã lưu một bản sao</translation>
+    </message>
+    <message>
+        <source>Couldn’t write %1: %2</source>
+        <translation>Không thể ghi %1: %2</translation>
+    </message>
+    <message>
+        <source>Project JSON saved</source>
+        <translation>Đã lưu dự án JSON</translation>
+    </message>
+    <message>
+        <source>Still opening a project — try again in a moment.</source>
+        <translation>Vẫn đang mở một dự án — hãy thử lại sau giây lát.</translation>
+    </message>
+    <message>
+        <source>Couldn’t read %1: %2</source>
+        <translation>Không thể đọc %1: %2</translation>
+    </message>
+    <message>
+        <source>Project JSON loaded</source>
+        <translation>Đã tải dự án JSON</translation>
+    </message>
+    <message>
+        <source>Failed to open Premiere Pro project</source>
+        <translation>Không mở được dự án Premiere Pro</translation>
+    </message>
+    <message>
+        <source>Premiere Pro project imported: %1</source>
+        <translation>Dự án Premiere Pro đã nhập: %1</translation>
+    </message>
+    <message>
+        <source>That template location isn’t valid</source>
+        <translation>Vị trí mẫu đó không hợp lệ</translation>
+    </message>
+    <message>
+        <source>Failed to unpack Motion Graphics Template</source>
+        <translation>Không thể giải nén Mẫu đồ họa chuyển động</translation>
+    </message>
+    <message>
+        <source>Failed to apply template to project</source>
+        <translation>Không thể áp dụng mẫu cho dự án</translation>
+    </message>
+    <message>
+        <source>Import template: %1</source>
+        <translation>Nhập mẫu: %1</translation>
+    </message>
+    <message>
+        <source>Template imported: %1</source>
+        <translation>Mẫu đã nhập: %1</translation>
+    </message>
+    <message>
+        <source>Failed to open Kdenlive / MLT project</source>
+        <translation>Không mở được dự án Kdenlive / MLT</translation>
+    </message>
+    <message>
+        <source>Kdenlive project imported: %1</source>
+        <translation>Dự án Kdenlive đã nhập: %1</translation>
+    </message>
+    <message>
+        <source>Failed to open DaVinci Resolve project / timeline</source>
+        <translation>Không thể mở dự án / dòng thời gian DaVinci Resolve</translation>
+    </message>
+    <message>
+        <source>DaVinci Resolve project imported: %1</source>
+        <translation>Dự án DaVinci Resolve đã được nhập: %1</translation>
+    </message>
+    <message>
+        <source>Failed to open Edit Decision List (.edl)</source>
+        <translation>Không mở được Danh sách Quyết định Chỉnh sửa (.edl)</translation>
+    </message>
+    <message>
+        <source>EDL imported: %1</source>
+        <translation>EDL đã nhập: %1</translation>
+    </message>
+    <message>
+        <source>Failed to open OpenTimelineIO (.otio) sequence</source>
+        <translation>Không mở được chuỗi OpenTimelineIO (.otio)</translation>
+    </message>
+    <message>
+        <source>OpenTimelineIO imported: %1</source>
+        <translation>OpenTimelineIO đã nhập: %1</translation>
+    </message>
+    <message>
+        <source>That folder isn’t valid</source>
+        <translation>Thư mục đó không hợp lệ</translation>
+    </message>
+    <message>
+        <source>All media is already in that folder</source>
+        <translation>Tất cả phương tiện đã có trong thư mục đó</translation>
+    </message>
+    <message>
+        <source>Collect media</source>
+        <translation>Thu thập phương tiện</translation>
+    </message>
+    <message numerus="yes">
+        <source>Media collected, but %n original(s) couldn’t be deleted</source>
+        <translation>
+            <numerusform>Phương tiện đã được thu thập, nhưng không thể xóa bản gốc %n</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Media moved and relinked</source>
+        <translation>Phương tiện đã được di chuyển và liên kết lại</translation>
+    </message>
+    <message>
+        <source>Media copied and relinked</source>
+        <translation>Phương tiện được sao chép và liên kết lại</translation>
+    </message>
+    <message>
         <source>Exporting…</source>
         <translation>Đang xuất…</translation>
     </message>
@@ -4382,6 +4569,42 @@
         <translation>Vị trí lưu đó không hợp lệ</translation>
     </message>
     <message>
+        <source>Already saving</source>
+        <translation>Đã được lưu</translation>
+    </message>
+    <message>
+        <source>Project saved</source>
+        <translation>Đã lưu dự án</translation>
+    </message>
+    <message>
+        <source>Shareable copy ready</source>
+        <translation>Bản sao có thể chia sẻ đã sẵn sàng</translation>
+    </message>
+    <message>
+        <source>That project location isn’t valid</source>
+        <translation>Vị trí dự án đó không hợp lệ</translation>
+    </message>
+    <message>
+        <source>Project loaded</source>
+        <translation>Đã tải dự án</translation>
+    </message>
+    <message>
+        <source>Unpacking project media…</source>
+        <translation>Đang giải nén phương tiện dự án…</translation>
+    </message>
+    <message>
+        <source>No recovery file found</source>
+        <translation>Không tìm thấy tệp khôi phục</translation>
+    </message>
+    <message>
+        <source>Recovered unsaved work</source>
+        <translation>Đã khôi phục công việc chưa lưu</translation>
+    </message>
+    <message>
+        <source>Started new session</source>
+        <translation>Bắt đầu phiên mới</translation>
+    </message>
+    <message>
         <source>Export already in progress</source>
         <translation>Đang trong tiến trình xuất</translation>
     </message>
@@ -4432,14 +4655,6 @@
     <message>
         <source>Track renamed</source>
         <translation>Đã đổi tên track</translation>
-    </message>
-    <message>
-        <source>Crop canvas</source>
-        <translation>Xén khung hình</translation>
-    </message>
-    <message>
-        <source>Video size cropped to %1×%2</source>
-        <translation>Kích thước video được cắt thành %1×%2</translation>
     </message>
 </context>
 <context>
@@ -4883,14 +5098,6 @@
         <translation>Duyệt hiệu ứng âm thanh</translation>
     </message>
     <message>
-        <source>Move to a time, set a value, then click the diamond to add a keyframe. With Auto keyframes on, dragging a slider also creates them.</source>
-        <translation type="unfinished">Di chuyển đến một thời điểm, đặt giá trị, sau đó nhấp vào hình thoi để thêm khung hình chính. Khi bật keyframe Tự động, việc kéo thanh trượt cũng sẽ tạo ra chúng.</translation>
-    </message>
-    <message>
-        <source>Auto keyframes</source>
-        <translation type="unfinished">Keyframe tự động</translation>
-    </message>
-    <message>
         <source>%1 (not installed)</source>
         <translation>%1 (chưa được cài đặt)</translation>
     </message>
@@ -4917,6 +5124,18 @@
     <message>
         <source>Remove audio effect</source>
         <translation>Xóa hiệu ứng âm thanh</translation>
+    </message>
+    <message>
+        <source>On</source>
+        <translation>Bật</translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation>Tắt</translation>
+    </message>
+    <message>
+        <source>Edit audio effect</source>
+        <translation>Chỉnh sửa hiệu ứng âm thanh</translation>
     </message>
 </context>
 <context>
@@ -5243,57 +5462,6 @@
     </message>
 </context>
 <context>
-    <name>CameraInspector</name>
-    <message>
-        <source>Pan X</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pan Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Dolly</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pitch</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Yaw</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Roll</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Lens</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select a camera clip to frame the shot.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Everything on the timeline is seen through this camera while the clip lasts. A camera at rest looks exactly like no camera at all, so the numbers below are all offsets from the normal view.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>A short lens exaggerates depth; a long one flattens it. While this camera is running it replaces each clip&apos;s own Perspective value, because a scene has one viewer.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reset camera position</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Back to rest: no pan, dolly or turn, framing the canvas head on. The lens is kept.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ChannelKeyButton</name>
     <message>
         <source>Remove %1 keyframe at the playhead</source>
@@ -5409,29 +5577,6 @@
     <message>
         <source>Apply</source>
         <translation>Áp dụng</translation>
-    </message>
-</context>
-<context>
-    <name>CurveEditorController</name>
-    <message>
-        <source>That transition is gone — open the custom curve again</source>
-        <translation type="unfinished">Hiệu ứng chuyển cảnh đó đã bị mất — hãy mở lại đường cong tùy chỉnh</translation>
-    </message>
-    <message>
-        <source>Custom transition curve</source>
-        <translation type="unfinished">Đường cong chuyển cảnh tùy chỉnh</translation>
-    </message>
-    <message>
-        <source>Custom transition curve applied</source>
-        <translation type="unfinished">Đã áp dụng đường cong chuyển cảnh tùy chỉnh</translation>
-    </message>
-    <message>
-        <source>That clip moved — open Custom fade again</source>
-        <translation type="unfinished">Đã di chuyển clip — Hãy mở lại Tùy chỉnh làm mờ</translation>
-    </message>
-    <message>
-        <source>Custom fade applied</source>
-        <translation type="unfinished">Đã áp dụng độ mờ tùy chỉnh</translation>
     </message>
 </context>
 <context>
@@ -7700,14 +7845,6 @@
         <translation>Keyframe</translation>
     </message>
     <message>
-        <source>Collapse curve editor to compact view (88px)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Expand curve editor to view and edit Bezier handles (180px)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Analyzing…</source>
         <translation>Đang phân tích…</translation>
     </message>
@@ -7748,10 +7885,6 @@
         <translation>
             <numerusform>%n keyframe</numerusform>
         </translation>
-    </message>
-    <message>
-        <source>Expand for handles</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source> BPM</source>
@@ -8050,6 +8183,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Preferences…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>&amp;Playback</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8150,20 +8287,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>About Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Settings…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Debug Info…</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 is the latest version.</source>
-        <translation type="unfinished">Drift %1 là phiên bản mới nhất.</translation>
     </message>
     <message>
         <source>Still opening a project — try again in a moment.</source>
@@ -8176,14 +8301,6 @@
     <message>
         <source>Project closed</source>
         <translation>Đã đóng dựa án</translation>
-    </message>
-    <message>
-        <source>Already checking for updates…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Checking for updates…</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Export finished.</source>
@@ -9154,8 +9271,32 @@
         <translation>Độ lệch bắt đầu</translation>
     </message>
     <message>
-        <source>Position, size, rotation and depth occlusion are on the Transform tab.</source>
-        <translation type="unfinished"></translation>
+        <source>Pose</source>
+        <translation>Tư thế</translation>
+    </message>
+    <message>
+        <source>Rotations follow the model&apos;s own axes: X tilts, Y then spins about the tilted up axis, Z rolls after both.</source>
+        <translation>Các phép quay theo trục riêng của mô hình: X nghiêng, Y sau đó quay quanh trục nghiêng lên, Z cuộn sau cả hai.</translation>
+    </message>
+    <message>
+        <source>Size</source>
+        <translation>Kích thước</translation>
+    </message>
+    <message>
+        <source>Depth</source>
+        <translation>Độ sâu</translation>
+    </message>
+    <message>
+        <source>Rotation X</source>
+        <translation>Xoay X</translation>
+    </message>
+    <message>
+        <source>Rotation Y</source>
+        <translation>Xoay Y</translation>
+    </message>
+    <message>
+        <source>Rotation Z</source>
+        <translation>Xoay Z</translation>
     </message>
     <message>
         <source>Lighting</source>
@@ -9196,6 +9337,26 @@
 </context>
 <context>
     <name>Model3dSource</name>
+    <message>
+        <source>Size</source>
+        <translation>Kích thước</translation>
+    </message>
+    <message>
+        <source>Depth</source>
+        <translation>Độ sâu</translation>
+    </message>
+    <message>
+        <source>Rotation X</source>
+        <translation>Xoay X</translation>
+    </message>
+    <message>
+        <source>Rotation Y</source>
+        <translation>Xoay Y</translation>
+    </message>
+    <message>
+        <source>Rotation Z</source>
+        <translation>Xoay Z</translation>
+    </message>
     <message>
         <source>Light direction</source>
         <translation>Hướng ánh sáng</translation>
@@ -9344,10 +9505,6 @@
     <message>
         <source>Transform</source>
         <translation>Chuyển đổi</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>New track</source>
@@ -9642,127 +9799,125 @@
     </message>
 </context>
 <context>
-    <name>PreferencesController</name>
+    <name>PreviewPanel</name>
     <message>
-        <source>Faster preview takes effect after you restart Drift.</source>
-        <translation>Bản xem trước nhanh hơn sẽ có hiệu lực sau khi bạn khởi động lại Drift.</translation>
+        <source>REC %1s</source>
+        <translation>GHI %1s</translation>
     </message>
     <message>
-        <source>The graphics card choice takes effect after you restart Drift.</source>
-        <translation>Lựa chọn card đồ họa có hiệu lực sau khi bạn khởi động lại Drift.</translation>
+        <source>PAUSED %1s</source>
+        <translation>ĐÃ TẠM DỪNG %1s</translation>
     </message>
     <message>
-        <source>System default</source>
-        <translation>Mặc định hệ thống</translation>
+        <source>Nothing to preview yet</source>
+        <translation>Chưa có gì để xem trước</translation>
+    </message>
+    <message>
+        <source>Import media and drag it onto the timeline below to see it here.</source>
+        <translation>Nhập phương tiện và kéo nó vào dòng thời gian bên dưới để xem tại đây.</translation>
+    </message>
+    <message>
+        <source>GPU preview unavailable</source>
+        <translation>Xem trước GPU không có sẵn</translation>
+    </message>
+    <message>
+        <source>Your graphics driver only provides %1. Drift&apos;s preview needs OpenGL 3.3.</source>
+        <translation>Driver đồ họa của bạn chỉ cung cấp %1. Bản xem trước của Drift cần OpenGL 3.3.</translation>
+    </message>
+    <message>
+        <source>Drift could not start its GPU renderer, so the preview cannot draw.</source>
+        <translation>Drift không thể khởi động trình kết xuất GPU của nó nên bản xem trước không thể vẽ.</translation>
+    </message>
+    <message>
+        <source>Debug info</source>
+        <translation>Thông tin gỡ lỗi</translation>
+    </message>
+    <message>
+        <source>Audio only</source>
+        <translation>Chỉ âm thanh</translation>
+    </message>
+    <message>
+        <source>No clip at the current time</source>
+        <translation>Hiện tại chưa có clip</translation>
+    </message>
+    <message>
+        <source>Seek</source>
+        <translation>Tua</translation>
     </message>
 </context>
 <context>
-    <name>Preview3DTools</name>
+    <name>PreviewToolbar</name>
     <message>
         <source>%1 (%2)</source>
-        <translation type="unfinished">%1 (%2)</translation>
+        <translation>%1 (%2)</translation>
     </message>
     <message>
-        <source>Move</source>
-        <translation type="unfinished">Di chuyển</translation>
+        <source>Current time / total · %1 frames per second</source>
+        <translation>Thời gian hiện tại / tổng cộng · %1 khung hình mỗi giây</translation>
     </message>
     <message>
-        <source>Rotate</source>
-        <translation type="unfinished">Xoay</translation>
+        <source>Jump back 1s · Shift for 5s · Ctrl for 10s</source>
+        <translation>Quay lại 1 giây · Nhấn Shift cho 5 giây · Nhấn Ctrl cho 10 giây</translation>
     </message>
     <message>
-        <source>Scale</source>
-        <translation type="unfinished">Tỷ lệ</translation>
+        <source>Previous frame</source>
+        <translation>Khung hình trước</translation>
     </message>
     <message>
-        <source>Gizmo follows the selection&apos;s own axes (click for world axes)</source>
-        <translation type="unfinished"></translation>
+        <source>Pause</source>
+        <translation>Tạm dừng</translation>
     </message>
     <message>
-        <source>Gizmo follows the world axes (click for the selection&apos;s own)</source>
-        <translation type="unfinished"></translation>
+        <source>Play</source>
+        <translation>Phát</translation>
     </message>
     <message>
-        <source>Look through the camera</source>
-        <translation type="unfinished"></translation>
+        <source>Next frame</source>
+        <translation>Khung hình kế</translation>
     </message>
     <message>
-        <source>Numpad 0</source>
-        <translation type="unfinished"></translation>
+        <source>Loop work area on — click to turn off</source>
+        <translation>Bật lặp lại vùng làm việc — nhấp để tắt</translation>
     </message>
     <message>
-        <source>Reset the scene camera&apos;s position</source>
-        <translation type="unfinished"></translation>
+        <source>Loop work area off — click to turn on</source>
+        <translation>Tắt lặp lại vùng làm việc — nhấp để bật</translation>
     </message>
     <message>
-        <source>Frame the selection</source>
-        <translation type="unfinished"></translation>
+        <source>Jump forward 1s · Shift for 5s · Ctrl for 10s</source>
+        <translation>Tiến lên 1 giây · Nhấn Shift cho 5 giây · Nhấn Ctrl cho 10 giây</translation>
     </message>
     <message>
-        <source>Reset the view</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PreviewModeSwitch</name>
-    <message>
-        <source>Camera Output</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The camera&apos;s picture, as it exports. Clips move and snap on the canvas.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>3D Scene</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The scene from a free viewpoint, with the camera in it. Middle- or right-drag orbits, Shift pans, the wheel zooms.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PreviewOptionsMenu</name>
-    <message>
-        <source>Quality</source>
-        <translation type="unfinished">Chất lượng</translation>
+        <source>Preview zoom — Ctrl+scroll over the preview to zoom, middle-drag to pan. Click to reset to 100%.</source>
+        <translation>Thu phóng xem trước — Ctrl+cuộn qua phần xem trước để thu phóng, kéo giữa để xoay. Nhấp vào để đặt lại về 100%.</translation>
     </message>
     <message>
         <source>Full</source>
-        <translation type="unfinished">Toàn màn hình</translation>
+        <translation>Toàn màn hình</translation>
     </message>
     <message>
         <source>Half</source>
-        <translation type="unfinished">Phân nửa</translation>
+        <translation>Phân nửa</translation>
     </message>
     <message>
         <source>Quarter</source>
-        <translation type="unfinished">Một phần tư</translation>
+        <translation>Một phần tư</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished">Tự động</translation>
+        <translation>Tự động</translation>
     </message>
     <message>
         <source>Preview quality — lower is smoother while editing.
 Full, Half and Quarter are fixed fractions of the project resolution: Full composites exactly what an export would.
 Auto renders only as many pixels as the preview actually shows, and lowers that further while playback cannot keep up.</source>
-        <translation type="unfinished">Chất lượng xem trước - thấp hơn sẽ mượt mà hơn khi chỉnh sửa.
+        <translation>Chất lượng xem trước - thấp hơn sẽ mượt mà hơn khi chỉnh sửa.
 Toàn bộ, Một nửa và Một phần tư là các phần cố định của độ phân giải dự án: Tổng hợp đầy đủ chính xác những gì xuất sẽ làm.
 Tự động chỉ hiển thị số lượng pixel mà bản xem trước thực sự hiển thị và giảm số lượng pixel đó hơn nữa trong khi quá trình phát lại không thể theo kịp.</translation>
     </message>
     <message>
-        <source>Speed</source>
-        <translation type="unfinished">Tốc độ</translation>
-    </message>
-    <message>
         <source>Playback speed</source>
-        <translation type="unfinished">Tốc độ phát lại</translation>
-    </message>
-    <message>
-        <source>Decode</source>
-        <translation type="unfinished">Giải mã</translation>
+        <translation>Tốc độ phát lại</translation>
     </message>
     <message>
         <source>How video is decoded for preview.
@@ -9770,167 +9925,59 @@ Auto picks per clip: hardware for high-quality 4K, software otherwise.
 Software is smoother for most clips. It uses more CPU.
 Hardware is better for high-quality 4K, and forces one GPU decoder.
 If playback stutters, try another.</source>
-        <translation type="unfinished">Cách giải mã video để xem trước.
+        <translation>Cách giải mã video để xem trước.
 Tự động chọn mỗi clip: phần cứng cho 4K chất lượng cao, phần mềm khác.
 Phần mềm mượt mà hơn đối với hầu hết các clip. Nó sử dụng nhiều CPU hơn.
 Phần cứng tốt hơn cho 4K chất lượng cao và buộc phải có một bộ giải mã GPU.
 Nếu phát lại bị giật, hãy thử cái khác.</translation>
     </message>
     <message>
-        <source>Keep mask handles up</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Keep mask handles on the preview while another clip is selected</source>
-        <translation type="unfinished">Giữ các tay cầm mặt nạ trên bản xem trước trong khi một clip khác được chọn</translation>
-    </message>
-    <message>
-        <source>Decoding on a different graphics card</source>
-        <translation type="unfinished">Đang giải mã trên một card đồ họa khác</translation>
-    </message>
-    <message>
-        <source>Use anyway</source>
-        <translation type="unfinished">Vẫn sử dụng</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="unfinished">Hủy bỏ</translation>
-    </message>
-    <message>
-        <source>Launching Drift with prime-run (or DRI_PRIME=1) puts OpenGL on the same card as the decoder.</source>
-        <translation type="unfinished">Việc khởi chạy Drift với chế độ chạy chính (hoặc DRI_PRIME=1) sẽ đặt OpenGL trên cùng một card với bộ giải mã.</translation>
-    </message>
-    <message>
-        <source>Run Drift on the high-performance graphics card</source>
-        <translation type="unfinished">Chạy Drift trên card đồ họa hiệu năng cao</translation>
-    </message>
-    <message>
-        <source>Set Drift to High performance in Windows Settings &gt; Display &gt; Graphics, then restart Drift.</source>
-        <translation type="unfinished">Đặt Drift ở chế độ Hiệu năng cao trong Cài đặt Windows &gt; Hiển thị &gt; Đồ họa, sau đó khởi động lại Drift.</translation>
-    </message>
-    <message>
-        <source>Open graphics settings</source>
-        <translation type="unfinished">Mở cài đặt đồ họa</translation>
-    </message>
-</context>
-<context>
-    <name>PreviewOsd</name>
-    <message>
-        <source>Preview zoom — Ctrl+scroll over the preview to zoom, middle-drag to pan. Click to reset to 100%.</source>
-        <translation type="unfinished">Thu phóng xem trước — Ctrl+cuộn qua phần xem trước để thu phóng, kéo giữa để xoay. Nhấp vào để đặt lại về 100%.</translation>
-    </message>
-    <message>
         <source>Toggle guides</source>
-        <translation type="unfinished">Bật tắt đường kẻ</translation>
+        <translation>Bật tắt đường kẻ</translation>
     </message>
     <message>
         <source>Guide sets</source>
-        <translation type="unfinished">Bộ đường kẻ</translation>
+        <translation>Bộ đường kẻ</translation>
     </message>
     <message>
-        <source>Preview options</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PreviewPanel</name>
-    <message>
-        <source>Seek</source>
-        <translation>Tua</translation>
-    </message>
-</context>
-<context>
-    <name>PreviewStatusLayer</name>
-    <message>
-        <source>PAUSED %1s</source>
-        <translation type="unfinished">ĐÃ TẠM DỪNG %1s</translation>
-    </message>
-    <message>
-        <source>REC %1s</source>
-        <translation type="unfinished">GHI %1s</translation>
-    </message>
-    <message>
-        <source>Nothing to preview yet</source>
-        <translation type="unfinished">Chưa có gì để xem trước</translation>
-    </message>
-    <message>
-        <source>Import media and drag it onto the timeline below to see it here.</source>
-        <translation type="unfinished">Nhập phương tiện và kéo nó vào dòng thời gian bên dưới để xem tại đây.</translation>
-    </message>
-    <message>
-        <source>GPU preview unavailable</source>
-        <translation type="unfinished">Xem trước GPU không có sẵn</translation>
-    </message>
-    <message>
-        <source>Your graphics driver only provides %1. Drift&apos;s preview needs OpenGL 3.3.</source>
-        <translation type="unfinished">Driver đồ họa của bạn chỉ cung cấp %1. Bản xem trước của Drift cần OpenGL 3.3.</translation>
-    </message>
-    <message>
-        <source>Drift could not start its GPU renderer, so the preview cannot draw.</source>
-        <translation type="unfinished">Drift không thể khởi động trình kết xuất GPU của nó nên bản xem trước không thể vẽ.</translation>
-    </message>
-    <message>
-        <source>Debug info</source>
-        <translation type="unfinished">Thông tin gỡ lỗi</translation>
-    </message>
-    <message>
-        <source>Audio only</source>
-        <translation type="unfinished">Chỉ âm thanh</translation>
-    </message>
-    <message>
-        <source>No clip at the current time</source>
-        <translation type="unfinished">Hiện tại chưa có clip</translation>
-    </message>
-</context>
-<context>
-    <name>PreviewTransportBar</name>
-    <message>
-        <source>%1 (%2)</source>
-        <translation type="unfinished">%1 (%2)</translation>
-    </message>
-    <message>
-        <source>Current time / total · %1 frames per second</source>
-        <translation type="unfinished">Thời gian hiện tại / tổng cộng · %1 khung hình mỗi giây</translation>
-    </message>
-    <message>
-        <source>Jump back 1s · Shift for 5s · Ctrl for 10s</source>
-        <translation type="unfinished">Quay lại 1 giây · Nhấn Shift cho 5 giây · Nhấn Ctrl cho 10 giây</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation type="unfinished">Khung hình trước</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation type="unfinished">Tạm dừng</translation>
-    </message>
-    <message>
-        <source>Play</source>
-        <translation type="unfinished">Phát</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation type="unfinished">Khung hình kế</translation>
-    </message>
-    <message>
-        <source>Loop work area on — click to turn off</source>
-        <translation type="unfinished">Bật lặp lại vùng làm việc — nhấp để tắt</translation>
-    </message>
-    <message>
-        <source>Loop work area off — click to turn on</source>
-        <translation type="unfinished">Tắt lặp lại vùng làm việc — nhấp để bật</translation>
-    </message>
-    <message>
-        <source>Jump forward 1s · Shift for 5s · Ctrl for 10s</source>
-        <translation type="unfinished">Tiến lên 1 giây · Nhấn Shift cho 5 giây · Nhấn Ctrl cho 10 giây</translation>
+        <source>Keep mask handles on the preview while another clip is selected</source>
+        <translation>Giữ các tay cầm mặt nạ trên bản xem trước trong khi một clip khác được chọn</translation>
     </message>
     <message>
         <source>Exit fullscreen preview (Esc)</source>
-        <translation type="unfinished">Thoát chế độ xem trước toàn màn hình (Esc)</translation>
+        <translation>Thoát chế độ xem trước toàn màn hình (Esc)</translation>
     </message>
     <message>
         <source>Fullscreen preview</source>
-        <translation type="unfinished">Xem trước toàn màn hình</translation>
+        <translation>Xem trước toàn màn hình</translation>
+    </message>
+    <message>
+        <source>Decoding on a different graphics card</source>
+        <translation>Đang giải mã trên một card đồ họa khác</translation>
+    </message>
+    <message>
+        <source>Use anyway</source>
+        <translation>Vẫn sử dụng</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Hủy bỏ</translation>
+    </message>
+    <message>
+        <source>Launching Drift with prime-run (or DRI_PRIME=1) puts OpenGL on the same card as the decoder.</source>
+        <translation>Việc khởi chạy Drift với chế độ chạy chính (hoặc DRI_PRIME=1) sẽ đặt OpenGL trên cùng một card với bộ giải mã.</translation>
+    </message>
+    <message>
+        <source>Run Drift on the high-performance graphics card</source>
+        <translation>Chạy Drift trên card đồ họa hiệu năng cao</translation>
+    </message>
+    <message>
+        <source>Set Drift to High performance in Windows Settings &gt; Display &gt; Graphics, then restart Drift.</source>
+        <translation>Đặt Drift ở chế độ Hiệu năng cao trong Cài đặt Windows &gt; Hiển thị &gt; Đồ họa, sau đó khởi động lại Drift.</translation>
+    </message>
+    <message>
+        <source>Open graphics settings</source>
+        <translation>Mở cài đặt đồ họa</translation>
     </message>
 </context>
 <context>
@@ -10076,195 +10123,6 @@ Nếu phát lại bị giật, hãy thử cái khác.</translation>
     </message>
 </context>
 <context>
-    <name>ProjectFileController</name>
-    <message>
-        <source>New project</source>
-        <translation>Dự án mới</translation>
-    </message>
-    <message>
-        <source>This project uses &quot;%1&quot;, which isn’t installed — it won’t show. Open Extras to install it.</source>
-        <translation>Dự án này sử dụng &quot;%1&quot;, chưa được cài đặt — nó sẽ không hiển thị. Mở Bổ trợ để cài đặt nó.</translation>
-    </message>
-    <message>
-        <source>This project uses %1 effects or transitions that aren’t installed (%2%3) — they won’t show. Open Extras to install them.</source>
-        <translation>Dự án này sử dụng các hiệu ứng hoặc chuyển cảnh %1 chưa được cài đặt (%2%3) — chúng sẽ không hiển thị. Mở Bổ trợ để cài đặt chúng.</translation>
-    </message>
-    <message>
-        <source>, …</source>
-        <translation>, …</translation>
-    </message>
-    <message>
-        <source>Frame rate</source>
-        <translation>Tốc độ khung hình</translation>
-    </message>
-    <message>
-        <source>Project setup</source>
-        <translation>Cài đặt dự án</translation>
-    </message>
-    <message>
-        <source>Project setup updated</source>
-        <translation>Đã cập nhật cài đặt dự án</translation>
-    </message>
-    <message>
-        <source>Change background</source>
-        <translation>Thay đổi nền</translation>
-    </message>
-    <message>
-        <source>Background updated</source>
-        <translation>Đã cập nhật nền</translation>
-    </message>
-    <message>
-        <source>Saved a copy</source>
-        <translation>Đã lưu một bản sao</translation>
-    </message>
-    <message>
-        <source>Couldn’t write %1: %2</source>
-        <translation>Không thể ghi %1: %2</translation>
-    </message>
-    <message>
-        <source>Project JSON saved</source>
-        <translation>Đã lưu dự án JSON</translation>
-    </message>
-    <message>
-        <source>Still opening a project — try again in a moment.</source>
-        <translation>Vẫn đang mở một dự án — hãy thử lại sau giây lát.</translation>
-    </message>
-    <message>
-        <source>Couldn’t read %1: %2</source>
-        <translation>Không thể đọc %1: %2</translation>
-    </message>
-    <message>
-        <source>Project JSON loaded</source>
-        <translation>Đã tải dự án JSON</translation>
-    </message>
-    <message>
-        <source>Failed to open Premiere Pro project</source>
-        <translation>Không mở được dự án Premiere Pro</translation>
-    </message>
-    <message>
-        <source>Premiere Pro project imported: %1</source>
-        <translation>Dự án Premiere Pro đã nhập: %1</translation>
-    </message>
-    <message>
-        <source>That template location isn’t valid</source>
-        <translation>Vị trí mẫu đó không hợp lệ</translation>
-    </message>
-    <message>
-        <source>Failed to unpack Motion Graphics Template</source>
-        <translation>Không thể giải nén Mẫu đồ họa chuyển động</translation>
-    </message>
-    <message>
-        <source>Failed to apply template to project</source>
-        <translation>Không thể áp dụng mẫu cho dự án</translation>
-    </message>
-    <message>
-        <source>Import template: %1</source>
-        <translation>Nhập mẫu: %1</translation>
-    </message>
-    <message>
-        <source>Template imported: %1</source>
-        <translation>Mẫu đã nhập: %1</translation>
-    </message>
-    <message>
-        <source>Failed to open Kdenlive / MLT project</source>
-        <translation>Không mở được dự án Kdenlive / MLT</translation>
-    </message>
-    <message>
-        <source>Kdenlive project imported: %1</source>
-        <translation>Dự án Kdenlive đã nhập: %1</translation>
-    </message>
-    <message>
-        <source>Failed to open DaVinci Resolve project / timeline</source>
-        <translation>Không thể mở dự án / dòng thời gian DaVinci Resolve</translation>
-    </message>
-    <message>
-        <source>DaVinci Resolve project imported: %1</source>
-        <translation>Dự án DaVinci Resolve đã được nhập: %1</translation>
-    </message>
-    <message>
-        <source>Failed to open Edit Decision List (.edl)</source>
-        <translation>Không mở được Danh sách Quyết định Chỉnh sửa (.edl)</translation>
-    </message>
-    <message>
-        <source>EDL imported: %1</source>
-        <translation>EDL đã nhập: %1</translation>
-    </message>
-    <message>
-        <source>Failed to open OpenTimelineIO (.otio) sequence</source>
-        <translation>Không mở được chuỗi OpenTimelineIO (.otio)</translation>
-    </message>
-    <message>
-        <source>OpenTimelineIO imported: %1</source>
-        <translation>OpenTimelineIO đã nhập: %1</translation>
-    </message>
-    <message>
-        <source>That folder isn’t valid</source>
-        <translation>Thư mục đó không hợp lệ</translation>
-    </message>
-    <message>
-        <source>All media is already in that folder</source>
-        <translation>Tất cả phương tiện đã có trong thư mục đó</translation>
-    </message>
-    <message>
-        <source>Collect media</source>
-        <translation>Thu thập phương tiện</translation>
-    </message>
-    <message numerus="yes">
-        <source>Media collected, but %n original(s) couldn’t be deleted</source>
-        <translation>
-            <numerusform>Phương tiện đã được thu thập, nhưng không thể xóa bản gốc %n</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Media moved and relinked</source>
-        <translation>Phương tiện đã được di chuyển và liên kết lại</translation>
-    </message>
-    <message>
-        <source>Media copied and relinked</source>
-        <translation>Phương tiện được sao chép và liên kết lại</translation>
-    </message>
-    <message>
-        <source>That save location isn’t valid</source>
-        <translation>Vị trí lưu đó không hợp lệ</translation>
-    </message>
-    <message>
-        <source>Already saving</source>
-        <translation>Đã được lưu</translation>
-    </message>
-    <message>
-        <source>Project saved</source>
-        <translation>Đã lưu dự án</translation>
-    </message>
-    <message>
-        <source>Shareable copy ready</source>
-        <translation>Bản sao có thể chia sẻ đã sẵn sàng</translation>
-    </message>
-    <message>
-        <source>That project location isn’t valid</source>
-        <translation>Vị trí dự án đó không hợp lệ</translation>
-    </message>
-    <message>
-        <source>Project loaded</source>
-        <translation>Đã tải dự án</translation>
-    </message>
-    <message>
-        <source>Unpacking project media…</source>
-        <translation>Đang giải nén phương tiện dự án…</translation>
-    </message>
-    <message>
-        <source>No recovery file found</source>
-        <translation>Không tìm thấy tệp khôi phục</translation>
-    </message>
-    <message>
-        <source>Recovered unsaved work</source>
-        <translation>Đã khôi phục công việc chưa lưu</translation>
-    </message>
-    <message>
-        <source>Started new session</source>
-        <translation>Bắt đầu phiên mới</translation>
-    </message>
-</context>
-<context>
     <name>ProjectPropertiesDialog</name>
     <message>
         <source>Project properties</source>
@@ -10391,10 +10249,6 @@ Nếu phát lại bị giật, hãy thử cái khác.</translation>
     <message>
         <source>Transform</source>
         <translation>Chuyển đổi</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Stabilization</source>
@@ -11215,77 +11069,6 @@ Nếu phát lại bị giật, hãy thử cái khác.</translation>
     </message>
 </context>
 <context>
-    <name>SegmentationController</name>
-    <message>
-        <source>Select a video clip to cut out</source>
-        <translation type="unfinished">Chọn một video clip để cắt ra</translation>
-    </message>
-    <message>
-        <source>Cutout is already running</source>
-        <translation type="unfinished">Phần cắt ra đang chạy</translation>
-    </message>
-    <message>
-        <source>This clip has no video to cut out</source>
-        <translation type="unfinished">Clip này không có video để cắt</translation>
-    </message>
-    <message>
-        <source>Click the subject first</source>
-        <translation type="unfinished">Nhấn vào chủ đề đầu tiên</translation>
-    </message>
-    <message>
-        <source>Getting ready…</source>
-        <translation type="unfinished">Đang chuẩn bị…</translation>
-    </message>
-    <message>
-        <source>Cutting out subject…</source>
-        <translation type="unfinished">Đang cắt bỏ chủ đề…</translation>
-    </message>
-    <message>
-        <source>Done</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clip is too short to cut out</source>
-        <translation type="unfinished">Clip quá ngắn để cắt ra</translation>
-    </message>
-    <message>
-        <source>Could not create a cutout file</source>
-        <translation type="unfinished">Không thể tạo tệp cắt</translation>
-    </message>
-    <message>
-        <source>Cutout cancelled</source>
-        <translation type="unfinished">Cắt đã bị hủy</translation>
-    </message>
-    <message>
-        <source>Could not decode frame %1</source>
-        <translation type="unfinished">Không thể giải mã khung %1</translation>
-    </message>
-    <message>
-        <source>Processing frame %1 of %2…</source>
-        <translation type="unfinished">Đang xử lý khung %1 của %2…</translation>
-    </message>
-    <message>
-        <source>Cutout complete — subject cut out on %1 of %2 frames</source>
-        <translation type="unfinished">Quá trình cắt hoàn tất - chủ đề bị cắt trên %1 của %2 khung</translation>
-    </message>
-    <message>
-        <source>Cutout complete</source>
-        <translation type="unfinished">Cắt hoàn tất</translation>
-    </message>
-    <message>
-        <source>That clip no longer exists</source>
-        <translation type="unfinished">Clip đó không còn tồn tại</translation>
-    </message>
-    <message>
-        <source>Cutout</source>
-        <translation type="unfinished">Tách nền</translation>
-    </message>
-    <message>
-        <source>Cut out subject</source>
-        <translation type="unfinished">Cắt bỏ chủ đề</translation>
-    </message>
-</context>
-<context>
     <name>SegmentationWindow</name>
     <message>
         <source>Cut out subject</source>
@@ -11582,6 +11365,10 @@ Nếu phát lại bị giật, hãy thử cái khác.</translation>
         <translation>Kiểm tra khi khởi động</translation>
     </message>
     <message>
+        <source>Ask GitHub once a day whether a newer Drift has been released</source>
+        <translation>Hỏi GitHub mỗi ngày một lần xem Drift mới hơn đã được phát hành chưa</translation>
+    </message>
+    <message>
         <source>Checking…</source>
         <translation>Đang kiểm tra…</translation>
     </message>
@@ -11700,14 +11487,6 @@ Nếu phát lại bị giật, hãy thử cái khác.</translation>
     <message>
         <source>Unlink the marketplace account from this device</source>
         <translation>Hủy liên kết tài khoản Cửa hàng khỏi thiết bị này</translation>
-    </message>
-    <message>
-        <source>Once a day, check whether a newer Drift has been released</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloading…</source>
-        <translation type="unfinished">Đang tải xuống…</translation>
     </message>
 </context>
 <context>
@@ -12320,25 +12099,6 @@ Nếu phát lại bị giật, hãy thử cái khác.</translation>
     <message>
         <source>Shortcuts reset to defaults.</source>
         <translation>Phím tắt đặt lại về mặc định.</translation>
-    </message>
-</context>
-<context>
-    <name>SpeedCurveController</name>
-    <message>
-        <source>Custom speed works on video and audio clips</source>
-        <translation type="unfinished">Tốc độ tùy chỉnh hoạt động trên các clip video và âm thanh</translation>
-    </message>
-    <message>
-        <source>This clip has no media to speed up or slow down</source>
-        <translation type="unfinished">Clip này không có phương tiện để tăng tốc hoặc giảm tốc độ</translation>
-    </message>
-    <message>
-        <source>That clip moved — open Custom speed again</source>
-        <translation type="unfinished">Clip đó đã được di chuyển — mở lại Tốc độ tùy chỉnh</translation>
-    </message>
-    <message>
-        <source>Custom speed applied</source>
-        <translation type="unfinished">Đã áp dụng tốc độ tùy chỉnh</translation>
     </message>
 </context>
 <context>
@@ -14284,10 +14044,6 @@ Nếu phát lại bị giật, hãy thử cái khác.</translation>
         <translation>Thêm lớp biến đổi — di chuyển rãnh của các clip đã chọn như một khối</translation>
     </message>
     <message>
-        <source>Add camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Main</source>
         <translation>Chính</translation>
     </message>
@@ -14330,10 +14086,6 @@ Nếu phát lại bị giật, hãy thử cái khác.</translation>
     <message>
         <source>Add adjustment layer</source>
         <translation>Thêm lớp điều chỉnh</translation>
-    </message>
-    <message>
-        <source>Add camera — one viewpoint the whole timeline is seen through. With a camera already there, adds a new camera clip (a cut to a new framing) at the playhead</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Customize toolbar…</source>
@@ -14486,10 +14238,6 @@ Nếu phát lại bị giật, hãy thử cái khác.</translation>
         <translation>Video + dạng sóng</translation>
     </message>
     <message>
-        <source>CAM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>TF</source>
         <translation>TF</translation>
     </message>
@@ -14516,10 +14264,6 @@ Nếu phát lại bị giật, hãy thử cái khác.</translation>
     <message>
         <source>V</source>
         <translation>V</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Transform</source>
@@ -14584,10 +14328,6 @@ Nếu phát lại bị giật, hãy thử cái khác.</translation>
     <message>
         <source>Turn transform off</source>
         <translation>Tắt chuyển đổi</translation>
-    </message>
-    <message>
-        <source>Add camera clip at playhead</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Covers…</source>
@@ -14761,16 +14501,8 @@ Nếu phát lại bị giật, hãy thử cái khác.</translation>
         <translation>Vị trí (px)</translation>
     </message>
     <message>
-        <source>Position (px, linked)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Separate X and Y keyframes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Link X and Y keyframes and motion curves</source>
-        <translation type="unfinished"></translation>
+        <source>Offset (px)</source>
+        <translation>Độ lệch (px)</translation>
     </message>
     <message>
         <source>Measured inside %1&apos;s frame</source>
@@ -14815,18 +14547,6 @@ Nếu phát lại bị giật, hãy thử cái khác.</translation>
     <message>
         <source>Tilt the clip and push it in depth, with 3D grips on the preview. Turning it off flattens the clip again.</source>
         <translation>Nghiêng clip và đẩy nó vào chiều sâu bằng cách sử dụng các điểm nhấn 3D trên bản xem trước. Tắt nó đi sẽ làm phẳng clip một lần nữa.</translation>
-    </message>
-    <message>
-        <source>Occlude by depth</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Let depth decide what covers this clip, instead of its track position. Only clips with this on sort against each other; everything else still draws in track order.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Needs the Normal blend mode — the others read the canvas behind the clip, which depth cannot sort.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Move</source>
@@ -14891,6 +14611,10 @@ Nếu phát lại bị giật, hãy thử cái khác.</translation>
     <message>
         <source>Reset position &amp; size</source>
         <translation>Đặt lại vị trí &amp; kích thước</translation>
+    </message>
+    <message>
+        <source>Reset position</source>
+        <translation>Đặt lại vị trí</translation>
     </message>
 </context>
 <context>
@@ -15221,26 +14945,6 @@ Nếu phát lại bị giật, hãy thử cái khác.</translation>
 <context>
     <name>UpdateChecker</name>
     <message>
-        <source>Drift %1 update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Preparing the update…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Installs when you close Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ready to install</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 will install when you close Drift.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Couldn’t check for updates: %1</source>
         <translation>Không thể kiểm tra cập nhật: %1</translation>
     </message>
@@ -15256,30 +14960,6 @@ Nếu phát lại bị giật, hãy thử cái khác.</translation>
         <source>Drift %1 is available.</source>
         <translation>Drift %1 đang sẵn có.</translation>
     </message>
-    <message>
-        <source>Couldn’t download the update: the cache isn’t writable.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Couldn’t download the update: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>the download was interrupted.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Couldn’t download the update: the file didn’t match the release.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Couldn’t prepare the update.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 is ready to install.</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>UpdateDialog</name>
@@ -15288,36 +14968,12 @@ Nếu phát lại bị giật, hãy thử cái khác.</translation>
         <translation>Đã có bản cập nhật</translation>
     </message>
     <message>
-        <source>Update ready</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 will install when you close Drift.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Drift %1 is downloaded and ready to install</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Drift %1 is available</source>
         <translation>Drift %1 đang có sẵn</translation>
     </message>
     <message>
-        <source>A new Drift update is available</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>You have %1.</source>
         <translation>Bạn có %1.</translation>
-    </message>
-    <message>
-        <source>Install automatically when I close Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloads in the background and installs the next time you close Drift. Unchecked, you choose when to install once the download finishes.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Skip</source>
@@ -15332,40 +14988,12 @@ Nếu phát lại bị giật, hãy thử cái khác.</translation>
         <translation>Để sau</translation>
     </message>
     <message>
-        <source>Install when I close Drift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update</source>
-        <translation type="unfinished">Cập nhật</translation>
-    </message>
-    <message>
-        <source>Closes Drift, installs the update and opens Drift again</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloads the update in the background</source>
-        <translation type="unfinished"></translation>
+        <source>Download</source>
+        <translation>Tải xuống</translation>
     </message>
     <message>
         <source>Opens the release page in your browser</source>
         <translation>Mở trang phát hành trong trình duyệt của bạn</translation>
-    </message>
-    <message>
-        <source>Downloading Drift %1…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Preparing the update…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Restart and install</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloading…</source>
-        <translation type="unfinished">Đang tải xuống…</translation>
     </message>
 </context>
 <context>

@@ -76,7 +76,7 @@ Item {
                                           || Math.abs(outSeconds - persistedOutSeconds) > 0.02)
     readonly property bool dirty: cropDirty || trimDirty
     readonly property bool saving: EditorState.editingAsset && !EditorState.assetEditIsConversion
-    readonly property real position: EditorState.assetPreview.position
+    readonly property real position: EditorState.assetPreviewPosition
 
     function openFor(index) {
         const asset = AssetLibrary.assetAt(index)
@@ -84,7 +84,7 @@ Item {
             root.closed()
             return
         }
-        EditorState.assetPreview.windowOpen = true
+        EditorState.assetPreviewWindowOpen = true
         root.assetIndex = index
         root.assetId = asset.id || ""
         root.kind = asset.kind || ""
@@ -112,7 +112,7 @@ Item {
                 root.cropW = frame.width; root.cropH = frame.height
             }
         }
-        EditorState.assetPreview.begin(index)
+        EditorState.beginAssetPreview(index)
     }
 
     // Steps the bin's rotation correction by 90° and reopens the preview session so the player's
@@ -133,21 +133,21 @@ Item {
                       ? root.rotationDegrees : asset.effectiveRotation
         if (nextOverride === root.rotationOverride && next === root.effectiveRotation)
             return
-        const wasPlaying = EditorState.assetPreview.playing
+        const wasPlaying = EditorState.assetPreviewPlaying
         const at = root.position
         root.rotationOverride = nextOverride
         root.effectiveRotation = next
-        EditorState.assetPreview.begin(root.assetIndex)
+        EditorState.beginAssetPreview(root.assetIndex)
         root.seekTo(at)
         if (wasPlaying)
-            EditorState.assetPreview.play()
+            EditorState.playAssetPreview()
     }
 
     function close() {
-        EditorState.assetPreview.pause()
-        EditorState.assetPreview.end()
+        EditorState.pauseAssetPreview()
+        EditorState.endAssetPreview()
         root.assetIndex = -1
-        EditorState.assetPreview.windowOpen = false
+        EditorState.assetPreviewWindowOpen = false
         root.closed()
     }
 
@@ -187,25 +187,25 @@ Item {
     function seekTo(seconds) {
         if (root.isImage)
             return
-        EditorState.assetPreview.seek(Math.max(0, seconds))
+        EditorState.seekAssetPreview(Math.max(0, seconds))
     }
 
     function togglePlay() {
         if (!root.canPlay)
             return
-        if (EditorState.assetPreview.playing) {
-            EditorState.assetPreview.pause()
+        if (EditorState.assetPreviewPlaying) {
+            EditorState.pauseAssetPreview()
             return
         }
         const at = root.position
         if (at < root.inSeconds - 0.02 || at >= root.outSeconds - 0.02)
             seekTo(root.inSeconds)
-        EditorState.assetPreview.play()
+        EditorState.playAssetPreview()
     }
 
     // Playback stays inside the kept range, so what plays is what a save would keep.
     onPositionChanged: {
-        if (!EditorState.assetPreview.playing || root.isImage)
+        if (!EditorState.assetPreviewPlaying || root.isImage)
             return
         if (root.position >= root.outSeconds - 0.01)
             seekTo(root.inSeconds)
@@ -314,7 +314,7 @@ Item {
             text: qsTr("Save")
             enabled: root.dirty && !root.saving && root.assetIndex >= 0
             onClicked: {
-                EditorState.assetPreview.pause()
+                EditorState.pauseAssetPreview()
                 EditorState.saveAssetEdit(root.assetIndex, root.inSeconds,
                                           root.canTrim ? root.outSeconds : -1,
                                           root.cropX, root.cropY, root.cropW, root.cropH)
@@ -340,9 +340,9 @@ Item {
         readonly property real aspect: {
             if (root.displayW > 0 && root.displayH > 0)
                 return root.displayW / root.displayH
-            if (EditorState.assetPreview.frameSize.height > 0)
-                return EditorState.assetPreview.frameSize.width
-                       / EditorState.assetPreview.frameSize.height
+            if (EditorState.assetPreviewFrameSize.height > 0)
+                return EditorState.assetPreviewFrameSize.width
+                       / EditorState.assetPreviewFrameSize.height
             return 16 / 9
         }
 
@@ -368,9 +368,9 @@ Item {
                 if (root.isImage)
                     return root.sourcePath.length > 0
                            ? EditorState.imageUrl(root.sourcePath) : ""
-                if (!EditorState.assetPreview.active)
+                if (!EditorState.assetPreviewActive)
                     return ""
-                return "image://clippreview/frame?rev=" + EditorState.assetPreview.revision
+                return "image://clippreview/frame?rev=" + EditorState.assetPreviewRevision
             }
         }
 
@@ -595,7 +595,7 @@ Item {
             height: 64
             radius: width / 2
             color: Theme.scrimStrong
-            opacity: EditorState.assetPreview.playing ? 0 : 1
+            opacity: EditorState.assetPreviewPlaying ? 0 : 1
 
             Behavior on opacity {
                 NumberAnimation { duration: Theme.durationFast; easing.type: Theme.easing }
@@ -684,7 +684,7 @@ Item {
                 glyph: Theme.icons.crop
                 enabled: !root.saving
                 onClicked: {
-                    EditorState.assetPreview.pause()
+                    EditorState.pauseAssetPreview()
                     root.mode = "crop"
                 }
             }
@@ -777,7 +777,7 @@ Item {
                     anchors.rightMargin: 22
                     enabled: !root.saving
                     onPressed: (mouse) => {
-                        EditorState.assetPreview.pause()
+                        EditorState.pauseAssetPreview()
                         Haptics.press()
                         root.seekTo(((mouse.x + 22) / Math.max(1, strip.width))
                                     * root.durationSeconds)
@@ -825,7 +825,7 @@ Item {
                             enabled: !root.saving
                             preventStealing: true
                             onPressed: {
-                                EditorState.assetPreview.pause()
+                                EditorState.pauseAssetPreview()
                                 Haptics.pickUp()
                             }
                             onReleased: Haptics.drop()

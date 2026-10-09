@@ -18,14 +18,6 @@ qt_add_executable(tst_editorstate
     # requestImage is called directly.
     ../src/MulticamImageProvider.cpp
     ../src/models/AppController.cpp
-    ../src/models/McpController.cpp
-    ../src/models/PreferencesController.cpp
-    ../src/models/ProjectFileController.cpp
-    ../src/models/AssetPreviewController.cpp
-    ../src/models/SpeedCurveController.cpp
-    ../src/models/CurveEditorController.cpp
-    ../src/models/SegmentationController.cpp
-    ../src/preview/PreviewController.cpp
     ../src/models/AddonManager.cpp
     ../src/models/JobRegistry.cpp
     ../src/models/CloudProviders.cpp
@@ -92,11 +84,6 @@ add_test(NAME LayoutStore COMMAND tst_layoutstore)
 # position under Wayland (the compositor owns it there). Pin the platform so the
 # test means the same thing on a dev machine as it does headless in CI.
 set_tests_properties(LayoutStore PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
-
-qt_add_executable(tst_updateasset tst_updateasset.cpp ../src/models/UpdateAsset.cpp)
-target_include_directories(tst_updateasset PRIVATE ../src)
-target_link_libraries(tst_updateasset PRIVATE Qt6::Test)
-add_test(NAME UpdateAsset COMMAND tst_updateasset)
 
 qt_add_executable(tst_uifont tst_uifont.cpp)
 target_link_libraries(tst_uifont PRIVATE Qt6::Test Qt6::Gui)
@@ -191,14 +178,6 @@ qt_add_executable(tst_mcp
     ../src/ClipPreviewImageStore.cpp
     ../src/MulticamImageStore.cpp
     ../src/models/AppController.cpp
-    ../src/models/McpController.cpp
-    ../src/models/PreferencesController.cpp
-    ../src/models/ProjectFileController.cpp
-    ../src/models/AssetPreviewController.cpp
-    ../src/models/SpeedCurveController.cpp
-    ../src/models/CurveEditorController.cpp
-    ../src/models/SegmentationController.cpp
-    ../src/preview/PreviewController.cpp
     ../src/models/AddonManager.cpp
     ../src/models/JobRegistry.cpp
     ../src/models/CloudProviders.cpp
